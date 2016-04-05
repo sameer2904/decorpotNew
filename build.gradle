@@ -1,0 +1,61 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jetty'
+apply plugin: 'eclipse'
+
+// JDK 7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven { url "http://repo1.maven.org/maven2/"}
+ 
+}
+
+war {
+	archiveName 'decorpot.war'
+    }
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'war'
+ 
+    repositories {
+        mavenCentral()
+    }
+}
+
+dependencies {
+	compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
+	compile 'org.springframework.data:spring-data-jpa:1.9.4.RELEASE'
+	compile 'org.hibernate:hibernate-entitymanager:4.3.11.Final'
+  	compile 'mysql:mysql-connector-java:5.1.35'
+  	compile 'org.slf4j:slf4j-api:1.7.13'
+  	compile 'log4j:log4j:1.2.17'
+}
+
+// Embeded Jetty for testing
+jettyRun{
+	contextPath = "decorpot"
+	httpPort = 8080
+}
+
+jettyRunWar{
+	contextPath = "decorpot"
+	httpPort = 8080
+}
+
+//For Eclipse IDE only
+eclipse {
+
+  wtp {
+    component {
+      
+      //define context path, default to project folder name
+      contextPath = 'decorpot'
+      
+    }
+    
+  }
+}
+
