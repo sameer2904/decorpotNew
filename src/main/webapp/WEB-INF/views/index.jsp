@@ -26,8 +26,27 @@
 <meta itemprop="description"
 	content="Decorpot is one of the Best Interior Designersin Bangalore &amp; Interior Designers in Bangalore, Interior Design, Home Decor, Contemporary Living Room Design, Contemporary Bedroom Design, Modular Kitchens, Interior Decorators in Bangalore, Best Interior Designers in Bangalore, Modular Kitchen Manufacturers, 3D Modeling Bangalore, Hire Free Designers - Decorpot, top 10 interiors design company, interior design solutions in Bangalore, interior design companies in Bangalore We design quality false ceilings, glamorous kitchens, stunning wardrobes to luxurious sofas.">
 <meta property="og:site_name" content="decorpot.com"/>
+
+<link href="resources/core/css/style.css" rel="stylesheet">
 </head>
 <body>
 Hello world !!
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="resources/core/js/bootstrap.min.js"></script>
+
+<script src="resources/core/js/application/app.js"></script>
+
+<script src="resources/core/js/application/services.js"></script>
+<script src="resources/core/js/application/controllers.js"></script>
+<script src="resources/core/js/application/directives.js"></script>
 </body>
 </html>
