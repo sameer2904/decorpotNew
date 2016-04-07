@@ -30,7 +30,163 @@
 <link href="resources/core/css/style.css" rel="stylesheet">
 </head>
 <body>
-Hello world !!
+   <!-- This section is for Splash Screen -->
+    <section id="jSplash">
+        <section class="selected">
+            <h2>jPreLoader v2</h2>
+            <strong>A loading screen to preload images using jQuery</strong>
+        </section>
+        <section>
+            <p>Create your own
+                <br/>
+                <span style="font-size:30px; color:#FF6123;">Splash Screen</span>.</p>
+        </section>
+        <section>
+            <p>Customize Progress Bar and Progress Percentage
+                <br/>
+                <span style="font-size:30px; color:#23FF27;">using CSS</span>.</p>
+        </section>
+        <section>
+            <p>Preload all images in
+                <br/>
+                <span style="font-size:25px; color:#FF23FF;">&lt;img&gt; tag</span> +
+                <span style="font-size:25px; color:#FF23FF;">CSS background-image</span>.</p>
+        </section>
+    </section>
+    <!-- End of Splash Screen -->
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="preHeader">
+                    <ul class="nav nav-pills">
+                        <li role="presentation"><span class="glyphicon glyphicon-envelope"></span>  sales@decorpot.com</li>
+                        <li role="presentation"><span class="glyphicon glyphicon-earphone"></span>   1800123123</li>
+                       <!--  <li>
+                            <ul>
+                                <li class="social-icons fa fa-facebook"></li>
+                                <li class="social-icons fa fa-twitter"></li>
+                                <li class="social-icons fa fa-rss"></li>
+                                <li class="social-icons fa fa-google-plus"></li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Brand logo" width="220" height="30">
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="index-2.html">Home<span class="sr-only">(current)</span></a>
+                            <ul>
+                                <li><a href="index-sidebar.html">New Side Navigation</a></li>
+                                <li><a href="index-landing-page.html">Landing Page 1</a></li>
+                                <li><a href="index-landing-page-video.html">Landing Page 2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="projects.html">Projects</a>
+                            <ul>
+                                <li><a href="projects.html">Projects 4 Cols</a></li>
+                                <li><a href="projects-3-cols.html">Projects 3 Cols</a></li>
+                                <li><a href="projects-2-cols.html">Projects 2 Cols</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="services.html">Services</a>
+                            <ul>
+                                <li><a href="service-1.html">Residential Design</a></li>
+                                <li><a href="service-2.html">Hospitaly Design</a></li>
+                                <li><a href="service-3.html">Office Design</a></li>
+                                <li><a href="service-4.html">Commercial Design</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="javascript:void(0)" style="padding-right: 0;padding-left:0">Contact</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+    </header>
+
+<div class="mid" ui-view>
+</div>
+<!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <img class="logo-small" alt="" src="images/logo.png" width="150" height="23">
+                    <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, iste. Autem, perspiciatis odio id, a, repudiandae delectus similique dolorem nisi et, iste numquam iusto maiores reiciendis temporibus quaerat amet. Molestias.
+                </div>
+                <div class="col-md-2 col-md-offset-1 col-sm-6">
+                     <div class="widget widget_recent_post">
+                        <h3>Sitemap</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Apartments</a></li>
+                            <li><a href="#">Lorem</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget widget_recent_post">
+                        <h3>Latest News</h3>
+                        <ul>
+                            <li><a href="#">5 Things That Take a Room from Good to Great</a></li>
+                            <li><a href="#">Functional and Stylish Wall-to-Wall Shelves</a></li>
+                            <li><a href="#">9 Unique and Unusual Ways to Display Your TV</a></li>
+                            <li><a href="#">The 5 Secrets to Pulling Off Simple, Minimal Design</a></li>
+                            <li><a href="#">How to Make a Huge Impact With Multiples</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <h3>Contact Us</h3>
+                    <div class="widget widget-address">
+                        <address>
+                                    <span>#799, 19th Main, 23rd Cross, 2nd floor, Sector 2 Near HSR club, Bangalore 560102</span>
+                                    <span><strong>Phone:</strong>(91) 12 34 567890 </span>
+                                    <span><strong>Fax:</strong>(208) 333 9298</span>
+                                    <span><strong>Email:</strong><a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
+                                    <span><strong>Web:</strong><a href="#">http://decorpot.com</a></span>
+                                </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subfooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        © Copyright 2015 - Decorpot
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <div class="social-icons">
+                            <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+                            <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
+                            <a href="#"><i class="fa fa-rss fa-lg"></i></a>
+                            <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
+                            <a href="#"><i class="fa fa-skype fa-lg"></i></a>
+                            <a href="#"><i class="fa fa-dribbble fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
