@@ -32,6 +32,11 @@ dependencies {
   	compile 'mysql:mysql-connector-java:5.1.35'
   	compile 'org.slf4j:slf4j-api:1.7.13'
   	compile 'log4j:log4j:1.2.17'
+  	compile 'javax.mail:javax.mail-api:1.5.5'
+  	compile 'org.springframework:spring-context-support:4.2.5.RELEASE'
+  	compile 'javax.mail:mail:1.4.7'
+  	
+  	
 }
 
 // Embeded Jetty for testing

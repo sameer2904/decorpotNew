@@ -11,7 +11,7 @@
 		</layout>
 	</appender>
 
-	<logger name="org.springframework" level="debug" additivity="false">
+	<logger name="org.springframework" level="debug" additivity="true">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
