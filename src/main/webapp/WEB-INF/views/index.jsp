@@ -198,6 +198,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="resources/core/js/bootstrap.min.js"></script>
+<script src="resources/core/js/ng-file-upload.min.js"></script>
 
 <script src="resources/core/js/application/app.js"></script>
 
