@@ -48,71 +48,23 @@
 								size="30" required /> <i ng-show="wdth">*required</i>
 						</div>
 					</div>
+					
 					<div class="row">
 						<div class="col-md-12">
-							Photo: <input type="file" ngf-select ng-model="picFile1"
-								name="file1" accept="image/*" ngf-max-size="200KB" required
-								ngf-model-invalid="errorFile"> <i
-								ng-show="myForm.file1.$error.required">*required</i><br> <i
-								ng-show="myForm.file1.$error.maxSize">File too large
-								{{errorFile.size / 1000|number:1}}KB: max 200KB</i> <img
-								ng-show="myForm.file1.$valid" ngf-thumbnail="picFile1"
-								class="thumb" height="200" width="200">
-							<button ng-click="picFile1 = null" ng-show="picFile1">Remove</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							Photo: <input type="file" ngf-select ng-model="picFile2"
-								name="file2" accept="image/*" ngf-max-size="200KB" required
-								ngf-model-invalid="errorFile"> <i
-								ng-show="myForm.file2.$error.required">*required</i><br> <i
-								ng-show="myForm.file2.$error.maxSize">File too large
-								{{errorFile.size / 1000|number:1}}KB: max 200KB</i> <img
-								ng-show="myForm.file2.$valid" ngf-thumbnail="picFile2"
-								class="thumb" height="200" width="200">
-							<button ng-click="picFile2 = null" ng-show="picFile2">Remove</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							Photo: <input type="file" ngf-select ng-model="picFile3"
-								name="file3" accept="image/*" ngf-max-size="200KB" required
-								ngf-model-invalid="errorFile"> <i
-								ng-show="myForm.file3.$error.required">*required</i><br> <i
-								ng-show="myForm.file3.$error.maxSize">File too large
-								{{errorFile.size / 1000|number:1}}KB: max 200KB</i> <img
-								ng-show="myForm.file3.$valid" ngf-thumbnail="picFile3"
-								class="thumb" height="200" width="200">
-							<button ng-click="picFile3 = null" ng-show="picFile3">Remove</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							Photo: <input type="file" ngf-select ng-model="picFile4"
-								name="file4" accept="image/*" ngf-max-size="200KB" required
-								ngf-model-invalid="errorFile"> <i
-								ng-show="myForm.file4.$error.required">*required</i><br> <i
-								ng-show="myForm.file4.$error.maxSize">File too large
-								{{errorFile.size / 1000|number:1}}KB: max 200KB</i> <img
-								ng-show="myForm.file4.$valid" ngf-thumbnail="picFile4"
-								class="thumb" height="200" width="200">
-							<button ng-click="picFile4 = null" ng-show="picFile4">Remove</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							Photo: <input type="file" ngf-select ng-model="picFile5"
-								name="file5" accept="image/*" ngf-max-size="200KB" required
-								ngf-model-invalid="errorFile"> <i
-								ng-show="myForm.file5.$error.required">*required</i><br> <i
+							Photo: <input type="file" ngf-select ng-model="files" ngf-multiple="true"
+								name="file" accept="image/*" ngf-max-size="200KB" required
+								ngf-model-invalid="errorFile"> <br> <i
 								ng-show="myForm.file5.$error.maxSize">File too large
 								{{errorFile.size / 1000|number:1}}KB: max 200KB</i> <img
-								ng-show="myForm.file5.$valid" ngf-thumbnail="picFile5"
-								class="thumb" height="200" width="200">
-							<button ng-click="picFile5 = null" ng-show="picFile5">Remove</button>
+								ng-show="myForm.file5.$valid" ngf-thumbnail="file"
+								class="thumb" height="200" width="200" ng-repeat="file in files">
+							<button ng-click="files = null" ng-show="picFile5">Remove</button>
 						</div>
 					</div>
+					
+					<div class="row"><button ng-disabled="!myForm.$valid" 
+             			 ng-click="uploadData()">Submit</button></div>
+					
 				</div>
 			</fieldset>
 		</form>

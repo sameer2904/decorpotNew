@@ -21,6 +21,8 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -139,6 +141,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
        simpleMailMessage.setSubject("lets do it");
        simpleMailMessage.setTo("sameersaurav2904@gmail.com");
        return simpleMailMessage;
+    }
+	
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver commonsMultipartResolver(){
+		CommonsMultipartResolver factory = new CommonsMultipartResolver();
+        factory.setMaxUploadSize(240000);
+        return factory;
     }
 
 }
