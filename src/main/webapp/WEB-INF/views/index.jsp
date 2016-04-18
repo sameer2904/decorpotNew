@@ -27,15 +27,16 @@
 	content="Decorpot is one of the Best Interior Designersin Bangalore &amp; Interior Designers in Bangalore, Interior Design, Home Decor, Contemporary Living Room Design, Contemporary Bedroom Design, Modular Kitchens, Interior Decorators in Bangalore, Best Interior Designers in Bangalore, Modular Kitchen Manufacturers, 3D Modeling Bangalore, Hire Free Designers - Decorpot, top 10 interiors design company, interior design solutions in Bangalore, interior design companies in Bangalore We design quality false ceilings, glamorous kitchens, stunning wardrobes to luxurious sofas.">
 <meta property="og:site_name" content="decorpot.com"/>
 
-<link href="resources/core/css/application/style.css" rel="stylesheet">
-<link href="resources/core/css/application/normalize.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet">
-<link href="http://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
-<link href="resources/core/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/core/css/application/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet"/>
+<link href="http://daneden.github.io/animate.css/animate.min.css" rel="stylesheet"/>
+<link href="resources/core/css/application/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="resources/core/css/normalise.css"/>
 </head>
 <body>
    <!-- This section is for Splash Screen -->
-    <section id="jSplash">
+    <section id="jSplash" style="background-color:#fff">
         <section class="selected">
             <h2>jPreLoader v2</h2>
             <strong>A loading screen to preload images using jQuery</strong>
@@ -72,7 +73,7 @@
                     </a>
                 </div>
                 
-                 <ul class="nav nav-pills">
+                 <ul class="nav nav-pills hidden-md hidden-sm hidden-xs">
                         <li role="presentation"><span class="glyphicon glyphicon-envelope"></span>  sales@decorpot.com</li>
                         <li role="presentation"><span class="glyphicon glyphicon-earphone"></span>    +91-9986076761 | +91-9986076762
 </li>
@@ -117,8 +118,8 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <img class="logo-small" alt="" src="images/logo.png" width="150" height="23">
+                <div class="col-md-4 col-sm-6 wow slideInLeft" data-wow-animation="0.1s" data-wow-delay="0.1s" >
+                    <img class="logo-small" alt="" src="./resources/core/images/logo.png" width="150" height="23">
                     <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, iste. Autem, perspiciatis odio id, a, repudiandae delectus similique dolorem nisi et, iste numquam iusto maiores reiciendis temporibus quaerat amet. Molestias.
                 </div><!-- 
                 <div class="col-md-2 col-md-offset-1 col-sm-6">
@@ -133,7 +134,7 @@
                         </ul>
                     </div>
                 </div> -->
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-6 wow slideInUp" data-wow-animation="0.1s" data-wow-delay="0.1s">
                     <div class="widget widget_recent_post">
                         <h3>Latest News</h3>
                         <ul>
@@ -146,15 +147,15 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-6 wow slideInRight" data-wow-animation="0.1s" data-wow-delay="0.1s">
                     <h3>Contact Us</h3>
                     <div class="widget widget-address">
                         <address>
                                     <span>#799, 19th Main, 23rd Cross, 2nd floor, Sector 2 Near HSR club, Bangalore 560102</span>
-                                    <span><strong>Phone:</strong>(91) 12 34 567890 </span>
-                                    <span><strong>Fax:</strong>(208) 333 9298</span>
-                                    <span><strong>Email:</strong><a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
-                                    <span><strong>Web:</strong><a href="#">http://decorpot.com</a></span>
+                                    <span><b>Phone:</b> (+91) 12 34 567890 </span>
+                                    <span><b>Fax:</b> (+208) 333 9298</span>
+                                    <span><b>Email:</b> <a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
+                                    <span><b>Web:</b> <a href="#">http://decorpot.com</a></span>
                                 </address>
                     </div>
                 </div>

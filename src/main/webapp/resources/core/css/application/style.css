@@ -14,11 +14,22 @@
     font-weight: normal;
     font-style: normal;
 }
-
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('fonts/CenturyGothic.woff') format('woff'),
+        url('fonts/CenturyGothic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    font-family: 'Century Gothic' !important;
+}
 /*header*/
 header .navbar {
     width: 100%;
     height: 60px;
+    box-shadow: 0px 3px 4px rgba(0,0,0,0.3);
+    border: 1px solid grey;
 }
 
 ul.nav.nav-pills {
@@ -45,12 +56,12 @@ ul.nav.nav-pills {
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
-    color: #FAB702;
+    color: black;
     background-color: transparent;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-    color: #FAB702;
+    color: black;
 }
 
 .nav.navbar-nav li {
@@ -70,7 +81,7 @@ ul.nav.nav-pills {
     font-size: 6px;
     margin-left: 20px;
     margin-top: 0px;
-    color: #FAB702;
+    color: black;
 }
 .preHeader > ul > li:nth-child(1):after{
     margin-top:7px;
@@ -103,7 +114,7 @@ body > header > nav > div > ul > li{
 /*footer*/
 
 address span a {
-    color: #eceff3;
+    color: #000;
 }
 
 footer .widget h3 {
@@ -128,16 +139,16 @@ footer .widget_recent_post li {
     padding: 0 0 5px 0;
     margin: 0;
     background: none;
-    border-bottom-color: #222;
+    border-bottom-color: #ccc;
 }
 
 .widget_recent_post li a {
     color: #555;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 footer .widget_recent_post li a {
-    color: #ccc;
+    color: #000;
 }
 
 .logo-small {
@@ -146,7 +157,7 @@ footer .widget_recent_post li a {
 
 footer h3,
 .de_light footer h3 {
-    color: #fff;
+    color: #000;
     font-size: 20px;
 }
 
@@ -175,7 +186,7 @@ address span {
 }
 
 address span {
-    border-bottom-color: #222;
+    border-bottom-color: #ccc;
 }
 
 address span strong {
@@ -185,11 +196,11 @@ address span strong {
 
 address span strong {
     display: inline-block;
-    color: #FAB702;
+    color: black;
 }
 
 .subfooter {
-    background: #0b0b0b;
+    background: #f2f2f2;
     padding: 30px 0 20px 0;
 }
 
@@ -216,9 +227,13 @@ a {
 
 footer a,
 footer {
-    color: #ccc;
+    color: #000;
 }
-
 .social-icons a {
     margin-left: 10px;
+}
+@media(max-width:766px){
+    #navbar > ul{
+        background: #fff;
+    }
 }

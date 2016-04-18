@@ -12,8 +12,11 @@ main {
     top: -30px;
 }
 #whyUs .well{
-    border-radius: 15px;
-    border:2px solid #fff;
+border-radius: 30px;
+    border: 5px solid #fff;
+    background-color: #f2f2f2;
+    color: #040404;
+    padding: 10px;
 }
 #whyUs > div > div{
     display: inline-block;float:right;
@@ -29,14 +32,16 @@ main {
     text-align: center;
 }
 /*our projects*/
-div.panel-body > img {
-    width: 325px;
-    height: 200px;
+#ourProjects{
+    padding: 30px 0 40px 0;
+}
+div.panel img{
+    max-height:250px;
 }
 /*steps*/
 
 section#section-steps {
-    background-image: url('../images/2.jpg');
+    background-image: url('../../images/bg-2.jpg');
     background-attachment: fixed;
     padding: 80px 0;
     /*opacity: 0.5;*/
@@ -46,10 +51,36 @@ section#section-steps {
     color: #fff;
 }
 
-div.separator > span > i {
-    color: #FAB702;
+.separator {
+    line-height: 0.5;
+    text-align: center;
+    margin: 30px 0 30px 0;
 }
-
+.separator span {
+    display: inline-block;
+    position: relative;
+}
+.separator span::before, .separator span::after {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid #000;
+    top: 5px;
+    width: 300px;
+}
+.separator span::before {
+    right: 100%;
+    margin-right: 15px;
+}
+.separator span::after {
+    left: 100%;
+    margin-left: 15px;
+}
+#section-steps .separator span::before, #section-steps .separator span::after{
+    border-bottom-color: #fff;
+}
+#section-steps > div > div > div.col-md-12.text-center > div.separator > span > i{
+    color:#fff;
+}
 .de_tab .de_nav {
     overflow: hidden;
     padding-left: 0px;
@@ -253,6 +284,15 @@ section#section-testimonial {
   margin-bottom: -3px;
 }*/
 
+/*what we say*/
+#wordsWeSay{    
+    background-color: #f2f2f2; 
+    padding: 60px 0px;
+}
+#wordsWeSay .trust{
+    padding-bottom: 20px; 
+
+}
 .de_tab.tab_steps .de_nav li.active span {
     background: none;
     color: #ffffff;
@@ -261,9 +301,6 @@ section#section-testimonial {
 
 
 /*Customer says*/
-div#testimonial-carousel {
-    padding: 50px;
-}
 .owl-carousel {
     display: none;
     position: relative;
@@ -311,7 +348,6 @@ div#testimonial-carousel {
 }
 
 .owl-theme .owl-controls .owl-page span {
-    background: #fff !important;
     margin-top: 30px;
     width: 5px;
     height: 5px;
@@ -379,7 +415,9 @@ div#testimonial-carousel {
     display: block;
     margin-bottom: 10px;
 }
-
+.de_testi_by{
+    color:#fab702;
+}
 blockquote {
     font-size: 24px;
     font-style: italic;
@@ -424,7 +462,14 @@ blockquote {
     position: absolute;
     left: 15px;
 }
-
+/*our partners*/
+#ourPartners{
+    background-image: url('../../images/partners.jpg');
+    height: 560px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -80px;
+}
 
 
 /*media query for steps vborder*/

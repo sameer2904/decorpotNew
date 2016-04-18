@@ -48,7 +48,7 @@ decorpotCtrls.controller('homeController', [ '$scope', function($scope) {
     });
     var item = $('.carousel .item');
     var wHeight = $(window).width() * 0.6; // Maintain aspect ratio
-
+// alert(wHeight)
     item.height(wHeight);
     item.addClass('full-screen');
 
