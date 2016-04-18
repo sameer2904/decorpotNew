@@ -13,10 +13,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -110,5 +114,38 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/views/**").addResourceLocations(
 				"/views/**");
 	}
+
+	@Bean
+	public JavaMailSender getMailSender() {
+		
+		JavaMailSenderImpl mailSender =  new JavaMailSenderImpl();
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(25);
+		mailSender.setUsername("sameersaurav2904@gmail.com");
+		mailSender.setPassword("*******");
+		Properties mailProperties = new Properties();
+		mailProperties.put("mail.smtp.auth", "smtp");
+		mailProperties.put("mail.smtp.auth", true);
+		mailProperties.put("mail.smtp.starttls.enable", true);
+		mailProperties.put("mail.debug",true);
+		mailSender.setJavaMailProperties(mailProperties);
+		return mailSender;
+	}
+	
+	@Bean
+    public SimpleMailMessage simpleMailMessage() {
+       SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+       simpleMailMessage.setFrom("sameersaurav2904@gmail.com");
+       simpleMailMessage.setSubject("lets do it");
+       simpleMailMessage.setTo("sameersaurav2904@gmail.com");
+       return simpleMailMessage;
+    }
+	
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver commonsMultipartResolver(){
+		CommonsMultipartResolver factory = new CommonsMultipartResolver();
+        factory.setMaxUploadSize(240000);
+        return factory;
+    }
 
 }
