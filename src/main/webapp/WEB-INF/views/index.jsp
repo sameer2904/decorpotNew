@@ -8,7 +8,7 @@
 <meta name="author" content="Decorpot" />
 <meta name="ROBOTS" content="INDEX, FOLLOW">
 <meta name="googlebot" content="index, follow">
-<link rel="shortcut icon" href="resources/core/img/1a.png" type="image/x-icon">
+<link rel="shortcut icon" href="resources/core/images/favicon.png" width="16" height="16" type="image/x-icon">
 
 <title>Interior Designers Bangalore, Modular Kitchen Manufacturers - Decorpot</title>
 <meta name="description" content="Interior Designers in Bangalore - Get Top Interior Designers and Decorators in Bangalore. Decorpot is one of the Best Interior Designers  / Top Interior Designers in Bangalore / Good Interior Designers in Bangalore &amp; Modular Kitchen Manufactures , 5 year warranty service no extra cost, Two years free service warranty. We design quality false ceilings, glamorous kitchens, stunning wardrobes to luxurious sofas.">
@@ -27,11 +27,17 @@
 	content="Decorpot is one of the Best Interior Designersin Bangalore &amp; Interior Designers in Bangalore, Interior Design, Home Decor, Contemporary Living Room Design, Contemporary Bedroom Design, Modular Kitchens, Interior Decorators in Bangalore, Best Interior Designers in Bangalore, Modular Kitchen Manufacturers, 3D Modeling Bangalore, Hire Free Designers - Decorpot, top 10 interiors design company, interior design solutions in Bangalore, interior design companies in Bangalore We design quality false ceilings, glamorous kitchens, stunning wardrobes to luxurious sofas.">
 <meta property="og:site_name" content="decorpot.com"/>
 
-<link href="resources/core/css/style.css" rel="stylesheet">
+<link href="resources/core/css/application/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet"/>
+<link href="http://daneden.github.io/animate.css/animate.min.css" rel="stylesheet"/>
+<link href="resources/core/css/application/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="resources/core/css/normalise.css"/>
 </head>
 <body>
    <!-- This section is for Splash Screen -->
-    <section id="jSplash">
+   <!-- To be implemented later -->
+    <!-- <section id="jSplash" style="background-color:#fff">
         <section class="selected">
             <h2>jPreLoader v2</h2>
             <strong>A loading screen to preload images using jQuery</strong>
@@ -52,25 +58,11 @@
                 <span style="font-size:25px; color:#FF23FF;">&lt;img&gt; tag</span> +
                 <span style="font-size:25px; color:#FF23FF;">CSS background-image</span>.</p>
         </section>
-    </section>
+    </section> -->
     <!-- End of Splash Screen -->
     <header>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
-                <div class="preHeader">
-                    <ul class="nav nav-pills">
-                        <li role="presentation"><span class="glyphicon glyphicon-envelope"></span>  sales@decorpot.com</li>
-                        <li role="presentation"><span class="glyphicon glyphicon-earphone"></span>   1800123123</li>
-                       <!--  <li>
-                            <ul>
-                                <li class="social-icons fa fa-facebook"></li>
-                                <li class="social-icons fa fa-twitter"></li>
-                                <li class="social-icons fa fa-rss"></li>
-                                <li class="social-icons fa fa-google-plus"></li>
-                            </ul>
-                        </li> -->
-                    </ul>
-                </div>
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -78,26 +70,32 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Brand logo" width="220" height="30">
+                    <a class="navbar-brand" href="#"><img src="./resources/core/images/logo.png" alt="Brand logo" height="39px">
                     </a>
                 </div>
+                
+                 <ul class="nav nav-pills hidden-md hidden-sm hidden-xs">
+                        <li role="presentation"><span class="glyphicon glyphicon-envelope"></span>  sales@decorpot.com</li>
+                        <li role="presentation"><span class="glyphicon glyphicon-earphone"></span>    +91-9986076761 | +91-9986076762
+</li>
+</ul>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index-2.html">Home<span class="sr-only">(current)</span></a>
+                    <ul class="nav navbar-nav navbar-left">
+                        <!-- <li class="active"><a href="index-2.html">Home<span class="sr-only">(current)</span></a>
                             <ul>
                                 <li><a href="index-sidebar.html">New Side Navigation</a></li>
                                 <li><a href="index-landing-page.html">Landing Page 1</a></li>
                                 <li><a href="index-landing-page-video.html">Landing Page 2</a></li>
                             </ul>
-                        </li>
-                        <li><a href="projects.html">Projects</a>
+                        </li> -->
+                        <li><a href="apartments.html">APARTMENTS</a>
                             <ul>
                                 <li><a href="projects.html">Projects 4 Cols</a></li>
                                 <li><a href="projects-3-cols.html">Projects 3 Cols</a></li>
                                 <li><a href="projects-2-cols.html">Projects 2 Cols</a></li>
                             </ul>
                         </li>
-                        <li><a href="services.html">Services</a>
+                        <li><a href="looks.html">LOOKS</a>
                             <ul>
                                 <li><a href="service-1.html">Residential Design</a></li>
                                 <li><a href="service-2.html">Hospitaly Design</a></li>
@@ -105,9 +103,8 @@
                                 <li><a href="service-4.html">Commercial Design</a></li>
                             </ul>
                         </li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="javascript:void(0)" style="padding-right: 0;padding-left:0">Contact</a></li>
+                        <li><a href="projects.html">PROJECTS</a></li>
+                        <li><a href="#/contact">ASK US</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -122,10 +119,10 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <img class="logo-small" alt="" src="images/logo.png" width="150" height="23">
+                <div class="col-md-4 col-sm-6 wow slideInLeft" data-wow-animation="0.1s" data-wow-delay="0.1s" >
+                    <img class="logo-small" alt="" src="./resources/core/images/logo.png" width="150" height="23">
                     <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, iste. Autem, perspiciatis odio id, a, repudiandae delectus similique dolorem nisi et, iste numquam iusto maiores reiciendis temporibus quaerat amet. Molestias.
-                </div>
+                </div><!-- 
                 <div class="col-md-2 col-md-offset-1 col-sm-6">
                      <div class="widget widget_recent_post">
                         <h3>Sitemap</h3>
@@ -137,8 +134,8 @@
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
+                </div> -->
+                <div class="col-md-4 col-sm-6 wow slideInUp" data-wow-animation="0.1s" data-wow-delay="0.1s">
                     <div class="widget widget_recent_post">
                         <h3>Latest News</h3>
                         <ul>
@@ -151,15 +148,15 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-6 wow slideInRight" data-wow-animation="0.1s" data-wow-delay="0.1s">
                     <h3>Contact Us</h3>
                     <div class="widget widget-address">
                         <address>
                                     <span>#799, 19th Main, 23rd Cross, 2nd floor, Sector 2 Near HSR club, Bangalore 560102</span>
-                                    <span><strong>Phone:</strong>(91) 12 34 567890 </span>
-                                    <span><strong>Fax:</strong>(208) 333 9298</span>
-                                    <span><strong>Email:</strong><a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
-                                    <span><strong>Web:</strong><a href="#">http://decorpot.com</a></span>
+                                    <span><b>Phone:</b> (+91) 12 34 567890 </span>
+                                    <span><b>Fax:</b> (+208) 333 9298</span>
+                                    <span><b>Email:</b> <a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
+                                    <span><b>Web:</b> <a href="#">http://decorpot.com</a></span>
                                 </address>
                     </div>
                 </div>
@@ -189,16 +186,21 @@
     </footer>
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script
+    src="http://www.inwebson.com/demo/jpreloader/js/jpreLoader.min.js"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+    <script src="http://mynameismatthieu.com/WOW/dist/wow.min.js"></script>
+<script src="resources/core/js/application/script.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="resources/core/js/bootstrap.min.js"></script>
-<script src="resources/core/js/ng-file-upload.min.js"></script>
 
 <script src="resources/core/js/application/app.js"></script>
 
