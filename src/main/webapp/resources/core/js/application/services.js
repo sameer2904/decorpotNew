@@ -14,4 +14,4 @@ services.service('uploadService',['$http', function($http){
 			});
 		}
 	}
-}] )
+}] );
