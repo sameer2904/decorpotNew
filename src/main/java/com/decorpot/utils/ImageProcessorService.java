@@ -22,45 +22,47 @@ public class ImageProcessorService {
 	@Autowired
 	private S3Uploader s3Uploader;
 
-	public void uploadSpaceImages(File file) {
+	public void uploadSpaceImages(File file) throws Exception {
 
 		if (file != null) {
-			DecorpotConstants.spaceImageSizes.forEach(s -> {
-				String[] dimentions = s.split("x");
+			for (String size : DecorpotConstants.spaceImageSizes) {
+				String[] dimentions = size.split("x");
 				try {
 					File resizedFile = imageCompressor(file,
 							Integer.parseInt(dimentions[0]),
 							Integer.parseInt(dimentions[1]));
 					s3Uploader.s3PutImage(
-							DecorpotConstants.SPACE_IMAGE_LOCATION_PREFIX + s,
-							resizedFile);
+							DecorpotConstants.SPACE_IMAGE_LOCATION_PREFIX
+									+ size, resizedFile);
+					resizedFile.delete();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw e;
 				}
-			});
+			}
+			file.delete();
 		}
-
 	}
 
+	@SuppressWarnings("unused")
 	private File imageCompressor(File file, int width, int height)
 			throws Exception {
 
 		try {
 			BufferedImage originalImage = ImageIO.read(file);
-			System.out.println(file.getAbsolutePath() + "   " + file.getName());
-			System.out.println("new file path " + file.getName() + width + "x"
-					+ height);
-			File ouputImage = new File(file, file.getName() + width + "x"
-					+ height);
+
+			File outputImage = new File(width + "x" + height + file.getName());
+			if (outputImage == null) {
+				throw new Exception(LOGGER_PREFIX
+						+ " image file cannot be created");
+			}
 			BufferedImage resizedImage = Scalr.resize(originalImage, width,
 					height, Scalr.OP_ANTIALIAS, Scalr.OP_BRIGHTER);//  size(originalImage,
 																	// Scalr.Method.SPEED,
 																	// Scalr.Mode.FIT_TO_WIDTH,580,
 																	// 384,
 																	// Scalr.OP_ANTIALIAS);
-			ImageIO.write(resizedImage, "jpg", ouputImage);
-			return ouputImage;
+			ImageIO.write(resizedImage, "jpg", outputImage);
+			return outputImage;
 		} catch (Exception e) {
 			logger.error(LOGGER_PREFIX + e.getMessage(), e);
 			throw e;

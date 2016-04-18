@@ -1,7 +1,6 @@
 package com.decorpot.controller;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,24 +17,27 @@ import com.decorpot.utils.DecorpotUtils;
 @RestController
 @RequestMapping(value = "/upload")
 public class SpaceUploadController {
-	
+
 	@Autowired
 	private SpaceUploaderService spaceUploader;
-	
-	@RequestMapping(value = "/images/space", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/space/images", method = RequestMethod.POST)
 	public void uploadImages(@RequestParam("file") MultipartFile file)
-			throws IOException {
+			throws Exception {
 
 		if (file != null) {
-			System.out.println(file.getOriginalFilename());
 			File imageFile = DecorpotUtils.multipartToFile(file);
 			spaceUploader.uploadSpaceImage(imageFile);
 		}
 	}
 
-	@RequestMapping(value = "/kitchen", method = RequestMethod.POST)
-	public String uploadKitchen(@RequestBody Kitchen kit) {
-		return "true";
+	@RequestMapping(value = "/space/kitchen", method = RequestMethod.POST)
+	public Integer uploadKitchen(@RequestBody Kitchen kit) {
+		try {
+			return spaceUploader.uploadKitchen(kit);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 }

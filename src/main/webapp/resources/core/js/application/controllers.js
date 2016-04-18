@@ -36,7 +36,7 @@ decorpotCtrls.controller('uploadController', [
 					.success(function(data) {
 						angular.forEach($scope.files, f => {
 							Upload.upload({
-				                url: 'upload/images',
+				                url: 'upload/space/images',
 				                data: {
 				                    file: f,
 				                }

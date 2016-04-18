@@ -9,7 +9,7 @@ services.service('uploadService',['$http', function($http){
 		uploadSpace: function(spaceType, spaceData) {
 			return $http({
 				method : "post",
-				url : "upload/" + spaceType,
+				url : "upload/space/" + spaceType,
 				data : spaceData
 			});
 		}

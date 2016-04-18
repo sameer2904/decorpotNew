@@ -52,10 +52,10 @@
 					<div class="row">
 						<div class="col-md-12">
 							Photo: <input type="file" ngf-select ng-model="files" ngf-multiple="true"
-								name="file" accept="image/*" ngf-max-size="200KB" required
+								name="file" accept="image/*" ngf-max-size="7000KB" required
 								ngf-model-invalid="errorFile"> <br> <i
 								ng-show="myForm.file5.$error.maxSize">File too large
-								{{errorFile.size / 1000|number:1}}KB: max 200KB</i> <img
+								{{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img
 								ng-show="myForm.file5.$valid" ngf-thumbnail="file"
 								class="thumb" height="200" width="200" ng-repeat="file in files">
 							<button ng-click="files = null" ng-show="picFile5">Remove</button>

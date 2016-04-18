@@ -6,9 +6,9 @@ public class Kitchen {
 	
 	private String title;
 	private String description;
-	private Integer basePrice;
-	private Integer ht;
-	private Integer wdth;
+	private Float basePrice;
+	private Float ht;
+	private Float wdth;
 	private List<String> images;
 	public String getTitle() {
 		return title;
@@ -22,22 +22,22 @@ public class Kitchen {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getBasePrice() {
+	public Float getBasePrice() {
 		return basePrice;
 	}
-	public void setBasePrice(Integer basePrice) {
+	public void setBasePrice(Float basePrice) {
 		this.basePrice = basePrice;
 	}
-	public Integer getHt() {
+	public Float getHt() {
 		return ht;
 	}
-	public void setHt(Integer ht) {
+	public void setHt(Float ht) {
 		this.ht = ht;
 	}
-	public Integer getWdth() {
+	public Float getWdth() {
 		return wdth;
 	}
-	public void setWdth(Integer wdth) {
+	public void setWdth(Float wdth) {
 		this.wdth = wdth;
 	}
 	public List<String> getImages() {
