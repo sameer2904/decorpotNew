@@ -2,7 +2,7 @@
  * @author govardhan
  */
 
-var decorpot = angular.module('decorpot', [ 'ui.router' ]);
+var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload' ]);
 
 decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 		function($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -12,8 +12,11 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/',
 				templateUrl : 'resources/partials/home.html',
 				controller : 'homeController'
-			});
-			$stateProvider.state('contact', {
+			}).state('uploadSpace', {
+				url: '/uploadSpace',
+				templateUrl: 'resources/partials/uploadSpace.html',
+				controller: 'uploadController'
+			}).state('contact', {
 				url : '/contact',
 				templateUrl : 'resources/partials/contact.html',
 				controller : 'contactController'

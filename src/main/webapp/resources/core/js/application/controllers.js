@@ -44,8 +44,6 @@ decorpotCtrls.controller('uploadController', [
 		} ]);
 
 
-var decorpotCtrls = angular.module('decorpot');
-
 decorpotCtrls.controller('homeController', [ '$scope', function($scope) {
     var timer; // timer for splash screen
     // create splash screen animation
