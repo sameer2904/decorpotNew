@@ -32,9 +32,9 @@ public class SpaceUploadController {
 	}
 
 	@RequestMapping(value = "/space/kitchen", method = RequestMethod.POST)
-	public Integer uploadKitchen(@RequestBody Kitchen kit) {
+	public String uploadKitchen(@RequestBody Kitchen kit) {
 		try {
-			return spaceUploader.uploadKitchen(kit);
+			return kit.toString();
 		} catch (Exception e) {
 			throw e;
 		}

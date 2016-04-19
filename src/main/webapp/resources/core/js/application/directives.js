@@ -65,3 +65,32 @@ directives.directive('myMap', function() {
         link: link
     };
 });
+
+directives.directive("checkboxGroup", function() {
+    return {
+        restrict: "A",
+        link: function(scope, elem, attrs) {
+            // Determine initial checked boxes
+            if (scope.themes.indexOf(scope.theme.id) !== -1) {
+                elem[0].checked = true;
+            }
+
+            // Update array on click
+            elem.bind('click', function() {
+                var index = scope.themes.indexOf(scope.theme.id);
+                // Add if checked
+                if (elem[0].checked) {
+                    if (index === -1) scope.selectedThemes.push(scope.theme.id);
+                }
+                // Remove if unchecked
+                else {
+                    if (index !== -1) scope.selectedThemes.splice(index, 1);
+                }
+                // Sort and update DOM display
+                scope.$apply(scope.themes.sort(function(a, b) {
+                    return a - b
+                }));
+            });
+        }
+    }
+});

@@ -10,10 +10,22 @@ decorpotCtrls.controller('uploadController', [
 		function($scope, Upload, uploadService) {
 			$scope.spaces = [ 'kitchen', 'kids_bedroom', 'master_bedroom',
 					'guest_bedroom', 'living_dinning' ];
-			$scope.printModel = function() {
-				console.log($scope.spaceType);
-			}
+			
+			$scope.themes = [{
+	            "id": "modern",
+	            "value": "modern",
+	        }, {
+	            "id": "contemprory",
+	            "value": "contemprory",
+	        }, {
+	            "id": "bakwas",
+	            "value": "bakwas"
+	        }];
+			
+			$scope.kitchenTypes = ['L-shaped', 'u-shaped'];
+			$scope.wardrobeTypes = ['4-door', '6-door'];
 
+			$scope.selectedThemes = [];
 			$scope.uploadData = function() {
 				var kitchenData = {};
 				kitchenData.title = $scope.title;
@@ -21,6 +33,8 @@ decorpotCtrls.controller('uploadController', [
 				kitchenData.basePrice = $scope.basePrice;
 				kitchenData.ht = $scope.ht;
 				kitchenData.wdth = $scope.wdth;
+				kitchenData.themes = $scope.selectedThemes.join();
+				kitchenData.kitchenType = $scope.kitchenType;
 				kitchenData.images = [];
 				angular.forEach($scope.files, (file) => {
 					kitchenData.images.push(file.name);

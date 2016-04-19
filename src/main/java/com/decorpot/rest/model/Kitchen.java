@@ -9,6 +9,8 @@ public class Kitchen {
 	private Float basePrice;
 	private Float ht;
 	private Float wdth;
+	private String themes;
+	private String kitchenType;
 	private List<String> images;
 	public String getTitle() {
 		return title;
@@ -46,10 +48,24 @@ public class Kitchen {
 	public void setImages(List<String> images) {
 		this.images = images;
 	}
+	
+	public String getThemes() {
+		return themes;
+	}
+	public void setThemes(String themes) {
+		this.themes = themes;
+	}
+	public String getKitchenType() {
+		return kitchenType;
+	}
+	public void setKitchenType(String kitchenType) {
+		this.kitchenType = kitchenType;
+	}
 	@Override
 	public String toString() {
 		return "Kitchen [title=" + title + ", description=" + description
 				+ ", basePrice=" + basePrice + ", ht=" + ht + ", wdth=" + wdth
+				+ ", themes=" + themes + ", kitchenType=" + kitchenType
 				+ ", images=" + images + "]";
 	}
 	
