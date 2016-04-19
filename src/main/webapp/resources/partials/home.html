@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="resources/core/css/application/home.css">
-<main>
+<main ng-controller="homeController">
     <div id="mycarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
        <!--  <ol class="carousel-indicators">
@@ -133,7 +133,7 @@
         </a> -->
     </div>
             </div>
-            <div class="btn btn-default" style="margin-left:50%">View all projects</div>
+            <div class="btn btn-default" style="margin-left:44%">View all projects</div>
         </div>
     </section>    
             <!-- WORDS WE STAND ON -->
@@ -200,36 +200,30 @@
                             <div class="de_tab tab_steps">
 
                                 <ul class="de_nav">
-                                    <li class="active wow fadeIn animated" style="visibility: visible; animation-delays: 0s;" data-wow-delay="0s"><span>Meet &amp; Agree</span>
+                                    <li class="active wow fadeIn animated" style="visibility: visible; animation-delays: 0s;" data-wow-delay="0s"><span>Connect &amp; Book</span>
                                         <div class="v-border visible1"></div>
                                     </li>
-                                    <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 0.4s;" data-wow-delay=".4s"><span>Idea &amp; Concept</span>
-                                        <div class="v-border visible1" style="opacity: 0;"></div>
+                                    <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 0.4s;" data-wow-delay=".4s"><span>Plan &amp; Design</span>
+                                        <div class="v-border visible1"></div>
                                     </li>
-                                    <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 0.8s;" data-wow-delay=".8s"><span>Design &amp; Create</span>
-                                        <div class="v-border visible1" style="opacity: 0;"></div>
+                                    <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 0.8s;" data-wow-delay=".8s"><span>Build &amp; Create</span>
+                                        <div class="v-border visible1"></div>
                                     </li>
-                                    <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 1.2s;" data-wow-delay="1.2s"><span>Build &amp; Install</span>
-                                        <div class="v-border visible1" style="opacity: 0;"></div>
+                                    <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 1.2s;" data-wow-delay="1.2s"><span>Delivery &amp; Support</span>
+                                        <div class="v-border visible1"></div>
                                     </li>
                                 </ul>
                                 <div class="de_tab_content">
 
-                                    <div id="tab1" style="display: block;">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.
+                                    <div id="tab1">
+                                        The customer contacts us via our email id, phone number or by filling the online form. Initial discussion with the customer begins wherein the entire design process, materials involved, the time required, etc. is explained to the customer. After understanding the customer requirements, we provide the cost estimates. Once everything is finalized, the customer confirms the order by paying Rs 10,000.</div>
+
+                                    <div id="tab2">This is the most exciting part of the process where the actual design ideas are presented to the customer by our team of talented designers. From floor plans to 3D modelling, our team provides complete visualization of your space. Your views and opinions are very important to us. Hence, everything is planned and designed as per your requirements and specifications.</div>
+
+                                    <div id="tab3">This is the phase where you can actually see your dreams and ideas turn into reality. After detailed discussion, the final quotation is provided to the customer as per the finalized design. The customer signs the agreement and gives his approval by providing 50% of the payment in advance. Now, all you have to do is sit and relax as the "Decorpot Journey" begins wherein we transform your bland interior into a beautiful space!
                                     </div>
 
-                                    <div id="tab2" style="display: none;">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.
-                                    </div>
-
-                                    <div id="tab3" style="display: none;">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.
-                                    </div>
-
-                                    <div id="tab4" style="display: none;">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.
-                                    </div>
+                                    <div id="tab4">The main highlight of our delivery is that we execute the complete project in 45 days. At Decorpot, we treat all of our customers as partners and sincerely believe in the expression, "Every customer counts. Therefore, even after the successful completion of your interior designing projects, we stay connected with you. Excellent customer support and service visit every 180 days are a normal part of our client relationship structure. Also, our quality execution is perfectly backed up by our 5-year warranty!</div>
 
                                 </div>
 
