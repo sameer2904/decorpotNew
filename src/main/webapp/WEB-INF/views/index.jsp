@@ -74,9 +74,9 @@
                     </a>
                 </div>
                 
-                 <ul class="nav nav-pills hidden-md hidden-sm hidden-xs">
+                 <ul class="nav nav-pills hidden-sm hidden-xs">
                         <li role="presentation"><span class="glyphicon glyphicon-envelope"></span>  sales@decorpot.com</li>
-                        <li role="presentation"><span class="glyphicon glyphicon-earphone"></span>    +91-9986076761 | +91-9986076762
+                        <li role="presentation"><span class="glyphicon glyphicon-earphone"></span>    91-9986076761 | 91-9986076762
 </li>
 </ul>
                 <div id="navbar" class="navbar-collapse collapse">
