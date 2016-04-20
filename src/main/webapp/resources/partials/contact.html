@@ -1,56 +1,88 @@
 <link rel="stylesheet" href="resources/core/css/application/contact.css">
-<div class="container-fluid" style="background: #f2f2f2;" ng-controller="contactController">
-<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:440px;width:100%;'><div id='gmap_canvas' style='height:440px;width:100%;'></div><div><small><a href="http://embedgooglemaps.com"> 									embed google maps 							</a></small></div><div><small><a href="http://www.proxysitereviews.com/">proxy sites</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(12.9085546,77.64590320000002),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(12.9085546,77.64590320000002)});infowindow = new google.maps.InfoWindow({content:'<strong>decorpot</strong><br>23rd Cross Rd, Garden Layout, Sector 2, HSR Layout, Bengaluru, Karnataka 560102<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
-	<div style="width:98%;max-width:500px;margin:0 auto;"><form class="form-horizontal" id="contactForm" action="#" method="post" novalidate="novalidate">
-                <legend>Contact Form</legend>
 
-                <div class="form-group">
-                    <!-- <label class="col-sm-2 control-label" for="Name">Name</label> -->
-                    <div class="col-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                            <input name="Name" class="form-control" id="Name" type="text" placeholder="* Enter Name" data-bv-field="Name">
-                        </div>
-                    <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Name" data-bv-result="NOT_VALIDATED">Your name is required</small></div>
-                </div>
+<div class="container-fluid" style="background: #f2f2f2;">
+	<div class="row">
+		<div class="col-md-12">
+			<div my-map=""></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div style="width: 98%; max-width: 500px; margin: 0 auto;">
+				<form class="form-horizontal" id="contactForm" action="#"
+					method="post" novalidate="novalidate">
+					<legend>Contact Form</legend>
+					<div class="form-group">
+						<!-- <label class="col-sm-2 control-label" for="Name">Name</label> -->
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-user fa-fw"></i></span> <input name="Name"
+									class="form-control" id="Name" type="text"
+									placeholder="* Enter Name" data-bv-field="Name">
+							</div>
+							<small class="help-block" style="display: none;"
+								data-bv-validator="notEmpty" data-bv-for="Name"
+								data-bv-result="NOT_VALIDATED">Your name is required</small>
+						</div>
+					</div>
 
-                <div class="form-group">
-                    <!-- <label class="col-sm-2 control-label" for="Email">Email</label> -->
-                    <div class="col-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-                            <input name="Email" class="form-control" id="Email" type="email" placeholder="* Enter Email" data-bv-field="Email">
-                        </div>
-                    <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Email" data-bv-result="NOT_VALIDATED">Your email is required</small><small class="help-block" style="display: none;" data-bv-validator="emailAddress" data-bv-for="Email" data-bv-result="NOT_VALIDATED">Your email is not valid</small></div>
-                </div>
+					<div class="form-group">
+						<!-- <label class="col-sm-2 control-label" for="Email">Email</label> -->
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-envelope fa-fw"></i></span> <input name="Email"
+									class="form-control" id="Email" type="email"
+									placeholder="* Enter Email" data-bv-field="Email">
+							</div>
+							<small class="help-block" style="display: none;"
+								data-bv-validator="notEmpty" data-bv-for="Email"
+								data-bv-result="NOT_VALIDATED">Your email is required</small><small
+								class="help-block" style="display: none;"
+								data-bv-validator="emailAddress" data-bv-for="Email"
+								data-bv-result="NOT_VALIDATED">Your email is not valid</small>
+						</div>
+					</div>
 
-                <div class="form-group">
-                    <!-- <label class="col-sm-2 control-label" for="Phone">Phone</label> -->
-                    <div class="col-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
-                            <input name="Phone" class="form-control" id="Phone" type="text" placeholder="Enter Phone Number">
-                        </div>
-                    </div>
-                </div>
+					<div class="form-group">
+						<!-- <label class="col-sm-2 control-label" for="Phone">Phone</label> -->
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-phone fa-fw"></i></span> <input name="Phone"
+									class="form-control" id="Phone" type="text"
+									placeholder="Enter Phone Number">
+							</div>
+						</div>
+					</div>
 
-                <div class="form-group">
-                    <!-- <label class="col-sm-2 control-label" for="Message">Message</label> -->
-                    <div class="col-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-comment fa-fw"></i></span>
-                            <textarea name="Message" class="form-control" id="Message" rows="5" data-bv-field="Message"></textarea>
-                        </div>
-                    <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Message" data-bv-result="NOT_VALIDATED">Your message is required</small></div>
-                </div>
+					<div class="form-group">
+						<!-- <label class="col-sm-2 control-label" for="Message">Message</label> -->
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-comment fa-fw"></i></span>
+								<textarea name="Message" class="form-control" id="Message"
+									rows="5" data-bv-field="Message"></textarea>
+							</div>
+							<small class="help-block" style="display: none;"
+								data-bv-validator="notEmpty" data-bv-for="Message"
+								data-bv-result="NOT_VALIDATED">Your message is required</small>
+						</div>
+					</div>
 
-                Re-captcha
-                <div class="form-group">                  <div class="col-sm-2"></div>
-                    <div align="center" class="col-sm-10">
-                    <button class="btn btn-primary btn-lg" type="submit">Submit</button>
-                    </div>
-                </div>
+					Re-captcha
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div align="center" class="col-sm-10">
+							<button class="btn btn-primary btn-lg" type="submit">Submit</button>
+						</div>
+					</div>
 
-        </form></div>
-	
+				</form>
+			</div>
+		</div>
+	</div>
+
 </div>
