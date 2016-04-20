@@ -154,7 +154,7 @@
                         <address>
                                     <span>#799, 19th Main, 23rd Cross, 2nd floor, Sector 2 Near HSR club, Bangalore 560102</span>
                                     <span><b>Phone:</b> (+91) 12 34 567890 </span>
-                                    <span><b>Fax:</b> (+208) 333 9298</span>
+                                    <!-- <span><b>Fax:</b> (+208) 333 9298</span> -->
                                     <span><b>Email:</b> <a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
                                     <span><b>Web:</b> <a href="#">http://decorpot.com</a></span>
                                 </address>
