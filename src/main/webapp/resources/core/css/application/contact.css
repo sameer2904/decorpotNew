@@ -1,3 +1,29 @@
+#contactForm{
+	padding:60px 0;
+}
 #contactForm legend{
 	border-bottom:0px;
+}
+.heading{
+	width:100%;
+	padding:120px 60px 60px 60px;
+	color:#fff;
+	background-image:url('../../images/bg-2.jpg');
+	background-attachment: fixed;
+}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }

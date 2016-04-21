@@ -174,5 +174,7 @@ $('#navbar > ul > li:nth-child(6) > a').click(function (){
 decorpotCtrls.controller('contactController', [
                                             '$scope',
                                             function($scope) {
-                                                console.log("iam cont")
+                                                document.getElementById("uploadBtn").onchange = function () {
+    document.getElementById("uploadFile").value = this.value;
+};
                                             } ]);

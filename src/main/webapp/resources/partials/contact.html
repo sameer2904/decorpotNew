@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="resources/core/css/application/contact.css">
-
+<div class="container-fluid heading">
+	<h2>Contact Us</h2>
+</div>
 <div class="container-fluid" style="background: #f2f2f2;">
 	<div class="row">
 		<div class="col-md-12">
@@ -11,7 +13,7 @@
 			<div style="width: 98%; max-width: 500px; margin: 0 auto;">
 				<form class="form-horizontal" id="contactForm" action="#"
 					method="post" novalidate="novalidate">
-					<legend>Contact Form</legend>
+					<legend>Enquiry Form</legend>
 					<div class="form-group">
 						<!-- <label class="col-sm-2 control-label" for="Name">Name</label> -->
 						<div class="col-sm-10">
@@ -56,7 +58,23 @@
 							</div>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-upload fa-fw"></i></span>
+									<!-- <input type="file" id="upload" class="form-control" placeholder="Upload your custom designs" multiple/> -->
+									<input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" />
+								<span class="input-group-addon fileUpload"><i
+									class="fa fa-folder-open fa-fw"></i>
+    <label>Browse</label>
+    <input id="uploadBtn" type="file" class="upload" /></span>
+							</div>
+						</div>
+					</div>
 
+
+					<!-- custom file upload http://codepen.io/wallaceerick/pen/fEdrz -->
 					<div class="form-group">
 						<!-- <label class="col-sm-2 control-label" for="Message">Message</label> -->
 						<div class="col-sm-10">
@@ -64,7 +82,7 @@
 								<span class="input-group-addon"><i
 									class="fa fa-comment fa-fw"></i></span>
 								<textarea name="Message" class="form-control" id="Message"
-									rows="5" data-bv-field="Message"></textarea>
+									rows="5" data-bv-field="Message" placeholder="Message.."></textarea>
 							</div>
 							<small class="help-block" style="display: none;"
 								data-bv-validator="notEmpty" data-bv-for="Message"
