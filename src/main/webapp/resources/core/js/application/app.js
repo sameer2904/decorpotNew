@@ -16,6 +16,10 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url: '/uploadSpace',
 				templateUrl: 'resources/partials/uploadSpace.html',
 				controller: 'uploadController'
+			}).state('projects', {
+				url: '/projects',
+				templateUrl: 'resources/partials/projects.html',
+				controller: 'projectController'
 			}).state('contact', {
 				url : '/contact',
 				templateUrl : 'resources/partials/contact.html',
