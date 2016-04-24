@@ -42,6 +42,13 @@ public class ImageProcessorService {
 			file.delete();
 		}
 	}
+	
+	public void uploadFloorPlan(File file) {
+	    if(file != null) {
+	        s3Uploader.s3PutImage(
+                    DecorpotConstants.FLOOR_PLAN_LOCATION, file);
+	    }
+	}
 
 	@SuppressWarnings("unused")
 	private File imageCompressor(File file, int width, int height)

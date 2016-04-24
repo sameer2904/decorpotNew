@@ -27,22 +27,28 @@ decorpotCtrls.controller('uploadController', [
 
             $scope.selectedThemes = [];
             $scope.uploadData = function() {
-                var kitchenData = {};
-                kitchenData.title = $scope.title;
-                kitchenData.description = $scope.description;
-                kitchenData.basePrice = $scope.basePrice;
-                kitchenData.ht = $scope.ht;
-                kitchenData.wdth = $scope.wdth;
-                kitchenData.themes = $scope.selectedThemes.join();
-                kitchenData.kitchenType = $scope.kitchenType;
-                kitchenData.images = [];
+                var spaceData = {};
+                spaceData.title = $scope.title;
+                spaceData.description = $scope.description;
+                spaceData.basePrice = $scope.basePrice;
+                spaceData.ht = $scope.ht;
+                spaceData.wdth = $scope.wdth;
+                spaceData.themes = $scope.selectedThemes.join();
+                
+                spaceData.images = [];
+                if($scope.spaceType == 'kitchen'){
+                	spaceData.kitchenType = $scope.kitchenType;
+                }else if($scope.spaceType.indexOf('bedroom') != -1){
+                	spaceData.wardrobeType = $scope.wardrobeType;
+                }
+                
                 angular.forEach($scope.files, (file) => {
-                    kitchenData.images.push(file.name);
+                	spaceData.images.push(file.name);
                 } );
                 
                 
                 
-                uploadService.uploadSpace($scope.spaceType, kitchenData)
+                uploadService.uploadSpace($scope.spaceType, spaceData)
                     .success(function(data) {
                         angular.forEach($scope.files, f => {
                             Upload.upload({
@@ -51,48 +57,51 @@ decorpotCtrls.controller('uploadController', [
                                     file: f,
                                 }
                             });
-                        })
+                        });
                         
+                    })
+                    .error((data) => {
+                    	alert("data not uploaded");
                     });
             }
         } ]);
 
 
 decorpotCtrls.controller('homeController', [ '$scope', function($scope) {
-    //var timer; // timer for splash screen
+    // var timer; // timer for splash screen
     // create splash screen animation
     // function splashRotator() {
-    //     var cur = $('#jSplash').children('.selected');
-    //     var next = $(cur).next();
+    // var cur = $('#jSplash').children('.selected');
+    // var next = $(cur).next();
 
-    //     if ($(next).length !== 0) {
-    //         $(next).addClass('selected');
-    //     } else {
-    //         $('#jSplash').children('section:first-child').addClass('selected');
-    //         next = $('#jSplash').children('section:first-child');
-    //     }
+    // if ($(next).length !== 0) {
+    // $(next).addClass('selected');
+    // } else {
+    // $('#jSplash').children('section:first-child').addClass('selected');
+    // next = $('#jSplash').children('section:first-child');
+    // }
 
-    //     $(cur).removeClass('selected').fadeOut(800, function () {
-    //         $(next).fadeIn(800);
-    //     });
+    // $(cur).removeClass('selected').fadeOut(800, function () {
+    // $(next).fadeIn(800);
+    // });
     // }
     // calling jPreLoader
     // $('body').jpreLoader({
-    //     splashID: "#jSplash",
-    //     loaderVPos: '70%',
-    //     autoClose: true,
-    //     closeBtnText: "Let's Begin!",
-    //     splashFunction: function () {
-    //         // passing Splash Screen script to jPreLoader
-    //         $('#jSplash').children('section').not('.selected').hide();
-    //         $('#jSplash').hide().fadeIn(800);
+    // splashID: "#jSplash",
+    // loaderVPos: '70%',
+    // autoClose: true,
+    // closeBtnText: "Let's Begin!",
+    // splashFunction: function () {
+    // // passing Splash Screen script to jPreLoader
+    // $('#jSplash').children('section').not('.selected').hide();
+    // $('#jSplash').hide().fadeIn(800);
 
-    //         timer = setInterval(function () {
-    //             splashRotator();
-    //         }, 4000);
-    //     }
+    // timer = setInterval(function () {
+    // splashRotator();
+    // }, 4000);
+    // }
     // }, function () { // callback function
-    //     clearInterval(timer);
+    // clearInterval(timer);
     // });
 
     // Carousel
@@ -178,3 +187,56 @@ decorpotCtrls.controller('contactController', [
     document.getElementById("uploadFile").value = this.value;
 };
                                             } ]);
+
+decorpotCtrls.controller('uploadApartmentController', [
+                                              '$scope',
+                                              'Upload', 'uploadService',
+                                              function($scope, Upload, uploadService) {
+                                            	  $scope.kitchenTypes = ['L-shaped', 'u-shaped'];
+                                                  $scope.wardrobeTypes = ['4-door', '6-door'];
+                                                  $scope.apartmentTypes = ['2bhk', '3bhk'];
+                                                  var apartmentConfig = {};
+                                                  $scope.uploadData = function() {
+                                                	  apartmentConfig.apartmentName = $scope.apartmentName;
+                                                	  apartmentConfig.apartmentType = $scope.apartmentType;
+                                                	  apartmentConfig.planName = $scope.planName;
+                                                	  apartmentConfig.kitchen = {};
+                                                	  apartmentConfig.kitchen.kitchenType = $scope.kitchenType;
+                                                	  apartmentConfig.kitchen.length = $scope.kLength;
+                                                	  apartmentConfig.kitchen.width = $scope.kWidth;
+                                                	  apartmentConfig.masterBedroom = {};
+                                                	  apartmentConfig.masterBedroom.wardrobeType = $scope.mWardrobeType;
+                                                	  apartmentConfig.masterBedroom.length = $scope.mLength;
+                                                	  apartmentConfig.masterBedroom.width = $scope.mWidth;
+                                                	  if($scope.apartmentType == '2bhk'){
+                                                		  apartmentConfig.otherBedroom = {};
+                                                    	  apartmentConfig.otherBedroom.wardrobeType = $scope.oWardrobeType;
+                                                    	  apartmentConfig.otherBedroom.length = $scope.oLength;
+                                                    	  apartmentConfig.otherBedroom.width = $scope.oWidth;
+                                                	  }else {
+                                                		  apartmentConfig.guestBedroom = {};
+                                                    	  apartmentConfig.guestBedroom.wardrobeType = $scope.oWardrobeType;
+                                                    	  apartmentConfig.guestBedroom.length = $scope.oLength;
+                                                    	  apartmentConfig.guestBedroom.width = $scope.oWidth;
+                                                    	  apartmentConfig.kidsBedroom = {};
+                                                    	  apartmentConfig.kidsBedroom.wardrobeType = $scope.kWardrobeType;
+                                                    	  apartmentConfig.kidsBedroom.length = $scope.kLength;
+                                                    	  apartmentConfig.kidsBedroom.width = $scope.kWidth;
+                                                    	  
+                                                	  }
+                                                	  apartmentConfig.floorPlan = $scope.file.name;
+                                                	  
+                                                	  uploadService.uploadApartment(apartmentConfig)
+                                                	  .success(function(data) {
+                                                		  Upload.upload({
+                                                			  url: 'config/floorPlans/',
+                                                			  data:{
+                                                				  	file: f,
+                                                			  	}
+                                                		  	});
+                                                	  })
+                                                	  .error((data) => {
+                                                      	alert("data not uploaded");
+                                                      });
+                                                  }
+                                              }]);

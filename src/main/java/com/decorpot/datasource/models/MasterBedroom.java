@@ -1,5 +1,6 @@
 package com.decorpot.datasource.models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "KITCHEN")
-public class Kitchen {
+@Table(name = "MASTER_BEDROOM")
+public class MasterBedroom {
 	
 	@Id
 	@Column(name = "ID")
@@ -34,18 +35,20 @@ public class Kitchen {
 	@Column(name = "IMAGES")
 	private String images;
 	
-	@Column(name= "KITCHEN_TYPE")
-	private String kitchenType;
+	@Column(name= "WARDROBE_TYPE")
+	private String wardrobeType;
 	
 	@Column(name= "THEMES")
 	private String themes;
 
-	public String getKitchenType() {
-		return kitchenType;
+	
+
+	public String getWardrobeType() {
+		return wardrobeType;
 	}
 
-	public void setKitchenType(String kitchenType) {
-		this.kitchenType = kitchenType;
+	public void setWardrobeType(String wardrobeType) {
+		this.wardrobeType = wardrobeType;
 	}
 
 	public String getThemes() {
@@ -114,10 +117,12 @@ public class Kitchen {
 
 	@Override
 	public String toString() {
-		return "Kitchen [id=" + id + ", title=" + title + ", description="
+		return "Bedroom [id=" + id + ", title=" + title + ", description="
 				+ description + ", basePrice=" + basePrice + ", ht=" + ht
-				+ ", wdth=" + wdth + ", images=" + images + ", kitchenType="
-				+ kitchenType + ", themes=" + themes + "]";
+				+ ", wdth=" + wdth + ", images=" + images + ", wardrobeType="
+				+ wardrobeType + ", themes=" + themes + "]";
 	}
 
 }
+
+

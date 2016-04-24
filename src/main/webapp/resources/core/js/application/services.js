@@ -12,6 +12,13 @@ services.service('uploadService',['$http', function($http){
 				url : "upload/space/" + spaceType,
 				data : spaceData
 			});
+		},
+		uploadApartment: function(apartmentConfig) {
+			return $http({
+				method : "post",
+				url : "config/apartment/" + apartmentConfig.apartmentType,
+				data : apartmentConfig
+			});
 		}
 	}
 }] );

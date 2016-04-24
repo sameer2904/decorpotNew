@@ -45,7 +45,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							Width : <input type="number" name="wdth" ng-model="wdth"
-								size="30" required /> <i ng-show="wdth">*required</i>
+								size="30" required /> <i ng-show="myForm.wdth.$error.required">*required</i>
 						</div>
 					</div>
 					<div class="row">
@@ -60,24 +60,28 @@
 					</div>
 					<div ng-show="spaceType == 'kitchen'">
 						<div class="row">
-							<div class="col-md-12">Select Kitchen  Type</div>
+							<div class="col-md-12">Select Kitchen Type</div>
 						</div>
 						<div class="row" ng-repeat="k in kitchenTypes">
 							<div class="col-md-12">
 								<label> <input type="radio" name="kitchenType"
-									ng-model="$parent.kitchenType" value="{{k}}" ng-required="!$parent.kitchenType"/> <span>{{k}}</span>
+									ng-model="$parent.kitchenType" value="{{k}}"
+									ng-required="!$parent.kitchenType && ($parent.spaceType=='kitchen')" />
+									<span>{{k}}</span>
 								</label>
 							</div>
 						</div>
 					</div>
 					<div ng-show="spaceType.indexOf('bedroom')!=-1">
 						<div class="row">
-							<div class="col-md-12">Select Kitchen  Type</div>
+							<div class="col-md-12">Select Wardrobe Type</div>
 						</div>
 						<div class="row" ng-repeat="w in wardrobeTypes">
 							<div class="col-md-12">
 								<label> <input type="radio" name="wardrobeType"
-									ng-model="$parent.wardrobeType" value="{{w}}" ng-required="!$parent.wardrobeType"/> <span>{{w}}</span>
+									ng-model="$parent.wardrobeType" value="{{w}}"
+									ng-required="!$parent.wardrobeType && (spaceType.indexOf('bedroom')!=-1)" />
+									<span>{{w}}</span>
 								</label>
 							</div>
 						</div>
