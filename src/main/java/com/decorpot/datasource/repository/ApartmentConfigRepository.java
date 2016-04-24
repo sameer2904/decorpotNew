@@ -7,5 +7,7 @@ import com.decorpot.datasource.models.ApartmentConfig;
 
 @Repository
 public interface ApartmentConfigRepository extends CrudRepository<ApartmentConfig, Integer>{
+    
+    public ApartmentConfig findByApartmentName(String apartmentName);
 
 }

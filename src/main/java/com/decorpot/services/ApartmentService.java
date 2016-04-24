@@ -18,28 +18,30 @@ public class ApartmentService {
 
     @Autowired
     private Config2BHKRepository config2BHKRepository;
-    
+
     @Autowired
     private Config3BHKRepository config3bhkRepository;
-    
+
     @Autowired
     private ApartmentConfigRepository apartmentConfigRepository;
 
     public void config2BHKApartment(Config2BHK config2bhk) throws JsonProcessingException {
-        
+
         Date dateToday = new java.util.Date();
         java.sql.Date todayDate = new java.sql.Date(dateToday.getTime());
-        
-        ApartmentConfig apartmentConfig = new ApartmentConfig();
-        apartmentConfig.setApartmentName(config2bhk.getApartmentName());
-        apartmentConfig.setDate(todayDate);
-        apartmentConfig.setActive(true);
-        apartmentConfig = apartmentConfigRepository.save(apartmentConfig);
-        
-        
+
+        ApartmentConfig apartmentConfig = apartmentConfigRepository.findByApartmentName(config2bhk.getApartmentName());
+        if (apartmentConfig == null) {
+            apartmentConfig = new ApartmentConfig();
+            apartmentConfig.setApartmentName(config2bhk.getApartmentName());
+            apartmentConfig.setDate(todayDate);
+            apartmentConfig.setActive(true);
+            apartmentConfig = apartmentConfigRepository.save(apartmentConfig);
+        }
+
         com.decorpot.datasource.models.Config2BHK config2bhkRepo = new com.decorpot.datasource.models.Config2BHK();
         ObjectMapper mapper = new ObjectMapper();
-        
+
         config2bhkRepo.setApartmentId(apartmentConfig.getId());
         config2bhkRepo.setFloorPlan(config2bhk.getFloorPlan());
         config2bhkRepo.setApartmentType(config2bhk.getApartmentType());
@@ -52,16 +54,22 @@ public class ApartmentService {
         System.out.println("repo floor " + config2bhkRepo.getFloorPlan());
         config2bhkRepo = config2BHKRepository.save(config2bhkRepo);
     }
-    
+
     public void config3BHKApartment(com.decorpot.rest.model.Config3BHK config3bhk) throws JsonProcessingException {
-        ApartmentConfig apartmentConfig = new ApartmentConfig();
-        apartmentConfig.setApartmentName(config3bhk.getApartmentName());
-        apartmentConfig = apartmentConfigRepository.save(apartmentConfig);
-        
-        
+        Date dateToday = new java.util.Date();
+        java.sql.Date todayDate = new java.sql.Date(dateToday.getTime());
+
+        ApartmentConfig apartmentConfig = apartmentConfigRepository.findByApartmentName(config3bhk.getApartmentName());
+        if (apartmentConfig == null) {
+            apartmentConfig = new ApartmentConfig();
+            apartmentConfig.setApartmentName(config3bhk.getApartmentName());
+            apartmentConfig.setDate(todayDate);
+            apartmentConfig.setActive(true);
+            apartmentConfig = apartmentConfigRepository.save(apartmentConfig);
+        }
         com.decorpot.datasource.models.Config3BHK config3bhkRepo = new com.decorpot.datasource.models.Config3BHK();
         ObjectMapper mapper = new ObjectMapper();
-        
+
         config3bhkRepo.setApartmentId(apartmentConfig.getId());
         config3bhkRepo.setFloorPlan(config3bhk.getFloorPlan());
         config3bhkRepo.setApartmentType(config3bhk.getApartmentType());
@@ -70,6 +78,8 @@ public class ApartmentService {
         config3bhkRepo.setMasterBedroomConfig(mapper.writeValueAsString(config3bhk.getMasterBedroom()));
         config3bhkRepo.setGuestBedroomConfig(mapper.writeValueAsString(config3bhk.getGuestBedroom()));
         config3bhkRepo.setKidsBedroomConfig(mapper.writeValueAsString(config3bhk.getKidsBedroom()));
+        config3bhkRepo.setActive(true);
+        config3bhkRepo.setDate(todayDate);
         config3bhkRepo = config3bhkRepository.save(config3bhkRepo);
     }
 
