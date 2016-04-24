@@ -36,28 +36,33 @@ body {
 
 header .navbar {
     width: 100%;
-    height: 70px;
+    height: auto;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
     border: 1px solid grey;
+    color:#fff;
 }
 
 ul.nav.nav-pills {
-    float: right;
+    float: right;    margin: 3px 0;
 }
-
+body > header > nav > div > div.preHeader > ul > li{
+    color:#fff;
+}
+body > header > nav > div > div.preHeader > ul > li > span{
+   color:#FAB702; 
+}
 .navbar-header {
     clear: both;
 }
 
 .navbar-default {
-    background-color: rgba(255, 255, 255, 0.99);
-    ;
+    background-color: rgba(0, 0, 0, 0.8);
     box-shadow: 0 0px 10px 1px rgba(255, 255, 255, 0.5);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #000;
+    color: #fff;
 }
 
 .nav.navbar-nav a {
@@ -68,16 +73,16 @@ ul.nav.nav-pills {
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
-    color: black;
+    color: #FAB702;
     background-color: transparent;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-    color: black;
+    color: #FAB702;
 }
 
 .nav.navbar-nav li {
-    margin: 10px 0px;
+    margin: 0px 0px;
     padding: 0px 0px;
     float: left;
     display: inline;
@@ -94,9 +99,11 @@ ul.nav.nav-pills {
     font-size: 6px;
     margin-left: 20px;
     margin-top: 0px;
-    color: black;
+    color: #FAB702;
 }
-
+.nav-pills>li+li {
+    margin-left: 17px;
+}
 .preHeader > ul > li:nth-child(1):after {
     margin-top: 7px;
 }
@@ -121,6 +128,8 @@ ul.nav.nav-pills {
 }
 
 .navbar-brand {
+    /*font-family: Quadranto;*/
+    font-size:42px;
     margin: 0 !important;
     padding: 14px 0 !important;
 }
@@ -222,7 +231,7 @@ address span strong {
 }
 
 .subfooter {
-    background: #f2f2f2;
+    background: black;
     padding: 30px 0 20px 0;
 }
 
@@ -246,10 +255,14 @@ a {
     color: #fff;
     text-decoration: none;
 }
-
+img{
+    width:100%;
+    height:auto;
+}
 footer a,
 footer {
-    color: #000;
+    background: #111;
+    color: #ccc;
 }
 
 .social-icons a {
