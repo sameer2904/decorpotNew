@@ -1,7 +1,9 @@
 main {
     text-align: justify;
 }
-
+#mycarousel .carousel-inner .item{
+    background-size:cover;
+}
 
 /*why Us*/
 
@@ -29,10 +31,19 @@ main {
     width: 300px;
     float: left;
     margin: 0 10px;
-    text-align: center;
+    padding-right: 14px;
+    text-align: justify;
     border-right: 1px solid black;
 }
-
+#whyUs > div > div > div:nth-child(3) > ul li span{
+    color:black;
+}
+#whyUs > div > div > div:nth-child(3) > ul{
+    margin-left:300px;
+    list-style-type:disc;
+    color:#FAB702;
+    line-height: 24px;
+}
 #whyUs h4 {
     text-align: center;
 }
@@ -48,15 +59,10 @@ main {
     margin-top: 0px;
 }
 
-div.panel img {
-    max-height: 250px;
+#mycarousel-proj > div.owl-carousel1.owl-carousel.owl-theme > div.owl-wrapper-outer > div > div > div,
+#mycarousel-proj > div.owl-carousel2.owl-carousel.owl-theme > div.owl-wrapper-outer > div > div{
+    padding: 0 10px;
 }
-
-.panel-default {
-    border-color: transparent;
-    box-shadow: 0 0 0;
-}
-
 .panel-footer {
     padding: 0px 10px;
     text-align: center;
@@ -65,7 +71,9 @@ div.panel img {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
 }
-
+.owl-carousel1, .owl-carousel2{
+    padding:20px 0;
+}
 
 /*steps*/
 
@@ -268,11 +276,13 @@ section#section-steps {
 }
 
 #wordsWeSay .trust {
-    padding-bottom: 17px;
+    margin-bottom: 30px;
+    display: table;
 }
 
 #wordsWeSay h4 {
     line-height: 23px;
+    margin:0 0 20px 0;
 }
 
 .de_tab.tab_steps .de_nav li.active span {
@@ -280,7 +290,9 @@ section#section-steps {
     color: #ffffff;
     border: solid 2px rgba(255, 255, 255, .8);
 }
-
+#wordsWeSay h3{
+    margin:0;
+}
 
 /*Customer says*/
 
@@ -458,11 +470,7 @@ blockquote {
 
 #ourPartners {
     padding: 20px 0 40px 0;
-    background-image: url('../../images/partners.jpg');
-    height: 560px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: -80px;
+    background: #eaeaea;
 }
 
 
@@ -484,4 +492,11 @@ blockquote {
     #section-steps > div > div > div:nth-child(2) > div > ul > li.active.wow.fadeIn.animated > div {
         opacity: 1;
     }
+}
+
+@media (max-width:990px) {
+#whyUs > div > div > div:nth-child(3) > ul{
+    margin-left: 0px;
+    text-align: center;
+    list-style: none;
 }
