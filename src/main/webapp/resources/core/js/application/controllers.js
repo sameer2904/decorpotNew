@@ -104,7 +104,7 @@ decorpotCtrls.controller('homeController', [ '$scope', function($scope) {
     // clearInterval(timer);
     // });
     // Carousel
-    $('.carousel, .carousel-proj').carousel({
+    $('.carousel, #mycarousel-proj').carousel({
         interval: 6000,
         pause: "false"
     });
@@ -178,6 +178,30 @@ decorpotCtrls.controller('homeController', [ '$scope', function($scope) {
             }
         });
     })
+    $('.owl-carousel1').owlCarousel({
+        items: 4,
+        loop:true,
+        slideSpeed : 1000,
+        autoPlay: 3000,
+        itemsDesktop: [1199, 4],
+        itemsDesktopSmall: [980, 3],
+        itemsTablet: [768, 3],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        navigation: false,
+})
+    $('.owl-carousel2').owlCarousel({
+        items: 4,
+        loop:false,
+        slideSpeed : 950,
+        autoPlay: 3000,
+        itemsDesktop: [1199, 4],
+        itemsDesktopSmall: [980, 3],
+        itemsTablet: [768, 3],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        navigation: false,
+    });
 }]);
 
 

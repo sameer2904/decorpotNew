@@ -66,7 +66,7 @@
                 <div class="preHeader">
                     <ul class="nav nav-pills">
                         <li role="presentation"><span class="glyphicon glyphicon-envelope"></span> &nbsp; sales@decorpot.com</li>
-                        <li role="presentation"><span class="glyphicon glyphicon-earphone"></span> &nbsp;  +91 9986076761 | +91 9986076762</li>
+                        <li role="presentation"><span class="glyphicon glyphicon-earphone"></span> &nbsp;  (+91) 9986076761 | (+91) 9986076762</li>
                        <!--  <li>
                             <ul>
                                 <li class="social-icons fa fa-facebook"></li>
@@ -118,7 +118,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-6 wow slideInLeft" data-wow-animation="0.1s" data-wow-delay="0.1s" >
-                    <img class="logo-small" alt="" src="./resources/core/images/logo.png" width="150" height="23">
+                    <!-- <img class="logo-small" alt="" src="./resources/core/images/logo.png" width="150" height="23"> <-->
+                        <h2>decorpot</h2>
+                    </-->
                     <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, iste. Autem, perspiciatis odio id, a, repudiandae delectus similique dolorem nisi et, iste numquam iusto maiores reiciendis temporibus quaerat amet. Molestias.
                 </div><!-- 
                 <div class="col-md-2 col-md-offset-1 col-sm-6">
@@ -151,7 +153,7 @@
                     <div class="widget widget-address">
                         <address>
                                     <span>#799, 19th Main, 23rd Cross, 2nd floor, Sector 2 Near HSR club, Bangalore 560102</span>
-                                    <span><b>Phone:</b> (+91) 12 34 567890 </span>
+                                    <span><b>Phone:</b>  (+91) 9986076761 | (+91) 9986076762</span>
                                     <!-- <span><b>Fax:</b> (+208) 333 9298</span> -->
                                     <span><b>Email:</b> <a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
                                     <span><b>Web:</b> <a href="#">http://decorpot.com</a></span>

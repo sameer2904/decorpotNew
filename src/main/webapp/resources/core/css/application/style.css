@@ -38,7 +38,7 @@ header .navbar {
     width: 100%;
     height: auto;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid grey;
+    border-bottom: 1px solid grey;
     color:#fff;
 }
 
@@ -56,7 +56,7 @@ body > header > nav > div > div.preHeader > ul > li > span{
 }
 
 .navbar-default {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.95);
     box-shadow: 0 0px 10px 1px rgba(255, 255, 255, 0.5);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
@@ -69,14 +69,10 @@ body > header > nav > div > div.preHeader > ul > li > span{
     display: inline-block;
     text-decoration: none;
 }
-
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover {
-    color: #FAB702;
-    background-color: transparent;
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #fab702;
+    background-color: #050403;
 }
-
 .navbar-default .navbar-nav>li>a:hover {
     color: #FAB702;
 }
@@ -144,7 +140,7 @@ body > header > nav > div > ul > li {
 /*footer*/
 
 address span a {
-    color: #000;
+    color: #ccc;
 }
 
 footer .widget h3 {
@@ -169,7 +165,7 @@ footer .widget_recent_post li {
     padding: 0 0 5px 0;
     margin: 0;
     background: none;
-    border-bottom-color: #ccc;
+    border-bottom-color: #222;
 }
 
 .widget_recent_post li a {
@@ -178,7 +174,7 @@ footer .widget_recent_post li {
 }
 
 footer .widget_recent_post li a {
-    color: #000;
+    color: #fff;
 }
 
 .logo-small {
@@ -187,7 +183,7 @@ footer .widget_recent_post li a {
 
 footer h3,
 .de_light footer h3 {
-    color: #000;
+    color: #fff;
     font-size: 20px;
 }
 
@@ -216,18 +212,15 @@ address span {
 }
 
 address span {
-    border-bottom-color: #ccc;
+    border-bottom-color: #222;
     line-height: 18px;
 }
 
-address span strong {
+address span b {
     display: inline-block;
     width: 60px;
-}
-
-address span strong {
     display: inline-block;
-    color: black;
+    color: #FAB702;
 }
 
 .subfooter {
@@ -268,12 +261,10 @@ footer {
 .social-icons a {
     margin-left: 10px;
 }
-@media(max-width:766px) {
-    #navbar > ul {
-        background: #fff;
-    }
+.row{
+    margin-left:0 !important;
+    margin-right:0 !important;
 }
-
 
 #gmaps {
     width: 100%;
