@@ -107,9 +107,38 @@ decorpotCtrls.controller('homeController', [ '$scope','pastWorkService', functio
 	
 	pastWorkService.getAllPastWork()
 	.success(function(data) {
+		
 		var len = data.length;
 		$scope.pastWorkData1 = data.slice(0, len/2);
 		$scope.pastWorkData2 = data.slice(len/2, len - 1);
+		$scope.owlCarouselPastWork1 = function(){
+			$('.owl-carousel2').owlCarousel({
+				items: 4,
+				loop:true,
+				slideSpeed : 1000,
+				autoPlay: 3000,
+				itemsDesktop: [1199, 4],
+				itemsDesktopSmall: [980, 3],
+				itemsTablet: [768, 3],
+				itemsTabletSmall: false,
+				itemsMobile: [479, 1],
+				navigation: false
+			});
+		};
+		$scope.owlCarouselPastWork = function(){
+			$('.owl-carousel1').owlCarousel({
+				items: 4,
+				loop:true,
+				slideSpeed : 1000,
+				autoPlay: 3000,
+				itemsDesktop: [1199, 4],
+				itemsDesktopSmall: [980, 3],
+				itemsTablet: [768, 3],
+				itemsTabletSmall: false,
+				itemsMobile: [479, 1],
+				navigation: false
+			});
+		};
 	})
     $('.carousel, #mycarousel-proj').carousel({
         interval: 6000,
@@ -195,8 +224,11 @@ decorpotCtrls.controller('contactController', ['$scope',function ($scope) {
         };
                                             }]);
 // project controller
-decorpotCtrls.controller('projectController', ['$scope', function($scope) {
-	
+decorpotCtrls.controller('pastWorkController', ['$scope', 'pastWorkService', function($scope, pastWorkService) {
+	pastWorkService.getAllPastWork()
+	.success(function(data){
+		$scope.pastWorks = data;
+	})
 }]);
 
 decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {

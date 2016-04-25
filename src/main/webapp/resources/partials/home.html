@@ -99,80 +99,30 @@
         </ol> -->
 
 				<!-- Wrapper for slides -->
-				<div class="owl-carousel1" role="listbox" past-projects-small>
-					<div class="item" ng-repeat="p in pastWorkData1">
-						<img src="{{p.mainImage}}"
-							alt="completed-projects" />
+				<div class="owl-carousel1" role="listbox">
+					<div class="item" ng-repeat="p in pastWorkData1"
+						on-finish-render="owlCarouselPastWork1()">
+						<img src="{{p.mainImage}}" alt="completed-projects" />
 						<div class="panel-footer">{{p.apartmentName}}</div>
 					</div>
-					<div class="item">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">GM INFINITE, Bangalore</div>
-					</div>
-					<div class="item">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">SALARPUR SENORITA, Bangalore</div>
-					</div>
-					<div class="item owl-lazy">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">GREENAGE BRAIN, Bangalore</div>
-					</div>
-					<div class="item owl-lazy">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">SANDEEP RESIDENCE, Bangalore</div>
-					</div>
-					<div class="item owl-lazy">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">DILIP RESIDENCE, Bangalore</div>
-					</div>
-					<!-- more slides here -->
 				</div>
 				<!-- second row goes here as owl carousel can contain 1 row -->
-				<div class="owl-carousel2" role="listbox" past-projects-small>
-					<div class="item">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">BHUVANESH RESIDENCE, Bangalore</div>
-					</div>
-					<div class="item">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">GM INFINITE, Bangalore</div>
-					</div>
-					<div class="item">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">SALARPUR SENORITA, Bangalore</div>
-					</div>
-					<div class="item owl-lazy">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">GREENAGE BRAIN, Bangalore</div>
-					</div>
-					<div class="item owl-lazy">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">SANDEEP RESIDENCE, Bangalore</div>
-					</div>
-					<div class="item owl-lazy">
-						<img src="resources/core/images/projects/project1.jpg"
-							alt="completed-projects" />
-						<div class="panel-footer">DILIP RESIDENCE, Bangalore</div>
+				<div class="owl-carousel2" role="listbox">
+					<div class="item" ng-repeat="p in pastWorkData2"
+						on-finish-render="owlCarouselPastWork1()">
+						<img src="{{p.mainImage}}" alt="completed-projects" />
+						<div class="panel-footer">{{p.apartmentName}}</div>
 					</div>
 				</div>
-				<!-- more slides here -->
 			</div>
 		</div>
-		<div class="text-center">
-			<button class="btn btn-default">
-				<b>VIEW ALL PROJECTS </b>&nbsp;<span class="fa fa-chevron-right"></span>
-			</button>
-		</div>
+		<a ui-sref="pastWork">
+			<div class="text-center">
+				<button class="btn btn-default">
+					<b>VIEW ALL PROJECTS </b>&nbsp;<span class="fa fa-chevron-right"></span>
+				</button>
+			</div>
+		</a>
 </section>
 <!-- WORDS WE STAND ON -->
 <section id="wordsWeSay" class="row">

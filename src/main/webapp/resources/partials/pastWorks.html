@@ -1,0 +1,14 @@
+<div>
+	<div class="col-md-3 .col-xs-12 .col-sm-6"
+		ng-repeat="p in pastWorks | filter:query">
+		<div >
+			<a class="shrink" ui-sref="projects.project({param : '{{p.id}}'})">
+				<img src={{p.mainImage}}>
+			</a>
+		</div>
+		<div>
+			<h4>{{p.apartmentName}}</h4>
+			<span>Bangalore</span>
+		</div>
+	</div>
+</div>

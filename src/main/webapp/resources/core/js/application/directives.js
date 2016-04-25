@@ -99,6 +99,7 @@ directives.directive('pastProjectsSmall', function(){
 	return{
 		restrict: 'A',
 		link: function(scope, element, attrs){
+			console.log(element[0].querySelector('.item'));
 			$(element).owlCarousel({
 				items: 4,
 		        loop:true,
@@ -459,3 +460,19 @@ directives
 				restrict : "A"
 			});
 		});
+
+directives.directive('onFinishRender',['$timeout', '$parse', function ($timeout, $parse) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                $timeout(function () {
+                    scope.$emit('ngRepeatFinished');
+                    if(!!attr.onFinishRender){
+                      $parse(attr.onFinishRender);
+                    }
+                });
+            }
+        }
+    }
+}]);
