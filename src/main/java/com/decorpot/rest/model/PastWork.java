@@ -7,6 +7,9 @@ public class PastWork {
     private Integer id;
     private List<String> images;
     private String apartmentName;
+    private String mainImage;
+    private String mainImageHd;
+    
     private List<PastWorkImageUrls> imageUrls;
     public Integer getId() {
         return id;
@@ -31,6 +34,18 @@ public class PastWork {
     }
     public void setImageUrls(List<PastWorkImageUrls> imageUrls) {
         this.imageUrls = imageUrls;
+    }
+    public String getMainImage() {
+        return mainImage;
+    }
+    public void setMainImage(String mainImage) {
+        this.mainImage = mainImage;
+    }
+    public String getMainImageHd() {
+        return mainImageHd;
+    }
+    public void setMainImageHd(String mainImageHd) {
+        this.mainImageHd = mainImageHd;
     }
     
 }

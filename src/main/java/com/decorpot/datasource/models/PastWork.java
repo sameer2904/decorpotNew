@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 @Entity
-@Table(name="PAST_WORK")
+@Table(name="PAST_WORKS")
 public class PastWork {
 
     @Id
@@ -21,6 +23,29 @@ public class PastWork {
     
     @Column(name = "IMAGES")
     private String images;
+    
+    @Column(name = "MAIN_IMAGE")
+    private String mainImage;
+    
+    public String getMainImage() {
+        return mainImage;
+    }
+
+    public void setMainImage(String mainImage) {
+        this.mainImage = mainImage;
+    }
+
+    @Column(name = "ACTIVE")
+    @Type(type = "yes_no")
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public Integer getId() {
         return id;

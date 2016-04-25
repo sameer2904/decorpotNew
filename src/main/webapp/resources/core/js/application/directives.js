@@ -129,7 +129,7 @@ directives.directive('preventRightClick', [ function() {
 	    };
 } ]);
 
-decortDirectives.directive('imageonload', function() {
+directives.directive('imageonload', function() {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
@@ -140,7 +140,7 @@ decortDirectives.directive('imageonload', function() {
     };
 });
 
-decortDirectives
+directives
 .directive(
 		"bnLazySrc",
 		function($window, $document) {

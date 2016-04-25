@@ -28,5 +28,10 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/uploadApartment',
 				templateUrl : 'resources/partials/uploadApartment.html',
 				controller : 'uploadApartmentController'
+			})
+			.state('uploadPastWork', {
+				url : '/uploadPastWork',
+				templateUrl : 'resources/partials/uploadPastWork.html',
+				controller : 'uploadPastWorkController'
 			});
 		} ]);

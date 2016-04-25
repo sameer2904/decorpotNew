@@ -67,7 +67,7 @@ decorpotCtrls.controller('uploadController', [
         } ]);
 
 
-decorpotCtrls.controller('homeController', [ '$scope', function($scope) {
+decorpotCtrls.controller('homeController', [ '$scope','pastWorkService', function($scope, pastWorkService) {
     // var timer; // timer for splash screen
     // create splash screen animation
     // function splashRotator() {
@@ -104,6 +104,13 @@ decorpotCtrls.controller('homeController', [ '$scope', function($scope) {
     // clearInterval(timer);
     // });
     // Carousel
+	
+	pastWorkService.getAllPastWork()
+	.success(function(data) {
+		var len = data.length;
+		$scope.pastWorkData1 = data.slice(0, len/2);
+		$scope.pastWorkData2 = data.slice(len/2, len - 1);
+	})
     $('.carousel, #mycarousel-proj').carousel({
         interval: 6000,
         pause: "false"
@@ -188,11 +195,16 @@ decorpotCtrls.controller('contactController', ['$scope',function ($scope) {
         };
                                             }]);
 // project controller
-decorpotCtrls.controller('projectController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {
+decorpotCtrls.controller('projectController', ['$scope', function($scope) {
+	
+}]);
+
+decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {
 
 	$scope.uploadData = function() {
 		var pastProjectData = {};
 		pastProjectData.apartmentName = $scope.apartmentName;
+		pastProjectData.mainImage = $scope.mainImage;
 		pastProjectData.images = [];
 		angular.forEach($scope.files, (file) => {
 			pastProjectData.images.push(file.name);
@@ -202,7 +214,7 @@ decorpotCtrls.controller('projectController', ['$scope', 'Upload', 'uploadServic
         .success(function(data) {
             angular.forEach($scope.files, f => {
                 Upload.upload({
-                    url: 'upload/pastWork/images',
+                    url: 'pastWork/upload/image',
                     data: {
                         file: f,
                     }

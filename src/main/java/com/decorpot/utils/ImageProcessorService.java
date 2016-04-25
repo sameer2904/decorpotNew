@@ -32,8 +32,7 @@ public class ImageProcessorService {
 							Integer.parseInt(dimentions[0]),
 							Integer.parseInt(dimentions[1]));
 					s3Uploader.s3PutImage(
-							DecorpotConstants.SPACE_IMAGE_LOCATION_PREFIX
-									+ size, resizedFile);
+							DecorpotConstants.SPACE_IMAGE_LOCATION, resizedFile);
 					resizedFile.delete();
 				} catch (Exception e) {
 					throw e;
@@ -49,6 +48,26 @@ public class ImageProcessorService {
                     DecorpotConstants.FLOOR_PLAN_LOCATION, file);
 	    }
 	}
+	
+	public void uploadPastWorkImage(File file) throws Exception {
+
+        if (file != null) {
+            for (String size : DecorpotConstants.pastWorkImageSizes) {
+                String[] dimentions = size.split("x");
+                try {
+                    File resizedFile = imageCompressor(file,
+                            Integer.parseInt(dimentions[0]),
+                            Integer.parseInt(dimentions[1]));
+                    s3Uploader.s3PutImage(
+                            DecorpotConstants.PAST_WORK_IMAGE_LOCATION, resizedFile);
+                    resizedFile.delete();
+                } catch (Exception e) {
+                    throw e;
+                }
+            }
+            file.delete();
+        }
+    }
 
 	@SuppressWarnings("unused")
 	private File imageCompressor(File file, int width, int height)

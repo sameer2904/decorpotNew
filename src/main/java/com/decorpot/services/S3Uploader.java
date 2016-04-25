@@ -53,7 +53,7 @@ public class S3Uploader {
 		try {
 			s3.setRegion(usWest2);
 			s3.putObject(new PutObjectRequest(DecorpotConstants.BUCKET,
-					folderName + "/" + file.getName(), file)
+					folderName + file.getName(), file)
 					.withCannedAcl(CannedAccessControlList.PublicRead));
 		} catch (Exception e) {
 			logger.error(LOGGER_PREFIX + e.getMessage(), e);

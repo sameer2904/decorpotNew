@@ -50,16 +50,15 @@ public class ApartmentConfig {
        }
    }
    
+   @ResponseStatus(HttpStatus.OK)
    @RequestMapping(value = "/floorPlans", method = RequestMethod.POST)
-   public String uploadImages(@RequestParam("file") MultipartFile file)
+   public void uploadImages(@RequestParam("file") MultipartFile file)
            throws Exception {
 
-       String name = ""; File imageFile = null;
+      File imageFile = null;
        if (file != null) {
            imageFile = DecorpotUtils.multipartToFile(file);
-           name = imageFile.getName();
+           imageProcessorService.uploadFloorPlan(imageFile);
        }
-       imageFile.delete();
-       return name;
    }
 }

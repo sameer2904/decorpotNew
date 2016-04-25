@@ -19,6 +19,37 @@ services.service('uploadService',['$http', function($http){
 				url : "config/apartment/" + apartmentConfig.apartmentType,
 				data : apartmentConfig
 			});
+		},
+		uploadPastWork: function(pastWork) {
+			return $http({
+				method : "post",
+				url : "pastWork/upload",
+				data : pastWork
+			});
+		}
+	}
+}] );
+
+services.service('pastWorkService',['$http', function($http){
+	return {
+		getAllPastWork: function() {
+			return $http({
+				method : "get",
+				url : "pastWork",
+			});
+		},
+		getPastWorkById: function(id) {
+			return $http({
+				method : "get",
+				url : "pastWork/" + id,
+			});
+		},
+		uploadApartment: function(apartmentConfig) {
+			return $http({
+				method : "post",
+				url : "config/apartment/" + apartmentConfig.apartmentType,
+				data : apartmentConfig
+			});
 		}
 	}
 }] );
