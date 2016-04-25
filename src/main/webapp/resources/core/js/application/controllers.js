@@ -178,30 +178,6 @@ decorpotCtrls.controller('homeController', [ '$scope', function($scope) {
             }
         });
     })
-    $('.owl-carousel1').owlCarousel({
-        items: 4,
-        loop:true,
-        slideSpeed : 1000,
-        autoPlay: 3000,
-        itemsDesktop: [1199, 4],
-        itemsDesktopSmall: [980, 3],
-        itemsTablet: [768, 3],
-        itemsTabletSmall: false,
-        itemsMobile: [479, 1],
-        navigation: false,
-})
-    $('.owl-carousel2').owlCarousel({
-        items: 4,
-        loop:false,
-        slideSpeed : 950,
-        autoPlay: 3000,
-        itemsDesktop: [1199, 4],
-        itemsDesktopSmall: [980, 3],
-        itemsTablet: [768, 3],
-        itemsTabletSmall: false,
-        itemsMobile: [479, 1],
-        navigation: false,
-    });
 }]);
 
 
@@ -211,9 +187,33 @@ decorpotCtrls.controller('contactController', ['$scope',function ($scope) {
             document.getElementById("uploadFile").value = this.value;
         };
                                             }]);
-//project controller
-decorpotCtrls.controller('projectController', ['$scope', function ($scope) {
+// project controller
+decorpotCtrls.controller('projectController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {
 
+	$scope.uploadData = function() {
+		var pastProjectData = {};
+		pastProjectData.apartmentName = $scope.apartmentName;
+		pastProjectData.images = [];
+		angular.forEach($scope.files, (file) => {
+			pastProjectData.images.push(file.name);
+        } );
+		
+		uploadService.uploadPastWork(pastProjectData)
+        .success(function(data) {
+            angular.forEach($scope.files, f => {
+                Upload.upload({
+                    url: 'upload/pastWork/images',
+                    data: {
+                        file: f,
+                    }
+                });
+            });
+            
+        })
+        .error((data) => {
+        	alert("data not uploaded");
+        });
+	}
 }]);
 
 
