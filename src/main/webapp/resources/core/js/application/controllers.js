@@ -224,7 +224,7 @@ decorpotCtrls.controller('contactController', ['$scope',function ($scope) {
         };
                                             }]);
 // project controller
-decorpotCtrls.controller('pastWorkController', ['$scope', 'pastWorkService', function($scope, pastWorkService) {
+decorpotCtrls.controller('pastWorksController', ['$scope', 'pastWorkService', function($scope, pastWorkService) {
 	pastWorkService.getAllPastWork()
 	.success(function(data){
 		$scope.pastWorks = data;

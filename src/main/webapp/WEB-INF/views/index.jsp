@@ -84,7 +84,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">decorpot<!-- <img src="images/logo.png" alt="Brand logo" width="220" height="30"> -->
+                    <a class="navbar-brand" href="#/">decorpot<!-- <img src="images/logo.png" alt="Brand logo" width="220" height="30"> -->
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
@@ -101,7 +101,7 @@
                                 <li><a href="service-4.html">Commercial Design</a></li>
                             </ul>
                         </li>
-                        <li><a href="#/projects">Projects</a></li>
+                        <li><a ui-sref="pastWorks">Completed Projects</a></li>
                         <li><a href="#/contact" style="padding-right: 0;padding-left:0">Ask Us</a></li>
                     </ul>
                 </div>
