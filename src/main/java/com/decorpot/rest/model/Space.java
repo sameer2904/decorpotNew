@@ -11,6 +11,7 @@ public abstract class Space {
 	private double ht;
 	private double wdth;
 	private String themes;
+	private List<Addon> addons;
 	private List<String> images;
 	public String getTitle() {
 		return title;
@@ -62,6 +63,12 @@ public abstract class Space {
 				+ ", themes=" + themes 
 				+ ", images=" + images + "]";
 	}
+    public List<Addon> getAddons() {
+        return addons;
+    }
+    public void setAddons(List<Addon> addons) {
+        this.addons = addons;
+    }
 	
 	
 }

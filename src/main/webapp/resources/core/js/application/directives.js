@@ -95,28 +95,6 @@ directives.directive("checkboxGroup", function() {
     }
 });
 
-directives.directive('pastProjectsSmall', function(){
-	return{
-		restrict: 'A',
-		link: function(scope, element, attrs){
-			console.log(element[0].querySelector('.item'));
-			$(element).owlCarousel({
-				items: 4,
-		        loop:true,
-		        slideSpeed : 1000,
-		        autoPlay: 3000,
-		        itemsDesktop: [1199, 4],
-		        itemsDesktopSmall: [980, 3],
-		        itemsTablet: [768, 3],
-		        itemsTabletSmall: false,
-		        itemsMobile: [479, 1],
-		        navigation: false
-		      });
-		}
-	}
-	
-});
-
 directives.directive('preventRightClick', [ function() {
 	document.oncontextmenu = function (e) {
 	       if(e.target.hasAttribute('right-click')) {
@@ -460,19 +438,3 @@ directives
 				restrict : "A"
 			});
 		});
-
-directives.directive('onFinishRender',['$timeout', '$parse', function ($timeout, $parse) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attr) {
-            if (scope.$last === true) {
-                $timeout(function () {
-                    scope.$emit('ngRepeatFinished');
-                    if(!!attr.onFinishRender){
-                      $parse(attr.onFinishRender);
-                    }
-                });
-            }
-        }
-    }
-}]);

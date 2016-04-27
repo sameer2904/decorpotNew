@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="resources/core/css/application/home.css">
-<main ng-controller="homeController">
 <div id="mycarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<!--  <ol class="carousel-indicators">
@@ -100,20 +99,14 @@
 
 				<!-- Wrapper for slides -->
 				<div class="owl-carousel1" role="listbox">
-					<div class="item" ng-repeat="p in pastWorkData1"
-						on-finish-render="owlCarouselPastWork1()">
+					<div class="item" ng-repeat="p in pastWorkData1"  ng-init="$last ? owlCarouselPastWork1($index) : ''"
+						>
 						<img src="{{p.mainImage}}" alt="completed-projects" />
 						<div class="panel-footer">{{p.apartmentName}}</div>
 					</div>
 				</div>
 				<!-- second row goes here as owl carousel can contain 1 row -->
-				<div class="owl-carousel2" role="listbox">
-					<div class="item" ng-repeat="p in pastWorkData2"
-						on-finish-render="owlCarouselPastWork1()">
-						<img src="{{p.mainImage}}" alt="completed-projects" />
-						<div class="panel-footer">{{p.apartmentName}}</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 		<a ui-sref="pastWork">
@@ -380,4 +373,3 @@
 	</div>
 	<img src="resources/core/images/partners.jpg" alt="">
 </section>
-</main>

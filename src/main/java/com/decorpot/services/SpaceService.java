@@ -11,10 +11,12 @@ import com.decorpot.datasource.models.GuestBedroom;
 import com.decorpot.datasource.models.KidsBedroom;
 import com.decorpot.datasource.models.Kitchen;
 import com.decorpot.datasource.models.MasterBedroom;
+import com.decorpot.datasource.repository.AddonRepository;
 import com.decorpot.datasource.repository.GuestBedroomRepository;
 import com.decorpot.datasource.repository.KidsBedroomRepository;
 import com.decorpot.datasource.repository.KitchenRepository;
 import com.decorpot.datasource.repository.MasterBedroomRepository;
+import com.decorpot.rest.model.Addon;
 import com.decorpot.rest.model.Space;
 import com.decorpot.utils.ImageProcessorService;
 import com.decorpot.utils.decorpotTx;
@@ -40,6 +42,9 @@ public class SpaceService {
 
 	@Autowired
 	private ImageProcessorService imageProcessorService;
+	
+	@Autowired
+	private AddonRepository addonRepository;
 
 	public void uploadSpaceImage(File file) throws Exception {
 		imageProcessorService.uploadSpaceImages(file);
@@ -59,7 +64,11 @@ public class SpaceService {
 		kitchen.setKitchenType(kit.getKitchenType());
 		try {
 			kitchen = kitchenRepository.save(kitchen);
-			return kitchen.getId();
+			final int id = kitchen.getId();
+            kit.getAddons().forEach(a ->{
+                uploadAddons(a, id);
+            });
+            return id;
 		} catch (Exception e) {
 			logger.error(LOGGER_PREFIX + e.getMessage(), e);
 			throw e;
@@ -80,7 +89,11 @@ public class SpaceService {
 		bedroom.setWardrobeType(bed.getWardrobeType());
 		try {
 			bedroom = kidsBedroomRepository.save(bedroom);
-			return bedroom.getId();
+			final int id = bedroom.getId();
+            bed.getAddons().forEach(a ->{
+                uploadAddons(a, id);
+            });
+            return id;
 		} catch (Exception e) {
 			logger.error(LOGGER_PREFIX + e.getMessage(), e);
 			throw e;
@@ -101,7 +114,11 @@ public class SpaceService {
 		bedroom.setWardrobeType(bed.getWardrobeType());
 		try {
 			bedroom = masterBedroomRepository.save(bedroom);
-			return bedroom.getId();
+			final int id = bedroom.getId();
+            bed.getAddons().forEach(a ->{
+                uploadAddons(a, id);
+            });
+            return id;
 		} catch (Exception e) {
 			logger.error(LOGGER_PREFIX + e.getMessage(), e);
 			throw e;
@@ -122,11 +139,24 @@ public class SpaceService {
 		bedroom.setWardrobeType(bed.getWardrobeType());
 		try {
 			bedroom = guestBedroomRepository.save(bedroom);
-			return bedroom.getId();
+			final int id = bedroom.getId();
+			bed.getAddons().forEach(a ->{
+			    uploadAddons(a, id);
+			});
+			return id;
 		} catch (Exception e) {
 			logger.error(LOGGER_PREFIX + e.getMessage(), e);
 			throw e;
 		}
+	}
+	
+	@decorpotTx
+	public void uploadAddons(Addon addon, int id) {
+	    com.decorpot.datasource.models.Addon addonData = new com.decorpot.datasource.models.Addon();
+	    addonData.setName(addon.getName());
+	    addonData.setParentId(id);
+	    addonData.setPrice(addon.getPrice());
+	    addonRepository.save(addonData);
 	}
 
 }

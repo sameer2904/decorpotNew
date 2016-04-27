@@ -24,8 +24,23 @@ decorpotCtrls.controller('uploadController', [
             
             $scope.kitchenTypes = ['L-shaped', 'u-shaped'];
             $scope.wardrobeTypes = ['4-door', '6-door'];
-
+            $scope.addons = ["Bed", "Bed with Side Table", "Book Shelf", "Cabinets", 
+                             "Chest of Drawers", "Crockery Unit", "Dining Table", "Drawer",
+                             "Dresser", "False Ceiling", "False ceiling", "Loft", "Mirror Paneling",
+                             "Open Shelf", "Open Shelves", "Partition and Mirror wall paneling", "Rafters",
+                             "Side Table", "Sofa Set with Table", "Study Table", "Study Unit", "TV Unit", 
+                             "Top Paneling", "Utility", "crockery", "false ceiling with rafter", "puja unit",
+                             "shoe rack", "tall unit"];
+            
             $scope.selectedThemes = [];
+            $scope.items = [];
+            
+            $scope.add = function () {
+              $scope.items.push({ 
+            	addon: "",
+                price:0
+              });
+            };
             $scope.uploadData = function() {
                 var spaceData = {};
                 spaceData.title = $scope.title;
@@ -34,6 +49,7 @@ decorpotCtrls.controller('uploadController', [
                 spaceData.ht = $scope.ht;
                 spaceData.wdth = $scope.wdth;
                 spaceData.themes = $scope.selectedThemes.join();
+                spaceData.addons = $scope.items;
                 
                 spaceData.images = [];
                 if($scope.spaceType == 'kitchen'){
@@ -104,6 +120,35 @@ decorpotCtrls.controller('homeController', [ '$scope','pastWorkService', functio
     // clearInterval(timer);
     // });
     // Carousel
+	$scope.owlCarouselPastWork1 = function(){
+		$('.owl-carousel1').owlCarousel({
+			items: 4,
+			loop:true,
+			slideSpeed : 1000,
+			autoPlay: 3000,
+			itemsDesktop: [1199, 4],
+			itemsDesktopSmall: [980, 3],
+			itemsTablet: [768, 3],
+			itemsTabletSmall: false,
+			itemsMobile: [479, 1],
+			navigation: false
+		});
+	};
+	$scope.owlCarouselPastWork2 = function(index){
+		console.log(index);
+		$('.owl-carousel2').owlCarousel({
+			items: 4,
+			loop:true,
+			slideSpeed : 1000,
+			autoPlay: 3000,
+			itemsDesktop: [1199, 4],
+			itemsDesktopSmall: [980, 3],
+			itemsTablet: [768, 3],
+			itemsTabletSmall: false,
+			itemsMobile: [479, 1],
+			navigation: false
+		});
+	};
 	
 	pastWorkService.getAllPastWork()
 	.success(function(data) {
@@ -111,35 +156,8 @@ decorpotCtrls.controller('homeController', [ '$scope','pastWorkService', functio
 		var len = data.length;
 		$scope.pastWorkData1 = data.slice(0, len/2);
 		$scope.pastWorkData2 = data.slice(len/2, len - 1);
-		$scope.owlCarouselPastWork1 = function(){
-			$('.owl-carousel2').owlCarousel({
-				items: 4,
-				loop:true,
-				slideSpeed : 1000,
-				autoPlay: 3000,
-				itemsDesktop: [1199, 4],
-				itemsDesktopSmall: [980, 3],
-				itemsTablet: [768, 3],
-				itemsTabletSmall: false,
-				itemsMobile: [479, 1],
-				navigation: false
-			});
-		};
-		$scope.owlCarouselPastWork = function(){
-			$('.owl-carousel1').owlCarousel({
-				items: 4,
-				loop:true,
-				slideSpeed : 1000,
-				autoPlay: 3000,
-				itemsDesktop: [1199, 4],
-				itemsDesktopSmall: [980, 3],
-				itemsTablet: [768, 3],
-				itemsTabletSmall: false,
-				itemsMobile: [479, 1],
-				navigation: false
-			});
-		};
-	})
+		
+	});
     $('.carousel, #mycarousel-proj').carousel({
         interval: 6000,
         pause: "false"

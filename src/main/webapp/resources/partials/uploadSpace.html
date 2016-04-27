@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12" style="margin-top:100px; margin-left:50px">
 		<form name="myForm">
 			<fieldset>
 				<legend>upload a space</legend>
@@ -87,15 +87,30 @@
 						</div>
 					</div>
 					<div class="row">
+						<div class="col-md-12">Addons : </div>
+					</div>
+					<div class="row" ng-repeat="item in items">
+						 <label class="col-md-4"
+							for="singleSelect"> Select Addon: </label><select
+							class="col-md-4" name="singleSelect" ng-model="item.addon">
+							<option value="{{a}}" ng-repeat="a in addons">{{a}}</option>
+						</select>
+						<input class="col-md-4" type="text"
+							placeholder="{{item.questionPlaceholder}}"
+							ng-model="item.price">
+					</div>
+					<button class="row" ng-click="add()">New Item</button>
+
+					<div class="row">
 						<div class="col-md-12">
 							Photo: <input type="file" ngf-select ng-model="files"
 								ngf-multiple="true" name="file" accept="image/*"
 								ngf-max-size="7000KB" required ngf-model-invalid="errorFile">
-							<br> <i ng-show="myForm.file5.$error.maxSize">File too
+							<br> <i ng-show="myForm.file.$error.maxSize">File too
 								large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img
-								ng-show="myForm.file5.$valid" ngf-thumbnail="file" class="thumb"
+								ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb"
 								height="200" width="200" ng-repeat="file in files">
-							<button ng-click="files = null" ng-show="picFile5">Remove</button>
+							<button ng-click="files = null" ng-show="files">Remove</button>
 						</div>
 					</div>
 
