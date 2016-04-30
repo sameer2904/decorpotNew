@@ -1,14 +1,16 @@
 <div id="pastWorks">
-	<div class="col-md-3 .col-xs-12 .col-sm-6"
-		ng-repeat="p in pastWorks | filter:query">
-		<div >
+    <div class="jumbotron">
+        <div class="container"><input type="search" class="form-control pull-right" placeholder="search.." ng-model="query">
+            <h1>OUR WORKS </h1>
+        </div>
+    </div>
+	<div class="col-md-3 col-xs-12 col-sm-6" ng-repeat="p in pastWorks | filter:query">
 			<a class="shrink" ui-sref="projects.project({param : '{{p.id}}'})">
 				<img src={{p.mainImage}}>
 			</a>
-		</div>
 		<div>
-			<h4>{{p.apartmentName}}</h4>
-			<span>Bangalore</span>
+			<h4>{{p.apartmentName}}, <span>Bangalore</span></h4>
 		</div>
 	</div>
 </div>
+<i class="clearfix"></i>

@@ -298,10 +298,29 @@ footer {
     width: 100%;
     height: 450px;
 }
-//UplaodApartment styles
+/*UplaodApartment styles*/
 #uploadApartment{
-    margin-top:70px;
+    padding-top:70px;
 }
 #uploadApartment i{
     /*color:red;*/
+}
+/*past works styles*/
+#pastWorks{
+    padding-top:60px;
+    background: #f2f2f2;
+}
+#pastWorks img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+}
+#pastWorks img:hover{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+#pastWorks > div > div > h4{
+    text-align: center;
+    padding-bottom:20px;
 }
