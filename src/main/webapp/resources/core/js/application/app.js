@@ -35,3 +35,15 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				controller : 'uploadPastWorkController'
 			});
 		} ]);
+
+if ($(window).width() > 767) {
+        $(document).bind('scroll', function () {
+            if (window.scrollY > 60) {
+                $('.preHeader').slideUp();
+            } else {
+                $('.preHeader').slideDown();
+            }
+        });
+    } else {
+        $('.preHeader').hide();
+    }

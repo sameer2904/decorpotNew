@@ -119,6 +119,11 @@ decorpotCtrls.controller('homeController', [ '$scope','pastWorkService', functio
     // }, function () { // callback function
     // clearInterval(timer);
     // });
+
+    //Menu links activate
+$scope.menuActive = function($this){alert();
+    console.log($($this.target).parent());
+}
     // Carousel
 	$scope.owlCarouselPastWork1 = function(){
 		$('.owl-carousel1').owlCarousel({
@@ -188,17 +193,7 @@ decorpotCtrls.controller('homeController', [ '$scope','pastWorkService', functio
         carReuse()
     });
     // Preheader
-    if ($(window).width() > 767) {
-        $(document).bind('scroll', function () {
-            if (window.scrollY > 60) {
-                $('.preHeader').slideUp();
-            } else {
-                $('.preHeader').slideDown();
-            }
-        });
-    } else {
-        $('.preHeader').hide();
-    }
+    
 
     // Select steps
     $('#section-steps > div > div > div:nth-child(2) > div > ul > li').on('click', function () {

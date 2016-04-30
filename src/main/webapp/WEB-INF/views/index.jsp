@@ -89,20 +89,20 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#/">Home<span class="sr-only">(current)</span></a>
+                        <li class="active" ng-click="menuActive($event)"><a href="#/">Home<span class="sr-only">(current)</span></a>
                         </li>
-                        <li><a href="#/apartments">Apartments</a>
+                        <li  ng-click="menuActive($event)"><a href="#/uploadApartment">Apartments</a>
                         </li>
-                        <li><a href="#/looks">Looks</a>
-                            <ul>
+                        <li  ng-click="menuActive($event)"><a href="#/looks">Looks</a>
+                           <!--  <ul>
                                 <li><a href="service-1.html">Residential Design</a></li>
                                 <li><a href="service-2.html">Hospitaly Design</a></li>
                                 <li><a href="service-3.html">Office Design</a></li>
                                 <li><a href="service-4.html">Commercial Design</a></li>
-                            </ul>
+                            </ul> -->
                         </li>
-                        <li><a ui-sref="pastWorks">Completed Projects</a></li>
-                        <li><a href="#/contact" style="padding-right: 0;padding-left:0">Ask Us</a></li>
+                        <li  ng-click="menuActive($event)"><a ui-sref="pastWorks">Completed Projects</a></li>
+                        <li  ng-click="menuActive($event)"><a href="#/contact" style="padding-right: 0;">Ask Us</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->

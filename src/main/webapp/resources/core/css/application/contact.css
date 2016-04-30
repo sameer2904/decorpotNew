@@ -1,20 +1,24 @@
 #contactForm{
-	padding:60px 0;
+	padding:60px 0 20px 0;
 }
 #contactForm legend{
 	border-bottom:0px;
 }
+body > div > div > div.row > div.col-md-3{
+    padding: 60px 20px 20px 20px;
+    text-align: justify;
+}
 .heading{
 	width:100%;
 	padding:120px 60px 60px 60px;
-	color:#fff;
-	background-image:url('../../images/bg-2.jpg');
-	background-attachment: fixed;
+}
+#uploadFile{
+    background: #fff;
 }
 .fileUpload {
     position: relative;
     overflow: hidden;
-    margin: 10px;
+    padding: 6px 10px 0  10px;
 }
 .fileUpload input.upload {
     position: absolute;
