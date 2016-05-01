@@ -4,6 +4,9 @@
 
 var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload' ]);
 
+decorpot.run(['$rootScope', '$state',function($rootScope, $state) {
+	$rootScope.state = $state.this;
+}]);
 decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 		function($stateProvider, $urlRouterProvider, $httpProvider) {
 			$urlRouterProvider.otherwise('/');
@@ -20,6 +23,10 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url: '/pastWorks',
 				templateUrl: 'resources/partials/pastWorks.html',
 				controller: 'pastWorksController'
+			}).state('looks', {
+				url: '/looks/:looksCategory',
+				templateUrl: 'resources/partials/looks.html',
+				controller: 'pastWorksController'
 			}).state('contact', {
 				url : '/contact',
 				templateUrl : 'resources/partials/contact.html',
@@ -35,15 +42,3 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				controller : 'uploadPastWorkController'
 			});
 		} ]);
-
-if ($(window).width() > 767) {
-        $(document).bind('scroll', function () {
-            if (window.scrollY > 60) {
-                $('.preHeader').slideUp();
-            } else {
-                $('.preHeader').slideDown();
-            }
-        });
-    } else {
-        $('.preHeader').hide();
-    }

@@ -438,3 +438,50 @@ directives
 				restrict : "A"
 			});
 		});
+directives.directive('isActiveNav', [ '$location', function($location) {
+return {
+ restrict: 'A',
+ link: function(scope, element) {
+   scope.location = $location;
+   scope.$watch('location.path()', function(currentPath) {
+     if('#' + currentPath === element[0].attributes['href'].nodeValue) {
+       element.parent().addClass('active');
+     } else {
+       element.parent().removeClass('active');
+     }
+   });
+ }
+ };
+}]);
+//directive for pre-header
+directives.directive("scroll", function ($window) {
+    return function(scope, element, attrs) {
+        angular.element($window).bind("scroll", function() {
+             if (this.pageYOffset >= 60) {
+                 $('.preHeader').slideUp();
+             } else {
+                 $('.preHeader').slideDown();
+                 
+             }
+            scope.$apply();
+        });
+    };
+});
+//directive for nested nav
+directives.directive('windowResize',function($window){
+	return function(scope,element,attrs){
+		angular.element($window).bind('resize', function() {
+                resize();
+                console.log(angular.element.attr('mobileView','true'))
+            })
+		function resize(){
+			if($window.innerWidth<767){
+                	element.attr('mobileView','true');
+                }
+                else{
+                	element.attr('mobileView','false');
+                }
+		}
+		resize();
+}
+})

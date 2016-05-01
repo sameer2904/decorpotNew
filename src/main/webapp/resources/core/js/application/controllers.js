@@ -4,6 +4,24 @@
 
 var decorpotCtrls = angular.module('decorpot');
 
+decorpotCtrls.controller('navCtrl',['$scope', function($scope){
+    $(window).resize(function(){
+if ($(window).width() > 767) {
+        $('#navbar').attr('mobileView','false')
+                $(document).bind('scroll', function () {
+            if (window.scrollY > 60) {
+                $('.preHeader').slideUp();
+            } else {
+                $('.preHeader').slideDown();
+            }
+        });
+    } else {
+        $('#navbar').attr('mobileView','true')
+        $('.preHeader').hide();
+    }
+})
+$(window).resize();
+}])
 decorpotCtrls.controller('uploadController', [
         '$scope',
         'Upload', 'uploadService',
@@ -83,7 +101,7 @@ decorpotCtrls.controller('uploadController', [
         } ]);
 
 
-decorpotCtrls.controller('homeController', [ '$scope','pastWorkService', function($scope, pastWorkService) {
+decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pastWorkService', function($scope, $rootScope, $state, pastWorkService) {
     // var timer; // timer for splash screen
     // create splash screen animation
     // function splashRotator() {
@@ -120,10 +138,6 @@ decorpotCtrls.controller('homeController', [ '$scope','pastWorkService', functio
     // clearInterval(timer);
     // });
 
-    //Menu links activate
-$scope.menuActive = function($this){alert();
-    console.log($($this.target).parent());
-}
     // Carousel
 	$scope.owlCarouselPastWork1 = function(){
 		$('.owl-carousel1').owlCarousel({

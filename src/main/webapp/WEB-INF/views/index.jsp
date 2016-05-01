@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="resources/core/css/normalise.css"/>
 <link href="resources/core/css/application/style.css" rel="stylesheet"/>
 </head>
-<body>
+<body scroll>
    <!-- This section is for Splash Screen -->
    <!-- To be implemented later -->
     <!-- <section id="jSplash" style="background-color:#fff">
@@ -67,14 +67,6 @@
                     <ul class="nav nav-pills">
                         <li role="presentation"><span class="glyphicon glyphicon-envelope"></span> &nbsp; sales@decorpot.com</li>
                         <li role="presentation"><span class="glyphicon glyphicon-earphone"></span> &nbsp;  (+91) 9986076761 | (+91) 9986076762</li>
-                       <!--  <li>
-                            <ul>
-                                <li class="social-icons fa fa-facebook"></li>
-                                <li class="social-icons fa fa-twitter"></li>
-                                <li class="social-icons fa fa-rss"></li>
-                                <li class="social-icons fa fa-google-plus"></li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </div>
                 <div class="navbar-header">
@@ -87,22 +79,23 @@
                     <a class="navbar-brand" href="#/">decorpot<!-- <img src="images/logo.png" alt="Brand logo" width="220" height="30"> -->
                     </a>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse">
+                <div id="navbar" window-Resize class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active" ng-click="menuActive($event)"><a href="#/">Home<span class="sr-only">(current)</span></a>
+                        <li><a is-active-nav href="#/">Home<span class="sr-only">(current)</span></a>
                         </li>
-                        <li  ng-click="menuActive($event)"><a href="#/uploadApartment">Apartments</a>
+                        <li><a is-active-nav href="#/uploadApartment">Apartments</a>
+                        </li> 
+                        <li><a is-active-nav nohref="">Looks</a>
+                            <ul>
+                                <li><a href="#/looks/Living+Dining">Living + Dining</a></li>
+                                <li><a href="#/looks/Kitchen">Kitchen</a></li>
+                                <li><a href="#/looks/MasterBedRoom">Master Bedroom</a></li>
+                                <li><a href="#/looks/GuestBedRoom">Guest Bedroom</a></li>
+                                <li><a href="#/looks/KidsBedRoom">Kids Bedroom</a></li>
+                            </ul>
                         </li>
-                        <li  ng-click="menuActive($event)"><a href="#/looks">Looks</a>
-                           <!--  <ul>
-                                <li><a href="service-1.html">Residential Design</a></li>
-                                <li><a href="service-2.html">Hospitaly Design</a></li>
-                                <li><a href="service-3.html">Office Design</a></li>
-                                <li><a href="service-4.html">Commercial Design</a></li>
-                            </ul> -->
-                        </li>
-                        <li  ng-click="menuActive($event)"><a ui-sref="pastWorks">Completed Projects</a></li>
-                        <li  ng-click="menuActive($event)"><a href="#/contact" style="padding-right: 0;">Ask Us</a></li>
+                        <li><a is-active-nav ui-sref="pastWorks">Completed Projects</a></li>
+                        <li><a is-active-nav href="#/contact" style="padding-right: 0;">Ask Us</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->

@@ -94,7 +94,8 @@ main {
 /*steps*/
 
 section#section-steps {
-    background-image: url('../../images/bg2.jpg');
+    background-image: url('../../images/bg2.png');
+    background-size:100% 100%;
     background-attachment: fixed;
     padding: 80px 0;
     /*opacity: 0.5;*/
@@ -314,6 +315,7 @@ section#section-steps {
 
 #section-testimonial {
     padding: 20px 0 40px 0;
+    background: #eaeaea;
 }
 
 .owl-carousel {
