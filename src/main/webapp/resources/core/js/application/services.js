@@ -53,3 +53,9 @@ services.service('pastWorkService',['$http', function($http){
 		}
 	}
 }] );
+
+services.service('apartmentService',['$http', function($http){
+	return {
+		
+	}
+}] );

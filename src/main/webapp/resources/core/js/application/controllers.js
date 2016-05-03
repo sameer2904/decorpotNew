@@ -340,3 +340,13 @@ decorpotCtrls.controller('uploadApartmentController', [
                                                       });
                                                   }
                                               }]);
+
+decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', function($scope, apartemnetService) {
+	
+}]);
+decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService', function($scope, apartemnetService) {
+	
+}]);
+decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartemnetService) {
+	
+}]);
