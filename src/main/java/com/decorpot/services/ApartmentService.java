@@ -7,10 +7,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.amazonaws.util.CollectionUtils;
 import com.decorpot.datasource.models.ApartmentConfig;
+import com.decorpot.datasource.models.Config3BHK;
 import com.decorpot.datasource.repository.ApartmentConfigRepository;
 import com.decorpot.datasource.repository.Config2BHKRepository;
 import com.decorpot.datasource.repository.Config3BHKRepository;
+import com.decorpot.rest.model.ApartmentBaseConfig;
 import com.decorpot.rest.model.ApartmentConfigs;
 import com.decorpot.rest.model.Config2BHK;
 import com.decorpot.utils.DecorpotConstants;
@@ -74,7 +77,7 @@ public class ApartmentService {
 		java.sql.Date todayDate = new java.sql.Date(dateToday.getTime());
 
 		ApartmentConfig apartmentConfig = apartmentConfigRepository.findByApartmentName(config3bhk.getApartmentName());
-		
+
 		com.decorpot.datasource.models.Config3BHK config3bhkRepo = new com.decorpot.datasource.models.Config3BHK();
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -105,6 +108,39 @@ public class ApartmentService {
 			configs.add(aConfs);
 		});
 		return configs;
+	}
+
+	public List<ApartmentBaseConfig> getAllFloorPlanByApartmentName(String apartmentName) {
+		com.decorpot.datasource.models.ApartmentConfig apartmentConfigs = apartmentConfigRepository
+				.findByApartmentName(apartmentName);
+		List<ApartmentBaseConfig> apartmentBaseConfigs = new ArrayList<>();
+		List<Config3BHK> config3bhks = config3bhkRepository.findByApartmentId(apartmentConfigs.getId());
+		List<com.decorpot.datasource.models.Config2BHK> config2bhks = config2BHKRepository
+				.findByApartmentId(apartmentConfigs.getId());
+		if (!CollectionUtils.isNullOrEmpty(config2bhks)) {
+			config2bhks.forEach(c -> {
+				ApartmentBaseConfig baseConfig = new ApartmentBaseConfig();
+				baseConfig.setApartmentName(apartmentName);
+				baseConfig.setApartmentType(c.getApartmentType());
+				baseConfig.setPlanName(c.getPlanName());
+				baseConfig.setFloorPlan(
+						DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.FLOOR_PLAN_LOCATION + c.getFloorPlan());
+				apartmentBaseConfigs.add(baseConfig);
+			});
+		}
+
+		if (!CollectionUtils.isNullOrEmpty(config3bhks)) {
+			config3bhks.forEach(c -> {
+				ApartmentBaseConfig baseConfig = new ApartmentBaseConfig();
+				baseConfig.setApartmentName(apartmentName);
+				baseConfig.setApartmentType(c.getApartmentType());
+				baseConfig.setPlanName(c.getPlanName());
+				baseConfig.setFloorPlan(
+						DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.FLOOR_PLAN_LOCATION + c.getFloorPlan());
+				apartmentBaseConfigs.add(baseConfig);
+			});
+		}
+		return apartmentBaseConfigs;
 	}
 
 }

@@ -51,12 +51,12 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				controller : 'apartmentsController'
 			})
 			.state('apartments.floorplans', {
-				url : '/apartments/:apartmentId',
+				url : '/:apartmentName',
 				templateUrl : 'resources/partials/floorplans.html',
 				controller : 'floorPlansController'
 			})
 			.state('apartments.floorplans.packages', {
-				url : '/apartments/:apartmentName/:floorplanId',
+				url : '/:floorplanId',
 				templateUrl : 'resources/partials/apartmentPackages.html',
 				controller : 'apartmentPackagesController'
 			});

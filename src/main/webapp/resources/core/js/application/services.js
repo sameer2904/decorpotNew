@@ -68,6 +68,12 @@ services.service('apartmentService',['$http', function($http){
 				url: 'apartments',
 				method: 'get'
 			});
+		},
+		getAllApartments: function(apartmentName) {
+			return $http({
+				url: 'apartments/' + apartmentName,
+				method: 'get'
+			});
 		}
 	}
 }] );

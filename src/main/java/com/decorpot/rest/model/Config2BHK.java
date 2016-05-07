@@ -2,10 +2,27 @@ package com.decorpot.rest.model;
 
 public class Config2BHK extends ApartmentBaseConfig{
 
-    
+	protected KitchenConfig kitchen;
+    protected BedroomBaseConfig masterBedroom;
     private BedroomBaseConfig otherBedroom;
 
-    public BedroomBaseConfig getOtherBedroom() {
+    public KitchenConfig getKitchen() {
+		return kitchen;
+	}
+
+	public void setKitchen(KitchenConfig kitchen) {
+		this.kitchen = kitchen;
+	}
+
+	public BedroomBaseConfig getMasterBedroom() {
+		return masterBedroom;
+	}
+
+	public void setMasterBedroom(BedroomBaseConfig masterBedroom) {
+		this.masterBedroom = masterBedroom;
+	}
+
+	public BedroomBaseConfig getOtherBedroom() {
         return otherBedroom;
     }
 
@@ -13,12 +30,4 @@ public class Config2BHK extends ApartmentBaseConfig{
         this.otherBedroom = otherBedroom;
     }
 
-    @Override
-    public String toString() {
-        return "Config2BHK [otherBedroom=" + otherBedroom + ", apartmentName=" + apartmentName + ", apartmentType="
-                + apartmentType + ", floorPlan=" + floorPlan + ", kitchen=" + kitchen + ", masterBedroom="
-                + masterBedroom + "]";
-    }
-
-   
 }
