@@ -49,6 +49,13 @@ public class ImageProcessorService {
 	    }
 	}
 	
+	public void uploadApartmentImages(File file) {
+	    if(file != null) {
+	        s3Uploader.s3PutImage(
+                    DecorpotConstants.FLOOR_PLAN_LOCATION, file);
+	    }
+	}
+	
 	public void uploadPastWorkImage(File file) throws Exception {
 
         if (file != null) {

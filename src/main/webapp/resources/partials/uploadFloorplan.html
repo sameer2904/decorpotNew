@@ -1,0 +1,218 @@
+<div id="uploadApartment">
+	<div class="jumbotron">
+		<div class="container">
+			<h1>UPLOAD FLOOR PLAN</h1>
+		</div>
+	</div>
+	<form name="myForm">
+		<div class="list-group container">
+			<div class="list-group-item row">
+				<h2>General Apartment Details</h2>
+				<div class="col-md-4">
+					<label for="Apartment select type">&nbsp;</label>
+					<select name="singleSelect"
+						class="btn btn-default dropdown-toggle form-control"
+						ng-model="$parent.apartmentType">
+						<option value="">SELECT APARTMENT TYPE &nbsp; <span
+								class="caret"></span></option>
+						<!-- not selected / blank option -->
+						<option value="{{a}}" ng-repeat="a in apartmentTypes"><span>&nbsp;{{a}}</span></option>
+						<!-- interpolation -->
+					</select>
+				</div>
+				<div class="col-md-4">
+					<label for="Apartment Name">&nbsp;</label>
+					<select name="singleSelect"
+						class="btn btn-default dropdown-toggle form-control"
+						ng-model="apartmentName">
+						<option value="">SELECT APARTMENT Name &nbsp; <span
+								class="caret"></span></option>
+						<!-- not selected / blank option -->
+						<option value="{{a}}" ng-repeat="a in apartmentNames"><span>&nbsp;{{a}}</span></option>
+						<!-- interpolation -->
+					</select>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Plan Title</label><i
+							ng-show="myForm.planName.$error.required">*required</i> <input
+							type="text" class="form-control" name="planName"
+							ng-model="planName" size="30" required />
+					</div>
+				</div>
+			</div>
+
+
+			<div class="list-group-item row ">
+				<h2>Kitchen Room Details</h2>
+				<div class="col-md-4">
+					<label for="Apartment select type">&nbsp;</label> <select
+						name="singleSelect"
+						class="btn btn-default dropdown-toggle form-control"
+						ng-model="kitchenType">
+						<option value="">SELECT KITCHEN TYPE &nbsp; <span
+								class="caret"></span></option>
+						<!-- not selected / blank option -->
+						<option value="{{k}}" ng-repeat="k in kitchenTypes"><span>&nbsp;{{k}}</span></option>
+						<!-- interpolation -->
+					</select>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Length</label><i ng-show="myForm.kLength.$error.required">*required</i>
+						<input type="number" class="form-control" type="number"
+							name="kLength" ng-model="kLength" size="30" required />
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Width</label><i ng-show="myForm.kWidth.$error.required">*required</i>
+						<input type="number" class="form-control" name="kWidth"
+							ng-model="kWidth" size="30" required />
+					</div>
+				</div>
+			</div>
+
+			<div class="list-group-item row ">
+				<h2>Living Room Details</h2>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Length</label><i ng-show="myForm.lLength.$error.required">*required</i>
+						<input type="number" class="form-control" name="lLength"
+							ng-model="lLength" size="30" required />
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Width</label><i ng-show="myForm.lWidth.$error.required">*required</i>
+						<input type="number" class="form-control" name="width"
+							ng-model="lWidth" size="30" required />
+					</div>
+				</div>
+			</div>
+
+			<div class="list-group-item row ">
+				<h2>Master BedRoom Room Details</h2>
+				<div class="col-md-4">
+					<label for="Apartment select type">&nbsp;</label> <select
+						name="singleSelect"
+						class="btn btn-default dropdown-toggle form-control"
+						ng-model="$parent.mWardrobeType">
+						<option value="">SELECT WARDROBE TYPE &nbsp; <span
+								class="caret"></span></option>
+						<!-- not selected / blank option -->
+						<option value="{{w}}" ng-repeat="w in wardrobeTypes"><span>&nbsp;{{w}}</span></option>
+						<!-- interpolation -->
+					</select>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Length</label><i
+							ng-show="myForm.mLength.$error.required && (spaceType.indexOf('bedroom')!=-1)">*required</i>
+						<input type="number" class="form-control" name="mLength"
+							ng-model="mLength" size="30" required />
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Width</label><i
+							ng-show="myForm.mWidth.$error.required && (spaceType.indexOf('bedroom')!=-1)">*required</i>
+						<input type="number" class="form-control" name="mWidth"
+							ng-model="mWidth" size="30" required />
+					</div>
+				</div>
+			</div>
+
+
+			<div class="list-group-item row ">
+				<h2>Other BedRoom Room Details</h2>
+				<div class="col-md-4">
+					<label for="Apartment select type">&nbsp;</label> <select
+						name="singleSelect"
+						class="btn btn-default dropdown-toggle form-control"
+						ng-model="$parent.oWardrobeType"
+						ng-required="!$parent.oWardrobeType && (spaceType.indexOf('bedroom')!=-1) && (apartmentType == '2bhk')">
+						<option value="">SELECT WARDROBE TYPE &nbsp; <span
+								class="caret"></span></option>
+						<!-- not selected / blank option -->
+						<option value="{{w}}" ng-repeat="w in wardrobeTypes"><span>&nbsp;{{w}}</span></option>
+						<!-- interpolation -->
+					</select>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Length</label><i
+							ng-show="myForm.oLength.$error.required && (spaceType.indexOf('bedroom')!=-1) && (apartmentType == '2bhk')">*required</i>
+						<input type="number" class="form-control" name="oLength"
+							ng-model="oLength" size="30" required />
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Width</label><i
+							ng-show="myForm.oWidth.$error.required && (spaceType.indexOf('bedroom')!=-1) && (apartmentType == '2bhk')">*required</i>
+						<input type="number" class="form-control" name="oWidth"
+							ng-model="oWidth" size="30" required />
+					</div>
+				</div>
+			</div>
+
+
+			<div class="list-group-item row " ng-show="apartmentType == '3bhk'">
+				<h2>Kids BedRoom Room Details</h2>
+				<div class="col-md-4">
+					<label for="Apartment select type">&nbsp;</label> <select
+						name="singleSelect"
+						class="btn btn-default dropdown-toggle form-control"
+						ng-model="$parent.kWardrobeType">
+						<option value="">SELECT WARDROBE TYPE &nbsp; <span
+								class="caret"></span></option>
+						<!-- not selected / blank option -->
+						<option value="{{w}}" ng-repeat="w in wardrobeTypes"><span>&nbsp;{{w}}</span></option>
+						<!-- interpolation -->
+					</select>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Length</label><i
+							ng-show="myForm.kLength.$error.required && (spaceType.indexOf('bedroom')!=-1) && (apartmentType == '3bhk')">*required</i>
+						<input type="number" class="form-control" name="kLength"
+							ng-model="kLength" size="30" required />
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Width</label><i
+							ng-show="myForm.kWidth.$error.required && (spaceType.indexOf('bedroom')!=-1) && (apartmentType == '3bhk')">*required</i>
+						<input type="number" class="form-control" name="kWidth"
+							ng-model="kWidth" size="30" required />
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="list-group-item row ">
+				<div class="col-md-4">
+					<h2>Upload Floor Plan:</h2>
+					<i ng-show="myForm.file.$error.maxSize">File too large
+						{{errorFile.size / 1000|number:1}}KB: max 2700KB</i> <input
+						type="file" ngf-select ng-model="file"
+						class="form-control col-md-4" name="file" accept="image/*"
+						ngf-max-size="2700KB" required ngf-model-invalid="errorFile">
+					<br> <br> <img ng-show="myForm.file.$valid"
+						class="img-thumbnail" ngf-thumbnail="file" class="thumb"
+						height="200" width="200"><br> <br>
+					<button ng-click="file = null" class="btn btn-warning"
+						ng-show="file">Remove</button>
+				</div>
+			</div>
+			<div class="list-group-item row ">
+				<button ng-disabled="!myForm.$valid"
+					class="btn btn-success col-md-4" ng-click="uploadData()">SUBMIT</button>
+			</div>
+		</div>
+	</form>
+</div>

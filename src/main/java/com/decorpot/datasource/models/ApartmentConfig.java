@@ -15,15 +15,37 @@ import org.hibernate.annotations.Type;
 @Table(name= "APARTMENTS")
 public class ApartmentConfig {
     
-    @Id
+    public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	@Id
     @Column(name = "ID")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
-    @Column(name = "APARTMENT_NAME")
+    @Column(name = "APARTMENT_NAME", unique = true)
     private String apartmentName;
     
-    @Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "IMAGE")
+    private String image;
+    
+    @Column(name = "ADDRESS")
+    private String address;
+    
+    public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	@Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
     private Date date;
     
     @Column(name = "ACTIVE")

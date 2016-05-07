@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.decorpot.rest.model.ApartmentConfigs;
 import com.decorpot.rest.model.Config2BHK;
 import com.decorpot.rest.model.Config3BHK;
 import com.decorpot.services.ApartmentService;
@@ -28,6 +28,16 @@ public class ApartmentConfig {
     
     @Autowired
     private ApartmentService apartmentService;
+    
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value= "/apartment", method = RequestMethod.POST)
+    public void configApartment(@RequestBody ApartmentConfigs apartmentConfig) throws Exception {
+        try{
+            apartmentService.configApartment(apartmentConfig);
+        }catch(Exception e){
+            throw e;
+        }
+    }
     
    @ResponseStatus(HttpStatus.OK)
    @RequestMapping(value= "/apartment/2bhk", method = RequestMethod.POST)
@@ -52,13 +62,25 @@ public class ApartmentConfig {
    
    @ResponseStatus(HttpStatus.OK)
    @RequestMapping(value = "/floorPlans", method = RequestMethod.POST)
-   public void uploadImages(@RequestParam("file") MultipartFile file)
+   public void uploadFloorPlan(@RequestParam("file") MultipartFile file)
            throws Exception {
 
       File imageFile = null;
        if (file != null) {
            imageFile = DecorpotUtils.multipartToFile(file);
            imageProcessorService.uploadFloorPlan(imageFile);
+       }
+   }
+   
+   @ResponseStatus(HttpStatus.OK)
+   @RequestMapping(value = "/apartmentImage", method = RequestMethod.POST)
+   public void uploadApartmentImages(@RequestParam("file") MultipartFile file)
+           throws Exception {
+
+      File imageFile = null;
+       if (file != null) {
+           imageFile = DecorpotUtils.multipartToFile(file);
+           imageProcessorService.uploadApartmentImages(imageFile);
        }
    }
 }

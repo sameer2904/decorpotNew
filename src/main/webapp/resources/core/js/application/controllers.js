@@ -287,18 +287,41 @@ decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploa
 	}
 }]);
 
-
-decorpotCtrls.controller('uploadApartmentController', [
+decorpotCtrls.controller('uploadApartmentController', ['$scope', 'Upload', 'uploadService', function($scope, Upload, uploadService) {
+	var apartmentConfig = {};
+	$scope.uploadData = function() {
+		apartmentConfig.apartmentName = $scope.apartmentName;
+		apartmentConfig.address = $scope.address;
+		apartmentConfig.image = $scope.file.name;
+		uploadService.uploadApartment(apartmentConfig)
+		.success(function(data) {
+			Upload.upload({
+                url: 'config/apartmentImage',
+                data:{
+                file: f,
+                }
+           });
+		})
+	}
+}])
+decorpotCtrls.controller('uploadFloorPlanController', [
                                               '$scope',
-                                              'Upload', 'uploadService',
-                                              function($scope, Upload, uploadService) {
+                                              'Upload', 'uploadService', 'apartmentService',
+                                              function($scope, Upload, uploadService, apartmentService) {
                                             	  $scope.kitchenTypes = ['L-shaped', 'u-shaped'];
                                                   $scope.wardrobeTypes = ['4-door', '6-door'];
                                                   $scope.apartmentTypes = ['2bhk', '3bhk'];
+                                                  apartmentService.getAllApartments()
+                                                  .success(function(data) {
+                                                	  $scope.apartmentNames = data.map(function(value, index){
+                                                		  return value.apartmentName;
+                                                	  })
+                                                  })
                                                   var apartmentConfig = {};
                                                   $scope.uploadData = function() {
-                                                	  apartmentConfig.apartmentName = $scope.apartmentName;
+                                                	  
                                                 	  apartmentConfig.apartmentType = $scope.apartmentType;
+                                                	  apartmentConfig.apartmentName = $scope.apartmentName;
                                                 	  apartmentConfig.planName = $scope.planName;
                                                 	  apartmentConfig.kitchen = {};
                                                 	  apartmentConfig.kitchen.kitchenType = $scope.kitchenType;
@@ -326,7 +349,7 @@ decorpotCtrls.controller('uploadApartmentController', [
                                                 	  }
                                                 	  apartmentConfig.floorPlan = $scope.file.name;
                                                 	  
-                                                	  uploadService.uploadApartment(apartmentConfig)
+                                                	  uploadService.uploadFloorplan(apartmentConfig)
                                                 	  .success(function(data) {
                                                 		  Upload.upload({
                                                 			  url: 'config/floorPlans/',

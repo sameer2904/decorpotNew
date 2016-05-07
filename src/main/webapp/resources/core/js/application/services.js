@@ -16,6 +16,13 @@ services.service('uploadService',['$http', function($http){
 		uploadApartment: function(apartmentConfig) {
 			return $http({
 				method : "post",
+				url : "config/apartment",
+				data : apartmentConfig
+			});
+		},
+		uploadFloorplan: function(apartmentConfig) {
+			return $http({
+				method : "post",
 				url : "config/apartment/" + apartmentConfig.apartmentType,
 				data : apartmentConfig
 			});
@@ -56,6 +63,11 @@ services.service('pastWorkService',['$http', function($http){
 
 services.service('apartmentService',['$http', function($http){
 	return {
-		
+		getAllApartments: function() {
+			return $http({
+				url: 'apartments',
+				method: 'get'
+			});
+		}
 	}
 }] );
