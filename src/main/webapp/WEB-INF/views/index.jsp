@@ -200,7 +200,7 @@
 <script src="resources/core/js/bootstrap.min.js"></script>
 
 <script src="resources/core/js/application/app.js"></script>
-
+<script src="resources/core/js/application/filters.js"></script>
 <script src="resources/core/js/application/services.js"></script>
 <script src="resources/core/js/application/controllers.js"></script>
 <script src="resources/core/js/application/directives.js"></script>

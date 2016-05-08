@@ -1,4 +1,4 @@
-<div id="apartments" class="container-fluid">
+<div id="apartments" class="container-fluid" ui-view>
     <div class="jumbotron">
             <h1>APARTMENTS</h1>
         <input type="search" class="form-control pull-right" placeholder="search.." ng-model="query">
@@ -7,12 +7,12 @@
 	<div class="container">
 	<div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="apartment in apartments | filter:query">
 	<div>
-			<a ui-sref="apartments.floorplans({ apartmentName : '{{apartment.apartmentName}}' })">
+			<a ui-sref="apartments.floorplans({ apartmentName : '{{apartment.apartmentName | addunderscore}}' })">
 				<img src={{apartment.mainImage}}>
 			</a>
 			</div>
 		<div>
-			<h4>{{apartment.apartmentName}}, <span>Bangalore</span></h4>
+			<h4>{{apartment.apartmentName | addunderscore}}, <span>Bangalore</span></h4>
 		</div>
 	</div>
 	</div>
