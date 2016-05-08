@@ -407,45 +407,14 @@ decorpotCtrls.controller('uploadFloorPlanController', [
                                               }]);
 
 decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', function($scope, apartmentService) {
-    // apartmentService.getAllApartments()
-    // .success(function(data){
-    //     $scope.apartments = data;
-    // })
+     apartmentService.getAllApartments()
+     .success(function(data){
+         $scope.apartments = data;
+     });
 
-    $scope.apartments = [{
-            "id":"1",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"2",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"3",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"4",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"5",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"6",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        }]
-	
 }]);
-decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', function($scope, apartmentService,$stateParams) {
-	$scope.Name = $stateParams.apartmentName;alert();
+decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
+	$scope.Name = $filter('underscoreless')($stateParams.apartmentName);alert($scope.Name);
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartmentService) {
 	

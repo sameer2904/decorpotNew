@@ -69,7 +69,7 @@ services.service('apartmentService',['$http', function($http){
 				method: 'get'
 			});
 		},
-		getAllApartments: function(apartmentName) {
+		getAllFloorPlans: function(apartmentName) {
 			return $http({
 				url: 'apartments/' + apartmentName,
 				method: 'get'
