@@ -261,10 +261,43 @@ decorpotCtrls.controller('contactController', ['$scope', 'uploadService',functio
                                             }]);
 // project controller
 decorpotCtrls.controller('pastWorksController', ['$scope', 'pastWorkService', function($scope, pastWorkService) {
-	pastWorkService.getAllPastWork()
-	.success(function(data){
-		$scope.pastWorks = data;
-	})
+    pastWorkService.getAllPastWork()
+    .success(function(data){
+        $scope.pastWorks = data;
+    })
+}]);
+// looks controller
+decorpotCtrls.controller('looksController', ['$scope', '$stateParams', function($scope, $stateParams) {
+    $scope.looks = [{
+            "id":"1",
+            "mainImage":"resources/core/images/apartments/apartments.jpg",
+            "apartmentName":"Shobha Apartment"
+        },
+        {
+            "id":"2",
+            "mainImage":"resources/core/images/apartments/apartments.jpg",
+            "apartmentName":"Shobha Apartment"
+        },
+        {
+            "id":"3",
+            "mainImage":"resources/core/images/apartments/apartments.jpg",
+            "apartmentName":"Shobha Apartment"
+        },
+        {
+            "id":"4",
+            "mainImage":"resources/core/images/apartments/apartments.jpg",
+            "apartmentName":"Shobha Apartment"
+        },
+        {
+            "id":"5",
+            "mainImage":"resources/core/images/apartments/apartments.jpg",
+            "apartmentName":"Shobha Apartment"
+        },
+        {
+            "id":"6",
+            "mainImage":"resources/core/images/apartments/apartments.jpg",
+            "apartmentName":"Shobha Apartment"
+        }]
 }]);
 
 decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {
