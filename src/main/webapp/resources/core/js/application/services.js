@@ -77,3 +77,9 @@ services.service('apartmentService',['$http', function($http){
 		}
 	}
 }] );
+
+services.service('spaceService',['$http', function($http){
+	return {
+		
+	}
+}] );
