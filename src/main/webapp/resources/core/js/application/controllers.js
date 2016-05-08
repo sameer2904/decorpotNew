@@ -245,10 +245,19 @@ decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pa
 
 
 // contact controller
-decorpotCtrls.controller('contactController', ['$scope',function ($scope) {
-        document.getElementById("uploadBtn").onchange = function () {
-            document.getElementById("uploadFile").value = this.value;
-        };
+decorpotCtrls.controller('contactController', ['$scope', 'uploadService',function ($scope, uploadService) {
+        $scope.submitEnquiry = function() {
+        	$scope.enquiryForm.floorPlan = $scope.file.name;
+        	uploadService.uploadEnquiry($scope.enquiryForm)
+        	.success(function(data){
+        		Upload.upload({
+                    url: '/enquiry/floorPlan',
+                    data: {
+                        file: $scope.file,
+                    }
+                });
+        	})
+        }
                                             }]);
 // project controller
 decorpotCtrls.controller('pastWorksController', ['$scope', 'pastWorkService', function($scope, pastWorkService) {

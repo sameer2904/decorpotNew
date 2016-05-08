@@ -18,7 +18,8 @@
 								<span class="input-group-addon"><i
 									class="fa fa-user fa-fw"></i></span> <input name="Name"
 									class="form-control" id="Name" type="text"
-									placeholder="* Enter Name" data-bv-field="Name">
+									placeholder="* Enter Name" data-bv-field="Name"
+									ng-model="enquiryForm.name">
 							</div>
 							<small class="help-block" style="display: none;"
 								data-bv-validator="notEmpty" data-bv-for="Name"
@@ -33,7 +34,8 @@
 								<span class="input-group-addon"><i
 									class="fa fa-envelope fa-fw"></i></span> <input name="Email"
 									class="form-control" id="Email" type="email"
-									placeholder="* Enter Email" data-bv-field="Email">
+									placeholder="* Enter Email" data-bv-field="Email"
+									ng-model="enquiryForm.email">
 							</div>
 							<small class="help-block" style="display: none;"
 								data-bv-validator="notEmpty" data-bv-for="Email"
@@ -51,21 +53,22 @@
 								<span class="input-group-addon"><i
 									class="fa fa-phone fa-fw"></i></span> <input name="Phone"
 									class="form-control" id="Phone" type="text"
-									placeholder="Enter Phone Number">
+									placeholder="Enter Phone Number"
+									ng-model="enquiryForm.phoneNumber">
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="fa fa-upload fa-fw"></i></span>
-									<!-- <input type="file" id="upload" class="form-control" placeholder="Upload your custom designs" multiple/> -->
-									<input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" />
-								<span class="input-group-addon fileUpload"><i
-									class="fa fa-folder-open fa-fw"></i>
-    <label>Browse</label>
-    <input id="uploadBtn" type="file" class="upload" multiple/></span>
+								Photo: <input type="file" ngf-select ng-model="file" name="file"
+									ngf-pattern="'image/*'" ngf-accept="'image/*'"
+									ngf-max-size="7000KB" required ngf-model-invalid="errorFile">
+								<br> <i ng-show="myForm.file.$error.maxSize">File too
+									large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img
+									ng-show="myForm.file.$valid" ngf-thumbnail="file" height="200"
+									width="200">
+								<button ng-click="file = null" ng-show="file">Remove</button>
 							</div>
 						</div>
 					</div>
@@ -91,14 +94,23 @@
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div align="center" class="col-sm-10">
-							<button class="btn btn-primary btn-lg" type="submit">SUBMIT</button>
+							<button class="btn btn-primary btn-lg" type="submit"
+								ng-click="submitEnquiry()">SUBMIT</button>
 						</div>
 					</div>
 
 				</form>
 			</div>
 		</div>
-		<div class="col-md-3"><h3>Decorpot</h3><hr><h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore laborum quibusdam rem ducimus sapiente necessitatibus quo quasi qui sed. Excepturi doloribus eligendi totam. In qui, quod, perspiciatis aperiam sed dolorem deleniti iste labore temporibus ipsa laborum excepturi odio, quas ratione!</h4></div>
+		<div class="col-md-3">
+			<h3>Decorpot</h3>
+			<hr>
+			<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				Tempore laborum quibusdam rem ducimus sapiente necessitatibus quo
+				quasi qui sed. Excepturi doloribus eligendi totam. In qui, quod,
+				perspiciatis aperiam sed dolorem deleniti iste labore temporibus
+				ipsa laborum excepturi odio, quas ratione!</h4>
+		</div>
 	</div>
 
 </div>
