@@ -331,7 +331,7 @@ footer {
     padding-top:60px;
     background: #f2f2f2;
 }
-#pastWorks > div.row > div{
+#pastWorks > div.row > div > div{
     max-width:100%;
     box-sizing: border-box;
     overflow: hidden;
@@ -373,8 +373,36 @@ footer {
     height:100%;
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+    overflow: hidden;
 }
 #looks > div > div > h4{
+    text-align: center;
+    padding-bottom:20px;
+}
+/*apartment page styles*/
+#apartments{
+    padding-top:60px;
+    background: #f2f2f2;
+}
+#apartments > div.container > div > div{
+    max-width:100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0;
+}
+#apartments img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+}
+#apartments a:hover img{
+    width:100%;
+    height:100%;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+#apartments > div > div > h4{
     text-align: center;
     padding-bottom:20px;
 }

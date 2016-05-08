@@ -76,26 +76,26 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#/">decorpot<!-- <img src="images/logo.png" alt="Brand logo" width="220" height="30"> -->
+                    <a class="navbar-brand" ui-sref="home">decorpot<!-- <img src="images/logo.png" alt="Brand logo" width="220" height="30"> -->
                     </a>
                 </div>
                 <div id="navbar" window-Resize class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a is-active-nav href="#/">Home<span class="sr-only">(current)</span></a>
+                        <li><a ui-sref="home" ui-sref-active="active">Home<span class="sr-only">(current)</span></a>
                         </li>
-                        <li><a is-active-nav href="#/uploadApartment">Apartments</a>
+                        <li><a ui-sref="apartments">Apartments</a>
                         </li> 
-                        <li><a is-active-nav nohref="">Looks</a>
+                        <li><a noui-sref="">Looks</a>
                             <ul>
-                                <li><a href="#/looks/Living+Dining">Living + Dining</a></li>
-                                <li><a href="#/looks/Kitchen">Kitchen</a></li>
-                                <li><a href="#/looks/MasterBedRoom">Master Bedroom</a></li>
-                                <li><a href="#/looks/GuestBedRoom">Guest Bedroom</a></li>
-                                <li><a href="#/looks/KidsBedRoom">Kids Bedroom</a></li>
+                                <li><a ui-sref="looks({looksCategory : 'Living+Dining'})">Living + Dining</a></li>
+                                <li><a ui-sref="looks({looksCategory : 'Kitchen'})">Kitchen</a></li>
+                                <li><a ui-sref="looks({looksCategory : 'MasterBedRoom'})">Master Bedroom</a></li>
+                                <li><a ui-sref="looks({looksCategory : 'GuestBedRoom'})">Guest Bedroom</a></li>
+                                <li><a ui-sref="looks({looksCategory : 'KidsBedRoom'})">Kids Bedroom</a></li>
                             </ul>
                         </li>
-                        <li><a is-active-nav ui-sref="pastWorks">Completed Projects</a></li>
-                        <li><a is-active-nav href="#/contact" style="padding-right: 0;">Ask Us</a></li>
+                        <li><a ui-sref="pastWorks">Completed Projects</a></li>
+                        <li><a ui-sref="contact" style="padding-right: 0;">Ask Us</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
