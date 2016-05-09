@@ -458,7 +458,7 @@ directives.directive('windowResize',function($window){
 	return function(scope,element,attrs){
 		angular.element($window).bind('resize', function() {
                 resize();
-                console.log(angular.element.attr('mobileView','true'))
+                // console.log(angular.element.attr('mobileView','true'))
             })
 		function resize(){
 			if($window.innerWidth<767){

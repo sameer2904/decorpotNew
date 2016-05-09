@@ -56,6 +56,7 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				controller : 'floorPlansController'
 			})
 			.state('apartments.floorplans.packages', {
+				
 				url : '/:apartmentName/:floorplanId',
 				templateUrl : 'resources/partials/apartmentPackages.html',
 				controller : 'apartmentPackagesController'

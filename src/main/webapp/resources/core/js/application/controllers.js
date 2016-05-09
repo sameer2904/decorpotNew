@@ -444,8 +444,8 @@ decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', f
         }]
 	
 }]);
-decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', function($scope, apartmentService,$stateParams) {
-	$scope.Name = $stateParams.apartmentName;alert();
+decorpotCtrls.controller('floorPlansController', ['$scope','$stateParams','apartmentService', function($scope, $stateParams, apartmentService) {
+	$scope.data = apartmentService.getAllApartments();
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartmentService) {
 	
