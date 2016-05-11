@@ -60,5 +60,17 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/:apartmentName/:floorplanId',
 				templateUrl : 'resources/partials/apartmentPackages.html',
 				controller : 'apartmentPackagesController'
-			});
+			}).state('apartments.floorplans.packages.package', {
+				url : '/:spaceIds',
+				templateUrl : 'resources/partials/apartment.html',
+				controller : 'apartmentController'
+			}).state('spaces', {
+		        url: '/spaces/:param',
+		        templateUrl: 'resources/partials/spaces.html',
+				controller: 'spacesController'
+		    }).state('spaces.space', {
+		        url: '/:id',
+		        templateUrl: 'resources/partials/space.html',
+				controller: 'spaceController'
+		    });
 		} ]);

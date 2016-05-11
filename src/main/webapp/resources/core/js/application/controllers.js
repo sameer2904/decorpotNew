@@ -407,46 +407,45 @@ decorpotCtrls.controller('uploadFloorPlanController', [
                                               }]);
 
 decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', function($scope, apartmentService) {
-    // apartmentService.getAllApartments()
-    // .success(function(data){
-    //     $scope.apartments = data;
-    // })
+     apartmentService.getAllApartments()
+     .success(function(data){
+         $scope.apartments = data;
+     });
 
-    $scope.apartments = [{
-            "id":"1",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"2",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"3",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"4",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"5",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"6",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        }]
-	
 }]);
-decorpotCtrls.controller('floorPlansController', ['$scope','$stateParams','apartmentService', function($scope, $stateParams, apartmentService) {
-	$scope.data = apartmentService.getAllApartments();
+
+decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
+	var Name = $filter('underscoreless')($stateParams.apartmentName);
+	apartmentService.getAllFloorPlans(name)
+	.success(function(data) {
+		$scope.floopPlans = data;
+	});
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartmentService) {
-	
+	$scope.packages = [{
+		"apartmentName": "abc",
+		"apartmentType": "2bhk",
+		"basePrice": 100000,
+		"mainImage": "resources/core/images/apartments/apartments.jpg",
+		"spaceIds": "1,2,3,4,5"
+	},
+	{
+		"apartmentName": "xyz",
+		"apartmentType": "2bhk",
+		"basePrice": 200000,
+		"mainImage": "resources/core/images/apartments/apartments.jpg",
+		"spaceIds": "1,2,3,4,5"
+	}]
+}]);
+
+decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
+	alert();
+}]);
+
+decorpotCtrls.controller('spaceController', ['$scope','spaceService','$stateParams', '$filter', function($scope, spaceService,$stateParams, $filter) {
+	alert();
+}]);
+
+decorpotCtrls.controller('spacesController', ['$scope','spaceService','$stateParams', '$filter', function($scope, spaceService,$stateParams, $filter) {
+	alert();
 }]);
