@@ -7,7 +7,7 @@
 	<div class="container">
 	<div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="apartment in apartments | filter:query">
 	<div>
-			<a ui-sref="apartments.floorplans({ apartmentName : '{{apartment.apartmentName }}' })">
+			<a ui-sref="apartments.floorplans({ apartmentName : '{{apartment.apartmentName | addunderscore}}' })">
 				<img src={{apartment.mainImage}}>
 			</a>
 			</div>

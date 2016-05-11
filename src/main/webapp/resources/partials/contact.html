@@ -6,7 +6,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-7 col-md-offset-1">
+		<div class="col-md-6 col-md-offset-1">
 			<div style="width: 98%; max-width: 500px; margin: 0 auto;">
 				<form class="form-horizontal" id="contactForm" action="#"
 					method="post" novalidate="novalidate">
@@ -61,18 +61,22 @@
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="input-group">
-								Photo: <input type="file" ngf-select ng-model="file" name="file"
-									ngf-pattern="'image/*'" ngf-accept="'image/*'"
-									ngf-max-size="7000KB" required ngf-model-invalid="errorFile">
-								<br> <i ng-show="myForm.file.$error.maxSize">File too
-									large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img
-									ng-show="myForm.file.$valid" ngf-thumbnail="file" height="200"
-									width="200">
-								<button ng-click="file = null" ng-show="file">Remove</button>
+							<span class="input-group-addon"><i class="fa fa-upload fa-fw"></i></span>
+ 							<input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" />
+ 							<span class="input-group-addon fileUpload"><i class="fa fa-folder-open fa-fw"></i>
+     <label>Browse</label>
+     <input id="uploadBtn" type="file" class="upload" ngf-select ng-model="file" name="file"
+ 									ngf-pattern="'image/*'" ngf-accept="'image/*'"
+ 									ngf-max-size="7000KB" required ngf-model-invalid="errorFile"/></span>
 							</div>
 						</div>
 					</div>
-
+					<div class="col-sm-10">
+ 								 <i ng-show="myForm.file.$error.maxSize">File too
+ 									large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img
+ 									ng-show="myForm.file.$valid" ngf-thumbnail="file" class="img-thumbnail"><br  ng-show="myForm.file.$error.maxSize"><br  ng-show="file"><br  ng-show="file">
+ 								<button ng-click="file = null" class="btn btn-warning" ng-show="file">Remove</button><br  ng-show="file"><br  ng-show="file">	
+					</div>
 
 					<!-- custom file upload http://codepen.io/wallaceerick/pen/fEdrz -->
 					<div class="form-group">
@@ -92,7 +96,7 @@
 
 					Re-captcha
 					<div class="form-group">
-						<div class="col-sm-2"></div>
+						<div class="col-sm-3"></div>
 						<div align="center" class="col-sm-10">
 							<button class="btn btn-primary btn-lg" type="submit"
 								ng-click="submitEnquiry()">SUBMIT</button>
@@ -102,14 +106,10 @@
 				</form>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<h3>Decorpot</h3>
 			<hr>
-			<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				Tempore laborum quibusdam rem ducimus sapiente necessitatibus quo
-				quasi qui sed. Excepturi doloribus eligendi totam. In qui, quod,
-				perspiciatis aperiam sed dolorem deleniti iste labore temporibus
-				ipsa laborum excepturi odio, quas ratione!</h4>
+			<h4>Need quotations or design advice? Or want to transform your space? Whatever queries you have, fill out the form below or send us an email with your contact details and we will get back to you within 24 hours. We would love to hear from you!</h4>
 		</div>
 	</div>
 

@@ -74,3 +74,4 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				controller: 'spaceController'
 		    });
 		} ]);
+

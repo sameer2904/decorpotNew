@@ -113,8 +113,7 @@
                 <div class="col-md-4 col-sm-6 wow slideInLeft" data-wow-animation="0.1s" data-wow-delay="0.1s" >
                     <!-- <img class="logo-small" alt="" src="./resources/core/images/logo.png" width="150" height="23"> <-->
                         <h2>decorpot</h2>
-                    </-->
-                    <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, iste. Autem, perspiciatis odio id, a, repudiandae delectus similique dolorem nisi et, iste numquam iusto maiores reiciendis temporibus quaerat amet. Molestias.
+                     Decorpot offers comprehensive solutions for all your interior design needs. We have operations in Bangalore from last 7 years and have completed multiple projects in residential and commercial interiors which includes Bungalows, Duplexes, and flats.
                 </div><!-- 
                 <div class="col-md-2 col-md-offset-1 col-sm-6">
                      <div class="widget widget_recent_post">
@@ -130,13 +129,13 @@
                 </div> -->
                 <div class="col-md-4 col-sm-6 wow slideInUp" data-wow-animation="0.1s" data-wow-delay="0.1s">
                     <div class="widget widget_recent_post">
-                        <h3>Latest News</h3>
+                        <h3>Sitemap</h3>
                         <ul>
-                            <li><a href="#">5 Things That Take a Room from Good to Great</a></li>
-                            <li><a href="#">Functional and Stylish Wall-to-Wall Shelves</a></li>
-                            <li><a href="#">9 Unique and Unusual Ways to Display Your TV</a></li>
-                            <li><a href="#">The 5 Secrets to Pulling Off Simple, Minimal Design</a></li>
-                            <li><a href="#">How to Make a Huge Impact With Multiples</a></li>
+                            <li><a ui-sref="home">Home</a></li>
+                            <li><a ui-sref="apartments">Apartments</a></li>
+                            <!-- <li><a href="#"></a></li> -->
+                            <li><a ui-sref="pastWorks">Past Works</a></li>
+                            <li><a ui-sref="contact">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
