@@ -22,6 +22,7 @@ import com.decorpot.datasource.repository.KidsBedroomRepository;
 import com.decorpot.datasource.repository.KitchenRepository;
 import com.decorpot.datasource.repository.MasterBedroomRepository;
 import com.decorpot.rest.model.Addon;
+import com.decorpot.rest.model.Bedroom;
 import com.decorpot.utils.DataCache;
 import com.decorpot.utils.DecorpotConstants;
 import com.decorpot.utils.ImageProcessorService;
@@ -168,7 +169,6 @@ public class SpaceService {
 	@decorpotTx
 	public List<com.decorpot.rest.model.Kitchen> getAllKitchens() {
 
-		long start = System.currentTimeMillis();
 		List<com.decorpot.rest.model.Kitchen> kitchens = new ArrayList<>();
 		if (DataCache.getInstance().get(DecorpotConstants.KITCHEN + DecorpotConstants.ALL) != null) {
 			kitchens = (List<com.decorpot.rest.model.Kitchen>) DataCache.getInstance()
@@ -184,8 +184,6 @@ public class SpaceService {
 			DataCache.getInstance().put(DecorpotConstants.KITCHEN + DecorpotConstants.ALL, kitchens);
 
 		}
-		long end = System.currentTimeMillis();
-		System.out.println("time take -> " + (end-start));
 		return kitchens;
 	}
 
@@ -238,6 +236,25 @@ public class SpaceService {
 		return kitchen;
 	}
 
+	@decorpotTx
+	public List<com.decorpot.rest.model.Bedroom> getAllMasterBedrooms() {
+		List<com.decorpot.rest.model.Bedroom> bedrooms = new ArrayList<>();
+		if (DataCache.getInstance().get(DecorpotConstants.MASTER_BEDROOM + DecorpotConstants.ALL) != null) {
+			bedrooms = (List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
+					.get(DecorpotConstants.MASTER_BEDROOM + DecorpotConstants.ALL);
+		} else {
+
+			List<MasterBedroom> list = masterBedroomRepository.findAll();
+			if (!CollectionUtils.isNullOrEmpty(list)) {
+				for (MasterBedroom m : list) {
+					bedrooms.add(masterbedroomRepoToModelConverter(m));
+				}
+			}
+			DataCache.getInstance().put(DecorpotConstants.MASTER_BEDROOM + DecorpotConstants.ALL, bedrooms);
+
+		}
+		return bedrooms;
+	}
 	private com.decorpot.rest.model.Kitchen kitchenRepoToRestModelConverter(Kitchen k) {
 		com.decorpot.rest.model.Kitchen kitchen = new com.decorpot.rest.model.Kitchen();
 		kitchen.setBasePrice(k.getBasePrice());
@@ -248,6 +265,42 @@ public class SpaceService {
 		kitchen.setTitle(k.getTitle());
 		kitchen.setId(k.getId());
 		return kitchen;
+	}
+	
+	private com.decorpot.rest.model.Bedroom masterbedroomRepoToModelConverter(MasterBedroom bedroom) {
+		com.decorpot.rest.model.Bedroom bedroom2 = new Bedroom();
+		bedroom2.setBasePrice(bedroom.getBasePrice());
+		bedroom2.setDescription(bedroom.getDescription());
+		bedroom2.setImages(Arrays.asList(bedroom.getImages().split(",")));
+		bedroom2.setThemes(Arrays.asList(bedroom.getThemes().split(",")));
+		bedroom2.setTitle(bedroom.getTitle());
+		bedroom2.setWardrobeType(bedroom.getWardrobeType());
+		bedroom2.setId(bedroom.getId());
+		return bedroom2;
+	}
+	
+	private com.decorpot.rest.model.Bedroom guestbedroomRepoToModelConverter(GuestBedroom bedroom) {
+		com.decorpot.rest.model.Bedroom bedroom2 = new Bedroom();
+		bedroom2.setBasePrice(bedroom.getBasePrice());
+		bedroom2.setDescription(bedroom.getDescription());
+		bedroom2.setImages(Arrays.asList(bedroom.getImages().split(",")));
+		bedroom2.setThemes(Arrays.asList(bedroom.getThemes().split(",")));
+		bedroom2.setTitle(bedroom.getTitle());
+		bedroom2.setWardrobeType(bedroom.getWardrobeType());
+		bedroom2.setId(bedroom.getId());
+		return bedroom2;
+	}
+	
+	private com.decorpot.rest.model.Bedroom kidsbedroomRepoToModelConverter(KidsBedroom bedroom) {
+		com.decorpot.rest.model.Bedroom bedroom2 = new Bedroom();
+		bedroom2.setBasePrice(bedroom.getBasePrice());
+		bedroom2.setDescription(bedroom.getDescription());
+		bedroom2.setImages(Arrays.asList(bedroom.getImages().split(",")));
+		bedroom2.setThemes(Arrays.asList(bedroom.getThemes().split(",")));
+		bedroom2.setTitle(bedroom.getTitle());
+		bedroom2.setWardrobeType(bedroom.getWardrobeType());
+		bedroom2.setId(bedroom.getId());
+		return bedroom2;
 	}
 
 	private Addon addonRepoToRestConverter(com.decorpot.datasource.models.Addon a) {
