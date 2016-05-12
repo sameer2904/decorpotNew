@@ -1,11 +1,14 @@
 package com.decorpot.rest.model;
 
+import java.util.List;
+
 public class ApartmentConfigs {
 
 	private int id;
 	private String apartmentName;
 	private String image;
 	private String address;
+	private List<ApartmentBaseConfig> apartmentBaseConfigs;
 	
 	public String getApartmentName() {
 		return apartmentName;
@@ -30,6 +33,12 @@ public class ApartmentConfigs {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public List<ApartmentBaseConfig> getApartmentBaseConfigs() {
+		return apartmentBaseConfigs;
+	}
+	public void setApartmentBaseConfigs(List<ApartmentBaseConfig> apartmentBaseConfigs) {
+		this.apartmentBaseConfigs = apartmentBaseConfigs;
 	}
 	
 }

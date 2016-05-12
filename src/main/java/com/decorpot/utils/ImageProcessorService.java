@@ -46,13 +46,15 @@ public class ImageProcessorService {
 	    if(file != null) {
 	        s3Uploader.s3PutImage(
                     DecorpotConstants.FLOOR_PLAN_LOCATION, file);
+	        file.delete();
 	    }
 	}
 	
 	public void uploadApartmentImages(File file) {
 	    if(file != null) {
 	        s3Uploader.s3PutImage(
-                    DecorpotConstants.FLOOR_PLAN_LOCATION, file);
+                    DecorpotConstants.APARTMENT_IMAGE_LOCATION, file);
+	        file.delete();
 	    }
 	}
 	

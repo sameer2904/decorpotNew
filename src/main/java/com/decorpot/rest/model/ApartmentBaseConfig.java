@@ -1,6 +1,7 @@
 package com.decorpot.rest.model;
 
 public class ApartmentBaseConfig {
+	
     protected String apartmentName;
     protected String planName;
     protected String apartmentType;
@@ -31,5 +32,5 @@ public class ApartmentBaseConfig {
     public void setFloorPlan(String floorPlan) {
         this.floorPlan = floorPlan;
     }
-    
+	
 }

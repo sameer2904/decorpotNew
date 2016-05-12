@@ -340,7 +340,7 @@ decorpotCtrls.controller('uploadApartmentController', ['$scope', 'Upload', 'uplo
 			Upload.upload({
                 url: 'config/apartmentImage',
                 data:{
-                file: f,
+                file: $scope.file,
                 }
            });
 		})
@@ -396,7 +396,7 @@ decorpotCtrls.controller('uploadFloorPlanController', [
                                                 		  Upload.upload({
                                                 			  url: 'config/floorPlans/',
                                                 			  data:{
-                                                				  	file: f,
+                                                				  	file: $scope.file,
                                                 			  	}
                                                 		  	});
                                                 	  })
@@ -414,10 +414,10 @@ decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', f
 
 }]);
 decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
-	var Name = $filter('underscoreless')($stateParams.apartmentName);
+	var name = $filter('underscoreless')($stateParams.apartmentName);
 	apartmentService.getAllFloorPlans(name)
 	.success(function(data) {
-		$scope.floopPlans = data;
+		$scope.floopPlans = data.apartmentBaseConfigs;
 	});
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartmentService) {

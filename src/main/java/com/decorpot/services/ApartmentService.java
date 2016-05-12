@@ -110,9 +110,12 @@ public class ApartmentService {
 		return configs;
 	}
 
-	public List<ApartmentBaseConfig> getAllFloorPlanByApartmentName(String apartmentName) {
+	public ApartmentConfigs getAllFloorPlanByApartmentName(String apartmentName) {
 		com.decorpot.datasource.models.ApartmentConfig apartmentConfigs = apartmentConfigRepository
 				.findByApartmentName(apartmentName);
+
+		ApartmentConfigs configs = new ApartmentConfigs();
+
 		List<ApartmentBaseConfig> apartmentBaseConfigs = new ArrayList<>();
 		List<Config3BHK> config3bhks = config3bhkRepository.findByApartmentId(apartmentConfigs.getId());
 		List<com.decorpot.datasource.models.Config2BHK> config2bhks = config2BHKRepository
@@ -140,7 +143,13 @@ public class ApartmentService {
 				apartmentBaseConfigs.add(baseConfig);
 			});
 		}
-		return apartmentBaseConfigs;
+		configs.setAddress(apartmentConfigs.getAddress());
+		configs.setApartmentName(apartmentName);
+		configs.setImage(DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.APARTMENT_IMAGE_LOCATION
+				+ apartmentConfigs.getImage());
+		configs.setId(apartmentConfigs.getId());
+		configs.setApartmentBaseConfigs(apartmentBaseConfigs);
+		return configs;
 	}
 
 }

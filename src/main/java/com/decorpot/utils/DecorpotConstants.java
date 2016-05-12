@@ -9,7 +9,7 @@ public interface DecorpotConstants {
 	String DECORPOT_TRANSACTION_MANAGER = "decorpotTransactionManager";
 	String BUCKET = "decorpotreponew";
 	String SPACE_IMAGE_LOCATION = "spaces/";
-	String FLOOR_PLAN_LOCATION = "floorplane/";
+	String FLOOR_PLAN_LOCATION = "floorplans/";
 	String APARTMENT_IMAGE_LOCATION = "apartmentImages/";
 	String PAST_WORK_IMAGE_LOCATION = "pastworks/";
 	List<String> spaceImageSizes = Arrays.asList(new String[]{"1900x1080", "475x270"});
