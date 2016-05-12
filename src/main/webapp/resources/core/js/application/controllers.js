@@ -267,37 +267,22 @@ decorpotCtrls.controller('pastWorksController', ['$scope', 'pastWorkService', fu
     })
 }]);
 // looks controller
-decorpotCtrls.controller('looksController', ['$scope', '$stateParams', function($scope, $stateParams) {
-    $scope.looks = [{
-            "id":"1",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"2",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"3",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"4",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"5",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"6",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        }]
+decorpotCtrls.controller('looksController', ['$scope', '$stateParams', 'spaceService', function($scope, $stateParams, spaceService) {
+    if($stateParams.looksCategory != 'all') {
+    	spaceService.getAllLooks($stateParams.looksCategory)
+    	.then(function(data) {
+    		$scope.looks = data;
+    		$scope.space = $stateParams.looksCategory;
+    	})
+    }
+}]);
+
+decorpotCtrls.controller('lookController', ['$scope', '$stateParams', 'spaceService', function($scope, $stateParams, spaceService) {
+    
+	spaceService.getLookById($stateParams.space, $stateParams.id)
+	.then(function(data) {
+		$scope.space = data;
+	})
 }]);
 
 decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {

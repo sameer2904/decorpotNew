@@ -87,11 +87,11 @@
                             </li>
                             <li><a noui-sref="">Looks</a>
                                 <ul>
-                                    <li><a ui-sref="looks({looksCategory : 'Living+Dining'})">Living + Dining</a></li>
-                                    <li><a ui-sref="looks({looksCategory : 'Kitchen'})">Kitchen</a></li>
-                                    <li><a ui-sref="looks({looksCategory : 'MasterBedRoom'})">Master Bedroom</a></li>
-                                    <li><a ui-sref="looks({looksCategory : 'GuestBedRoom'})">Guest Bedroom</a></li>
-                                    <li><a ui-sref="looks({looksCategory : 'KidsBedRoom'})">Kids Bedroom</a></li>
+                                    <li><a ui-sref="looks({looksCategory : 'living_dining'})">Living + Dining</a></li>
+                                    <li><a ui-sref="looks({looksCategory : 'kitchens'})">Kitchen</a></li>
+                                    <li><a ui-sref="looks({looksCategory : 'master_bedrooms'})">Master Bedroom</a></li>
+                                    <li><a ui-sref="looks({looksCategory : 'guest_bedrooms'})">Guest Bedroom</a></li>
+                                    <li><a ui-sref="looks({looksCategory : 'kids_bedrooms'})">Kids Bedroom</a></li>
                                 </ul>
                             </li>
                             <li><a ui-sref="pastWorks">Completed Projects</a></li>

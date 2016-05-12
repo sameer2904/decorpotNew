@@ -80,15 +80,15 @@ services.service('apartmentService',['$http', function($http){
 
 services.service('spaceService',['$http', function($http){
 	return {
-		getAllKicthen: function() {
+		getAllLooks: function(space) {
 			return $http({
-				url: 'space/kitchen',
+				url: 'space/' + space,
 				method: 'get'
 			})
 		},
-		getKitchenById: function(id) {
+		getLookById: function(space, id) {
 			return $http({
-				url: 'space/kitchen/' + id,
+				url: 'space/' + space + '/' + id,
 				method: 'get'
 			})
 		}

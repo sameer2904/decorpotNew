@@ -32,7 +32,13 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url: '/looks/:looksCategory',
 				templateUrl: 'resources/partials/looks.html',
 				controller: 'looksController'
-			}).state('contact', {
+			}).state('looks.look', {
+				url: '/:id',
+				templateUrl: 'resources/partials/look.html',
+				controller: 'lookController',
+				params: {space: ''}
+			})
+			.state('contact', {
 				url : '/contact',
 				templateUrl : 'resources/partials/contact.html',
 				controller : 'contactController'
@@ -68,15 +74,7 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/:spaceIds',
 				templateUrl : 'resources/partials/apartment.html',
 				controller : 'apartmentController'
-			}).state('spaces', {
-		        url: '/spaces/:param',
-		        templateUrl: 'resources/partials/spaces.html',
-				controller: 'spacesController'
-		    }).state('spaces.space', {
-		        url: '/:id',
-		        templateUrl: 'resources/partials/space.html',
-				controller: 'spaceController'
-		    });
+			});
 		} ]);
 decorpot.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
