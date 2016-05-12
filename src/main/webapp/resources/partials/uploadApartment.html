@@ -1,50 +1,42 @@
 <div id="uploadApartment">
-	<div class="jumbotron">
-		<div class="container">
-			<h1>DESIGN YOUR APARTMENT</h1>
-		</div>
-	</div>
-	<form name="myForm">
-		<div class="list-group container">
-			<div class="list-group-item row">
-				<h2>General Apartment Details</h2>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Apartment Title</label><i
-							ng-show="myForm.apartmentName.$error.required">*required</i> <input
-							type="text" class="form-control" name="apartmentName"
-							ng-model="apartmentName" size="30" required />
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Address</label><i ng-show="myForm.address.$error.required">*required</i>
-						<input type="text" class="form-control" name="address"
-							ng-model="address" size="30" required />
-					</div>
-				</div>
-			</div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>DESIGN YOUR APARTMENT</h1>
+        </div>
+    </div>
+    <form name="myForm">
+        <div class="list-group container">
+            <div class="list-group-item row">
+                <h2>General Apartment Details</h2>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Apartment Title</label><i ng-show="myForm.apartmentName.$error.required">*required</i>
+                        <input type="text" class="form-control" name="apartmentName" ng-model="apartmentName" size="30" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Address</label><i ng-show="myForm.address.$error.required">*required</i>
+                        <input type="text" class="form-control" name="address" ng-model="address" size="30" required />
+                    </div>
+                </div>
+            </div>
 
-			<div class="list-group-item row ">
-				<div class="col-md-4">
-					<h2>Upload Floor Plan:</h2>
-					<i ng-show="myForm.file.$error.maxSize">File too large
-						{{errorFile.size / 1000|number:1}}KB: max 2700KB</i> <input
-						type="file" ngf-select ng-model="file"
-						class="form-control col-md-4" name="file" accept="image/*"
-						ngf-max-size="2700KB" required ngf-model-invalid="errorFile">
-					<br>
-					<br> <img ng-show="myForm.file.$valid" class="img-thumbnail"
-						ngf-thumbnail="file" class="thumb" height="200" width="200"><br>
-					<br>
-					<button ng-click="file = null" class="btn btn-warning"
-						ng-show="file">Remove</button>
-				</div>
-			</div>
-			<div class="list-group-item row ">
-				<button ng-disabled="!myForm.$valid"
-					class="btn btn-success col-md-4" ng-click="uploadData()">SUBMIT</button>
-			</div>
-		</div>
-	</form>
+            <div class="list-group-item row ">
+                <div class="col-md-4">
+                    <h2>Upload Floor Plan:</h2>
+                    <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000|number:1}}KB: max 2700KB</i>
+                    <input type="file" ngf-select ng-model="file" class="form-control col-md-4" name="file" accept="image/*" ngf-max-size="2700KB" required ngf-model-invalid="errorFile">
+                    <br>
+                    <br> <img ng-show="myForm.file.$valid" class="img-thumbnail" ngf-thumbnail="file" class="thumb" height="200" width="200">
+                    <br>
+                    <br>
+                    <button ng-click="file = null" class="btn btn-warning" ng-show="file">Remove</button>
+                </div>
+            </div>
+            <div class="list-group-item row ">
+                <button ng-disabled="!myForm.$valid" class="btn btn-success col-md-4" ng-click="uploadData()">SUBMIT</button>
+            </div>
+        </div>
+    </form>
 </div>

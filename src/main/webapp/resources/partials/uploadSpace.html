@@ -1,126 +1,116 @@
 <div class="row">
-	<div class="col-md-12" style="margin-top:100px; margin-left:50px">
-		<form name="myForm">
-			<fieldset>
-				<legend>upload a space</legend>
-				<div class="row">
-					<div class="col-md-12">Select Space Type</div>
-				</div>
-				<div class="row" ng-repeat="space in spaces">
-					<div class="col-md-12">
-						<label> <input type="radio" name="spaceType"
-							ng-model="$parent.spaceType" value="{{space}}" /> <span>{{space}}</span>
-						</label>
-					</div>
-				</div>
+    <div class="col-md-12" style="margin-top:100px; margin-left:50px">
+        <form name="myForm">
+            <fieldset>
+                <legend>upload a space</legend>
+                <div class="row">
+                    <div class="col-md-12">Select Space Type</div>
+                </div>
+                <div class="row" ng-repeat="space in spaces">
+                    <div class="col-md-12">
+                        <label>
+                            <input type="radio" name="spaceType" ng-model="$parent.spaceType" value="{{space}}" /> <span>{{space}}</span>
+                        </label>
+                    </div>
+                </div>
 
-				<div ng-show="spaceType">
-					<div class="row">
-						<div class="col-md-12">
-							Title : <input type="text" name="title" ng-model="title"
-								size="30" required /> <i ng-show="myForm.title.$error.required">*required</i>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							Description :
-							<textarea type="text" name="description" ng-model="description"
-								required />
-							<i ng-show="myForm.description.$error.required">*required</i>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							Base price : <input type="number" name="basePrice"
-								ng-model="basePrice" size="30" required /> <i
-								ng-show="myForm.basePrice.$error.required">*required</i>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							Height : <input type="number" name="ht" ng-model="ht" size="30"
-								required /> <i ng-show="myForm.ht.$error.required">*required</i>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							Width : <input type="number" name="wdth" ng-model="wdth"
-								size="30" required /> <i ng-show="myForm.wdth.$error.required">*required</i>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">Select Themes</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div ng-repeat="theme in themes">
-								<input type="checkbox" checkbox-group /> <label>{{theme.value}}</label>
-							</div>
-						</div>
-					</div>
-					<div ng-show="spaceType == 'kitchen'">
-						<div class="row">
-							<div class="col-md-12">Select Kitchen Type</div>
-						</div>
-						<div class="row" ng-repeat="k in kitchenTypes">
-							<div class="col-md-12">
-								<label> <input type="radio" name="kitchenType"
-									ng-model="$parent.kitchenType" value="{{k}}"
-									ng-required="!$parent.kitchenType && ($parent.spaceType=='kitchen')" />
-									<span>{{k}}</span>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div ng-show="spaceType.indexOf('bedroom')!=-1">
-						<div class="row">
-							<div class="col-md-12">Select Wardrobe Type</div>
-						</div>
-						<div class="row" ng-repeat="w in wardrobeTypes">
-							<div class="col-md-12">
-								<label> <input type="radio" name="wardrobeType"
-									ng-model="$parent.wardrobeType" value="{{w}}"
-									ng-required="!$parent.wardrobeType && (spaceType.indexOf('bedroom')!=-1)" />
-									<span>{{w}}</span>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">Addons : </div>
-					</div>
-					<div class="row" ng-repeat="item in items">
-						 <label class="col-md-4"
-							for="singleSelect"> Select Addon: </label><select
-							class="col-md-4" name="singleSelect" ng-model="item.addon">
-							<option value="{{a}}" ng-repeat="a in addons">{{a}}</option>
-						</select>
-						<input class="col-md-4" type="text"
-							placeholder="{{item.questionPlaceholder}}"
-							ng-model="item.price">
-					</div>
-					<button class="row" ng-click="add()">New Item</button>
+                <div ng-show="spaceType">
+                    <div class="row">
+                        <div class="col-md-12">
+                            Title :
+                            <input type="text" name="title" ng-model="title" size="30" required /> <i ng-show="myForm.title.$error.required">*required</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            Description :
+                            <textarea type="text" name="description" ng-model="description" required />
+                            <i ng-show="myForm.description.$error.required">*required</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            Base price :
+                            <input type="number" name="basePrice" ng-model="basePrice" size="30" required /> <i ng-show="myForm.basePrice.$error.required">*required</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            Height :
+                            <input type="number" name="ht" ng-model="ht" size="30" required /> <i ng-show="myForm.ht.$error.required">*required</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            Width :
+                            <input type="number" name="wdth" ng-model="wdth" size="30" required /> <i ng-show="myForm.wdth.$error.required">*required</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">Select Themes</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div ng-repeat="theme in themes">
+                                <input type="checkbox" checkbox-group />
+                                <label>{{theme.value}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="spaceType == 'kitchen'">
+                        <div class="row">
+                            <div class="col-md-12">Select Kitchen Type</div>
+                        </div>
+                        <div class="row" ng-repeat="k in kitchenTypes">
+                            <div class="col-md-12">
+                                <label>
+                                    <input type="radio" name="kitchenType" ng-model="$parent.kitchenType" value="{{k}}" ng-required="!$parent.kitchenType && ($parent.spaceType=='kitchen')" />
+                                    <span>{{k}}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="spaceType.indexOf('bedroom')!=-1">
+                        <div class="row">
+                            <div class="col-md-12">Select Wardrobe Type</div>
+                        </div>
+                        <div class="row" ng-repeat="w in wardrobeTypes">
+                            <div class="col-md-12">
+                                <label>
+                                    <input type="radio" name="wardrobeType" ng-model="$parent.wardrobeType" value="{{w}}" ng-required="!$parent.wardrobeType && (spaceType.indexOf('bedroom')!=-1)" />
+                                    <span>{{w}}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">Addons : </div>
+                    </div>
+                    <div class="row" ng-repeat="item in items">
+                        <label class="col-md-4" for="singleSelect"> Select Addon: </label>
+                        <select class="col-md-4" name="singleSelect" ng-model="item.addon">
+                            <option value="{{a}}" ng-repeat="a in addons">{{a}}</option>
+                        </select>
+                        <input class="col-md-4" type="text" placeholder="{{item.questionPlaceholder}}" ng-model="item.price">
+                    </div>
+                    <button class="row" ng-click="add()">New Item</button>
 
-					<div class="row">
-						<div class="col-md-12">
-							Photo: <input type="file" ngf-select ng-model="files"
-								ngf-multiple="true" name="file" accept="image/*"
-								ngf-max-size="7000KB" required ngf-model-invalid="errorFile">
-							<br> <i ng-show="myForm.file.$error.maxSize">File too
-								large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img
-								ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb"
-								height="200" width="200" ng-repeat="file in files">
-							<button ng-click="files = null" ng-show="files">Remove</button>
-						</div>
-					</div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            Photo:
+                            <input type="file" ngf-select ng-model="files" ngf-multiple="true" name="file" accept="image/*" ngf-max-size="7000KB" required ngf-model-invalid="errorFile">
+                            <br> <i ng-show="myForm.file.$error.maxSize">File too
+								large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb" height="200" width="200" ng-repeat="file in files">
+                            <button ng-click="files = null" ng-show="files">Remove</button>
+                        </div>
+                    </div>
 
-					<div class="row">
-						<button ng-disabled="!myForm.$valid" ng-click="uploadData()">Submit</button>
-					</div>
+                    <div class="row">
+                        <button ng-disabled="!myForm.$valid" ng-click="uploadData()">Submit</button>
+                    </div>
 
-				</div>
-			</fieldset>
-		</form>
-	</div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
-

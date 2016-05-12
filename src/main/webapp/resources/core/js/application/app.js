@@ -2,7 +2,7 @@
  * @author govardhan
  */
 
-var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload' ]);
+var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload','angular-loading-bar' ]);
 
 decorpot.run(['$rootScope', '$state',function($rootScope, $state) {
 	$rootScope.state = $state.this;
@@ -74,4 +74,6 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				controller: 'spaceController'
 		    });
 		} ]);
-
+decorpot.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+  }])
