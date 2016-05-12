@@ -218,7 +218,7 @@ public class SpaceService {
 		} else if (DataCache.getInstance().get(DecorpotConstants.KITCHEN + DecorpotConstants.ALL) != null) {
 			List<com.decorpot.rest.model.Kitchen> kitchens = (List<com.decorpot.rest.model.Kitchen>) DataCache
 					.getInstance().get(DecorpotConstants.KITCHEN + DecorpotConstants.ALL);
-			kitchens.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
+			kitchen = kitchens.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
 			if (kitchen != null) {
 				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(kitchen.getId());
 				kitchen.setAddons(
@@ -255,6 +255,34 @@ public class SpaceService {
 		}
 		return bedrooms;
 	}
+
+	@decorpotTx
+	public com.decorpot.rest.model.Bedroom getGuestBedroomById(int id) {
+		com.decorpot.rest.model.Bedroom bedroom = null;
+		if (DataCache.getInstance().get(DecorpotConstants.GUEST_BEDROOM + id) != null) {
+			bedroom = (com.decorpot.rest.model.Bedroom) DataCache.getInstance()
+					.get(DecorpotConstants.GUEST_BEDROOM + id);
+		} else if (DataCache.getInstance().get(DecorpotConstants.GUEST_BEDROOM + DecorpotConstants.ALL) != null) {
+			List<com.decorpot.rest.model.Bedroom> bedrooms = (List<com.decorpot.rest.model.Bedroom>) DataCache
+					.getInstance().get(DecorpotConstants.GUEST_BEDROOM + DecorpotConstants.ALL);
+			bedroom = bedrooms.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
+			if (bedroom != null) {
+				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
+				bedroom.setAddons(
+						addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+			}
+			DataCache.getInstance().put(DecorpotConstants.GUEST_BEDROOM + id, bedroom);
+		} else {
+			GuestBedroom guestBedroom = guestBedroomRepository.findOne(id);
+			bedroom = guestbedroomRepoToModelConverter(guestBedroom);
+			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
+			bedroom.setAddons(
+					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+
+		}
+		return bedroom;
+	}
+
 	private com.decorpot.rest.model.Kitchen kitchenRepoToRestModelConverter(Kitchen k) {
 		com.decorpot.rest.model.Kitchen kitchen = new com.decorpot.rest.model.Kitchen();
 		kitchen.setBasePrice(k.getBasePrice());
@@ -266,7 +294,7 @@ public class SpaceService {
 		kitchen.setId(k.getId());
 		return kitchen;
 	}
-	
+
 	private com.decorpot.rest.model.Bedroom masterbedroomRepoToModelConverter(MasterBedroom bedroom) {
 		com.decorpot.rest.model.Bedroom bedroom2 = new Bedroom();
 		bedroom2.setBasePrice(bedroom.getBasePrice());
@@ -278,7 +306,7 @@ public class SpaceService {
 		bedroom2.setId(bedroom.getId());
 		return bedroom2;
 	}
-	
+
 	private com.decorpot.rest.model.Bedroom guestbedroomRepoToModelConverter(GuestBedroom bedroom) {
 		com.decorpot.rest.model.Bedroom bedroom2 = new Bedroom();
 		bedroom2.setBasePrice(bedroom.getBasePrice());
@@ -290,7 +318,7 @@ public class SpaceService {
 		bedroom2.setId(bedroom.getId());
 		return bedroom2;
 	}
-	
+
 	private com.decorpot.rest.model.Bedroom kidsbedroomRepoToModelConverter(KidsBedroom bedroom) {
 		com.decorpot.rest.model.Bedroom bedroom2 = new Bedroom();
 		bedroom2.setBasePrice(bedroom.getBasePrice());
