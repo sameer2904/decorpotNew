@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.decorpot.rest.model.Bedroom;
 import com.decorpot.rest.model.Kitchen;
 import com.decorpot.services.SpaceService;
 
@@ -27,4 +28,35 @@ public class SpaceController {
 	public Kitchen getAllKitchens(@PathVariable("id") int id) {
 		return spaceService.getKitchensById(id);
 	}
+	
+	@RequestMapping(value = "/master_bedroom", method = RequestMethod.GET)
+	public List<Bedroom> getAllMasterBedrooms() {
+		return spaceService.getAllMasterBedrooms();
+	}
+	
+	@RequestMapping(value = "/master_bedroom/{id}", method = RequestMethod.GET)
+	public Bedroom getMasterBedroomById(@PathVariable("id") int id) {
+		return spaceService.getMasterBedroomById(id);
+	}
+	
+	@RequestMapping(value = "/guest_bedroom", method = RequestMethod.GET)
+	public List<Bedroom> getAllGuestBedrooms() {
+		return spaceService.getAllGuestBedrooms();
+	}
+	
+	@RequestMapping(value = "/guest_bedroom/{id}", method = RequestMethod.GET)
+	public Bedroom getGuestBedroomById(@PathVariable("id") int id) {
+		return spaceService.getGuestBedroomById(id);
+	}
+	
+	@RequestMapping(value = "/kids_bedroom", method = RequestMethod.GET)
+	public List<Bedroom> getAllKidsBedrooms() {
+		return spaceService.getAllKidsBedrooms();
+	}
+	
+	@RequestMapping(value = "/kids_bedroom/{id}", method = RequestMethod.GET)
+	public Bedroom getKidsBedroomById(@PathVariable("id") int id) {
+		return spaceService.getKidsBedroomById(id);
+	}
+	
 }

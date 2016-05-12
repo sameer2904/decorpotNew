@@ -23,7 +23,12 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url: '/pastWorks',
 				templateUrl: 'resources/partials/pastWorks.html',
 				controller: 'pastWorksController'
-			}).state('looks', {
+			}).state('pastWorks.pastWork', {
+				url: '/{id}',
+				templateUrl: 'resources/partials/pastWork.html',
+				controller: 'pastWorkController'
+			})
+			.state('looks', {
 				url: '/looks/:looksCategory',
 				templateUrl: 'resources/partials/looks.html',
 				controller: 'looksController'
@@ -56,7 +61,6 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				controller : 'floorPlansController'
 			})
 			.state('apartments.floorplans.packages', {
-				
 				url : '/:apartmentName/:floorplanId',
 				templateUrl : 'resources/partials/apartmentPackages.html',
 				controller : 'apartmentPackagesController'
