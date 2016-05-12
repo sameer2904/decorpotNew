@@ -268,11 +268,17 @@ decorpotCtrls.controller('pastWorksController', ['$scope', 'pastWorkService', fu
 }]);
 // looks controller
 decorpotCtrls.controller('looksController', ['$scope', '$stateParams', 'spaceService', function($scope, $stateParams, spaceService) {
+	$scope.space = $stateParams.looksCategory;
     if($stateParams.looksCategory != 'all') {
     	spaceService.getAllLooks($stateParams.looksCategory)
     	.then(function(data) {
-    		$scope.looks = data;
-    		$scope.space = $stateParams.looksCategory;
+    		var looks = data.data;
+    		angular.forEach(looks, function(look, index) {
+    			look.thumbNail = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/475x270" + look.images[0];
+    		})
+    		$scope.looks = data.data;
+    		
+    		
     	})
     }
 }]);
@@ -281,7 +287,7 @@ decorpotCtrls.controller('lookController', ['$scope', '$stateParams', 'spaceServ
     
 	spaceService.getLookById($stateParams.space, $stateParams.id)
 	.then(function(data) {
-		$scope.space = data;
+		$scope.space = data.data;
 	})
 }]);
 

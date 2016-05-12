@@ -84,13 +84,13 @@ services.service('spaceService',['$http', function($http){
 			return $http({
 				url: 'space/' + space,
 				method: 'get'
-			})
+			});
 		},
-		getLookById: function(space, id) {
+		getAllFloorPlans: function(apartmentName) {
 			return $http({
-				url: 'space/' + space + '/' + id,
+				url: 'apartments/' + apartmentName,
 				method: 'get'
-			})
+			});
 		}
 	}
 }] );
