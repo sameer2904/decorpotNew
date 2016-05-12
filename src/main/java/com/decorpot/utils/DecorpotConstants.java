@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface DecorpotConstants {
 	
+	//aws keys
     String BUCKET_LOCATION = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/";
 	String DECORPOT_TRANSACTION_MANAGER = "decorpotTransactionManager";
 	String BUCKET = "decorpotreponew";
@@ -14,4 +15,24 @@ public interface DecorpotConstants {
 	String PAST_WORK_IMAGE_LOCATION = "pastworks/";
 	List<String> spaceImageSizes = Arrays.asList(new String[]{"1900x1080", "475x270"});
 	List<String>  pastWorkImageSizes = Arrays.asList(new String[]{"1900x1080", "475x270"});
+	
+	
+	//caching keys
+	String KITCHEN = "kitchen_";
+	String L_SHAPED = "L-shaped";
+	String U_SHAPED = "U-shaped";
+	
+	String MASTER_BEDROOM = "masterbedroom_";
+	String GUEST_BEDROOM = "guestbedroom_";
+	String KIDS_BEDROOM = "kidsbedroom";
+	String LIVING = "living_";
+	String DINING = "dining_";
+	
+	enum themes{
+		contemprory, modern
+	}
+	
+	String ALL = "all";
+	
+	
 }

@@ -5,12 +5,13 @@ import java.util.List;
 public abstract class Space {
 
 
+	private int id;
 	private String title;
 	private String description;
 	private double basePrice;
 	private double ht;
 	private double wdth;
-	private String themes;
+	private List<String> themes;
 	private List<Addon> addons;
 	private List<String> images;
 	public String getTitle() {
@@ -43,13 +44,13 @@ public abstract class Space {
 	public void setWdth(double wdth) {
 		this.wdth = wdth;
 	}
-	public String getThemes() {
+	
+	public List<String> getThemes() {
 		return themes;
 	}
-	public void setThemes(String themes) {
+	public void setThemes(List<String> themes) {
 		this.themes = themes;
 	}
-	
 	public List<String> getImages() {
 		return images;
 	}
@@ -69,6 +70,12 @@ public abstract class Space {
     public void setAddons(List<Addon> addons) {
         this.addons = addons;
     }
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 }

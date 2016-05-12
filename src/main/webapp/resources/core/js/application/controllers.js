@@ -66,7 +66,7 @@ decorpotCtrls.controller('uploadController', [
                 spaceData.basePrice = $scope.basePrice;
                 spaceData.ht = $scope.ht;
                 spaceData.wdth = $scope.wdth;
-                spaceData.themes = $scope.selectedThemes.join();
+                spaceData.themes = $scope.selectedThemes;
                 spaceData.addons = $scope.items;
                 
                 spaceData.images = [];
