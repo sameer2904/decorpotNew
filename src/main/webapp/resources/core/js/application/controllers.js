@@ -55,7 +55,7 @@ decorpotCtrls.controller('uploadController', [
             
             $scope.add = function () {
               $scope.items.push({ 
-            	addon: "",
+                addon: "",
                 price:0
               });
             };
@@ -71,13 +71,13 @@ decorpotCtrls.controller('uploadController', [
                 
                 spaceData.images = [];
                 if($scope.spaceType == 'kitchen'){
-                	spaceData.kitchenType = $scope.kitchenType;
+                    spaceData.kitchenType = $scope.kitchenType;
                 }else if($scope.spaceType.indexOf('bedroom') != -1){
-                	spaceData.wardrobeType = $scope.wardrobeType;
+                    spaceData.wardrobeType = $scope.wardrobeType;
                 }
                 
                 angular.forEach($scope.files, (file) => {
-                	spaceData.images.push(file.name);
+                    spaceData.images.push(file.name);
                 } );
                 
                 
@@ -95,7 +95,7 @@ decorpotCtrls.controller('uploadController', [
                         
                     })
                     .error((data) => {
-                    	alert("data not uploaded");
+                        alert("data not uploaded");
                     });
             }
         } ]);
@@ -139,44 +139,44 @@ decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pa
     // });
 
     // Carousel
-	$scope.owlCarouselPastWork1 = function(){
-		$('.owl-carousel1').owlCarousel({
-			items: 4,
-			loop:true,
-			slideSpeed : 1000,
-			autoPlay: 3000,
-			itemsDesktop: [1199, 4],
-			itemsDesktopSmall: [980, 3],
-			itemsTablet: [768, 3],
-			itemsTabletSmall: false,
-			itemsMobile: [479, 1],
-			navigation: false
-		});
-	};
-	$scope.owlCarouselPastWork2 = function(index){
-		console.log(index);
-		$('.owl-carousel2').owlCarousel({
-			items: 4,
-			loop:true,
-			slideSpeed : 1000,
-			autoPlay: 3000,
-			itemsDesktop: [1199, 4],
-			itemsDesktopSmall: [980, 3],
-			itemsTablet: [768, 3],
-			itemsTabletSmall: false,
-			itemsMobile: [479, 1],
-			navigation: false
-		});
-	};
-	
-	pastWorkService.getAllPastWork()
-	.success(function(data) {
-		
-		var len = data.length;
-		$scope.pastWorkData1 = data.slice(0, len/2);
-		$scope.pastWorkData2 = data.slice(len/2, len - 1);
-		
-	});
+    $scope.owlCarouselPastWork1 = function(){
+        $('.owl-carousel1').owlCarousel({
+            items: 4,
+            loop:true,
+            slideSpeed : 1000,
+            autoPlay: 3000,
+            itemsDesktop: [1199, 4],
+            itemsDesktopSmall: [980, 3],
+            itemsTablet: [768, 3],
+            itemsTabletSmall: false,
+            itemsMobile: [479, 1],
+            navigation: false
+        });
+    };
+    $scope.owlCarouselPastWork2 = function(index){
+        console.log(index);
+        $('.owl-carousel2').owlCarousel({
+            items: 4,
+            loop:true,
+            slideSpeed : 1000,
+            autoPlay: 3000,
+            itemsDesktop: [1199, 4],
+            itemsDesktopSmall: [980, 3],
+            itemsTablet: [768, 3],
+            itemsTabletSmall: false,
+            itemsMobile: [479, 1],
+            navigation: false
+        });
+    };
+    
+    pastWorkService.getAllPastWork()
+    .success(function(data) {
+        
+        var len = data.length;
+        $scope.pastWorkData1 = data.slice(0, len/2);
+        $scope.pastWorkData2 = data.slice(len/2, len - 1);
+        
+    });
     $('.carousel, #mycarousel-proj').carousel({
         interval: 6000,
         pause: "false"
@@ -247,16 +247,16 @@ decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pa
 // contact controller
 decorpotCtrls.controller('contactController', ['$scope', 'uploadService',function ($scope, uploadService) {
         $scope.submitEnquiry = function() {
-        	$scope.enquiryForm.floorPlan = $scope.file.name;
-        	uploadService.uploadEnquiry($scope.enquiryForm)
-        	.success(function(data){
-        		Upload.upload({
+            $scope.enquiryForm.floorPlan = $scope.file.name;
+            uploadService.uploadEnquiry($scope.enquiryForm)
+            .success(function(data){
+                Upload.upload({
                     url: '/enquiry/floorPlan',
                     data: {
                         file: $scope.file,
                     }
                 });
-        	})
+            })
         }
                                             }]);
 // project controller
@@ -302,16 +302,16 @@ decorpotCtrls.controller('looksController', ['$scope', '$stateParams', function(
 
 decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {
 
-	$scope.uploadData = function() {
-		var pastProjectData = {};
-		pastProjectData.apartmentName = $scope.apartmentName;
-		pastProjectData.mainImage = $scope.mainImage;
-		pastProjectData.images = [];
-		angular.forEach($scope.files, (file) => {
-			pastProjectData.images.push(file.name);
+    $scope.uploadData = function() {
+        var pastProjectData = {};
+        pastProjectData.apartmentName = $scope.apartmentName;
+        pastProjectData.mainImage = $scope.mainImage;
+        pastProjectData.images = [];
+        angular.forEach($scope.files, (file) => {
+            pastProjectData.images.push(file.name);
         } );
-		
-		uploadService.uploadPastWork(pastProjectData)
+        
+        uploadService.uploadPastWork(pastProjectData)
         .success(function(data) {
             angular.forEach($scope.files, f => {
                 Upload.upload({
@@ -324,44 +324,43 @@ decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploa
             
         })
         .error((data) => {
-        	alert("data not uploaded");
+            alert("data not uploaded");
         });
-	}
+    }
 }]);
 
 decorpotCtrls.controller('uploadApartmentController', ['$scope', 'Upload', 'uploadService', function($scope, Upload, uploadService) {
-	var apartmentConfig = {};
-	$scope.uploadData = function() {
-		apartmentConfig.apartmentName = $scope.apartmentName;
-		apartmentConfig.address = $scope.address;
-		apartmentConfig.image = $scope.file.name;
-		uploadService.uploadApartment(apartmentConfig)
-		.success(function(data) {
-			Upload.upload({
+    var apartmentConfig = {};
+    $scope.uploadData = function() {
+        apartmentConfig.apartmentName = $scope.apartmentName;
+        apartmentConfig.address = $scope.address;
+        apartmentConfig.image = $scope.file.name;
+        uploadService.uploadApartment(apartmentConfig)
+        .success(function(data) {
+            Upload.upload({
                 url: 'config/apartmentImage',
                 data:{
                 file: $scope.file,
                 }
            });
-		})
-	}
+        })
+    }
 }])
 decorpotCtrls.controller('uploadFloorPlanController', [
                                               '$scope',
                                               'Upload', 'uploadService', 'apartmentService',
                                               function($scope, Upload, uploadService, apartmentService) {
-                                            	  $scope.kitchenTypes = ['L-shaped', 'u-shaped'];
+                                                  $scope.kitchenTypes = ['L-shaped', 'u-shaped'];
                                                   $scope.wardrobeTypes = ['4-door', '6-door'];
                                                   $scope.apartmentTypes = ['2bhk', '3bhk'];
                                                   apartmentService.getAllApartments()
                                                   .success(function(data) {
-                                                	  $scope.apartmentNames = data.map(function(value, index){
-                                                		  return value.apartmentName;
-                                                	  })
+                                                      $scope.apartmentNames = data.map(function(value, index){
+                                                          return value.apartmentName;
+                                                      })
                                                   })
                                                   var apartmentConfig = {};
-                                                  $scope.uploadData = function() {
-                                                	  
+                                                  $scope.uploadData = function() {                                               	  
                                                 	  apartmentConfig.apartmentType = $scope.apartmentType;
                                                 	  apartmentConfig.apartmentName = $scope.apartmentName;
                                                 	  apartmentConfig.planName = $scope.planName;
@@ -401,7 +400,7 @@ decorpotCtrls.controller('uploadFloorPlanController', [
                                                 		  	});
                                                 	  })
                                                 	  .error((data) => {
-                                                      	alert("data not uploaded");
+                                                      	alert("data not uploaded"); 
                                                       });
                                                   }
                                               }]);
@@ -422,30 +421,30 @@ decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$
 	});
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartmentService) {
-	$scope.packages = [{
-		"apartmentName": "abc",
-		"apartmentType": "2bhk",
-		"basePrice": 100000,
-		"mainImage": "resources/core/images/apartments/apartments.jpg",
-		"spaceIds": "1,2,3,4,5"
-	},
-	{
-		"apartmentName": "xyz",
-		"apartmentType": "2bhk",
-		"basePrice": 200000,
-		"mainImage": "resources/core/images/apartments/apartments.jpg",
-		"spaceIds": "1,2,3,4,5"
-	}]
+    $scope.packages = [{
+        "apartmentName": "abc",
+        "apartmentType": "2bhk",
+        "basePrice": 100000,
+        "mainImage": "resources/core/images/apartments/apartments.jpg",
+        "spaceIds": "1,2,3,4,5"
+    },
+    {
+        "apartmentName": "xyz",
+        "apartmentType": "2bhk",
+        "basePrice": 200000,
+        "mainImage": "resources/core/images/apartments/apartments.jpg",
+        "spaceIds": "1,2,3,4,5"
+    }]
 }]);
 
 decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
-	alert();
+    alert();
 }]);
 
 decorpotCtrls.controller('spaceController', ['$scope','spaceService','$stateParams', '$filter', function($scope, spaceService,$stateParams, $filter) {
-	alert();
+    alert();
 }]);
 
 decorpotCtrls.controller('spacesController', ['$scope','spaceService','$stateParams', '$filter', function($scope, spaceService,$stateParams, $filter) {
-	alert();
+    alert();
 }]);

@@ -1,116 +1,102 @@
 <link rel="stylesheet" href="resources/core/css/application/contact.css">
 <div style="background: #f2f2f2;">
-	<div>
-		<div>
-			<div my-map=""></div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-1">
-			<div style="width: 98%; max-width: 500px; margin: 0 auto;">
-				<form class="form-horizontal" id="contactForm" action="#"
-					method="post" novalidate="novalidate">
-					<legend>Enquiry Form</legend>
-					<div class="form-group">
-						<!-- <label class="col-sm-2 control-label" for="Name">Name</label> -->
-						<div class="col-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="fa fa-user fa-fw"></i></span> <input name="Name"
-									class="form-control" id="Name" type="text"
-									placeholder="* Enter Name" data-bv-field="Name"
-									ng-model="enquiryForm.name">
-							</div>
-							<small class="help-block" style="display: none;"
-								data-bv-validator="notEmpty" data-bv-for="Name"
-								data-bv-result="NOT_VALIDATED">Your name is required</small>
-						</div>
-					</div>
+    <div>
+        <div>
+            <div my-map=""></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <div style="width: 98%; max-width: 500px; margin: 0 auto;">
+                <form class="form-horizontal" id="contactForm" action="#" method="post" novalidate="novalidate">
+                    <legend>Enquiry Form</legend>
+                    <div class="form-group">
+                        <!-- <label class="col-sm-2 control-label" for="Name">Name</label> -->
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i
+									class="fa fa-user fa-fw"></i></span>
+                                <input name="Name" class="form-control" id="Name" type="text" placeholder="* Enter Name" data-bv-field="Name" ng-model="enquiryForm.name">
+                            </div>
+                            <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Name" data-bv-result="NOT_VALIDATED">Your name is required</small>
+                        </div>
+                    </div>
 
-					<div class="form-group">
-						<!-- <label class="col-sm-2 control-label" for="Email">Email</label> -->
-						<div class="col-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="fa fa-envelope fa-fw"></i></span> <input name="Email"
-									class="form-control" id="Email" type="email"
-									placeholder="* Enter Email" data-bv-field="Email"
-									ng-model="enquiryForm.email">
-							</div>
-							<small class="help-block" style="display: none;"
-								data-bv-validator="notEmpty" data-bv-for="Email"
-								data-bv-result="NOT_VALIDATED">Your email is required</small><small
-								class="help-block" style="display: none;"
-								data-bv-validator="emailAddress" data-bv-for="Email"
-								data-bv-result="NOT_VALIDATED">Your email is not valid</small>
-						</div>
-					</div>
+                    <div class="form-group">
+                        <!-- <label class="col-sm-2 control-label" for="Email">Email</label> -->
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i
+									class="fa fa-envelope fa-fw"></i></span>
+                                <input name="Email" class="form-control" id="Email" type="email" placeholder="* Enter Email" data-bv-field="Email" ng-model="enquiryForm.email">
+                            </div>
+                            <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Email" data-bv-result="NOT_VALIDATED">Your email is required</small><small class="help-block" style="display: none;" data-bv-validator="emailAddress" data-bv-for="Email" data-bv-result="NOT_VALIDATED">Your email is not valid</small>
+                        </div>
+                    </div>
 
-					<div class="form-group">
-						<!-- <label class="col-sm-2 control-label" for="Phone">Phone</label> -->
-						<div class="col-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="fa fa-phone fa-fw"></i></span> <input name="Phone"
-									class="form-control" id="Phone" type="text"
-									placeholder="Enter Phone Number"
-									ng-model="enquiryForm.phoneNumber">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-upload fa-fw"></i></span>
- 							<input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" />
- 							<span class="input-group-addon fileUpload"><i class="fa fa-folder-open fa-fw"></i>
+                    <div class="form-group">
+                        <!-- <label class="col-sm-2 control-label" for="Phone">Phone</label> -->
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i
+									class="fa fa-phone fa-fw"></i></span>
+                                <input name="Phone" class="form-control" id="Phone" type="text" placeholder="Enter Phone Number" ng-model="enquiryForm.phoneNumber">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-upload fa-fw"></i></span>
+                                <input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" />
+                                <span class="input-group-addon fileUpload"><i class="fa fa-folder-open fa-fw"></i>
      <label>Browse</label>
      <input id="uploadBtn" type="file" class="upload" ngf-select ng-model="file" name="file"
  									ngf-pattern="'image/*'" ngf-accept="'image/*'"
  									ngf-max-size="7000KB" required ngf-model-invalid="errorFile"/></span>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-10">
- 								 <i ng-show="myForm.file.$error.maxSize">File too
- 									large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img
- 									ng-show="myForm.file.$valid" ngf-thumbnail="file" class="img-thumbnail"><br  ng-show="myForm.file.$error.maxSize"><br  ng-show="file"><br  ng-show="file">
- 								<button ng-click="file = null" class="btn btn-warning" ng-show="file">Remove</button><br  ng-show="file"><br  ng-show="file">	
-					</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <i ng-show="myForm.file.$error.maxSize">File too
+ 									large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="img-thumbnail">
+                        <br ng-show="myForm.file.$error.maxSize">
+                        <br ng-show="file">
+                        <br ng-show="file">
+                        <button ng-click="file = null" class="btn btn-warning" ng-show="file">Remove</button>
+                        <br ng-show="file">
+                        <br ng-show="file">
+                    </div>
 
-					<!-- custom file upload http://codepen.io/wallaceerick/pen/fEdrz -->
-					<div class="form-group">
-						<!-- <label class="col-sm-2 control-label" for="Message">Message</label> -->
-						<div class="col-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i
+                    <!-- custom file upload http://codepen.io/wallaceerick/pen/fEdrz -->
+                    <div class="form-group">
+                        <!-- <label class="col-sm-2 control-label" for="Message">Message</label> -->
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i
 									class="fa fa-comment fa-fw"></i></span>
-								<textarea name="Message" class="form-control" id="Message"
-									rows="5" data-bv-field="Message" placeholder="Message.."></textarea>
-							</div>
-							<small class="help-block" style="display: none;"
-								data-bv-validator="notEmpty" data-bv-for="Message"
-								data-bv-result="NOT_VALIDATED">Your message is required</small>
-						</div>
-					</div>
+                                <textarea name="Message" class="form-control" id="Message" rows="5" data-bv-field="Message" placeholder="Message.."></textarea>
+                            </div>
+                            <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Message" data-bv-result="NOT_VALIDATED">Your message is required</small>
+                        </div>
+                    </div>
 
-					Re-captcha
-					<div class="form-group">
-						<div class="col-sm-3"></div>
-						<div align="center" class="col-sm-10">
-							<button class="btn btn-primary btn-lg" type="submit"
-								ng-click="submitEnquiry()">SUBMIT</button>
-						</div>
-					</div>
+                    Re-captcha
+                    <div class="form-group">
+                        <div class="col-sm-3"></div>
+                        <div align="center" class="col-sm-10">
+                            <button class="btn btn-primary btn-lg" type="submit" ng-click="submitEnquiry()">SUBMIT</button>
+                        </div>
+                    </div>
 
-				</form>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<h3>Decorpot</h3>
-			<hr>
-			<h4>Need quotations or design advice? Or want to transform your space? Whatever queries you have, fill out the form below or send us an email with your contact details and we will get back to you within 24 hours. We would love to hear from you!</h4>
-		</div>
-	</div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Decorpot</h3>
+            <hr>
+            <h4>Need quotations or design advice? Or want to transform your space? Whatever queries you have, fill out the form below or send us an email with your contact details and we will get back to you within 24 hours. We would love to hear from you!</h4>
+        </div>
+    </div>
 
 </div>

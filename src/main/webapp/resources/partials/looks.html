@@ -1,18 +1,18 @@
 <div id="looks" class="container-fluid">
     <div class="jumbotron">
-            <h1>LOOKS</h1>{{looksCategory}}
+        <h1>LOOKS</h1>{{looksCategory}}
         <input type="search" class="form-control pull-right" placeholder="search.." ng-model="query">
-        
+
     </div>
-	<div class="row">
-	<div class="col-md-3 col-xs-12 col-sm-6" ng-repeat="p in looks | filter:query">
-			<a class="shrink">
-				<img src={{p.mainImage}}>
-			</a>
-		<div>
-			<h4>{{p.apartmentName}}, <span>Bangalore</span></h4>
-		</div>
-	</div>
-	</div>
+    <div class="row">
+        <div class="col-md-3 col-xs-12 col-sm-6" ng-repeat="p in looks | filter:query">
+            <a class="shrink">
+                <img src={{p.mainImage}}>
+            </a>
+            <div>
+                <h4>{{p.apartmentName}}, <span>Bangalore</span></h4>
+            </div>
+        </div>
+    </div>
 </div>
 <i class="clearfix"></i>
