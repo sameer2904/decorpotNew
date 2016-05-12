@@ -360,48 +360,47 @@ decorpotCtrls.controller('uploadFloorPlanController', [
                                                       })
                                                   })
                                                   var apartmentConfig = {};
-                                                  $scope.uploadData = function() {
-                                                      
-                                                      apartmentConfig.apartmentType = $scope.apartmentType;
-                                                      apartmentConfig.apartmentName = $scope.apartmentName;
-                                                      apartmentConfig.planName = $scope.planName;
-                                                      apartmentConfig.kitchen = {};
-                                                      apartmentConfig.kitchen.kitchenType = $scope.kitchenType;
-                                                      apartmentConfig.kitchen.length = $scope.kLength;
-                                                      apartmentConfig.kitchen.width = $scope.kWidth;
-                                                      apartmentConfig.masterBedroom = {};
-                                                      apartmentConfig.masterBedroom.wardrobeType = $scope.mWardrobeType;
-                                                      apartmentConfig.masterBedroom.length = $scope.mLength;
-                                                      apartmentConfig.masterBedroom.width = $scope.mWidth;
-                                                      if($scope.apartmentType == '2bhk'){
-                                                          apartmentConfig.otherBedroom = {};
-                                                          apartmentConfig.otherBedroom.wardrobeType = $scope.oWardrobeType;
-                                                          apartmentConfig.otherBedroom.length = $scope.oLength;
-                                                          apartmentConfig.otherBedroom.width = $scope.oWidth;
-                                                      }else {
-                                                          apartmentConfig.guestBedroom = {};
-                                                          apartmentConfig.guestBedroom.wardrobeType = $scope.oWardrobeType;
-                                                          apartmentConfig.guestBedroom.length = $scope.oLength;
-                                                          apartmentConfig.guestBedroom.width = $scope.oWidth;
-                                                          apartmentConfig.kidsBedroom = {};
-                                                          apartmentConfig.kidsBedroom.wardrobeType = $scope.kWardrobeType;
-                                                          apartmentConfig.kidsBedroom.length = $scope.kLength;
-                                                          apartmentConfig.kidsBedroom.width = $scope.kWidth;
-                                                          
-                                                      }
-                                                      apartmentConfig.floorPlan = $scope.file.name;
-                                                      
-                                                      uploadService.uploadFloorplan(apartmentConfig)
-                                                      .success(function(data) {
-                                                          Upload.upload({
-                                                              url: 'config/floorPlans/',
-                                                              data:{
-                                                                    file: $scope.file,
-                                                                }
-                                                            });
-                                                      })
-                                                      .error((data) => {
-                                                        alert("data not uploaded");
+                                                  $scope.uploadData = function() {                                               	  
+                                                	  apartmentConfig.apartmentType = $scope.apartmentType;
+                                                	  apartmentConfig.apartmentName = $scope.apartmentName;
+                                                	  apartmentConfig.planName = $scope.planName;
+                                                	  apartmentConfig.kitchen = {};
+                                                	  apartmentConfig.kitchen.kitchenType = $scope.kitchenType;
+                                                	  apartmentConfig.kitchen.length = $scope.kLength;
+                                                	  apartmentConfig.kitchen.width = $scope.kWidth;
+                                                	  apartmentConfig.masterBedroom = {};
+                                                	  apartmentConfig.masterBedroom.wardrobeType = $scope.mWardrobeType;
+                                                	  apartmentConfig.masterBedroom.length = $scope.mLength;
+                                                	  apartmentConfig.masterBedroom.width = $scope.mWidth;
+                                                	  if($scope.apartmentType == '2bhk'){
+                                                		  apartmentConfig.otherBedroom = {};
+                                                    	  apartmentConfig.otherBedroom.wardrobeType = $scope.oWardrobeType;
+                                                    	  apartmentConfig.otherBedroom.length = $scope.oLength;
+                                                    	  apartmentConfig.otherBedroom.width = $scope.oWidth;
+                                                	  }else {
+                                                		  apartmentConfig.guestBedroom = {};
+                                                    	  apartmentConfig.guestBedroom.wardrobeType = $scope.oWardrobeType;
+                                                    	  apartmentConfig.guestBedroom.length = $scope.oLength;
+                                                    	  apartmentConfig.guestBedroom.width = $scope.oWidth;
+                                                    	  apartmentConfig.kidsBedroom = {};
+                                                    	  apartmentConfig.kidsBedroom.wardrobeType = $scope.kWardrobeType;
+                                                    	  apartmentConfig.kidsBedroom.length = $scope.kLength;
+                                                    	  apartmentConfig.kidsBedroom.width = $scope.kWidth;
+                                                    	  
+                                                	  }
+                                                	  apartmentConfig.floorPlan = $scope.file.name;
+                                                	  
+                                                	  uploadService.uploadFloorplan(apartmentConfig)
+                                                	  .success(function(data) {
+                                                		  Upload.upload({
+                                                			  url: 'config/floorPlans/',
+                                                			  data:{
+                                                				  	file: $scope.file,
+                                                			  	}
+                                                		  	});
+                                                	  })
+                                                	  .error((data) => {
+                                                      	alert("data not uploaded"); 
                                                       });
                                                   }
                                               }]);
@@ -415,11 +414,11 @@ decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', f
 }]);
 
 decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
-    var name = $filter('underscoreless')($stateParams.apartmentName);
-    apartmentService.getAllFloorPlans(name)
-    .success(function(data) {
-        $scope.floopPlans = data.apartmentBaseConfigs;
-    });
+	var name = $filter('underscoreless')($stateParams.apartmentName);
+	apartmentService.getAllFloorPlans(name)
+	.success(function(data) {
+		$scope.floopPlans = data.apartmentBaseConfigs;
+	});
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartmentService) {
     $scope.packages = [{

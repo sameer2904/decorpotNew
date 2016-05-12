@@ -2,6 +2,7 @@ package com.decorpot.rest.model;
 
 public class Addon {
 
+	private int id;
     private String name;
     private double price;
     
@@ -17,6 +18,12 @@ public class Addon {
     public void setPrice(double price) {
         this.price = price;
     }
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
     
     
 }
