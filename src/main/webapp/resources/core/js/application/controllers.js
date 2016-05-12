@@ -413,6 +413,7 @@ decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', f
      });
 
 }]);
+
 decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
 	var name = $filter('underscoreless')($stateParams.apartmentName);
 	apartmentService.getAllFloorPlans(name)
