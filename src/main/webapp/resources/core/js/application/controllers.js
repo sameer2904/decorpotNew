@@ -55,7 +55,7 @@ decorpotCtrls.controller('uploadController', [
             
             $scope.add = function () {
               $scope.items.push({ 
-                addon: "",
+                name: "",
                 price:0
               });
             };

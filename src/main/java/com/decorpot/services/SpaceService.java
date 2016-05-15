@@ -15,11 +15,13 @@ import com.amazonaws.util.CollectionUtils;
 import com.decorpot.datasource.models.GuestBedroom;
 import com.decorpot.datasource.models.KidsBedroom;
 import com.decorpot.datasource.models.Kitchen;
+import com.decorpot.datasource.models.LivingAndDining;
 import com.decorpot.datasource.models.MasterBedroom;
 import com.decorpot.datasource.repository.AddonRepository;
 import com.decorpot.datasource.repository.GuestBedroomRepository;
 import com.decorpot.datasource.repository.KidsBedroomRepository;
 import com.decorpot.datasource.repository.KitchenRepository;
+import com.decorpot.datasource.repository.LivingAndDiningRepo;
 import com.decorpot.datasource.repository.MasterBedroomRepository;
 import com.decorpot.rest.model.Addon;
 import com.decorpot.rest.model.Bedroom;
@@ -52,6 +54,9 @@ public class SpaceService {
 
 	@Autowired
 	private AddonRepository addonRepository;
+	
+	@Autowired
+	private LivingAndDiningRepo diningRepo;
 
 	public void uploadSpaceImage(File file) throws Exception {
 		imageProcessorService.uploadSpaceImages(file);
@@ -148,6 +153,30 @@ public class SpaceService {
 			bedroom = guestBedroomRepository.save(bedroom);
 			final int id = bedroom.getId();
 			bed.getAddons().forEach(a -> {
+				uploadAddons(a, id);
+			});
+			return id;
+		} catch (Exception e) {
+			logger.error(LOGGER_PREFIX + e.getMessage(), e);
+			throw e;
+		}
+	}
+	
+	@decorpotTx
+	public Integer uploadLivingAndDining(com.decorpot.rest.model.LivingAndDining dining) {
+
+		LivingAndDining livingAndDining = new LivingAndDining();
+		livingAndDining.setBasePrice(dining.getBasePrice());
+		livingAndDining.setDescription(dining.getDescription());
+		livingAndDining.setHt(dining.getHt());
+		livingAndDining.setWdth(dining.getWdth());
+		livingAndDining.setImages(String.join(",", dining.getImages()));
+		livingAndDining.setTitle(dining.getTitle());
+		livingAndDining.setThemes(String.join(",", dining.getThemes()));
+		try {
+			livingAndDining = diningRepo.save(livingAndDining);
+			final int id = livingAndDining.getId();
+			dining.getAddons().forEach(a -> {
 				uploadAddons(a, id);
 			});
 			return id;
@@ -446,6 +475,66 @@ public class SpaceService {
 
 		}
 		return bedroom;
+	}
+	
+	@decorpotTx
+	public List<com.decorpot.rest.model.LivingAndDining> getAllLivingAndDining() {
+		List<com.decorpot.rest.model.LivingAndDining> dinings = new ArrayList<>();
+		if (DataCache.getInstance().get(DecorpotConstants.LIVING_DINING + DecorpotConstants.ALL) != null) {
+			dinings = (List<com.decorpot.rest.model.LivingAndDining>) DataCache.getInstance()
+					.get(DecorpotConstants.LIVING_DINING + DecorpotConstants.ALL);
+		} else {
+
+			List<LivingAndDining> list = diningRepo.findAll();
+			if (!CollectionUtils.isNullOrEmpty(list)) {
+				for (LivingAndDining m : list) {
+					dinings.add(livingAndDiningRepoToRestConverter(m));
+				}
+			}
+			DataCache.getInstance().put(DecorpotConstants.LIVING_DINING + DecorpotConstants.ALL, dinings);
+
+		}
+		return dinings;
+	}
+	
+	@decorpotTx
+	public com.decorpot.rest.model.LivingAndDining getLivingAndDiningById(int id) {
+		com.decorpot.rest.model.LivingAndDining dining = null;
+		if (DataCache.getInstance().get(DecorpotConstants.LIVING_DINING + id) != null) {
+			dining = (com.decorpot.rest.model.LivingAndDining) DataCache.getInstance()
+					.get(DecorpotConstants.LIVING_DINING + id);
+		} else if (DataCache.getInstance().get(DecorpotConstants.LIVING_DINING + DecorpotConstants.ALL) != null) {
+			List<com.decorpot.rest.model.LivingAndDining> dinings = (List<com.decorpot.rest.model.LivingAndDining>) DataCache
+					.getInstance().get(DecorpotConstants.LIVING_DINING + DecorpotConstants.ALL);
+			dining = dinings.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
+			if (dining != null) {
+				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(dining.getId());
+				dining.setAddons(
+						addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+			}
+			DataCache.getInstance().put(DecorpotConstants.LIVING_DINING + id, dining);
+		} else {
+			LivingAndDining livingAndDining = diningRepo.findOne(id);
+			dining = livingAndDiningRepoToRestConverter(livingAndDining);
+			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(dining.getId());
+			dining.setAddons(
+					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+
+		}
+		return dining;
+	}
+	
+	private com.decorpot.rest.model.LivingAndDining livingAndDiningRepoToRestConverter(LivingAndDining l) {
+		com.decorpot.rest.model.LivingAndDining dining = new com.decorpot.rest.model.LivingAndDining();
+		dining.setBasePrice(l.getBasePrice());
+		dining.setDescription(l.getDescription());
+		dining.setHt(l.getHt());
+		dining.setId(l.getId());
+		dining.setImages(Arrays.asList(l.getImages().split(",")));
+		dining.setThemes(Arrays.asList(l.getThemes().split(",")));
+		dining.setTitle(l.getTitle());
+		dining.setWdth(l.getWdth());
+		return dining;
 	}
 	
 	private com.decorpot.rest.model.Kitchen kitchenRepoToRestModelConverter(Kitchen k) {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.decorpot.rest.model.Bedroom;
 import com.decorpot.rest.model.Kitchen;
+import com.decorpot.rest.model.LivingAndDining;
 import com.decorpot.services.SpaceService;
 
 @RestController
@@ -57,6 +58,17 @@ public class SpaceController {
 	@RequestMapping(value = "/kids_bedrooms/{id}", method = RequestMethod.GET)
 	public Bedroom getKidsBedroomById(@PathVariable("id") int id) {
 		return spaceService.getKidsBedroomById(id);
+	}
+	
+	
+	@RequestMapping(value = "/living_dining", method = RequestMethod.GET)
+	public List<LivingAndDining> getAllLivingAndDining() {
+		return spaceService.getAllLivingAndDining();
+	}
+	
+	@RequestMapping(value = "/living_dining/{id}", method = RequestMethod.GET)
+	public LivingAndDining getLivingAndDiningById(@PathVariable("id") int id) {
+		return spaceService.getLivingAndDiningById(id);
 	}
 	
 }

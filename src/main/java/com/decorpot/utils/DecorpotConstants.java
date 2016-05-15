@@ -25,8 +25,7 @@ public interface DecorpotConstants {
 	String MASTER_BEDROOM = "masterbedroom_";
 	String GUEST_BEDROOM = "guestbedroom_";
 	String KIDS_BEDROOM = "kidsbedroom";
-	String LIVING = "living_";
-	String DINING = "dining_";
+	String LIVING_DINING = "living_dining_";
 	
 	enum themes{
 		contemprory, modern

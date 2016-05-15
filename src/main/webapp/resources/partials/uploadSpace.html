@@ -88,7 +88,7 @@
                     </div>
                     <div class="row" ng-repeat="item in items">
                         <label class="col-md-4" for="singleSelect"> Select Addon: </label>
-                        <select class="col-md-4" name="singleSelect" ng-model="item.addon">
+                        <select class="col-md-4" name="singleSelect" ng-model="item.name">
                             <option value="{{a}}" ng-repeat="a in addons">{{a}}</option>
                         </select>
                         <input class="col-md-4" type="text" placeholder="{{item.questionPlaceholder}}" ng-model="item.price">

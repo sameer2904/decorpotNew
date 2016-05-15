@@ -14,6 +14,7 @@ public abstract class Space {
 	private List<String> themes;
 	private List<Addon> addons;
 	private List<String> images;
+	
 	public String getTitle() {
 		return title;
 	}

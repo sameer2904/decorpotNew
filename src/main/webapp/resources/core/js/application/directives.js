@@ -470,4 +470,12 @@ directives.directive('windowResize',function($window){
 		}
 		resize();
 }
-})
+});
+
+directives.directive('searchbox', function() {
+	return {
+        restrict: 'E',
+        template: '<div class="row"><div class="col-md-4"><input type="search" class="form-control pull-right" placeholder="search.." ng-model="query"></div></div>',
+        replace: true
+    };
+});

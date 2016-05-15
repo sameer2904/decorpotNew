@@ -22,16 +22,17 @@
                 </div>
             </div>
 
-            <div class="list-group-item row ">
+            <div class="row ">
                 <div class="col-md-4">
                     <h2>Upload Floor Plan:</h2>
                     <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000|number:1}}KB: max 2700KB</i>
-                    <input type="file" ngf-select ng-model="file" class="form-control col-md-4" name="file" accept="image/*" ngf-max-size="2700KB" required ngf-model-invalid="errorFile">
-                    <br>
-                    <br> <img ng-show="myForm.file.$valid" class="img-thumbnail" ngf-thumbnail="file" class="thumb" height="200" width="200">
-                    <br>
-                    <br>
-                    <button ng-click="file = null" class="btn btn-warning" ng-show="file">Remove</button>
+                   <div class="col-md-12">
+                            Photo:
+                            <input type="file" ngf-select ng-model="files" ngf-multiple="true" name="file" accept="image/*" ngf-max-size="7000KB" required ngf-model-invalid="errorFile">
+                            <br> <i ng-show="myForm.file.$error.maxSize">File too
+								large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb" height="200" width="200" ng-repeat="file in files">
+                            <button ng-click="files = null" ng-show="files">Remove</button>
+                        </div>
                 </div>
             </div>
             <div class="list-group-item row ">
