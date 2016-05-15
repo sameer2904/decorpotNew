@@ -1,4 +1,4 @@
-<div id="looks" class="container-fluid">
+<div id="looks" class="container-fluid" ui-view>
 	<div class="row">
 		<div class="jumbotron col-md-12">
 			<h1>{{space | underscoreless | capitalize:true}}</h1>
@@ -10,7 +10,7 @@
 			<div class="col-md-4 col-sm-6 col-xs-12"
 				ng-repeat="look in looks | filter:query">
 				<div>
-					<a ui-sref="looks.look({ id : '{{look.id}}', space: '{{space}}' } )">
+					<a ui-sref="looks.look({ id : '{{space}}-{{look.id}}'})">
 						<img bn-lazy-src="{{look.thumbNail}}">
 					</a>
 				</div>

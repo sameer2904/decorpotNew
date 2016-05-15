@@ -1,5 +1,7 @@
 package com.decorpot.datasource.models;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +29,18 @@ public class PastWork {
     @Column(name = "MAIN_IMAGE")
     private String mainImage;
     
-    public String getMainImage() {
+    @Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
+    private Date date = new java.sql.Date((new java.util.Date()).getTime());
+    
+    public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getMainImage() {
         return mainImage;
     }
 

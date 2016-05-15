@@ -285,7 +285,8 @@ decorpotCtrls.controller('looksController', ['$scope', '$stateParams', 'spaceSer
 
 decorpotCtrls.controller('lookController', ['$scope', '$stateParams', 'spaceService', function($scope, $stateParams, spaceService) {
     
-	spaceService.getLookById($stateParams.space, $stateParams.id)
+	var params = $stateParams.id.split('-');
+	spaceService.getLookById(params[0], params[1])
 	.then(function(data) {
 		$scope.space = data.data;
 	})

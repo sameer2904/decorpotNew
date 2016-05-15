@@ -1,5 +1,7 @@
 package com.decorpot.datasource.models;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,6 +37,17 @@ public class LivingAndDining {
 	
 	@Column(name= "THEMES")
 	private String themes;
+	
+	@Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
+    private Date date = new java.sql.Date((new java.util.Date()).getTime());
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	public String getThemes() {
 		return themes;

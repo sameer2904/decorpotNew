@@ -260,6 +260,7 @@ public class SpaceService {
 			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(kitchen.getId());
 			kitchen.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+			DataCache.getInstance().put(DecorpotConstants.KITCHEN + id, kitchen);
 
 		}
 		return kitchen;
@@ -331,6 +332,7 @@ public class SpaceService {
 			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
 			bedroom.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+			DataCache.getInstance().put(DecorpotConstants.MASTER_BEDROOM + id, bedroom);
 
 		}
 		return bedroom;
@@ -402,6 +404,7 @@ public class SpaceService {
 			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
 			bedroom.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+			DataCache.getInstance().put(DecorpotConstants.GUEST_BEDROOM + id, bedroom);
 
 		}
 		return bedroom;
@@ -472,6 +475,7 @@ public class SpaceService {
 			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
 			bedroom.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+			DataCache.getInstance().put(DecorpotConstants.KIDS_BEDROOM + id, bedroom);
 
 		}
 		return bedroom;
@@ -519,6 +523,7 @@ public class SpaceService {
 			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(dining.getId());
 			dining.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
+			DataCache.getInstance().put(DecorpotConstants.LIVING_DINING + id, dining);
 
 		}
 		return dining;
