@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.decorpot.rest.model.Bedroom;
 import com.decorpot.rest.model.Kitchen;
+import com.decorpot.rest.model.LivingAndDining;
 import com.decorpot.services.SpaceService;
 import com.decorpot.utils.DecorpotUtils;
 
@@ -63,6 +64,15 @@ public class SpaceUploadController {
 	public Integer  uploadKidsBedroom(@RequestBody Bedroom bed) {
 		try {
 			return spaceUploader.uploadKidsBedroom(bed);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	@RequestMapping(value = "/space/living_dinning", method = RequestMethod.POST)
+	public Integer  uploadLivingAndDining(@RequestBody LivingAndDining dining) {
+		try {
+			return spaceUploader.uploadLivingAndDining(dining);
 		} catch (Exception e) {
 			throw e;
 		}

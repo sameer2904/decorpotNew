@@ -10,9 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "KIDS_BEDROOM")
-public class KidsBedroom {
-	
+@Table(name = "LIVING_DINING")
+public class LivingAndDining {
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -36,15 +35,11 @@ public class KidsBedroom {
 	@Column(name = "IMAGES")
 	private String images;
 	
-	@Column(name= "WARDROBE_TYPE")
-	private String wardrobeType;
-	
 	@Column(name= "THEMES")
 	private String themes;
-
-	@Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
-    private Date date= new java.sql.Date((new java.util.Date()).getTime());
 	
+	@Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
+    private Date date = new java.sql.Date((new java.util.Date()).getTime());
 
 	public Date getDate() {
 		return date;
@@ -52,14 +47,6 @@ public class KidsBedroom {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public String getWardrobeType() {
-		return wardrobeType;
-	}
-
-	public void setWardrobeType(String wardrobeType) {
-		this.wardrobeType = wardrobeType;
 	}
 
 	public String getThemes() {
@@ -126,13 +113,4 @@ public class KidsBedroom {
 		this.images = images;
 	}
 
-	@Override
-	public String toString() {
-		return "Bedroom [id=" + id + ", title=" + title + ", description="
-				+ description + ", basePrice=" + basePrice + ", ht=" + ht
-				+ ", wdth=" + wdth + ", images=" + images + ", wardrobeType="
-				+ wardrobeType + ", themes=" + themes + "]";
-	}
-
 }
-

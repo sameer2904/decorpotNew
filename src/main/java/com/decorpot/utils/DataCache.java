@@ -31,6 +31,7 @@ public class DataCache {
 	}
 	
 	public static Object get(String key){
-		return cache.get(key);
+		//return cache.get(key);
+		return null;
 	}
 }

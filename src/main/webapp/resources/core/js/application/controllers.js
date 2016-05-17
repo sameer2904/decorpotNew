@@ -55,7 +55,7 @@ decorpotCtrls.controller('uploadController', [
             
             $scope.add = function () {
               $scope.items.push({ 
-                addon: "",
+                name: "",
                 price:0
               });
             };
@@ -267,37 +267,29 @@ decorpotCtrls.controller('pastWorksController', ['$scope', 'pastWorkService', fu
     })
 }]);
 // looks controller
-decorpotCtrls.controller('looksController', ['$scope', '$stateParams', function($scope, $stateParams) {
-    $scope.looks = [{
-            "id":"1",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"2",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"3",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"4",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"5",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        },
-        {
-            "id":"6",
-            "mainImage":"resources/core/images/apartments/apartments.jpg",
-            "apartmentName":"Shobha Apartment"
-        }]
+decorpotCtrls.controller('looksController', ['$scope', '$stateParams', 'spaceService', function($scope, $stateParams, spaceService) {
+	$scope.space = $stateParams.looksCategory;
+    if($stateParams.looksCategory != 'all') {
+    	spaceService.getAllLooks($stateParams.looksCategory)
+    	.then(function(data) {
+    		var looks = data.data;
+    		angular.forEach(looks, function(look, index) {
+    			look.thumbNail = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/475x270" + look.images[0];
+    		})
+    		$scope.looks = data.data;
+    		
+    		
+    	})
+    }
+}]);
+
+decorpotCtrls.controller('lookController', ['$scope', '$stateParams', 'spaceService', function($scope, $stateParams, spaceService) {
+    
+	var params = $stateParams.id.split('-');
+	spaceService.getLookById(params[0], params[1])
+	.then(function(data) {
+		$scope.space = data.data;
+	})
 }]);
 
 decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {
