@@ -174,7 +174,7 @@ width: 200px;
     /*font-family: Quadranto;*/
     font-size:42px;
     margin: 0 !important;
-    padding: 14px 0 !important;
+    padding: 2px !important;
 }
 
 body > header > nav > div > ul > li {
@@ -225,7 +225,9 @@ footer .widget_recent_post li a {
 }
 
 .logo-small {
-    margin: 20px;
+    margin: 20px 0;
+    width:220px;
+    height: 50px;
 }
 
 footer h3,

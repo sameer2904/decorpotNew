@@ -35,31 +35,6 @@
     </head>
 
     <body scroll>
-        <!-- This section is for Splash Screen -->
-        <!-- To be implemented later -->
-        <!-- <section id="jSplash" style="background-color:#fff">
-        <section class="selected">
-            <h2>jPreLoader v2</h2>
-            <strong>A loading screen to preload images using jQuery</strong>
-        </section>
-        <section>
-            <p>Create your own
-                <br/>
-                <span style="font-size:30px; color:#FF6123;">Splash Screen</span>.</p>
-        </section>
-        <section>
-            <p>Customize Progress Bar and Progress Percentage
-                <br/>
-                <span style="font-size:30px; color:#23FF27;">using CSS</span>.</p>
-        </section>
-        <section>
-            <p>Preload all images in
-                <br/>
-                <span style="font-size:25px; color:#FF23FF;">&lt;img&gt; tag</span> +
-                <span style="font-size:25px; color:#FF23FF;">CSS background-image</span>.</p>
-        </section>
-    </section> -->
-        <!-- End of Splash Screen -->
         <header>
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
@@ -76,7 +51,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" ui-sref="home">decorpot<!-- <img src="images/logo.png" alt="Brand logo" width="220" height="30"> -->
+                        <a class="navbar-brand" ui-sref="home"><img src="resources/core/images/logo.png" alt="Brand logo" width="220" height="30">
                     </a>
                     </div>
                     <div id="navbar" window-Resize class="navbar-collapse collapse">
@@ -111,8 +86,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-6 wow slideInLeft" data-wow-animation="0.1s" data-wow-delay="0.1s">
-                        <!-- <img class="logo-small" alt="" src="./resources/core/images/logo.png" width="150" height="23"> <-->
-                        <h2>decorpot</h2> Decorpot offers comprehensive solutions for all your interior design needs. We have operations in Bangalore from last 7 years and have completed multiple projects in residential and commercial interiors which includes Bungalows, Duplexes, and flats.
+                         <img class="logo-small" alt="" src="./resources/core/images/logo.png"><br/>
+                        Decorpot offers comprehensive solutions for all your interior design needs. We have operations in Bangalore from last 7 years and have completed multiple projects in residential and commercial interiors which includes Bungalows, Duplexes, and flats.
                     </div>
                     <!-- 
                 <div class="col-md-2 col-md-offset-1 col-sm-6">
@@ -144,7 +119,7 @@
                         <h3>Contact Us</h3>
                         <div class="widget widget-address">
                             <address>
-                                    <span>#799, 19th Main, 23rd Cross, 2nd floor, Sector 2 Near HSR club, Bangalore 560102</span>
+                                    <span>Premises No. 445, 3rd Floor, JKN Towers, 5th Main, 16th A Cross, HSR Layout Sector 6 Bangalore</span>
                                     <span><b>Phone:</b>  (+91) 9986076761 | (+91) 9986076762</span>
                                     <!-- <span><b>Fax:</b> (+208) 333 9298</span> -->
                                     <span><b>Email:</b> <a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
