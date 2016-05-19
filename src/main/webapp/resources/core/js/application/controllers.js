@@ -408,13 +408,14 @@ decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', f
 }]);
 
 decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
-	var name = $filter('underscoreless')($stateParams.apartmentName);
+    $scope.name = $filter('underscoreless')($stateParams.apartmentName);
 	apartmentService.getAllFloorPlans(name)
 	.success(function(data) {
 		$scope.floopPlans = data.apartmentBaseConfigs;
 	});
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartmentService) {
+    
     $scope.packages = [{
         "apartmentName": "abc",
         "apartmentType": "2bhk",
