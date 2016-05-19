@@ -1,5 +1,4 @@
-#contactForm{
-	padding:80px 0 20px 0;
+#contact{
 }
 #contactForm legend{
 	border-bottom:0px;
@@ -31,12 +30,7 @@ body > div > div > div.row > div.col-md-3{
     opacity: 0;
     filter: alpha(opacity=0);
 }
-.col-md-4{
-    margin-top:60px;
+.col-md-5{
+   padding:20px;
 }
-.col-md-4 hr{
-    border-color: #ccc; 
-}
-.col-md-4 h4{
-    text-align: justify;
-}
+

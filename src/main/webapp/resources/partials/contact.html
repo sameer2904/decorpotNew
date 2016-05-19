@@ -1,18 +1,17 @@
 <link rel="stylesheet" href="resources/core/css/application/contact.css">
-<div style="background: #f2f2f2;">
-    <div>
-        <div>
-            
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-1">
-            <div style="width: 98%; max-width: 500px; margin: 0 auto;">
+
+<div id="contact">
+   <div class="positionRelative">
+    CONTACT US
+</div>
+    <div class="container row">
+        <div class="col-md-offset-1 col-md-5">
+            <div>
                 <form class="form-horizontal" id="contactForm" action="#" method="post" novalidate="novalidate">
                     <legend>Enquiry Form</legend>
                     <div class="form-group">
                         <!-- <label class="col-sm-2 control-label" for="Name">Name</label> -->
-                        <div class="col-sm-10">
+                        <div>
                             <div class="input-group">
                                 <span class="input-group-addon"><i
 									class="fa fa-user fa-fw"></i></span>
@@ -24,7 +23,7 @@
 
                     <div class="form-group">
                         <!-- <label class="col-sm-2 control-label" for="Email">Email</label> -->
-                        <div class="col-sm-10">
+                        <div>
                             <div class="input-group">
                                 <span class="input-group-addon"><i
 									class="fa fa-envelope fa-fw"></i></span>
@@ -36,7 +35,7 @@
 
                     <div class="form-group">
                         <!-- <label class="col-sm-2 control-label" for="Phone">Phone</label> -->
-                        <div class="col-sm-10">
+                        <div>
                             <div class="input-group">
                                 <span class="input-group-addon"><i
 									class="fa fa-phone fa-fw"></i></span>
@@ -45,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-10">
+                        <div>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-upload fa-fw"></i></span>
                                 <input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" />
@@ -57,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-10">
+                    <div>
                         <i ng-show="myForm.file.$error.maxSize">File too
  									large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="img-thumbnail">
                         <br ng-show="myForm.file.$error.maxSize">
@@ -71,7 +70,7 @@
                     <!-- custom file upload http://codepen.io/wallaceerick/pen/fEdrz -->
                     <div class="form-group">
                         <!-- <label class="col-sm-2 control-label" for="Message">Message</label> -->
-                        <div class="col-sm-10">
+                        <div>
                             <div class="input-group">
                                 <span class="input-group-addon"><i
 									class="fa fa-comment fa-fw"></i></span>
@@ -84,7 +83,7 @@
                     Re-captcha
                     <div class="form-group">
                         <div class="col-sm-3"></div>
-                        <div align="center" class="col-sm-10">
+                        <div align="center">
                             <button class="btn btn-primary btn-lg" type="submit" ng-click="submitEnquiry()">SUBMIT</button>
                         </div>
                     </div>
@@ -92,12 +91,8 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-4">
+    <div class="col-md-offset-1 col-md-5">
         <div my-map=""></div>
-           <!--  <h3>Decorpot</h3>
-            <hr>
-            <h4>Need quotations or design advice? Or want to transform your space? Whatever queries you have, fill out the form below or send us an email with your contact details and we will get back to you within 24 hours. We would love to hear from you!</h4> -->
         </div>
     </div>
-
-</div>
+        </div>

@@ -6,8 +6,8 @@ var decorpotCtrls = angular.module('decorpot');
 
 decorpotCtrls.controller('navCtrl',['$scope', function($scope){
     $(window).resize(function(){
-if ($(window).width() > 767) {
-        $('#navbar').attr('mobileView','false')
+if ($(window).width() >= 767) {console.log('entered');
+        $('#navbar').attr('mobileView','false');
                 $(document).bind('scroll', function () {
             if (window.scrollY > 60) {
                 $('.preHeader').slideUp();
@@ -15,8 +15,10 @@ if ($(window).width() > 767) {
                 $('.preHeader').slideDown();
             }
         });
-    } else {
-        $('#navbar').attr('mobileView','true')
+    } 
+    else {
+        $('#navbar').attr('mobileView','true');console.log('true');
+        $(document).unbind('scroll');
         $('.preHeader').hide();
     }
 })

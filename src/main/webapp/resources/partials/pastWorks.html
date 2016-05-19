@@ -1,24 +1,18 @@
-<div id="pastWorks" class="container-fluid">
-	<div class="jumbotron">
-		<h1>OUR WORKS</h1>
-		<input type="search" class="form-control pull-right"
-			placeholder="search.." ng-model="query">
-
-	</div>
+<div class="positionRelative">OUR WORKS <div class="col-md-4 col-sm-4 col-md-12 pull-right mt10"><input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"></div></div>
+<div id="pastWork" class="container-fluid">
+	<div class="container">
 	<div class="row">
-		<div class="col-md-3 col-xs-12 col-sm-6"
-			ng-repeat="p in pastWorks | filter:query">
-			<div>
-				<a class="shrink" ui-sref="projects.project({param : '{{p.id}}'})">
+	 <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="p in pastWorks | filter:query">
+            <div>
+                <a class="shrink" ui-sref="projects.project({param : '{{p.id}}'})">
 					<img src={{p.mainImage}}>
 				</a>
-			</div>
-			<div>
-				<h4>
-					{{p.apartmentName}}, <span>Bangalore</span>
-				</h4>
-			</div>
-		</div>
-	</div>
+            </div>
+            <div>
+                <h4>{{p.apartmentName}}, <br/><span>Bangalore</span></h4>
+            </div>
+        </div>
+    </div>
+    </div>
 </div>
 <i class="clearfix"></i>

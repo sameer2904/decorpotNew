@@ -13,9 +13,9 @@ directives.directive('myMap', function() {
         // map config
         var mapOptions = {
             center: new google.maps.LatLng(12.908815,77.644651),
-            zoom: 18,
+            zoom: 12,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            scrollwheel: false
+            scrollwheel: true
         };
         
         // init the map
@@ -32,7 +32,7 @@ directives.directive('myMap', function() {
                 position: position,
                 map: map,
                 title: title,
-                icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png'
             };
 
             marker = new google.maps.Marker(markerOptions);
@@ -55,7 +55,7 @@ directives.directive('myMap', function() {
         // show the map and place some markers
         initMap();
         
-        setMarker(map, new google.maps.LatLng(12.908815,77.644651), 'DECORPOT.COM', '23rd Cross Rd, Garden Layout, Sector 2, HSR Layout, Bengaluru, Karnataka 560102');
+        setMarker(map, new google.maps.LatLng(12.908815,77.644651), 'DECORPOT.COM', 'Premises No. 445, 3rd Floor, JKN Towers, 5th Main, 16th A Cross, HSR Layout Sector-6 Bangalore');
     };
     
     return {
@@ -470,12 +470,4 @@ directives.directive('windowResize',function($window){
 		}
 		resize();
 }
-});
-
-directives.directive('searchbox', function() {
-	return {
-        restrict: 'E',
-        template: '<div class="row"><div class="col-md-4"><input type="search" class="form-control pull-right" placeholder="search.." ng-model="query"></div></div>',
-        replace: true
-    };
 });
