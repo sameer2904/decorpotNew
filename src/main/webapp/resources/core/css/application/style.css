@@ -327,22 +327,22 @@ footer {
 }
 
 /*apartment,looks, past works & looks page styles*/
-#apartments, #looks, #pastWorks, #floorPlan{
+#apartments, #looks, #pastWorks, #pastWork, #floorPlan{
     padding:30px 0;
     background: #f2f2f2;
 }
 #apartments > div.container > div > div >div, #looks > div.container > div > div >div, #pastworks > div.container > div > div >div,
-#floorPlan .floorPlanImages  > div > div {
+#floorPlan .floorPlanImages  > div > div, #pastWork > div.container > div > div >div {
     max-width:100%;
     box-sizing: border-box;
     overflow: hidden;
     padding: 0;
 }
-#apartments img:hover, #looks img:hover, #pastworks img:hover, #floorPlan .floorPlanImages  > div > div img:hover{
+#apartments img:hover, #looks img:hover, #pastWorks img:hover, #pastWork img:hover, #floorPlan .floorPlanImages  > div > div img:hover{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
-#apartments h4, #looks h4, #pastworks h4, #floorPlan .floorPlanImages  > div > div h4{
+#apartments h4, #looks h4, #pastWorks h4, #pastWork h4, #floorPlan .floorPlanImages  > div > div h4{
     text-align: center;
     padding-bottom:20px;
 }

@@ -400,7 +400,8 @@ decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$s
     alert();
 }]);
 decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams', function($scope,$stateParams) {
-    alert();
+    $scope.pastWork = $stateParams.id;
+
 }]);
 
 decorpotCtrls.controller('spaceController', ['$scope','spaceService','$stateParams', '$filter', function($scope, spaceService,$stateParams, $filter) {
