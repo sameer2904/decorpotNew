@@ -104,42 +104,6 @@ decorpotCtrls.controller('uploadController', [
 
 
 decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pastWorkService', function($scope, $rootScope, $state, pastWorkService) {
-    // var timer; // timer for splash screen
-    // create splash screen animation
-    // function splashRotator() {
-    // var cur = $('#jSplash').children('.selected');
-    // var next = $(cur).next();
-
-    // if ($(next).length !== 0) {
-    // $(next).addClass('selected');
-    // } else {
-    // $('#jSplash').children('section:first-child').addClass('selected');
-    // next = $('#jSplash').children('section:first-child');
-    // }
-
-    // $(cur).removeClass('selected').fadeOut(800, function () {
-    // $(next).fadeIn(800);
-    // });
-    // }
-    // calling jPreLoader
-    // $('body').jpreLoader({
-    // splashID: "#jSplash",
-    // loaderVPos: '70%',
-    // autoClose: true,
-    // closeBtnText: "Let's Begin!",
-    // splashFunction: function () {
-    // // passing Splash Screen script to jPreLoader
-    // $('#jSplash').children('section').not('.selected').hide();
-    // $('#jSplash').hide().fadeIn(800);
-
-    // timer = setInterval(function () {
-    // splashRotator();
-    // }, 4000);
-    // }
-    // }, function () { // callback function
-    // clearInterval(timer);
-    // });
-
     // Carousel
     $scope.owlCarouselPastWork1 = function(){
         $('.owl-carousel1').owlCarousel({
@@ -433,6 +397,9 @@ decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentServ
 }]);
 
 decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
+    alert();
+}]);
+decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams', function($scope,$stateParams) {
     alert();
 }]);
 
