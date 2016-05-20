@@ -24,7 +24,7 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				templateUrl: 'resources/partials/pastWorks.html',
 				controller: 'pastWorksController'
 			}).state('pastWorks.pastWork', {
-				url: '/{id}',
+				url: '/:id',
 				templateUrl: 'resources/partials/pastWork.html',
 				controller: 'pastWorkController'
 			})

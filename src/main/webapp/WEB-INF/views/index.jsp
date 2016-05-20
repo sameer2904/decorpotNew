@@ -153,7 +153,6 @@
         </footer>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- <script src="http://www.inwebson.com/demo/jpreloader/js/jpreLoader.min.js"></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
         <script src="resources/core/js/ng-file-upload.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js"></script>

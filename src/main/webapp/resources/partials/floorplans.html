@@ -10,58 +10,33 @@
 ">
                 <form class="ng-pristine ng-valid">
                     <div class="text-warning">Get an free advice</div>
-                    <input type="text" class="form-control" placeholder="*User Name"><br>
-                    <input type="text" class="form-control" placeholder="*User Phone"><br>
+                    <input type="text" class="form-control" placeholder="*User Name.."><br>
+                    <input type="text" class="form-control" placeholder="*User Phone.."><br>
                     
-                    <input type="text" class="form-control" placeholder="User Mail"><br>
-                    <textarea name="message" cols="30" rows="4" class="form-control"></textarea><br>
-                    <input type="submit" value="SUBMIT" class="form-control btn btn-info">
+                    <input type="text" class="form-control" placeholder="User Mail.."><br>
+                    <textarea name="message" cols="30" rows="4" placeholder="Message / Comments.." class="form-control"></textarea><br>
+                    <input type="submit" value="SEND REQUEST" class="form-control btn btn-info">
                 </form>
             </div>
         </div>
+        <div class="row floorPlanImages">
+            <h5><b>Address : </b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptas explicabo, ipsum alias error laborum.</h5>
+            <h5><b>Details : </b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptas explicabo, ipsum alias error laborum.</h5>
+            <hr>
+            <h3>Floor Plans</h3>
+            <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus reiciendis maxime cupiditate consequuntur voluptas, officia, similique corrupti natus debitis laborum numquam facilis omnis blanditiis id.</h5><br><br>
+            <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="apartment in apartments | filter:query">
+            <div>
+                <a ui-sref="apartments.floorplans({ apartmentName : '{{apartment.apartmentName | addunderscore}}' })">
+                    <img src="resources/core/images/apartments/apartments.jpg">
+                    <!-- <img bnLazySrc="{{apartment.mainImage}}"> -->
+                </a>
+            </div>
+            <div>
+                <h4>3bhk Floorplan</h4>
+                <!-- <h4>{{apartment.apartmentName | addunderscore}}, <br/><span>Bangalore</span></h4> -->
+            </div>
+        </div>
+        </div>
     </div>
 </main>
-<!-- <main id="floorPlan">
-    <div class="container">
-        <h1>APARTMENxvxTS</h1>
-
-    </div>
-    <div class="col-md-7"><img src="resources/core/images/apartments/apartments.jpg" alt="" class="img-thumbnail"></div>
-    <div class="col-md-5">
-        <h5>Apartment Name</h5>
-        <p class="pull-right">-Delivered within 45 days</p>
-        <div class="panel panel-default clear-fix">
-            <div class="panel-heading">GET FREE ADVICE</div>
-            <div class="panel-body">
-                <div class="input-group">
-                    <span class="input-group-addon"><i
-									class="fa fa-user fa-fw"></i></span>
-                    <input class="form-control" type="text" placeholder="* Enter Name">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon"><i
-									class="fa fa-phone fa-fw"></i></span>
-                    <input class="form-control" type="text" placeholder="* Enter Phone">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon"><i
-									class="fa fa-envelope fa-fw"></i></span>
-                    <input class="form-control" type="mail" placeholder="Enter e-mail">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon"><i
-									class="fa fa-comment fa-fw"></i></span>
-                    <input class="form-control" type="mail" placeholder="Enter message/comment">
-                </div>
-            </div>
-            <div class="panel-footer">
-                <input type="button" class="form-control btn btn-success" value="SUBMIT">
-            </div>
-
-        </div>
-        <form>
-            <input type="text">
-        </form>
-    </div>
-    </div>
-</main> -->

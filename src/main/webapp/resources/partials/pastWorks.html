@@ -2,9 +2,9 @@
 <div class="positionRelative">OUR WORKS <div class="col-md-4 col-sm-4 col-md-12 pull-right mt10"><input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"></div></div>
 	<div class="container">
 	<div class="row">
-	 <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="p in pastWorks | filter:query">
+	 <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="pastwork in pastWorks | filter:query">
             <div>
-                <a class="shrink" ui-sref="projects.project({param : '{{p.id}}'})">
+                <a ui-sref="pastwork.project({id : '{{p.id}}'})">
 					<img bnLazySrc={{p.mainImage}}>
 				</a>
             </div>
