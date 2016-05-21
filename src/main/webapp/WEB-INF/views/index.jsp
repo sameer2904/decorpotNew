@@ -11,6 +11,7 @@
         <meta name="googlebot" content="index, follow">
         <link rel="shortcut icon" href="resources/core/images/favicon.png" width="16" height="16" type="image/x-icon">
 
+
         <title>Interior Designers Bangalore, Modular Kitchen Manufacturers - Decorpot</title>
         <meta name="description" content="Interior Designers in Bangalore - Get Top Interior Designers and Decorators in Bangalore. Decorpot is one of the Best Interior Designers  / Top Interior Designers in Bangalore / Good Interior Designers in Bangalore &amp; Modular Kitchen Manufactures , 5 year warranty service no extra cost, Two years free service warranty. We design quality false ceilings, glamorous kitchens, stunning wardrobes to luxurious sofas.">
         <meta name="keywords" content="Interior Designers in Bangalore, Interior Design, Home Decor, Contemporary Living Room Design, Contemporary Bedroom Design, Modular Kitchens, Interior Decorators in Bangalore, Best Interior Designers in Bangalore, Modular Kitchen Manufacturers, 3D Modeling Bangalore, Hire Free Designers - Decorpot, top 10 interiors design company, interior design solutions in Bangalore, interior design companies in Bangalore">
@@ -31,9 +32,11 @@
         <link rel="stylesheet" href="resources/core/css/normalise.css" />
         <link href="resources/core/css/application/style.css" rel="stylesheet" />
         <link href="resources/core/css/loading.min.css" rel="stylesheet" />
+        <script src="//load.sumome.com/" data-sumo-site-id="4c7665a517df08b6fffd74315ead211d41558a8a7c290d7ce389fa1dc264ad80" async="async"></script>
     </head>
 
     <body scroll>
+    
         <header>
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
@@ -137,7 +140,7 @@
                         </div>
                         <div class="col-md-6 text-right">
                             <div class="social-icons">
-                                <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+                                <a href="#"><i class="fa fa-facebook fa-lg" data-href="http://decorpot.com/"></i></a>
                                 <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
                                 <a href="#"><i class="fa fa-rss fa-lg"></i></a>
                                 <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
