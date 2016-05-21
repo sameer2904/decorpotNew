@@ -11,5 +11,6 @@ import com.decorpot.datasource.models.GuestBedroom;
 public interface GuestBedroomRepository extends JpaRepository<GuestBedroom, Integer>{
 	
 	List<GuestBedroom> findByWardrobeType(String wardrobeType);
+	//List<GuestBedroom> findAllOrderBy
 
 }

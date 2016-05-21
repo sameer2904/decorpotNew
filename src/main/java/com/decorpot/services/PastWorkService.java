@@ -46,7 +46,7 @@ public class PastWorkService {
             List<PastWorkImageUrls> imageUrls = new ArrayList<>();
             for (String image : work.getImages().split(",")) {
                 PastWorkImageUrls pastWorkImageUrls = new PastWorkImageUrls();
-                pastWorkImageUrls.setLargeIamge(folderLocation + DecorpotConstants.pastWorkImageSizes.get(0) + image);
+                pastWorkImageUrls.setUrl(folderLocation + DecorpotConstants.pastWorkImageSizes.get(0) + image);
                 pastWorkImageUrls.setThumbnail(folderLocation + DecorpotConstants.pastWorkImageSizes.get(1) + image);
                 imageUrls.add(pastWorkImageUrls);
             }

@@ -399,30 +399,14 @@ decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentServ
 decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
     alert();
 }]);
-decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams',' Lightbox', function($scope, $stateParams, Lightbox) {
-    $scope.pastWork = $stateParams.id;alert();
-    $scope.images = [
-    {
-      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
-      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
-    },{
-      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
-      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
-    },{
-      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
-      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
-    },{
-      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
-      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
-    },{
-      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
-      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
-    }]
+decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams','Lightbox', 'pastWorkService', function($scope, $stateParams, Lightbox, pastWorkService) {
+    $scope.pastWork = $stateParams.id;
+    pastWorkService.getPastWorkById($stateParams.id)
+    					.success(function(data){
+    						$scope.images = data.imageUrls;
+    						$scope.pastWork = data.apartmentName;
+    					})
+    
     $scope.openLightboxModal = function (index) {
     Lightbox.openModal($scope.images, index);
   };

@@ -159,6 +159,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
         <script src="resources/core/js/loading.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
          <script src="http://compact.github.io/angular-bootstrap-lightbox/lib/ui-bootstrap-tpls.js?v1.3.1"></script>
         <script src="http://compact.github.io/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js?v0.12.0" type="text/javascript"></script>
         <!-- <script src="http://compact.github.io/angular-bootstrap-lightbox/lib/ng-videosharing-embed.min.js?v0.3.4"></script> -->
