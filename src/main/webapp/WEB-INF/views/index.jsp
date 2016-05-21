@@ -31,7 +31,6 @@
         <link rel="stylesheet" href="resources/core/css/normalise.css" />
         <link href="resources/core/css/application/style.css" rel="stylesheet" />
         <link href="resources/core/css/loading.min.css" rel="stylesheet" />
-        <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
     </head>
 
     <body scroll>
@@ -154,11 +153,15 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular-touch.min.js"></script>
         <script src="resources/core/js/ng-file-upload.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
         <script src="resources/core/js/loading.min.js"></script>
+         <script src="http://compact.github.io/angular-bootstrap-lightbox/lib/ui-bootstrap-tpls.js?v1.3.1"></script>
+        <script src="http://compact.github.io/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js?v0.12.0" type="text/javascript"></script>
+        <!-- <script src="http://compact.github.io/angular-bootstrap-lightbox/lib/ng-videosharing-embed.min.js?v0.3.4"></script> -->
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
         <script src="http://mynameismatthieu.com/WOW/dist/wow.min.js"></script>

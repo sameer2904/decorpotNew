@@ -5,8 +5,8 @@
 	 <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="pastWork in pastWorks | filter:query">
             <div>
                 <a ui-sref="pastWorks.pastWork({id: $index})">
-                <!-- <a ui-sref="pastWorks.pastWork({id:'pastwork.id'})"> -->
-					<img bnLazySrc="{{pastWork.mainImage}}">
+                <!-- <a ui-sref="pastWorks.pastWork({id:'pastwork.id'})" class=" wow fadeInUp  animated"> -->
+					<img bnLazySrc="{{pastWork.mainImage}}" class=" wow fadeInUp  animated">
 				</a>
             </div>
             <div>

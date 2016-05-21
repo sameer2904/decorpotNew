@@ -2,7 +2,7 @@
  * @author govardhan
  */
 
-var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload','angular-loading-bar' ]);
+var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload','angular-loading-bar', 'bootstrapLightbox']);
 
 decorpot.run(['$rootScope', '$state',function($rootScope, $state) {
 	$rootScope.state = $state.this;
@@ -32,7 +32,8 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url: '/looks/:looksCategory',
 				templateUrl: 'resources/partials/looks.html',
 				controller: 'looksController'
-			}).state('looks.look', {
+			})
+			.state('looks.look', {
 				url: '/:id',
 				templateUrl: 'resources/partials/look.html'
 			})

@@ -399,9 +399,33 @@ decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentServ
 decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
     alert();
 }]);
-decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams', function($scope,$stateParams) {
-    $scope.pastWork = $stateParams.id;
-
+decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams',' Lightbox', function($scope, $stateParams, Lightbox) {
+    $scope.pastWork = $stateParams.id;alert();
+    $scope.images = [
+    {
+      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
+      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
+      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
+    },{
+      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
+      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
+      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
+    },{
+      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
+      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
+      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
+    },{
+      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
+      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
+      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
+    },{
+      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
+      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
+      'caption': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, sunt.'
+    }]
+    $scope.openLightboxModal = function (index) {
+    Lightbox.openModal($scope.images, index);
+  };
 }]);
 
 decorpotCtrls.controller('spaceController', ['$scope','spaceService','$stateParams', '$filter', function($scope, spaceService,$stateParams, $filter) {

@@ -5,8 +5,8 @@
         <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="apartment in apartments | filter:query">
             <div>
                 <a ui-sref="apartments.floorplans({ apartmentName : '{{apartment.apartmentName | addunderscore}}' })">
-                    <!-- <img src="resources/core/images/apartments/apartments.jpg"> -->
-                    <img bnLazySrc="{{apartment.mainImage}}">
+                    <!-- <img src="resources/core/images/apartments/apartments.jpg" class="wow fadeInUp  animated"> -->
+                    <img bnLazySrc="{{apartment.mainImage}}" class="wow fadeInUp  animated">
                 </a>
             </div>
             <div>
