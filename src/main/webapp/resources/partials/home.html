@@ -49,13 +49,6 @@
         <img class="col-md-5 col-sm-5 col-xs-12" src="resources/core/images/videoPoster.png" alt="video" />
         <div class="col-md-7 col-sm-7 col-xs-12">
             <h4>Why Us?</h4>
-            <!-- <div class="hidden-sm hidden-xs">
-				<p>High quality and elegant interior design solutions at
-					extremely competitive prices.</p>
-				<p>Operational in Bangalore since last 7 years.</p>
-				<p>Our projects includes Villas, Apartments, and Customized
-					Flats.</p>
-			</div> -->
             <div>
                 <ul>
                     <li><span>2 BHK starts from 2.2 lakhs only</span></li>
@@ -92,7 +85,7 @@
                 <div class="owl-carousel1 wow slideUp" role="listbox">
                     <div class="item" ng-repeat="p in pastWorkData1" ng-init="$last ? owlCarouselPastWork1($index) : ''">
                         <img src="{{p.mainImage}}" alt="completed-projects" />
-                        <div class="panel-footer">{{p.apartmentName}}</div>
+                        <div class="panel-footer wow animated fadeInUp">{{p.apartmentName}}</div>
                     </div>
                 </div>
                 <!-- second row goes here as owl carousel can contain 1 row -->
@@ -113,7 +106,7 @@
 <section id="wordsWeSay" class="row">
     <div class="container">
         <div class="row">
-            <div class="text-center wow fadeInUp animated" style="visibility: visible;">
+            <div class="text-center wow fadeInUp animated">
                 <h1>WORDS WE STAND ON</h1>
                 <div class="separator">
                     <span><i class="fa fa-circle"></i></span>
@@ -196,7 +189,7 @@
 <section class="text-light" id="section-steps">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center" style="visibility: visible; animation-name: fadeInUp;">
+            <div class="col-md-12 text-center">
                 <h1>OUR PROCESS</h1>
                 <div class="separator">
                     <span><i class="fa fa-circle"></i></span>
@@ -207,16 +200,16 @@
                 <div class="de_tab tab_steps">
 
                     <ul class="de_nav">
-                        <li class="active wow fadeIn animated" style="visibility: visible; animation-delays: 0s;" data-wow-delay="0s"><span>Connect &amp; Book</span>
+                        <li class="active wow fadeIn animated" ng-click="steps()" style=" animation-delays: 0s;" data-wow-delay="0s"><span>Connect &amp; Book</span>
                             <div class="v-border visible1"></div>
                         </li>
-                        <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 0.4s;" data-wow-delay=".4s"><span>Plan &amp; Design</span>
+                        <li class="wow fadeIn animated" ng-click="steps()" style=" animation-delay: 0.4s;" data-wow-delay=".4s"><span>Plan &amp; Design</span>
                             <div class="v-border visible1"></div>
                         </li>
-                        <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 0.8s;" data-wow-delay=".8s"><span>Build &amp; Create</span>
+                        <li class="wow fadeIn animated" ng-click="steps()" style=" animation-delay: 0.8s;" data-wow-delay=".8s"><span>Build &amp; Create</span>
                             <div class="v-border visible1"></div>
                         </li>
-                        <li class="wow fadeIn animated" style="visibility: visible; animation-delay: 1.2s;" data-wow-delay="1.2s"><span>Delivery &amp; Support</span>
+                        <li class="wow fadeIn animated" ng-click="steps()" style=" animation-delay: 1.2s;" data-wow-delay="1.2s"><span>Delivery &amp; Support</span>
                             <div class="v-border visible1"></div>
                         </li>
                     </ul>
@@ -241,7 +234,7 @@
 <section class="text-light" id="section-testimonial">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp animated" style="visibility: visible;">
+            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp animated">
                 <h1>Customer Says</h1>
                 <div class="separator">
                     <span><i class="fa fa-circle"></i></span>
@@ -291,15 +284,3 @@
             </div>
         </div>
 </section>
-<!-- our partners -->
-<!-- <section id="ourPartners">
-	<div class="col-md-6 col-md-offset-3 text-center wow fadeInUp animated"
-		style="visibility: visible;">
-		<h1>OUR PARTNERS</h1>
-		<div class="separator">
-			<span><i class="fa fa-circle"></i></span>
-		</div>
-		<div class="spacer-single"></div>
-	</div>
-	<img src="resources/core/images/partners.jpg" alt="">
-</section> -->
