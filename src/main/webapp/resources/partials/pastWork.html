@@ -4,17 +4,15 @@
 	<div class="positionRelative">
 		OUR WORKS / {{pastWork}}
 		<div class="col-md-4 col-sm-4 col-md-12 pull-right mt10">
-			<!-- <input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"> -->
 		</div>
 	</div>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-4 col-sm-6 col-xs-12"
 				ng-repeat="i in images">
 				<div>
-					<a ng-click="openLightboxModal($index)"> <img
-						bn-lazy-src="{{i.thumbnail}}" class="wow fadeInUp  animated" /> <!-- <img bnLazySrc={{image.thumbUrl}}" class="wow fadeInUp  animated"> -->
-
+					<a ng-click="openLightboxModal($index)"> 
+					<img bn-lazy-src="{{i.thumbnail}}" class="wow fadeInUp  animated" /> 
 					</a>
 				</div>
 
@@ -23,6 +21,3 @@
 	</div>
 </div>
 <i class="clearfix"></i>
-<script>
-
-</script>

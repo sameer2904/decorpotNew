@@ -30,7 +30,7 @@ body > div > div > div.row > div.col-md-3{
     opacity: 0;
     filter: alpha(opacity=0);
 }
-.col-md-5{
-   padding:20px;
+#contact > div.container-fluid > div:nth-child(2){
+   margin-left:20px;
 }
 

@@ -120,7 +120,6 @@ decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pa
         });
     };
     $scope.owlCarouselPastWork2 = function(index){
-        console.log(index);
         $('.owl-carousel2').owlCarousel({
             items: 4,
             loop:true,
@@ -176,16 +175,14 @@ decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pa
     
 
     // Select steps
-    $('#section-steps > div > div > div:nth-child(2) > div > ul > li').on('click', function () {
+    $scope.steps = function () {
         $('#section-steps > div > div > div:nth-child(2) > div > ul > li').removeClass('active');
         $('#section-steps > div > div > div:nth-child(2) > div > ul > li:nth-child(' + parseInt($(this).index() + 1) + ')').addClass('active');
         $('.v-border').css('opacity', '0');
         $(this).find('.v-border').fadeTo(150, 1);
-        // $(this).parent('li').children().find('div').css('opacity','1');
-        // $(this).parent('li').find('.v-border').css('opacity','1');
         $('#tab1,#tab2,#tab3,#tab4').hide();
         $('#tab' + parseInt($(this).index() + 1) + '').show();
-    });
+    };
 
     // Testimonial carousel
     $("#testimonial-carousel").owlCarousel({

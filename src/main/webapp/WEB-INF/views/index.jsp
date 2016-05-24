@@ -58,8 +58,7 @@
                     </div>
                     <div id="navbar" window-Resize class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a ui-sref="home" ui-sref-active="active">Home<span class="sr-only">(current)</span></a>
-                            </li>
+                            <!-- <li><a ui-sref="home" ui-sref-active="active">Home<span class="sr-only">(current)</span></a></li> -->
                             <li><a ui-sref="apartments">Apartments</a>
                             </li>
                             <li><a noui-sref="">Looks</a>
@@ -91,39 +90,25 @@
                          <img class="logo-small" alt="" src="./resources/core/images/logo.png"><br/>
                         Decorpot offers comprehensive solutions for all your interior design needs. We have operations in Bangalore from last 7 years and have completed multiple projects in residential and commercial interiors which includes Bungalows, Duplexes, and flats.
                     </div>
-                    <!-- 
-                <div class="col-md-2 col-md-offset-1 col-sm-6">
-                     <div class="widget widget_recent_post">
-                        <h3>Sitemap</h3>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Apartments</a></li>
-                            <li><a href="#">Lorem</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div> -->
-                    <div class="col-md-4 col-sm-6 wow slideInUp" data-wow-animation="0.1s" data-wow-delay="0.1s">
+                    <div class="col-md-offset-1 col-md-2 col-sm-6 wow slideInUp" data-wow-animation="0.1s" data-wow-delay="0.1s">
                         <div class="widget widget_recent_post">
                             <h3>Sitemap</h3>
                             <ul>
                                 <li><a ui-sref="home">Home</a></li>
+                                <li><a ui-sref="about">About Us</a></li>
                                 <li><a ui-sref="apartments">Apartments</a></li>
-                                <!-- <li><a href="#"></a></li> -->
                                 <li><a ui-sref="pastWorks">Past Works</a></li>
                                 <li><a ui-sref="contact">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-sm-6 wow slideInRight" data-wow-animation="0.1s" data-wow-delay="0.1s">
+                    <div class="col-md-offset-1 col-md-4 col-sm-6 wow slideInRight" data-wow-animation="0.1s" data-wow-delay="0.1s">
                         <h3>Contact Us</h3>
                         <div class="widget widget-address">
                             <address>
                                     <span>Premises No. 445, 3rd Floor, JKN Towers, 5th Main, 16th A Cross, HSR Layout Sector 6 Bangalore</span>
                                     <span><b>Phone:</b>  (+91) 9986076761 | (+91) 9986076762</span>
-                                    <!-- <span><b>Fax:</b> (+208) 333 9298</span> -->
                                     <span><b>Email:</b> <a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
                                     <span><b>Web:</b> <a href="#">http://decorpot.com</a></span>
                                 </address>
@@ -157,15 +142,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular-touch.min.js"></script>
-        <script src="resources/core/js/ng-file-upload.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script src="resources/core/js/ng-file-upload.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
         <script src="resources/core/js/loading.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
          <script src="http://compact.github.io/angular-bootstrap-lightbox/lib/ui-bootstrap-tpls.js?v1.3.1"></script>
         <script src="http://compact.github.io/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js?v0.12.0" type="text/javascript"></script>
-        <!-- <script src="http://compact.github.io/angular-bootstrap-lightbox/lib/ng-videosharing-embed.min.js?v0.3.4"></script> -->
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
         <script src="http://mynameismatthieu.com/WOW/dist/wow.min.js"></script>
