@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.decorpot.datasource.models.Config2BHK;
 
 @Repository
-public interface Config2BHKRepository extends CrudRepository<Config2BHK, String> {
+public interface Config2BHKRepository extends CrudRepository<Config2BHK, Integer> {
 	List<Config2BHK> findByApartmentId(int apartmentId);
 
 }

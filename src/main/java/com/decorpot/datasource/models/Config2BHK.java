@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,6 +16,10 @@ import org.hibernate.annotations.Type;
 public class Config2BHK {
 
     @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
+    
     @Column(name = "PLAN_NAME")
     private String planName;
     
@@ -42,7 +48,16 @@ public class Config2BHK {
     @Type(type = "yes_no")
     private boolean active;
 
-    public Date getDate() {
+    
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getDate() {
         return date;
     }
 

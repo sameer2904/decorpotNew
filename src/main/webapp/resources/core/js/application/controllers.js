@@ -373,7 +373,7 @@ decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', f
 
 decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
     $scope.name = $filter('underscoreless')($stateParams.apartmentName);
-	apartmentService.getAllFloorPlans(name)
+	apartmentService.getAllFloorPlans($scope.name)
 	.success(function(data) {
 		$scope.floopPlans = data.apartmentBaseConfigs;
 	});
@@ -385,14 +385,48 @@ decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentServ
         "apartmentType": "2bhk",
         "basePrice": 100000,
         "mainImage": "resources/core/images/apartments/apartments.jpg",
-        "spaceIds": "1,2,3,4,5"
+        "spaceIds": [
+                     {
+                     	"space": 'kitchen',
+                     	"id": 2
+                     },
+                     {
+                     	"space": 'master_bedroom',
+                     	"id": 2
+                     },
+                     {
+                     	"space": 'guest_bedroom',
+                     	"id": 2
+                     },
+                     {
+                     	"space": 'living_dining',
+                     	"id": 2
+                     }
+                     ]
     },
     {
         "apartmentName": "xyz",
         "apartmentType": "2bhk",
         "basePrice": 200000,
         "mainImage": "resources/core/images/apartments/apartments.jpg",
-        "spaceIds": "1,2,3,4,5"
+        "spaceIds": [
+                     {
+        	"space": 'kitchen',
+        	"id": 1
+        },
+        {
+        	"space": 'master_bedroom',
+        	"id": 1
+        },
+        {
+        	"space": 'guest_bedroom',
+        	"id": 1
+        },
+        {
+        	"space": 'living_dining',
+        	"id": 1
+        }
+        ]
     }]
 }]);
 

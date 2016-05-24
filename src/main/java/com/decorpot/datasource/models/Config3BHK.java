@@ -4,126 +4,139 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name="CONFIG_3BHK")
+@Table(name = "CONFIG_3BHK")
 public class Config3BHK {
 
-    @Id
-    @Column(name = "PLAN_NAME")
-    private String planName;
-    
-    @Column(name = "KITCHEN_CONFIG")
-    private String kitchenConfig;
-    
-    @Column(name = "MASTERBEDROOM_CONFIG")
-    private String masterBedroomConfig;
-    
-    @Column(name = "KIDSBEDROOM_CONFIG")
-    private String kidsBedroomConfig;
-    
-    @Column(name = "GUESTBEDROOM_CONFIG")
-    private String guestBedroomConfig;
-    
-    @Column(name = "FLOOR_PLAN")
-    private String floorPlan;
-    
-    @Column(name= "APARTMENT_ID")
-    private Integer apartmentId;
-    
-    @Column(name= "APARTMENT_TYPE")
-    private String apartmentType;
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 
-    @Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
-    private Date date;
-    
-    @Column(name = "ACTIVE")
-    @Type(type = "yes_no")
-    private boolean active;
+	@Column(name = "PLAN_NAME")
+	private String planName;
 
-    public Date getDate() {
-        return date;
-    }
+	@Column(name = "KITCHEN_CONFIG")
+	private String kitchenConfig;
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+	@Column(name = "MASTERBEDROOM_CONFIG")
+	private String masterBedroomConfig;
 
-    public boolean isActive() {
-        return active;
-    }
+	@Column(name = "KIDSBEDROOM_CONFIG")
+	private String kidsBedroomConfig;
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-    
-    public String getPlanName() {
-        return planName;
-    }
+	@Column(name = "GUESTBEDROOM_CONFIG")
+	private String guestBedroomConfig;
 
-    public void setPlanName(String planName) {
-        this.planName = planName;
-    }
+	@Column(name = "FLOOR_PLAN")
+	private String floorPlan;
 
-    public String getKitchenConfig() {
-        return kitchenConfig;
-    }
+	@Column(name = "APARTMENT_ID")
+	private Integer apartmentId;
 
-    public void setKitchenConfig(String kitchenConfig) {
-        this.kitchenConfig = kitchenConfig;
-    }
+	@Column(name = "APARTMENT_TYPE")
+	private String apartmentType;
 
-    public String getMasterBedroomConfig() {
-        return masterBedroomConfig;
-    }
+	@Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
+	private Date date;
 
-    public void setMasterBedroomConfig(String masterBedroomConfig) {
-        this.masterBedroomConfig = masterBedroomConfig;
-    }
+	@Column(name = "ACTIVE")
+	@Type(type = "yes_no")
+	private boolean active;
 
-    public String getKidsBedroomConfig() {
-        return kidsBedroomConfig;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setKidsBedroomConfig(String kidsBedroomConfig) {
-        this.kidsBedroomConfig = kidsBedroomConfig;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getGuestBedroomConfig() {
-        return guestBedroomConfig;
-    }
+	public Date getDate() {
+		return date;
+	}
 
-    public void setGuestBedroomConfig(String guestBedroomConfig) {
-        this.guestBedroomConfig = guestBedroomConfig;
-    }
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
-    public String getFloorPlan() {
-        return floorPlan;
-    }
+	public boolean isActive() {
+		return active;
+	}
 
-    public void setFloorPlan(String floorPlan) {
-        this.floorPlan = floorPlan;
-    }
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
-    public Integer getApartmentId() {
-        return apartmentId;
-    }
+	public String getPlanName() {
+		return planName;
+	}
 
-    public void setApartmentId(Integer apartmentId) {
-        this.apartmentId = apartmentId;
-    }
+	public void setPlanName(String planName) {
+		this.planName = planName;
+	}
 
-    public String getApartmentType() {
-        return apartmentType;
-    }
+	public String getKitchenConfig() {
+		return kitchenConfig;
+	}
 
-    public void setApartmentType(String apartmentType) {
-        this.apartmentType = apartmentType;
-    }
-    
-    
+	public void setKitchenConfig(String kitchenConfig) {
+		this.kitchenConfig = kitchenConfig;
+	}
+
+	public String getMasterBedroomConfig() {
+		return masterBedroomConfig;
+	}
+
+	public void setMasterBedroomConfig(String masterBedroomConfig) {
+		this.masterBedroomConfig = masterBedroomConfig;
+	}
+
+	public String getKidsBedroomConfig() {
+		return kidsBedroomConfig;
+	}
+
+	public void setKidsBedroomConfig(String kidsBedroomConfig) {
+		this.kidsBedroomConfig = kidsBedroomConfig;
+	}
+
+	public String getGuestBedroomConfig() {
+		return guestBedroomConfig;
+	}
+
+	public void setGuestBedroomConfig(String guestBedroomConfig) {
+		this.guestBedroomConfig = guestBedroomConfig;
+	}
+
+	public String getFloorPlan() {
+		return floorPlan;
+	}
+
+	public void setFloorPlan(String floorPlan) {
+		this.floorPlan = floorPlan;
+	}
+
+	public Integer getApartmentId() {
+		return apartmentId;
+	}
+
+	public void setApartmentId(Integer apartmentId) {
+		this.apartmentId = apartmentId;
+	}
+
+	public String getApartmentType() {
+		return apartmentType;
+	}
+
+	public void setApartmentType(String apartmentType) {
+		this.apartmentType = apartmentType;
+	}
+
 }

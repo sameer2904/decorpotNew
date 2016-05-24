@@ -6,8 +6,15 @@ public class ApartmentBaseConfig {
     protected String planName;
     protected String apartmentType;
     protected String floorPlan;
+    protected int planId;
     
-    public String getApartmentName() {
+    public int getPlanId() {
+		return planId;
+	}
+	public void setPlanId(int planId) {
+		this.planId = planId;
+	}
+	public String getApartmentName() {
         return apartmentName;
     }
     public void setApartmentName(String apartmentName) {

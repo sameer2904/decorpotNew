@@ -1,8 +1,11 @@
 package com.decorpot.services;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,14 +13,24 @@ import org.springframework.stereotype.Service;
 import com.amazonaws.util.CollectionUtils;
 import com.decorpot.datasource.models.ApartmentConfig;
 import com.decorpot.datasource.models.Config3BHK;
+import com.decorpot.datasource.models.MasterBedroom;
 import com.decorpot.datasource.repository.ApartmentConfigRepository;
 import com.decorpot.datasource.repository.Config2BHKRepository;
 import com.decorpot.datasource.repository.Config3BHKRepository;
 import com.decorpot.rest.model.ApartmentBaseConfig;
 import com.decorpot.rest.model.ApartmentConfigs;
+import com.decorpot.rest.model.Bedroom;
+import com.decorpot.rest.model.BedroomBaseConfig;
 import com.decorpot.rest.model.Config2BHK;
+import com.decorpot.rest.model.Kitchen;
+import com.decorpot.rest.model.KitchenConfig;
+import com.decorpot.rest.model.LivingAndDining;
+import com.decorpot.rest.model.Packages;
+import com.decorpot.utils.DataCache;
 import com.decorpot.utils.DecorpotConstants;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -31,6 +44,9 @@ public class ApartmentService {
 
 	@Autowired
 	private ApartmentConfigRepository apartmentConfigRepository;
+
+	@Autowired
+	private SpaceService spaceService;
 
 	public void configApartment(ApartmentConfigs apartmentConfig) {
 		Date dateToday = new java.util.Date();
@@ -123,6 +139,7 @@ public class ApartmentService {
 		if (!CollectionUtils.isNullOrEmpty(config2bhks)) {
 			config2bhks.forEach(c -> {
 				ApartmentBaseConfig baseConfig = new ApartmentBaseConfig();
+				baseConfig.setPlanId(c.getId());
 				baseConfig.setApartmentName(apartmentName);
 				baseConfig.setApartmentType(c.getApartmentType());
 				baseConfig.setPlanName(c.getPlanName());
@@ -135,6 +152,7 @@ public class ApartmentService {
 		if (!CollectionUtils.isNullOrEmpty(config3bhks)) {
 			config3bhks.forEach(c -> {
 				ApartmentBaseConfig baseConfig = new ApartmentBaseConfig();
+				baseConfig.setPlanId(c.getId());
 				baseConfig.setApartmentName(apartmentName);
 				baseConfig.setApartmentType(c.getApartmentType());
 				baseConfig.setPlanName(c.getPlanName());
@@ -150,6 +168,81 @@ public class ApartmentService {
 		configs.setId(apartmentConfigs.getId());
 		configs.setApartmentBaseConfigs(apartmentBaseConfigs);
 		return configs;
+	}
+
+	public List<Packages> get3BHKApartmentByFloorplanId(int id)
+			throws JsonParseException, JsonMappingException, IOException {
+		/**
+		 * todo: change all functions in space service for by type to send a
+		 * limit.
+		 */
+		if (DataCache.get("3BHK" + id) != null) {
+			return (List<Packages>) DataCache.get("3BHK" + id);
+		} else {
+			List<Packages> packages = new ArrayList<>();
+			//List<Map<String, Object>> packages = new ArrayList<>();
+			int maxLen = 0;
+			Config3BHK config3bhk = config3bhkRepository.findOne(id);
+			ApartmentConfig apartmentConfig = apartmentConfigRepository.findOne(config3bhk.getApartmentId());
+			ObjectMapper mapper = new ObjectMapper();
+			KitchenConfig kitchenConfig = mapper.readValue(config3bhk.getKitchenConfig(), KitchenConfig.class);
+			BedroomBaseConfig masterBedroomConfig = mapper.readValue(config3bhk.getMasterBedroomConfig(),
+					BedroomBaseConfig.class);
+			BedroomBaseConfig guestBedroomConfig = mapper.readValue(config3bhk.getGuestBedroomConfig(),
+					BedroomBaseConfig.class);
+			BedroomBaseConfig kidsBedroomConfig = mapper.readValue(config3bhk.getKidsBedroomConfig(),
+					BedroomBaseConfig.class);
+
+			List<Kitchen> kitchens = spaceService.getAllKitchensByType(kitchenConfig.getKitchenType());
+			int kitchenSize = kitchens.size();
+			List<Bedroom> masterBedrooms = spaceService
+					.getAllMasterBedroomsByType(masterBedroomConfig.getWardrobeType());
+			int masterBedroomSize = masterBedrooms.size();
+			List<Bedroom> guestBedrooms = spaceService.getAllGuestBedroomsByType(guestBedroomConfig.getWardrobeType());
+			int guestBedroomsSize = guestBedrooms.size();
+			List<Bedroom> kidsBedrooms = spaceService.getAllKidsBedroomsByType(kidsBedroomConfig.getWardrobeType());
+			int kidsBedroomsSize = kidsBedrooms.size();
+			List<LivingAndDining> livingAndDinings = spaceService.getAllLivingAndDining();
+			int livingAndDiningsSize = livingAndDinings.size();
+
+			if (kitchens.size() > maxLen) {
+				maxLen = kitchens.size();
+			}
+
+			if (masterBedrooms.size() > maxLen) {
+				maxLen = masterBedrooms.size();
+			}
+
+			if (guestBedrooms.size() > maxLen) {
+				maxLen = guestBedrooms.size();
+			}
+
+			if (kidsBedrooms.size() > maxLen) {
+				maxLen = kidsBedrooms.size();
+			}
+
+			if (livingAndDinings.size() > maxLen) {
+				maxLen = livingAndDinings.size();
+			}
+
+			for (int i = 0; i < maxLen; i++) {
+				Map<String, Object> pkg = new HashMap<>();
+				pkg.put(DecorpotConstants.KITCHEN, kitchens.get(i < kitchenSize ? i : (i - kitchenSize)));
+				pkg.put(DecorpotConstants.MASTER_BEDROOM,
+						masterBedrooms.get(i < masterBedroomSize ? i : (i - masterBedroomSize)));
+				pkg.put(DecorpotConstants.GUEST_BEDROOM,
+						guestBedrooms.get(i < guestBedroomsSize ? i : (i - guestBedroomsSize)));
+				pkg.put(DecorpotConstants.KIDS_BEDROOM,
+						kidsBedrooms.get(i < kidsBedroomsSize ? i : (i - kidsBedroomsSize)));
+				pkg.put(DecorpotConstants.LIVING_DINING,
+						livingAndDinings.get(i < livingAndDiningsSize ? i : (i - livingAndDiningsSize)));
+				Packages pkgs = new Packages();
+				//pkgs.setApartmentName();
+				
+			}
+			DataCache.put("3BHK" + id, packages);
+			return packages;
+		}
 	}
 
 }
