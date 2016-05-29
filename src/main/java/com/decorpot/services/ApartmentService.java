@@ -170,6 +170,7 @@ public class ApartmentService {
 		return configs;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Packages> get3BHKApartmentByFloorplanId(int id)
 			throws JsonParseException, JsonMappingException, IOException {
 		/**
@@ -180,7 +181,7 @@ public class ApartmentService {
 			return (List<Packages>) DataCache.get("3BHK" + id);
 		} else {
 			List<Packages> packages = new ArrayList<>();
-			//List<Map<String, Object>> packages = new ArrayList<>();
+			// List<Map<String, Object>> packages = new ArrayList<>();
 			int maxLen = 0;
 			Config3BHK config3bhk = config3bhkRepository.findOne(id);
 			ApartmentConfig apartmentConfig = apartmentConfigRepository.findOne(config3bhk.getApartmentId());
@@ -226,19 +227,39 @@ public class ApartmentService {
 			}
 
 			for (int i = 0; i < maxLen; i++) {
-				Map<String, Object> pkg = new HashMap<>();
-				pkg.put(DecorpotConstants.KITCHEN, kitchens.get(i < kitchenSize ? i : (i - kitchenSize)));
+				double basePrice = 0;
+				Map<String, Integer> pkg = new HashMap<>();
+				pkg.put(DecorpotConstants.KITCHEN, kitchens.get(i < kitchenSize ? i : (i - kitchenSize)).getId());
+
+				basePrice += kitchens.get(i < kitchenSize ? i : (i - kitchenSize)).getBasePrice();
 				pkg.put(DecorpotConstants.MASTER_BEDROOM,
-						masterBedrooms.get(i < masterBedroomSize ? i : (i - masterBedroomSize)));
+						masterBedrooms.get(i < masterBedroomSize ? i : (i - masterBedroomSize)).getId());
+
+				basePrice += masterBedrooms.get(i < masterBedroomSize ? i : (i - masterBedroomSize)).getBasePrice();
 				pkg.put(DecorpotConstants.GUEST_BEDROOM,
-						guestBedrooms.get(i < guestBedroomsSize ? i : (i - guestBedroomsSize)));
+						guestBedrooms.get(i < guestBedroomsSize ? i : (i - guestBedroomsSize)).getId());
+
+				basePrice += guestBedrooms.get(i < guestBedroomsSize ? i : (i - guestBedroomsSize)).getBasePrice();
 				pkg.put(DecorpotConstants.KIDS_BEDROOM,
-						kidsBedrooms.get(i < kidsBedroomsSize ? i : (i - kidsBedroomsSize)));
+						kidsBedrooms.get(i < kidsBedroomsSize ? i : (i - kidsBedroomsSize)).getId());
+
+				basePrice += kidsBedrooms.get(i < kidsBedroomsSize ? i : (i - kidsBedroomsSize)).getBasePrice();
 				pkg.put(DecorpotConstants.LIVING_DINING,
-						livingAndDinings.get(i < livingAndDiningsSize ? i : (i - livingAndDiningsSize)));
+						livingAndDinings.get(i < livingAndDiningsSize ? i : (i - livingAndDiningsSize)).getId());
+
+				basePrice += livingAndDinings.get(i < livingAndDiningsSize ? i : (i - livingAndDiningsSize))
+						.getBasePrice();
 				Packages pkgs = new Packages();
-				//pkgs.setApartmentName();
-				
+				pkgs.setApartmentName(apartmentConfig.getApartmentName());
+				pkgs.setApartmentType(config3bhk.getApartmentType());
+				pkgs.setBasePrice(basePrice);
+				pkgs.setPkg(pkg);
+				pkgs.setImage(DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.SPACE_IMAGE_LOCATION
+						+ DecorpotConstants.spaceImageSizes.get(0)
+						+ kitchens.get(i < kitchenSize ? i : (i - kitchenSize)).getImages().get(0));
+
+				// pkgs.setApartmentName();
+
 			}
 			DataCache.put("3BHK" + id, packages);
 			return packages;
