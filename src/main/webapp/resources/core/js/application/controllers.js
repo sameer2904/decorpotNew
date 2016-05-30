@@ -10,16 +10,16 @@ if ($(window).width() >= 767) {console.log('entered');
         $('#navbar').attr('mobileView','false');
                 $(document).bind('scroll', function () {
             if (window.scrollY > 60) {
-                $('.preHeader').slideUp();
+                $('.preHeader').css({'visibility':'visible'}).slideUp();
             } else {
-                $('.preHeader').slideDown();
+                $('.preHeader').css({'visibility':'visible'}).slideDown();
             }
         });
     } 
     else {
         $('#navbar').attr('mobileView','true');console.log('true');
         $(document).unbind('scroll');
-        $('.preHeader').hide();
+        $('.preHeader').css({'position':'fixed','visibility':'hidden'});
     }
 })
 $(window).resize();
@@ -375,8 +375,10 @@ decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$
 		$scope.floopPlans = data.apartmentBaseConfigs;
 	});
 }]);
-decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService', function($scope, apartmentService) {
-    
+decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService','$stateParams', function($scope, apartmentService,$stateParams) {
+    $scope.floorPlanName = $stateParams.apartmentName;
+    $scope.packagesName = $stateParams.packagesName;
+    console.log($stateParams)
     $scope.packages = [{
         "apartmentName": "abc",
         "apartmentType": "2bhk",

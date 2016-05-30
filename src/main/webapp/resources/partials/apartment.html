@@ -1,0 +1,37 @@
+<main>
+	<div class="positionRelative">APARTMENTS / {{name}}<div class="col-md-4 col-sm-4 col-md-12 pull-right mt10">
+<!-- <input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"></div></div> -->
+</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-7 col-sm-6 col-xs-12">
+			<img src="resources/core/images/apartments/apartments.jpg" alt="">
+			<hr>
+			<h5>Views</h5>
+			<div class="row">
+				<div class="col-md-2" ng-repeat="package in [0,1,2,3,4,5,6] | filter:query">
+                <a nohref="">
+                    <img src="resources/core/images/apartments/apartments.jpg" class="wow fadeInUp  animated">
+                </a>
+			</div>
+		</div>
+		</div>
+		<div class="col-md-5 col-sm-6 col-xs-12">
+		<h4>Apartment Name</h4><hr>
+			<select name="apartmentType" ng-model="apartmentTypes" class="form-control">
+				<option value="2">2 BHK</option>
+				<option value="3">3 BHK</option>
+			</select>
+			<select name="apartmentRoom" ng-model="apartmentRoom" class="form-control">
+				<option value="Kitchen">Kitchen</option>
+				<option value="Living + Dining">Living + Dining</option>
+				<option value="Master Bedroom">Master Bedroom</option>
+				<option value="Guest Bedroom">Guest Bedroom</option>
+				<option value="Kids BedRoom">Kids BedRoom</option>
+			</select>
+		</div>
+
+	</div>
+</div>
+</main>
