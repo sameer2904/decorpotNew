@@ -325,20 +325,22 @@ footer {
 #uploadApartment i{
     /*color:red;*/
 }
-
+hr {
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
 /*apartment,looks, past works & looks page styles*/
 #apartments, #looks, #pastWorks, #pastWork, #floorPlan{
     padding:0;
     background: #f2f2f2;
 }
 #apartments > div.container > div > div >div, #looks > div.container > div > div >div, #pastworks > div.container > div > div >div,
-#floorPlan .floorPlanImages  > div > div, #pastWork > div.container > div > div >div {
+#floorPlan .floorPlanImages  > div > div, #pastWork > div.container > div > div >div, .apartmentImage {
     max-width:100%;
     box-sizing: border-box;
     overflow: hidden;
     padding: 0;
-}
-#apartments img:hover, #looks img:hover, #pastWorks img:hover, #pastWork img:hover, #floorPlan .floorPlanImages  > div > div img:hover{
+} 
+#apartments img:hover, #looks img:hover, #pastWorks img:hover, #pastWork img:hover, #floorPlan .floorPlanImages  > div > div img:hover, .apartmentImage img:hover{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
@@ -363,4 +365,13 @@ footer {
     text-align: center;
     text-transform: uppercase;
     font: 1.3vw/20px Arial;
+}
+/*Apartments*/
+#apartment > div.container-fluid > div:nth-child(1) > div.col-md-7.col-sm-6.col-xs-12 > div.row > div{
+    margin-bottom:15px;
+}
+.nav-tabs {
+    border-bottom: 0px;
+    color:#000;
+    
 }
