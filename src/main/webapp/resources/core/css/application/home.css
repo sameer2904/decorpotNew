@@ -53,6 +53,7 @@ main {
 }*/
 #whyUs > div > div > div > ul li span{
     color:black;
+    font-size:18px;
 }
 #whyUs > div > div > div > ul{
     /*margin-left:300px;*/
@@ -228,7 +229,7 @@ section#section-steps {
     padding: 30px 0 30px 0;
     border-radius: 120px;
     color: #222;
-    font-size: 16px;
+    font-size: 18px;
     -moz-border-radius: 120px;
     -webkit-border-radius: 120px;
     line-height: 120px;
@@ -464,7 +465,7 @@ blockquote {
 
 .de_testi blockquote,
 .de_testi blockquote p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6em;
     font-weight: 500;
 }
@@ -505,7 +506,9 @@ blockquote {
         list-style: none;text-align: center;
     }
 }
-
+#whyUs > div > div > h4{
+    font-size:24px;
+}
 
 /*media query for steps vborder*/
 
