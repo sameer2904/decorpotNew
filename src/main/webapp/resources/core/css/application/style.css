@@ -329,9 +329,9 @@ hr {
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 /*apartment,looks, past works & looks page styles*/
-#apartments, #looks, #pastWorks, #pastWork, #floorPlan{
+#apartments, #looks, #pastWorks, #pastWork, #floorPlan,#look{
     padding:0;
-    background: #f2f2f2;
+    background: whitesmoke;
 }
 #apartments > div.container > div > div >div, #looks > div.container > div > div >div, #pastworks > div.container > div > div >div,
 #floorPlan .floorPlanImages  > div > div, #pastWork > div.container > div > div >div, .apartmentImage {
@@ -366,12 +366,43 @@ hr {
     text-transform: uppercase;
     font: 1.3vw/20px Arial;
 }
-/*Apartments*/
-#apartment > div.container-fluid > div:nth-child(1) > div.col-md-7.col-sm-6.col-xs-12 > div.row > div{
+/*Apartment & look page*/
+#apartment > div.container-fluid > div:nth-child(1) > div.col-md-7.col-sm-6.col-xs-12 > div.row > div,
+#look > div.container-fluid > div:nth-child(1) > div.col-md-7.col-sm-6.col-xs-12 > div.row > div{
     margin-bottom:15px;
 }
 .nav-tabs {
-    border-bottom: 0px;
-    color:#000;
+    /*border-bottom: 0px;*/
+    /*color:#000;*/
     
 }
+#apartment > div.container-fluid > div > div.col-md-5.col-sm-6.col-xs-12 > div > div.col.sm-12,
+#look > div.container-fluid > div > div.col-md-5.col-sm-6.col-xs-12 > div > div.col.sm-12{
+    margin:20px 0;
+}
+#apartment .tab-content,
+#look .tab-content{
+        background: #fff;
+    border: 1px solid #DDDDDD;
+    padding: 20px;
+}
+#apartment .nav-tabs>li>a, #look .nav-tabs>li>a {
+        border: 1px solid #ddd;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 5px;
+    color:#000;
+    /*background: #5e5e5e;*/
+}
+#apartment .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover,
+#look .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border-bottom:0px;
+    font-weight: bold;
+}
+#apartment .nav-tabs>li>a:hover,
+#look .nav-tabs>li>a:hover{
+    /*border:1px solid grey;*/
+}
+#apartment .nav-tabs>li ,
+#look .nav-tabs>li {
+    width: 50%;
+    }

@@ -1,1 +1,67 @@
-<main>look</main>
+<main id="look">
+	<div class="positionRelative">APARTMENTS / {{name}}<div class="col-md-4 col-sm-4 col-md-12 pull-right mt10">
+<!-- <input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"></div></div> -->
+</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-7 col-sm-6 col-xs-12">
+			<div class="apartmentImage"><img src="resources/core/images/apartments/apartments.jpg" alt=""></div>
+			<h4>Views</h4>
+			<div class="row">
+				<div class="col-md-2" ng-repeat="package in [0,1,2,3,4,5,6] | filter:query">
+                    <img src="resources/core/images/apartments/apartments.jpg" class="wow fadeInUp  animated">
+			</div>
+		</div>
+		</div>
+		<div class="col-md-5 col-sm-6 col-xs-12">
+		<h3>{Apartment Name}</h3>
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="Type"><b>Apartment Type</b></label>
+			<select name="apartmentType" ng-model="apartmentTypes" ng-value="2" class="form-control">
+				<option value="2">2 BHK</option>
+				<option value="3">3 BHK</option>
+			</select>
+			</div>
+			<div class="col-sm-6">
+				<label for="Type"><b>Apartment Space</b></label>
+			<select name="apartmentRoom" ng-model="apartmentRoom" ng-value="Kitchen" class="form-control">
+				<option value="Kitchen">Kitchen</option>
+				<option value="Living + Dining">Living + Dining</option>
+				<option value="Master Bedroom">Master Bedroom</option>
+				<option value="Guest Bedroom">Guest Bedroom</option>
+				<option value="Kids BedRoom">Kids BedRoom</option>
+			</select>
+			</div>
+			</div>
+			<div class="row">
+				<div class="col sm-12">
+				 <uib-tabset active="active">
+    <uib-tab index="0" heading="Description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum adipisci incidunt obcaecati, quod at aut. Suscipit mollitia tenetur saepe, quia fuga, dolore itaque quasi vero iure quae magnam necessitatibus laboriosam.</uib-tab>
+    <uib-tab index="1" heading="Specifications">
+    	<table class="table table-stripped">
+    		<tr>
+    			<th>Sl.No</th>
+    			<th>Name</th>
+    			<th>Base Price</th>
+    			</tr>
+    			<tr ng-repeat="p in [0,1,2,3,4]">
+    				<td>1</td>
+    				<td>ABC</td>
+    				<td>10000</td>
+    			</tr>
+    			<tr>
+    				<td colspan="2">Total</td>
+    				<td>50000</td>
+    			</tr>
+    		</tr>
+    	</table>
+    </uib-tab>
+    </uib-tabset>
+			</div>
+		</div>
+		</div>
+	</div><br>
+</div>
+</main>

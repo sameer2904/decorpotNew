@@ -19,26 +19,25 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<label for="Type"><b>Apartment Type</b></label>
-			<select name="apartmentType" ng-model="apartmentTypes" class="form-control">
-				<option value="2" ng-selected="true">2 BHK</option>
+			<select name="apartmentType" ng-model="apartmentTypes" ng-value="2" class="form-control">
+				<option value="2">2 BHK</option>
 				<option value="3">3 BHK</option>
 			</select>
 			</div>
 			<div class="col-sm-6">
 				<label for="Type"><b>Apartment Space</b></label>
 			<select name="apartmentRoom" ng-model="apartmentRoom" class="form-control">
-				<option value="Kitchen" ng-selected="true">Kitchen</option>
+				<option value="Kitchen">Kitchen</option>
 				<option value="Living + Dining">Living + Dining</option>
 				<option value="Master Bedroom">Master Bedroom</option>
 				<option value="Guest Bedroom">Guest Bedroom</option>
 				<option value="Kids BedRoom">Kids BedRoom</option>
 			</select>
 			</div>
-		</div>
-		</div>
-	</div><br>
-	<div class="row">
-		  <uib-tabset active="active">
+			</div>
+			<div class="row">
+				<div class="col sm-12">
+				 <uib-tabset active="active">
     <uib-tab index="0" heading="Description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum adipisci incidunt obcaecati, quod at aut. Suscipit mollitia tenetur saepe, quia fuga, dolore itaque quasi vero iure quae magnam necessitatibus laboriosam.</uib-tab>
     <uib-tab index="1" heading="Specifications">
     	<table class="table table-stripped">
@@ -60,7 +59,9 @@
     	</table>
     </uib-tab>
     </uib-tabset>
-
-	</div>
+			</div>
+		</div>
+		</div>
+	</div><br>
 </div>
 </main>
