@@ -369,6 +369,12 @@ hr {
     font: 1.3vw/20px Arial;
 }
 /*Apartment & look page*/
+#apartment{
+    margin-top: 105px;
+}
+#apartment img:hover{
+   transform: scale(1);
+}
 #apartment > div.container-fluid > div:nth-child(1) > div.col-md-7.col-sm-6.col-xs-12 > div.row > div,
 #look > div.container-fluid > div:nth-child(1) > div.col-md-7.col-sm-6.col-xs-12 > div.row > div{
     margin-bottom:15px;
@@ -412,16 +418,16 @@ hr {
     margin: -24px 0 5px 0;
     padding: 8px;
 }
-#apartments .well ul li {
+#apartment .well ul li {
     display: inline-block;
     padding: 0 15px;
     text-align:center;
 }
-#apartments .well ul li a:hover, #apartments .well ul li.active a{
+#apartment .well ul li a:hover, #apartment .well ul li.active a{
     color:#FAB702;
     text-decoration: none;
 }
-#apartments .well ul li a:after{
+#apartment .well ul li a:after{
         float: right;
     font-family: "FontAwesome";
     content: "\f111";
@@ -429,10 +435,12 @@ hr {
     margin-top: 7px;
     color: #FAB702;
 }
-#apartments .well ul li:last-child a:after{
+#apartment .well ul li:last-child a:after{
     content:'';
 }
-
+#apartment .btn{
+    margin:5px;
+}
 /*Media query*/
 @media (max-width:540px) {
 .nav.navbar-nav li a:after, .preHeader > ul > li:nth-child(1):after {
