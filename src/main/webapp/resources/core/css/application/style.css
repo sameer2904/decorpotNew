@@ -369,10 +369,10 @@ hr {
     font: 1.3vw/20px Arial;
 }
 /*Apartment & look page*/
-#apartment{
+#apartment, #look{
     margin-top: 105px;
 }
-#apartment img:hover{
+#apartment img:hover, #look img:hover{
    transform: scale(1);
 }
 #apartment > div.container-fluid > div:nth-child(1) > div.col-md-7.col-sm-6.col-xs-12 > div.row > div,
@@ -412,22 +412,24 @@ hr {
 #look .nav-tabs>li {
     width: 50%;
 }
-#apartment .well{
+#apartment .well, #look .well{
     background: #3f3f3f;
     color: #fff;
     margin: -24px 0 5px 0;
     padding: 8px;
 }
-#apartment .well ul li {
+#apartment .well ul li, #look .well ul li {
     display: inline-block;
     padding: 0 15px;
     text-align:center;
 }
-#apartment .well ul li a:hover, #apartment .well ul li.active a{
+#apartment .well ul li a:hover, #look .well ul li.active a,
+#apartment .well ul li a:hover, #look .well ul li.active a{
     color:#FAB702;
     text-decoration: none;
 }
-#apartment .well ul li a:after{
+#apartment .well ul li a:after,
+#look .well ul li a:after{
         float: right;
     font-family: "FontAwesome";
     content: "\f111";
@@ -435,11 +437,16 @@ hr {
     margin-top: 7px;
     color: #FAB702;
 }
-#apartment .well ul li:last-child a:after{
+#apartment .well ul li:last-child a:after,
+#look .well ul li:last-child a:after{
     content:'';
 }
-#apartment .btn{
+#apartment .btn,
+#look .btn{
     margin:5px;
+}
+#look .container-fluid{
+    margin-top: 90px;
 }
 /*Media query*/
 @media (max-width:540px) {
