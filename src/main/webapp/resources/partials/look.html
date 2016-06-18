@@ -1,45 +1,87 @@
 <main id="look">
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-sm-6 col-xs-12">
-			<div class="apartmentImage"><img src="resources/core/images/apartments/apartments.jpg" alt=""></div>
-			<br><div class="row">
-				<div class="col-md-2" ng-repeat="package in [0,1,2,3,4,5] | filter:query">
+    <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12 apartmentImage"><img src="resources/core/images/apartments/apartments.jpg" alt=""></div>
+            <div class="col-md-12 col-sm-12 col-xs-12 views">
+                <div class="col-md-2" ng-repeat="package in [0,1,2,3,4,5] | filter:query">
                     <img src="resources/core/images/apartments/apartments.jpg" class="wow fadeInUp  animated">
-			</div>
-		</div>
-		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12">
-		<h3>Apartment Name - 2BHK</span></h3>
-		<p>(*Also Includes Lorem ipsum dolor sit amet.)</p><hr>
-			<div class="row">
-				<div class="col sm-12">
-				 <uib-tabset active="active">
+            </div>
+        </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+        <h3>Apartment Name - 2BHK</span></h3>
+        <h3>Base price - Rs 1,20,000</h3>
+        <p>(*Also Includes Lorem ipsum dolor sit amet.)</p>
+            <div class="row">
+                <div class="col sm-12">
+                 <uib-tabset active="active">
     <uib-tab index="0" heading="Description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum adipisci incidunt obcaecati, quod at aut. Suscipit mollitia tenetur saepe, quia fuga, dolore itaque quasi vero iure quae magnam necessitatibus laboriosam.</uib-tab>
     <uib-tab index="1" heading="Specifications">
-    	<table class="table table-stripped table-bordered table-hover tavle-inverse table-responsive">
-    		<tr>
-    			<th>Sl.No</th>
-    			<th>Name</th>
-    			<th>Base Price</th>
-    			</tr>
-    			<tr ng-repeat="p in [0,1,2,3,4]">
-    				<td>1</td>
-    				<td>ABC</td>
-    				<td>10000</td>
-    			</tr>
-    			<tr>
-    				<td colspan="2">Total</td>
-    				<td>50000</td>
-    			</tr>
-    		</tr>
-    	</table>
+        <table class="table table-stripped table-bordered table-hover tavle-inverse table-responsive">
+            <tr>
+                <th>Sl.No</th>
+                <th>Name</th>
+                <th>Base Price</th>
+                </tr>
+                <tr ng-repeat="p in [0,1,2,3,4]">
+                    <td>1</td>
+                    <td>ABC</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Total</td>
+                    <td>50000</td>
+                </tr>
+            </tr>
+        </table>
     </uib-tab>
     </uib-tabset>
-			</div>
-		</div>
-		</div>
-	</div><br>
+            </div>
+        </div>
+        </div>
+    </div><br>
+    <div class="row">
+        
+            <div class="col-xs-12 col-sm-12 col-md-12 faqsTitle">
+                <h2 class="faqsTitle">FAQs</h2><hr>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 faqsDetails" style="margin-top: 30px;">
+
+                     
+                    <h2 class="faqsQuestion">Q. Do you customize the kitchen as per the dimensions of my house?</h2>
+                    <p class="faqsAnswer">A. Yes, we can customize the kitchen as per the dimensions of your house. Please leave your details in the form (click on 'Talk to our designers') and our Home Interiors Expert will reach out to you. We will provide 3D designs for you to visualize before finalizing.</p>
+                    
+                    <h2 class="faqsQuestion">Q. What materials do you use? </h2>
+                    <p class="faqsAnswer">A. We believe in offering the choice to our customers. You can choose between plywood, pre-laminated boards and MDF. Our team of designers can help you in making the choices as well. Below are the brands we use: Plywood, particle boards and MDF are from Greenply, Laminates/Veneers are from Merino or Sonear, Hardware is from Hettich.</p>
+                    
+                    <h2 class="faqsQuestion">Q. Do you offer more options in terms of colours? </h2>
+                    <p class="faqsAnswer">A. Yes, we offer a wide range of colours. We can help you in designing a mix and match of colours as well.</p>
+                    
+                    <h2 class="faqsQuestion">Q. What are the exclusions in the quote? </h2>
+                    <p class="faqsAnswer">A. Price does not include plumbing, electrical, appliances, tiling and granite. Quote for them will be as per actuals.</p>
+                    
+                    <h2 class="faqsQuestion">Q. Can I change the accessories? </h2>
+                    <p class="faqsAnswer">A. Yes, we offer the complete flexibility in adding and removing accessories.</p>
+                    
+                    <h2 class="faqsQuestion">Q. Do you charge for design inputs? </h2>
+                    <p class="faqsAnswer">A. No, we do not charge for design. Our team of designers can help you in designing, selection of finishes, accessories etc.</p>
+                    
+                    <h2 class="faqsQuestion">Q. What is the normal installation time? </h2>
+                    <p class="faqsAnswer">A. We take 2 days to install a kitchen.</p>
+                    
+                    <h2 class="faqsQuestion">Q. What is required from my side, to have the site ready for installation? </h2>
+                    <p class="faqsAnswer">A.Please ensure flooring, tiling and at least the first coat of paint is done. Our teams will be using power tools during assembly and will require power. We need to be provided gate passes (if required) for our teams to enter your premises.</p>
+                    
+                    <h2 class="faqsQuestion">Q. Do you sell other types of furniture ? </h2>
+                    <p class="faqsAnswer">A. Yes, we custom-make wardrobes, lofts, crockery units, study tables, shoe racks and entertainment Units. Finishes can be matched to the rest of your interiors.</p>
+                    
+                    <h2 class="faqsQuestion">Q. Which locations do you deliver?</h2>
+                    <p class="faqsAnswer">A. We currently deliver in Bangalore, Hyderabad, Pune, Chennai, Mumbai and Kochin.</p>
+                    
+                </div>
+            
+    </div>
 </div>
 </main>
