@@ -1,6 +1,6 @@
 <main id="floorPlan" ui-view>
 <div>
-<div class="positionRelative">APARTMENTS / {{name}}<div class="col-md-4 col-sm-4 col-md-12 pull-right mt10">
+<div class="positionRelative">APARTMENTS / {{data.apartmentName}}<div class="col-md-4 col-sm-4 col-md-12 pull-right mt10">
 <!-- <input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"></div></div> -->
 </div>
 </div>
@@ -19,23 +19,16 @@
             </div>
         </div>
         <div class="row floorPlanImages">
-            <h5><b>Address : </b>{{floorPlan.address}}</h5>
+            <h5><b>Address : </b>{{data.address}}</h5>
             <h5><b>Details : </b></h5>
             <hr>
             <h3>Floor Plans</h3>
             <h5>Please select your floor plan. We have created packages to suit your need according to your floor plan</h5><br><br>
-            <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="f in [0,1,2,3] | filter:query">
-             <a  ui-sref="apartments.floorplans.packages({ packagesName : '{{floopPlans.id}}' })">
-                    <img src="resources/core/images/apartments/apartments.jpg"  class="wow fadeInUp  animated">
+            <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="c in data.apartmentBaseConfigs | filter:query">
+             <a  ui-sref="apartments.floorplans.packages({ floorplanId : '{{c.planId}}',  apartmentType: '{{c.apartmentType}}'})">
+                    <img src={{c.floorPlan}}  class="wow fadeInUp  animated">
                 </a>
-            <!-- <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="f in floopPlans | filter:query"> 
-            <div>
-                <a ui-sref="apartments.floorplans({ planId : '{{f.planId}}-{{f.apartmnetType}}' })">
-                    <img src="resources/core/images/apartments/apartments.jpg"  class="wow fadeInUp  animated">
-                </a>
-            </div>
-            </div>-->
-                <h4>3bhk Floorplan</h4>
+                <h4>{{c.planName}}</h4>
             </div>
         </div>
     </div>

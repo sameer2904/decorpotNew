@@ -74,6 +74,12 @@ services.service('apartmentService',['$http', function($http){
 				url: 'apartments/' + apartmentName,
 				method: 'get'
 			});
+		},
+		getAllPAckagesForFloorPlan(apartmentType, floorPlanId) {
+			return $http({
+				method: 'get',
+				url: 'apartments/' + apartmentType + '/' + floorPlanId
+			})
 		}
 	}
 }] );
@@ -83,12 +89,6 @@ services.service('spaceService',['$http', function($http){
 		getAllLooks: function(space) {
 			return $http({
 				url: 'space/' + space,
-				method: 'get'
-			});
-		},
-		getAllFloorPlans: function(apartmentName) {
-			return $http({
-				url: 'apartments/' + apartmentName,
 				method: 'get'
 			});
 		},

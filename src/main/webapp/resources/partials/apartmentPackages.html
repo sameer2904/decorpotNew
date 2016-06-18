@@ -1,10 +1,10 @@
 <div id="apartmentPackages" ui-view>
-<div class="positionRelative">APARTMENTS/{{floorPlanName}}/{{packagesName}}<div class="col-md-4 col-sm-4 col-md-12 pull-right mt10"><input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"></div></div>
+<div class="positionRelative">APARTMENTS/{{floorPlanName}}<div class="col-md-4 col-sm-4 col-md-12 pull-right mt10"><input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"></div></div>
     <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="package in packages | filter:query">
             <div>
-                <a ui-sref="apartments.floorplans.packages.package({ packageName : 'package' })">
+                <a ui-sref="apartments.floorplans.packages.package({ spaceIds : '{{package.url}}' })">
                     <img bn-lazy-src="{{package.mainImage}}" class="wow fadeInUp  animated">
                 </a>
             </div>
