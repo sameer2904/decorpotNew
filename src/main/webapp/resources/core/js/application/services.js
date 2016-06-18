@@ -91,6 +91,12 @@ services.service('spaceService',['$http', function($http){
 				url: 'apartments/' + apartmentName,
 				method: 'get'
 			});
+		},
+		getLookById: function(space, id) {
+			return $http({
+				url: 'space/' + space + '/' + id,
+				method: 'get'
+			})
 		}
 	}
 }] );

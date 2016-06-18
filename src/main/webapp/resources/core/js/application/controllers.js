@@ -238,7 +238,7 @@ decorpotCtrls.controller('looksController', ['$scope', '$stateParams', 'spaceSer
     		var looks = data.data;
     		angular.forEach(looks, function(look, index) {
     			look.thumbNail = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/475x270" + look.images[0];
-    		})
+    		});
     		$scope.looks = data.data;
     		
     		
@@ -247,12 +247,42 @@ decorpotCtrls.controller('looksController', ['$scope', '$stateParams', 'spaceSer
 }]);
 
 decorpotCtrls.controller('lookController', ['$scope', '$stateParams', 'spaceService', function($scope, $stateParams, spaceService) {
-    
+    var includesMap = {
+    		living_dining : 'Base Price Includes tv unit',
+    		kitchen: 'Base Price includes complete kitchen',
+    		master_bedroom: 'Base Price included wardrobe',
+    		guest_bedroom: 'Base Price Includes Wardrobe',
+    		kids_bedroom: 'Base Price Includes Wardrobe'
+    }
 	var params = $stateParams.id.split('-');
 	spaceService.getLookById(params[0], params[1])
 	.then(function(data) {
-		$scope.space = data.data;
-	})
+		let total = 0,
+		thumbnails = [],
+		space = data.data;
+		
+		angular.forEach(space.images, function(i, index) {
+			thumbnails.push({
+				thumb: "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/475x270" + i,
+				thumbId: i
+			})
+		});
+		angular.forEach($scope.space.addons, function(a, index) {
+			total+= a.price;
+		});
+		space.basePriceDescription = includesMap[params[0]]
+		space.total = total;
+		$scope.thumbnails = thumbnails;
+		$scope.space = space;
+		$scope.toggleObject = {
+				item : 0
+			};
+		
+	});
+	
+	$scope.getHdImage = function(imageId) {
+    	$scope.hdImage = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/475x270" + imageId;
+    }
 }]);
 
 decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploadService', function ($scope, Upload, uploadService) {
@@ -305,8 +335,8 @@ decorpotCtrls.controller('uploadFloorPlanController', [
                                               '$scope',
                                               'Upload', 'uploadService', 'apartmentService',
                                               function($scope, Upload, uploadService, apartmentService) {
-                                                  $scope.kitchenTypes = ['L-shaped', 'u-shaped'];
-                                                  $scope.wardrobeTypes = ['4-door', '6-door'];
+                                                  $scope.kitchenTypes = ['L-shaped', 'u-shaped', 'parallel', 'island'];
+                                                  $scope.wardrobeTypes = ['2-door','3-door','4-door','5-door', '6-door'];
                                                   $scope.apartmentTypes = ['2bhk', '3bhk'];
                                                   apartmentService.getAllApartments()
                                                   .success(function(data) {
@@ -443,12 +473,4 @@ decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams','Lightbo
     $scope.openLightboxModal = function (index) {
     Lightbox.openModal($scope.images, index);
   };
-}]);
-
-decorpotCtrls.controller('spaceController', ['$scope','spaceService','$stateParams', '$filter', function($scope, spaceService,$stateParams, $filter) {
-    alert();
-}]);
-
-decorpotCtrls.controller('spacesController', ['$scope','spaceService','$stateParams', '$filter', function($scope, spaceService,$stateParams, $filter) {
-    alert();
 }]);

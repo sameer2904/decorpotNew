@@ -35,7 +35,8 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 			})
 			.state('looks.look', {
 				url: '/:id',
-				templateUrl: 'resources/partials/look.html'
+				templateUrl: 'resources/partials/look.html',
+				controller: 'lookController'
 			})
 			.state('contact', {
 				url : '/contact',
