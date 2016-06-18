@@ -19,13 +19,13 @@
             </div>
         </div>
         <div class="row floorPlanImages">
-            <h5><b>Address : </b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptas explicabo, ipsum alias error laborum.</h5>
-            <h5><b>Details : </b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptas explicabo, ipsum alias error laborum.</h5>
+            <h5><b>Address : </b>{{floorPlan.address}}</h5>
+            <h5><b>Details : </b></h5>
             <hr>
             <h3>Floor Plans</h3>
-            <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus reiciendis maxime cupiditate consequuntur voluptas, officia, similique corrupti natus debitis laborum numquam facilis omnis blanditiis id.</h5><br><br>
+            <h5>Please select your floor plan. We have created packages to suit your need according to your floor plan</h5><br><br>
             <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="f in [0,1,2,3] | filter:query">
-             <a  ui-sref="apartments.floorplans.packages({ packagesName : 'demo' })">
+             <a  ui-sref="apartments.floorplans.packages({ packagesName : '{{floopPlans.id}}' })">
                     <img src="resources/core/images/apartments/apartments.jpg"  class="wow fadeInUp  animated">
                 </a>
             <!-- <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="f in floopPlans | filter:query"> 

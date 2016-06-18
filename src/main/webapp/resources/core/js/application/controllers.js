@@ -402,7 +402,7 @@ decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$
     $scope.name = $filter('underscoreless')($stateParams.apartmentName);
 	apartmentService.getAllFloorPlans($scope.name)
 	.success(function(data) {
-		$scope.floopPlans = data.apartmentBaseConfigs;
+		$scope.floopPlans = data;
 	});
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService','$stateParams', function($scope, apartmentService,$stateParams) {
