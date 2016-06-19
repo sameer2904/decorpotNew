@@ -369,8 +369,8 @@ decorpotCtrls.controller('uploadFloorPlanController', [
                                                     	  apartmentConfig.guestBedroom.width = $scope.oWidth;
                                                     	  apartmentConfig.kidsBedroom = {};
                                                     	  apartmentConfig.kidsBedroom.wardrobeType = $scope.kWardrobeType;
-                                                    	  apartmentConfig.kidsBedroom.length = $scope.kLength;
-                                                    	  apartmentConfig.kidsBedroom.width = $scope.kWidth;
+                                                    	  apartmentConfig.kidsBedroom.length = $scope.kidLength;
+                                                    	  apartmentConfig.kidsBedroom.width = $scope.kidWidth;
                                                     	  
                                                 	  }
                                                 	  apartmentConfig.floorPlan = $scope.file.name;
