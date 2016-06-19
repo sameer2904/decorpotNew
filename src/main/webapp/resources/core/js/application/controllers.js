@@ -42,8 +42,8 @@ decorpotCtrls.controller('uploadController', [
             "value": "bakwas"
             }];
             
-            $scope.kitchenTypes = ['L-shaped', 'u-shaped'];
-            $scope.wardrobeTypes = ['4-door', '6-door'];
+            $scope.kitchenTypes = ['L-shaped', 'u-shaped', 'parallel', 'island'];
+            $scope.wardrobeTypes = ['2-door', '3-door', '4-door', '5-door', '6-door'];
             $scope.addons = ["Bed", "Bed with Side Table", "Book Shelf", "Cabinets", 
                              "Chest of Drawers", "Crockery Unit", "Dining Table", "Drawer",
                              "Dresser", "False Ceiling", "False ceiling", "Loft", "Mirror Paneling",
