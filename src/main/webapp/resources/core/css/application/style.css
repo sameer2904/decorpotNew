@@ -466,6 +466,14 @@ hr {
 #apartment .views, #look .views{
     margin-top:20px;
 }
+.deliveryIcon, .warrantyIcon {
+    text-align: center;
+    color: #666;
+}
+.deliveryIcon img, .warrantyIcon img{
+    width:initial;
+    height:initial;
+}
 .faqsWrapper {
     margin-top: 30px;
     margin-bottom: 10px;
