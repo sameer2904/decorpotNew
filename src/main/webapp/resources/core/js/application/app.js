@@ -2,7 +2,7 @@
  * @author govardhan
  */
 
-var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload','angular-loading-bar', 'bootstrapLightbox', 'ngAnimate']);
+var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload','angular-loading-bar', 'bootstrapLightbox', 'ngAnimate','angularGrid']);
 
 decorpot.run(['$rootScope', '$state',function($rootScope, $state) {
 	$rootScope.state = $state.this;

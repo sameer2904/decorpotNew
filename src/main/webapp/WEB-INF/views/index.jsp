@@ -150,6 +150,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
          <script src="http://compact.github.io/angular-bootstrap-lightbox/lib/ui-bootstrap-tpls.js?v1.3.1"></script>
         <script src="http://compact.github.io/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js?v0.12.0" type="text/javascript"></script>
+        <script src="resources/core/js/angularGrid.js" type="text/javascript"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
         <script src="http://mynameismatthieu.com/WOW/dist/wow.min.js"></script>

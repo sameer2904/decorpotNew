@@ -6,8 +6,8 @@
 </div>
 </div>
     <div class="container-fluid">
-       <div class="row getAdvice wow fadeInUp  animated hidden-xs">
-            <div class="col-md-3 col-md-offset-1 pull-right well">
+       <div class="row getAdvice wow fadeInUp  animated" ng-style="{'background-image':'url('+data.image+')'}">
+            <div class="col-md-3 col-md-offset-9 pull-right well">
                 <form class="ng-pristine ng-valid">
                     <div class="text-warning">Get a free advice</div>
                     <input type="text" class="form-control" placeholder="*User Name.."><br>
@@ -17,19 +17,20 @@
                     <input type="submit" value="SEND REQUEST" class="form-control btn btn-info">
                 </form>
             </div>
+            <div class="col-md-12 col sm-12 col-xs-12 address">
+                <h5><b><span class="fa fa-map-marker"></span>&nbsp;Address : </b>{{data.address}}</h5>
+            </div>
         </div>
         <div class="row floorPlanImages">
-            <h5><b>Address : </b>{{data.address}}</h5>
-            <h5><b>Details : </b></h5>
-            <hr>
             <h3>Floor Plans</h3>
             <h5>Please select your floor plan. We have created packages to suit your need according to your floor plan</h5><br><br>
-            <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="c in data.apartmentBaseConfigs | filter:query">
+                <div angular-grid="data.apartmentBaseConfigs">
+                <div  class="flowGridItem col-md-4 col-sm-6 col-xs-12" ng-repeat="c in data.apartmentBaseConfigs | filter:query">
              <a  ui-sref="apartments.floorplans.packages({ floorplanId : '{{c.planId}}',  apartmentType: '{{c.apartmentType}}'})">
-                    <img src={{c.floorPlan}}  class="wow fadeInUp  animated">
+                    <img src={{c.floorPlan}}  class="wow fadeInUp  animated"  data-actual-width = "{{pic.actualWidth}}"  data-actual-height="{{pic.actualHeight}}">
                 </a>
                 <h4>{{c.planName}}</h4>
-            </div>
+            </div></div>
         </div>
     </div>
 </main>

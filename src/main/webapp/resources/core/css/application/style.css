@@ -307,7 +307,7 @@ footer {
 .positionRelative{
     text-indent: 2%;
     padding: 100px 0 40px 0;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     color: #f2f2f2;
     font-size: 3vw;
     background: url('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSkA1r1qJPotDXrV0_QFOYc1p7XP52DhU2ylP1Lv0eWXNSI8lFo');
@@ -349,8 +349,9 @@ hr {
 }
 /*floorplan*/
 #floorPlan .getAdvice{
-    margin:20px 0;
-    background: url('../../images/carousel2.jpg') 100% no-repeat;
+    margin:0 0 20px 0;
+    background-size: cover;
+    /*background: url('../../images/carousel2.jpg') 100% no-repeat;*/
 }
 #floorPlan .well{
     background-color: rgba(11, 11, 11, 0.6);
@@ -363,6 +364,13 @@ hr {
     text-align: center;
     text-transform: uppercase;
     font: 1.3vw/20px Arial;
+}
+#floorPlan .address b{
+    color:rgb(250, 183, 2);
+}
+#floorPlan .address{
+    background: rgba(11, 11, 11, 0.6);
+    color:#fff;
 }
 /*Apartment & look page*/
 #apartment{
@@ -503,8 +511,10 @@ hr {
 .nav-pills>li+li {
     margin-left: 0px;
 }
+#floorPlan .well{
+        visibility: hidden;
+    }
 }
-
 .activeBorder{
 	border: #D6655B solid 2px;
 }
