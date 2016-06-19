@@ -201,28 +201,28 @@
                 <div class="de_tab tab_steps">
 
                     <ul class="de_nav">
-                        <li class="active wow fadeIn animated" ng-click="steps()" style=" animation-delays: 0s;" data-wow-delay="0s"><span>Connect &amp; Book</span>
-                            <div class="v-border visible1"></div>
+                        <li class="wow fadeIn animated" ng-click="steps(1)" ng-class="{active: isActive(1)}" style=" animation-delays: 0s;" data-wow-delay="0s"><span>Connect &amp; Book</span>
+                            <div class="v-border visible1" ng-class="{active: isActive(1)}"></div>
                         </li>
-                        <li class="wow fadeIn animated" ng-click="steps()" style=" animation-delay: 0.4s;" data-wow-delay=".4s"><span>Plan &amp; Design</span>
-                            <div class="v-border visible1"></div>
+                        <li class="wow fadeIn animated" ng-click="steps(2)" ng-class="{active: isActive(2)}" style=" animation-delay: 0.4s;" data-wow-delay=".4s"><span>Plan &amp; Design</span>
+                            <div class="v-border visible1" ng-class="{active: isActive(2)}" ></div>
                         </li>
-                        <li class="wow fadeIn animated" ng-click="steps()" style=" animation-delay: 0.8s;" data-wow-delay=".8s"><span>Build &amp; Create</span>
-                            <div class="v-border visible1"></div>
+                        <li class="wow fadeIn animated" ng-click="steps(3)" ng-class="{active: isActive(3)}" style=" animation-delay: 0.8s;" data-wow-delay=".8s"><span>Build &amp; Create</span>
+                            <div class="v-border visible1" ng-class="{active: isActive(3)}"></div>
                         </li>
-                        <li class="wow fadeIn animated" ng-click="steps()" style=" animation-delay: 1.2s;" data-wow-delay="1.2s"><span>Delivery &amp; Support</span>
-                            <div class="v-border visible1"></div>
+                        <li class="wow fadeIn animated" ng-click="steps(4)" ng-class="{active: isActive(4)}" style=" animation-delay: 1.2s;" data-wow-delay="1.2s"><span>Delivery &amp; Support</span>
+                            <div class="v-border visible1" ng-class="{active: isActive(4)}"></div>
                         </li>
                     </ul>
                     <div class="de_tab_content">
 
-                        <div id="tab1" style="display: block;">The customer contacts us via our email id, phone number or by filling the online form. Initial discussion with the customer begins wherein the entire design process, materials involved, the time required, etc. is explained to the customer. After understanding the customer requirements, we provide the cost estimates. Once everything is finalized, the customer confirms the order by paying Rs 10,000.</div>
+                        <div class="tab" ng-class="{active: isActive(1)}">The customer contacts us via our email id, phone number or by filling the online form. Initial discussion with the customer begins wherein the entire design process, materials involved, the time required, etc. is explained to the customer. After understanding the customer requirements, we provide the cost estimates. Once everything is finalized, the customer confirms the order by paying Rs 10,000.</div>
 
-                        <div id="tab2" style="display: none;">This is the most exciting part of the process where the actual design ideas are presented to the customer by our team of talented designers. From floor plans to 3D modelling, our team provides complete visualization of your space. Your views and opinions are very important to us. Hence, everything is planned and designed as per your requirements and specifications.</div>
+                        <div class="tab" ng-class="{active: isActive(2)}">This is the most exciting part of the process where the actual design ideas are presented to the customer by our team of talented designers. From floor plans to 3D modelling, our team provides complete visualization of your space. Your views and opinions are very important to us. Hence, everything is planned and designed as per your requirements and specifications.</div>
 
-                        <div id="tab3" style="display: none;">This is the phase where you can actually see your dreams and ideas turn into reality. After detailed discussion, the final quotation is provided to the customer as per the finalized design. The customer signs the agreement and gives his approval by providing 50% of the payment in advance. Now, all you have to do is sit and relax as the "Decorpot Journey" begins wherein we transform your bland interior into a beautiful space!</div>
+                        <div class="tab" ng-class="{active: isActive(3)}">This is the phase where you can actually see your dreams and ideas turn into reality. After detailed discussion, the final quotation is provided to the customer as per the finalized design. The customer signs the agreement and gives his approval by providing 50% of the payment in advance. Now, all you have to do is sit and relax as the "Decorpot Journey" begins wherein we transform your bland interior into a beautiful space!</div>
 
-                        <div id="tab4" style="display: none;">The main highlight of our delivery is that we execute the complete project in 45 days. At Decorpot, we treat all of our customers as partners and sincerely believe in the expression, "Every customer counts. Therefore, even after the successful completion of your interior designing projects, we stay connected with you. Excellent customer support and service visit every 180 days are a normal part of our client relationship structure. Also, our quality execution is perfectly backed up by our 5-year warranty!</div>
+                        <div class="tab" ng-class="{active: isActive(4)}" >The main highlight of our delivery is that we execute the complete project in 45 days. At Decorpot, we treat all of our customers as partners and sincerely believe in the expression, "Every customer counts. Therefore, even after the successful completion of your interior designing projects, we stay connected with you. Excellent customer support and service visit every 180 days are a normal part of our client relationship structure. Also, our quality execution is perfectly backed up by our 5-year warranty!</div>
 
                     </div>
 

@@ -175,14 +175,13 @@ decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pa
     
 
     // Select steps
-    $scope.steps = function () {
-        $('#section-steps > div > div > div:nth-child(2) > div > ul > li').removeClass('active');
-        $('#section-steps > div > div > div:nth-child(2) > div > ul > li:nth-child(' + parseInt($(this).index() + 1) + ')').addClass('active');
-        $('.v-border').css('opacity', '0');
-        $(this).find('.v-border').fadeTo(150, 1);
-        $('#tab1,#tab2,#tab3,#tab4').hide();
-        $('#tab' + parseInt($(this).index() + 1) + '').show();
-    };
+    $scope.steps= function(item) {
+    $scope.selected = item; 
+};
+ $scope.isActive = function(item) {
+      return $scope.selected === item;
+};
+$scope.steps(1);
 
     // Testimonial carousel
     $("#testimonial-carousel").owlCarousel({

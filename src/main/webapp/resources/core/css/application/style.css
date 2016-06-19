@@ -176,7 +176,12 @@ body > header > nav > div > ul > li {
     margin: 5px;
     text-align: right;
 }
-
+.tab{
+    display:none;
+}
+.tab.active{
+    display: block;
+}
 
 /*footer*/
 
