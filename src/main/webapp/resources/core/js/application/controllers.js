@@ -280,7 +280,7 @@ decorpotCtrls.controller('lookController', ['$scope', '$stateParams', 'spaceServ
 	});
 	
 	$scope.getHdImage = function(imageId) {
-    	$scope.hdImage = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/475x270" + imageId;
+    	$scope.hdImage = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/885x503" + imageId;
     }
 }]);
 
