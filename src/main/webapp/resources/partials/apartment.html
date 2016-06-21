@@ -4,7 +4,9 @@
 	<div class="row">
 		<div class="col-md-8 col-sm-6 col-xs-12">
 		<div class="col-md-12 col-sm-12 col-xs-12 well">
-		&nbsp;Living<span class="test">&bull;</span>Dining <span class="test">&bull;</span>Kitchen<span class="test">&bull;</span> Master Bedroom <span class="test">&bull;</span> Guest Bedroom <span class="test">&bull;</span> Kids Bedroom
+		<span ng-repeat="t in tabs"><span data-ng-class="{'active' : toggleObject.item == $index }"
+						ng-init="($first) ? getSpaceById(t) : ''"
+						ng-click="getSpaceById(t)">&nbsp;{{t.spaceName || underscoreless || capitalize}}</span><span class="test">&bull;</span></span>
 		</div>
 			<div class="col-md-12 col-sm-12 col-xs-12 apartmentImage"><img src="resources/core/images/apartments/apartments.jpg" alt=""></div>
 			<div class="col-md-12 col-sm-12 col-xs-12 views">
@@ -14,13 +16,13 @@
 		</div>
 		</div>
 		<div class="col-md-4 col-sm-6 col-xs-12">
-		<h3>Apartment Name - 2BHK</span></h3>
-		<h3>Base price - Rs 1,20,000</h3>
+		<h3>{{apartmentName}} - {{apartmentType}}</span></h3>
+		<h3>Base price - Rs {{basePrice}}</h3>
 		<p>(*Also Includes Lorem ipsum dolor sit amet.)</p>
 			<div class="row">
 				<div class="col sm-12">
 				 <uib-tabset active="active">
-    <uib-tab index="0" heading="Description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum adipisci incidunt obcaecati, quod at aut. Suscipit mollitia tenetur saepe, quia fuga, dolore itaque quasi vero iure quae magnam necessitatibus laboriosam.</uib-tab>
+    <uib-tab index="0" heading="Description">{{space.description}}</uib-tab>
     <uib-tab index="1" heading="Specifications">
     	<table class="table table-stripped table-bordered table-hover tavle-inverse table-responsive">
     		<tr>

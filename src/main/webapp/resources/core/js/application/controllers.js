@@ -408,7 +408,6 @@ decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentServ
     $scope.apartmentType = $stateParams.apartmentType;
     $scope.floorplanId = $stateParams.floorplanId;
     
-    console.log($stateParams)
     apartmentService.getAllPAckagesForFloorPlan($stateParams.apartmentType, $stateParams.floorplanId)
     .success(function(data) {
     	
@@ -426,7 +425,29 @@ decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentServ
     });
 }]);
 
-decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
+decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$stateParams', '$filter', 'spaceService', function($scope, apartmentService,$stateParams, $filter, spaceService) {
+   console.log($stateParams);
+   $scope.apartmentName = $stateParams.apartmentName;
+   $scope.apartmentType = $stateParams.apartmentType;
+   $scope.tabs = $stateParams.spaceIds.split(',').map(function(space){
+  		var spaceMap = space.split('-');
+  		return {
+  			spaceName: spaceMap[1],
+  			spaceId: spaceMap[0]
+  		}
+  	});
+   $scope.toggleObject = {
+			item : 0
+		};
+   $scope.toggleObjectSpace = {
+			item : 0
+		};
+   $scope.getSpaceById = function(spaceMap) {
+	   spaceService.getSpaceById(spaceMap.spaceName, spaceMap.spaceId)
+	   		.success(function(data) {
+	   			$scope.space = data;
+	   		})
+   }
    
 }]);
 decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams','Lightbox', 'pastWorkService', function($scope, $stateParams, Lightbox, pastWorkService) {
