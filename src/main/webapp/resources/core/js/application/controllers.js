@@ -411,54 +411,7 @@ decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentServ
     console.log($stateParams)
     apartmentService.getAllPAckagesForFloorPlan($stateParams.apartmentType, $stateParams.floorplanId)
     .success(function(data) {
-    	data = [{
-            "apartmentName": "abc",
-            "apartmentType": "2bhk",
-            "basePrice": 100000,
-            "mainImage": "resources/core/images/apartments/apartments.jpg",
-            "spaceIds": [
-                         {
-                         	"space": 'kitchen',
-                         	"id": 2
-                         },
-                         {
-                         	"space": 'master_bedroom',
-                         	"id": 2
-                         },
-                         {
-                         	"space": 'guest_bedroom',
-                         	"id": 2
-                         },
-                         {
-                         	"space": 'living_dining',
-                         	"id": 2
-                         }
-                         ]
-        },
-        {
-            "apartmentName": "xyz",
-            "apartmentType": "2bhk",
-            "basePrice": 200000,
-            "mainImage": "resources/core/images/apartments/apartments.jpg",
-            "spaceIds": [
-                         {
-            	"space": 'kitchen',
-            	"id": 1
-            },
-            {
-            	"space": 'master_bedroom',
-            	"id": 1
-            },
-            {
-            	"space": 'guest_bedroom',
-            	"id": 1
-            },
-            {
-            	"space": 'living_dining',
-            	"id": 1
-            }
-            ]
-        }];
+    	
     	data.map(function(d) {
     		var url = d.spaceIds.map(function(spaceId) {
     				return spaceId.id + '-' + spaceId.space;

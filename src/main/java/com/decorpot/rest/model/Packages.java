@@ -1,6 +1,6 @@
 package com.decorpot.rest.model;
 
-import java.util.Map;
+import java.util.List;
 
 public class Packages {
 	
@@ -8,7 +8,7 @@ public class Packages {
 	private String apartmentType;
 	private double basePrice;
 	private String image;
-	private Map<String, Integer> pkg;
+	private List<SpaceId> spaceIds;
 	
 	public String getApartmentName() {
 		return apartmentName;
@@ -34,11 +34,12 @@ public class Packages {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public Map<String, Integer> getPkg() {
-		return pkg;
+	public List<SpaceId> getSpaceIds() {
+		return spaceIds;
 	}
-	public void setPkg(Map<String, Integer> pkg) {
-		this.pkg = pkg;
+	public void setSpaceIds(List<SpaceId> spaceIds) {
+		this.spaceIds = spaceIds;
 	}
+	
 	
 }

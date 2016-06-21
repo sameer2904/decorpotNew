@@ -10,5 +10,5 @@ import com.decorpot.datasource.models.KidsBedroom;
 @Repository
 public interface KidsBedroomRepository extends JpaRepository<KidsBedroom, Integer>{
 
-	public List<KidsBedroom> findByWardrobeType(String wardrobeType);
+	public List<KidsBedroom> findByWardrobeTypeIn(List<String> wardrobeType);
 }

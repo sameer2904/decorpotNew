@@ -10,6 +10,6 @@ import com.decorpot.datasource.models.MasterBedroom;
 @Repository
 public interface MasterBedroomRepository extends JpaRepository<MasterBedroom, Integer>{
 	
-	public List<MasterBedroom> findByWardrobeType(String wardrobeType);
+	public List<MasterBedroom> findByWardrobeTypeIn(List<String> wardrobeType);
 
 }

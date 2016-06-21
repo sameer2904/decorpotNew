@@ -18,14 +18,16 @@ public interface DecorpotConstants {
 	
 	
 	//caching keys
-	String KITCHEN = "kitchen_";
+	String KITCHEN = "kitchen";
 	String L_SHAPED = "L-shaped";
 	String U_SHAPED = "U-shaped";
 	
-	String MASTER_BEDROOM = "masterbedroom_";
-	String GUEST_BEDROOM = "guestbedroom_";
+	String MASTER_BEDROOM = "masterbedroom";
+	String GUEST_BEDROOM = "guestbedroom";
 	String KIDS_BEDROOM = "kidsbedroom";
-	String LIVING_DINING = "living_dining_";
+	String LIVING_DINING = "living_dining";
+	
+	List<String> wardrobes = Arrays.asList(new String[]{"2-door", "3-door", "4-door", "5-door", "6-door"});
 	
 	enum themes{
 		contemprory, modern
