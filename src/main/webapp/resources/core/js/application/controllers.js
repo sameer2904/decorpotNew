@@ -443,8 +443,14 @@ decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$s
 			item : 0
 		};
    $scope.getSpaceById = function(spaceMap) {
-	   spaceService.getSpaceById(spaceMap.spaceName, spaceMap.spaceId)
+	   spaceService.getLookById(spaceMap.spaceName + 's', spaceMap.spaceId)
 	   		.success(function(data) {
+	   			var total = 0;
+	   			$scope.addons = [{name: 'Base Price', basePrice: data.basePrice}].push.apply(data.addons);
+	   			angular.forEach($scope.addons, function(a, index) {
+	   				total += a.price;
+	   			})
+	   			$scope.total = total;
 	   			$scope.space = data;
 	   		})
    }

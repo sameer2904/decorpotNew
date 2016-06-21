@@ -30,10 +30,10 @@
     			<th>Name</th>
     			<th>Base Price</th>
     			</tr>
-    			<tr ng-repeat="p in [0,1,2,3,4]">
-    				<td>1</td>
-    				<td>ABC</td>
-    				<td>10000</td>
+    			<tr ng-repeat="a in addons">
+    				<td>{{$index}}</td>
+    				<td>a.name</td>
+    				<td>a.price</td>
     			</tr>
     			<tr>
     				<td colspan="2">Total</td>
