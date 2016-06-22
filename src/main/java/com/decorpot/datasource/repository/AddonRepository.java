@@ -8,6 +8,6 @@ import com.decorpot.datasource.models.Addon;
 
 public interface AddonRepository extends CrudRepository<Addon, Integer>{
 	
-	public List<Addon> findByParentId(int parentId);
+	public List<Addon> findByParentIdAndSpace(int parentId, String space);
 
 }

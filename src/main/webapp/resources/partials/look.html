@@ -10,7 +10,7 @@
 						ng-init="($first) ? getHdImage(t.thumbId) : ''"
 						ng-click="getHdImage(t.thumbId)">
 						<img id="imageViewContainer"
-						ng-src="{{t.thumb}}" />
+						ng-src="{{t.thumb}}" class="cursorPointer"/>
 					</div>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
         <h3>{{space.title}}</span></h3>
         <h3>Base price - Rs {{space.basePrice}}</h3>
-        <p>(*Includes{{space.basePriceDescription}}.)</p>
+        <p>(*{{space.basePriceDesc}}.)</p>
             <div class="row">
                 <div class="col sm-12">
                  <uib-tabset active="active">

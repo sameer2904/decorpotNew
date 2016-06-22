@@ -249,7 +249,7 @@ public class SpaceService {
 					.getInstance().get(DecorpotConstants.KITCHEN + DecorpotConstants.ALL);
 			kitchen = kitchens.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
 			if (kitchen != null) {
-				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(kitchen.getId());
+				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(kitchen.getId(), "kitchen");
 				kitchen.setAddons(
 						addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			}
@@ -257,7 +257,7 @@ public class SpaceService {
 		} else {
 			Kitchen kitchen2 = kitchenRepository.findOne(id);
 			kitchen = kitchenRepoToRestModelConverter(kitchen2);
-			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(kitchen.getId());
+			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(kitchen.getId(), "kitchen");
 			kitchen.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			DataCache.getInstance().put(DecorpotConstants.KITCHEN + id, kitchen);
@@ -322,7 +322,7 @@ public class SpaceService {
 					.getInstance().get(DecorpotConstants.MASTER_BEDROOM + DecorpotConstants.ALL);
 			bedroom = bedrooms.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
 			if (bedroom != null) {
-				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
+				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(bedroom.getId(), "master_bedroom");
 				bedroom.setAddons(
 						addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			}
@@ -330,7 +330,7 @@ public class SpaceService {
 		} else {
 			MasterBedroom masterBedroom = masterBedroomRepository.findOne(id);
 			bedroom = masterbedroomRepoToModelConverter(masterBedroom);
-			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
+			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(bedroom.getId(), "master_bedroom");
 			bedroom.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			DataCache.getInstance().put(DecorpotConstants.MASTER_BEDROOM + id, bedroom);
@@ -395,7 +395,7 @@ public class SpaceService {
 					.getInstance().get(DecorpotConstants.GUEST_BEDROOM + DecorpotConstants.ALL);
 			bedroom = bedrooms.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
 			if (bedroom != null) {
-				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
+				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(bedroom.getId(), "guest_bedroom");
 				bedroom.setAddons(
 						addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			}
@@ -403,7 +403,7 @@ public class SpaceService {
 		} else {
 			GuestBedroom guestBedroom = guestBedroomRepository.findOne(id);
 			bedroom = guestbedroomRepoToModelConverter(guestBedroom);
-			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
+			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(bedroom.getId(), "guest_bedroom");
 			bedroom.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			DataCache.getInstance().put(DecorpotConstants.GUEST_BEDROOM + id, bedroom);
@@ -467,7 +467,7 @@ public class SpaceService {
 					.getInstance().get(DecorpotConstants.KIDS_BEDROOM + DecorpotConstants.ALL);
 			bedroom = bedrooms.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
 			if (bedroom != null) {
-				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
+				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(bedroom.getId(), "kids_bedroom");
 				bedroom.setAddons(
 						addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			}
@@ -475,7 +475,7 @@ public class SpaceService {
 		} else {
 			KidsBedroom kidsBedroom = kidsBedroomRepository.findOne(id);
 			bedroom = kidsbedroomRepoToModelConverter(kidsBedroom);
-			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(bedroom.getId());
+			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(bedroom.getId(), "kids_bedroom");
 			bedroom.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			DataCache.getInstance().put(DecorpotConstants.KIDS_BEDROOM + id, bedroom);
@@ -515,7 +515,7 @@ public class SpaceService {
 					.getInstance().get(DecorpotConstants.LIVING_DINING + DecorpotConstants.ALL);
 			dining = dinings.parallelStream().filter(k -> k.getId() == id).findAny().orElse(null);
 			if (dining != null) {
-				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(dining.getId());
+				List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(dining.getId(), "living_dining");
 				dining.setAddons(
 						addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			}
@@ -523,7 +523,7 @@ public class SpaceService {
 		} else {
 			LivingAndDining livingAndDining = diningRepo.findOne(id);
 			dining = livingAndDiningRepoToRestConverter(livingAndDining);
-			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentId(dining.getId());
+			List<com.decorpot.datasource.models.Addon> addons = addonRepository.findByParentIdAndSpace(dining.getId(), "living_dining");
 			dining.setAddons(
 					addons.parallelStream().map(a -> addonRepoToRestConverter(a)).collect(Collectors.toList()));
 			DataCache.getInstance().put(DecorpotConstants.LIVING_DINING + id, dining);

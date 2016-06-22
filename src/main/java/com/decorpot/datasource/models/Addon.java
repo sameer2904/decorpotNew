@@ -24,8 +24,19 @@ public class Addon {
     
     @Column(name = "PARENT_ID")
     private Integer parentId;
+    
+    @Column(name = "SPACE")
+    private String space;
 
-    public Integer getId() {
+    public String getSpace() {
+		return space;
+	}
+
+	public void setSpace(String space) {
+		this.space = space;
+	}
+
+	public Integer getId() {
         return id;
     }
 
