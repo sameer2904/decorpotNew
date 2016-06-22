@@ -1,7 +1,7 @@
 <div id="looks" class="container-fluid" ui-view>
 <div class="positionRelative">{{space | underscoreless | capitalize:true}} <div class="col-md-4 col-sm-4 col-md-12 pull-right mt10"><input type="search" class="form-control" placeholder="Search.." ng-model="query"></div></div>
 	<div class="container-fluid">
-		<div class="row"  angular-grid="looks">
+		<div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="look in looks | filter:query">
             <div>
                 <a ui-sref="looks.look({ id : '{{space}}-{{look.id}}'})">

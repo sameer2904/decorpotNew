@@ -24,7 +24,7 @@
         <div class="row floorPlanImages">
             <h3>Floor Plans</h3>
             <h5>Please select your floor plan. We have created packages to suit your need according to your floor plan</h5><br><br>
-                <div angular-grid="data.apartmentBaseConfigs">
+                <div>
                 <div  class="flowGridItem col-md-4 col-sm-6 col-xs-12" ng-repeat="c in data.apartmentBaseConfigs | filter:query">
              <a  ui-sref="apartments.floorplans.packages({ floorplanId : '{{c.planId}}',  apartmentType: '{{c.apartmentType}}'})">
                     <img src={{c.floorPlan}}  class="wow fadeInUp  animated"  data-actual-width = "{{pic.actualWidth}}"  data-actual-height="{{pic.actualHeight}}">
