@@ -311,15 +311,23 @@ footer {
 }
 .positionRelative{
     text-indent: 2%;
+    padding: 82px 0 0px 0;
+    margin-bottom: 25px;
+    color: #000;
+    font-size: 4vw;
+    background-color: #f2f2f2;
+}
+/*.positionRelative{
+    text-indent: 2%;
     padding: 100px 0 40px 0;
     margin-bottom: 10px;
     color: #f2f2f2;
     font-size: 3vw;
     background: url('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSkA1r1qJPotDXrV0_QFOYc1p7XP52DhU2ylP1Lv0eWXNSI8lFo');
     background-attachment: fixed;
-}
+}*/
 .mt10{
-    margin-top:10px;
+    margin-top:1.3%;
 }
 /*UplaodApartment styles*/
 #uploadApartment{
@@ -334,7 +342,6 @@ hr {
 /*apartment,looks, past works & looks page styles*/
 #apartments, #looks, #pastWorks, #pastWork, #floorPlan,#look{
     padding:0;
-    background: whitesmoke;
 }
 #apartments > div.container > div > div >div, #looks > div.container > div > div >div, #pastworks > div.container > div > div >div,
 #floorPlan .floorPlanImages  > div > div, #pastWork > div.container > div > div >div, .apartmentImage {
@@ -471,6 +478,11 @@ hr {
 #apartment .views, #look .views{
     margin-top:20px;
 }
+#apartment .views img, #look .views img{
+    height:13vh;
+    width:9vw;
+    padding-right:20px; 
+}
 .deliveryIcon, .warrantyIcon {
     text-align: center;
     color: #666;
@@ -530,8 +542,4 @@ hr {
 }
 .activeBorder{
 	border: #D6655B solid 2px;
-}
-
-.cursorPointer {
-	    cursor: pointer;
 }

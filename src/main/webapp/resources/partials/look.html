@@ -5,14 +5,14 @@
         <div class="col-md-8 col-sm-6 col-xs-12">
             <div class="col-md-12 col-sm-12 col-xs-12 apartmentImage"><img src="{{hdImage}}" alt=""></div>
             <div class="col-md-12 col-sm-12 col-xs-12 views">
-                <div class="col-md-2" ng-repeat="t in thumbnails | filter:query" data-ng-click="toggleObject.item = $index">
-                    <div data-ng-class="{'activeBorder' : toggleObject.item == $index }"
+                <span ng-repeat="t in thumbnails | filter:query" data-ng-click="toggleObject.item = $index" data-ng-class="{'activeBorder' : toggleObject.item == $index }">
+                    <span data-ng-class="{'activeBorder' : toggleObject.item == $index }"
 						ng-init="($first) ? getHdImage(t.thumbId) : ''"
 						ng-click="getHdImage(t.thumbId)">
 						<img id="imageViewContainer"
-						ng-src="{{t.thumb}}" class="cursorPointer"/>
-					</div>
-            </div>
+						ng-src="{{t.thumb}}" class="cursorPointer" />
+					</span>
+            </span>
         </div>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12">

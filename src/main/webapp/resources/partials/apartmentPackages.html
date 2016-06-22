@@ -1,15 +1,15 @@
 <div id="apartmentPackages" ui-view>
 <div class="positionRelative">APARTMENTS/{{floorPlanName}}<div class="col-md-4 col-sm-4 col-md-12 pull-right mt10"><input type="search" class="form-control" placeholder="Search Apartments.." ng-model="query"></div></div>
     <div class="container-fluid">
-    <div class="row">
+    <div class="row" angular-grid="packages">
         <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="package in packages | filter:query">
             <div>
-                <a ui-sref="apartments.floorplans.packages.package({ basePrice: '{{package.basePrice}}', spaceIds : '{{package.url}}' })">
+                <a ui-sref="apartments.floorplans.packages.package({ spaceIds : '{{package.url}}' })">
                     <img bn-lazy-src="{{package.image}}" class="wow fadeInUp  animated">
                 </a>
             </div>
             <div>
-                <h4>{{package.apartmentName | uppercase}} <span class="pull-right"> {{package.apartmentType | uppercase}}</span><p>Base price starts from &nbsp;<span>Rs. {{package.basePrice | roundoffnumber}}</span></p></h4>
+                <h4>{{package.apartmentName | uppercase}} <span class="pull-right"> {{package.apartmentType | uppercase}}</span><p>Base price starts from &nbsp;<span>Rs. {{package.basePrice | formatPrice:2:',':'.':false}}</span></p></h4>
                 
             </div>
         </div>
