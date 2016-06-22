@@ -429,6 +429,7 @@ decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$s
    console.log($stateParams);
    $scope.apartmentName = $stateParams.apartmentName;
    $scope.apartmentType = $stateParams.apartmentType;
+   $scope.basePrice = $stateParams.basePrice;
    $scope.tabs = $stateParams.spaceIds.split(',').map(function(space){
   		var spaceMap = space.split('-');
   		return {
@@ -443,7 +444,7 @@ decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$s
 			item : 0
 		};
    $scope.getSpaceById = function(spaceMap) {
-	   spaceService.getLookById(spaceMap.spaceName + 's', spaceMap.spaceId)
+	   spaceService.getLookById(spaceMap.spaceName, spaceMap.spaceId)
 	   		.success(function(data) {
 	   			var total = 0,
 	   			addons = [{name: 'Base Price', price: data.basePrice}],

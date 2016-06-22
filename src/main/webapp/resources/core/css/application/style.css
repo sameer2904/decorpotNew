@@ -531,3 +531,7 @@ hr {
 .activeBorder{
 	border: #D6655B solid 2px;
 }
+
+.cursorPointer {
+	    cursor: pointer;
+}

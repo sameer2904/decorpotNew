@@ -4,12 +4,12 @@
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="package in packages | filter:query">
             <div>
-                <a ui-sref="apartments.floorplans.packages.package({ spaceIds : '{{package.url}}' })">
+                <a ui-sref="apartments.floorplans.packages.package({ basePrice: '{{package.basePrice}}', spaceIds : '{{package.url}}' })">
                     <img bn-lazy-src="{{package.image}}" class="wow fadeInUp  animated">
                 </a>
             </div>
             <div>
-                <h4>{{package.apartmentName | uppercase}} <span class="pull-right"> {{package.apartmentType | uppercase}}</span><p>Base price starts from &nbsp;<span>Rs. {{package.basePrice | formatPrice:2:',':'.':false}}</span></p></h4>
+                <h4>{{package.apartmentName | uppercase}} <span class="pull-right"> {{package.apartmentType | uppercase}}</span><p>Base price starts from &nbsp;<span>Rs. {{package.basePrice | roundoffnumber}}</span></p></h4>
                 
             </div>
         </div>

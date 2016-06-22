@@ -5,7 +5,7 @@ public class Kitchen extends Space{
 	
 	
 	private String kitchenType;
-	
+	private String basePriceDesc = "Base Price includes complete kitchen";	
 	public Kitchen() {
 		super();
 	}
@@ -19,6 +19,14 @@ public class Kitchen extends Space{
 	@Override
 	public String toString() {
 		return "Kitchen [kitchenType=" + kitchenType + "]";
+	}
+
+	public String getBasePriceDesc() {
+		return basePriceDesc;
+	}
+
+	public void setBasePriceDesc(String basePriceDesc) {
+		this.basePriceDesc = basePriceDesc;
 	}
 	
 }

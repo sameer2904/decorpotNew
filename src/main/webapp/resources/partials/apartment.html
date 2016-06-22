@@ -4,9 +4,9 @@
 	<div class="row">
 		<div class="col-md-8 col-sm-6 col-xs-12">
 		<div class="col-md-12 col-sm-12 col-xs-12 well">
-		<span ng-repeat="t in tabs"><span data-ng-class="{'active' : toggleObject.item == $index }"
+		<span ng-repeat="t in tabs"><span class="cursorPointer" data-ng-class="{'active' : toggleObject.item == $index }"
 						ng-init="($first) ? getSpaceById(t) : ''"
-						ng-click="getSpaceById(t)">&nbsp;{{t.spaceName || underscoreless || capitalize}}</span><span class="test">&bull;</span></span>
+						ng-click="getSpaceById(t)">&nbsp;{{t.spaceName | underscoreless | capitalize}}</span><span class="test">&bull;</span></span>
 		</div>
 			<div class="col-md-12 col-sm-12 col-xs-12 apartmentImage"><img src="{{hdImage}}" alt=""></div>
 			<div class="col-md-12 col-sm-12 col-xs-12 views">
@@ -15,15 +15,15 @@
 						ng-init="($first) ? getHdImage(t.thumbId) : ''"
 						ng-click="getHdImage(t.thumbId)">
 						<img id="imageViewContainer"
-						ng-src="{{t.thumb}}" />
+						ng-src="{{t.thumb}}" class="cursorPointer"/>
 					</div>
 			</div>
 		</div>
 		</div>
 		<div class="col-md-4 col-sm-6 col-xs-12">
-		<h3>{{apartmentName}} - {{apartmentType}}</span></h3>
-		<h3>Base price - Rs {{basePrice}}</h3>
-		<p>(*Also Includes Lorem ipsum dolor sit amet.)</p>
+		<h3>{{apartmentName | underscoreless}} - {{apartmentType}}</span></h3>
+		<h3>Base price - Rs {{basePrice| roundoffnumber}}</h3>
+		<p>(*{{space.basePriceDesc}})</p>
 			<div class="row">
 				<div class="col sm-12">
 				 <uib-tabset active="active">
