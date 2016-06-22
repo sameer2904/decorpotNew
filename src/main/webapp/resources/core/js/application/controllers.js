@@ -445,14 +445,32 @@ decorpotCtrls.controller('apartmentController', ['$scope','apartmentService','$s
    $scope.getSpaceById = function(spaceMap) {
 	   spaceService.getLookById(spaceMap.spaceName + 's', spaceMap.spaceId)
 	   		.success(function(data) {
-	   			var total = 0;
-	   			$scope.addons = [{name: 'Base Price', basePrice: data.basePrice}].push.apply(data.addons);
+	   			var total = 0,
+	   			addons = [{name: 'Base Price', price: data.basePrice}],
+	   			thumbnails = [];
+	   			angular.forEach(data.addons, function(v, index) {
+	   				addons.push(v);
+	   			})
+	   			
+	   			$scope.addons = addons
 	   			angular.forEach($scope.addons, function(a, index) {
 	   				total += a.price;
 	   			})
 	   			$scope.total = total;
 	   			$scope.space = data;
+	   			console.log($scope);
+	   			angular.forEach(data.images, function(i, index) {
+	   				thumbnails.push({
+	   					thumb: "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/475x270" + i,
+	   					thumbId: i
+	   				})
+	   			});
+	   			$scope.thumbnails = thumbnails;
+	   			
 	   		})
+	   		$scope.getHdImage = function(imageId) {
+	   		    	$scope.hdImage = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/spaces/885x503" + imageId;
+	   		    }
    }
    
 }]);

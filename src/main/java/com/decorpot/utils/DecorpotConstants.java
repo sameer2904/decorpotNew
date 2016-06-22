@@ -18,13 +18,13 @@ public interface DecorpotConstants {
 	
 	
 	//caching keys
-	String KITCHEN = "kitchen";
+	String KITCHEN = "kitchens";
 	String L_SHAPED = "L-shaped";
 	String U_SHAPED = "U-shaped";
 	
-	String MASTER_BEDROOM = "masterbedroom";
-	String GUEST_BEDROOM = "guestbedroom";
-	String KIDS_BEDROOM = "kidsbedroom";
+	String MASTER_BEDROOM = "master_bedrooms";
+	String GUEST_BEDROOM = "guest_bedrooms";
+	String KIDS_BEDROOM = "kids_bedrooms";
 	String LIVING_DINING = "living_dining";
 	
 	List<String> wardrobes = Arrays.asList(new String[]{"2-door", "3-door", "4-door", "5-door", "6-door"});

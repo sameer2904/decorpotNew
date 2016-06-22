@@ -8,10 +8,15 @@
 						ng-init="($first) ? getSpaceById(t) : ''"
 						ng-click="getSpaceById(t)">&nbsp;{{t.spaceName || underscoreless || capitalize}}</span><span class="test">&bull;</span></span>
 		</div>
-			<div class="col-md-12 col-sm-12 col-xs-12 apartmentImage"><img src="resources/core/images/apartments/apartments.jpg" alt=""></div>
+			<div class="col-md-12 col-sm-12 col-xs-12 apartmentImage"><img src="{{hdImage}}" alt=""></div>
 			<div class="col-md-12 col-sm-12 col-xs-12 views">
-				<div class="col-md-2 col-sm-2 col-xs-2" ng-repeat="package in [0,1,2,3,4,5] | filter:query">
-                    <img src="resources/core/images/apartments/apartments.jpg" class="wow fadeInUp  animated">
+				<div class="col-md-2 col-sm-2 col-xs-2" ng-repeat="t in thumbnails | filter:query" data-ng-click="toggleObject.item = $index">
+                    <div data-ng-class="{'activeBorder' : toggleObjectSpace == $index }"
+						ng-init="($first) ? getHdImage(t.thumbId) : ''"
+						ng-click="getHdImage(t.thumbId)">
+						<img id="imageViewContainer"
+						ng-src="{{t.thumb}}" />
+					</div>
 			</div>
 		</div>
 		</div>
@@ -32,12 +37,12 @@
     			</tr>
     			<tr ng-repeat="a in addons">
     				<td>{{$index}}</td>
-    				<td>a.name</td>
-    				<td>a.price</td>
+    				<td>{{a.name}}</td>
+    				<td>{{a.price}}</td>
     			</tr>
     			<tr>
     				<td colspan="2">Total</td>
-    				<td>50000</td>
+    				<td>{{total}}</td>
     			</tr>
     		</tr>
     	</table>
