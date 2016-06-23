@@ -9,7 +9,7 @@
         <meta name="author" content="Decorpot" />
         <meta name="ROBOTS" content="INDEX, FOLLOW">
         <meta name="googlebot" content="index, follow">
-        <link rel="shortcut icon" href="resources/core/images/favicon.png" width="16" height="16" type="image/x-icon">
+        <link rel="shortcut icon" href="resources/core/images/favicon1.png" width="26" height="16" type="image/x-icon">
 
 
         <title>Interior Designers Bangalore, Modular Kitchen Manufacturers - Decorpot</title>
@@ -53,7 +53,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" ui-sref="home"><img src="resources/core/images/logo.png" alt="Brand logo" width="220" height="30">
+                        <a class="navbar-brand" ui-sref="home"><img src="resources/core/images/final-logo-full.png" alt="Brand logo" width="220" height="30">
                     </a>
                     </div>
                     <div id="navbar" window-Resize class="navbar-collapse collapse">
