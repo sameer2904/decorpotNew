@@ -71,7 +71,7 @@
                                 </ul>
                             </li>
                             <li><a ui-sref="pastWorks">Completed Projects</a></li>
-                            <li><a ui-sref="contact" style="padding-right: 0;">Ask Us</a></li>
+                            <li  style="display: none;"><a ui-sref="contact" style="padding-right: 0;">Ask Us</a></li>
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
