@@ -277,7 +277,7 @@ public class ApartmentService {
 				pkgs.setSpaceIds(spaceIds);
 				pkgs.setImage(DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.SPACE_IMAGE_LOCATION
 						+ DecorpotConstants.spaceImageSizes.get(1)
-						+ livingAndDinings.get(kitItr).getImages().get(0));
+						+ livingAndDinings.get(livItr).getImages().get(0));
 				masItr++;
 				kitItr++;
 				livItr++;
@@ -383,7 +383,7 @@ public class ApartmentService {
 				pkgs.setApartmentType(config2bhk.getApartmentType());
 				pkgs.setBasePrice(basePrice);
 				pkgs.setImage(DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.SPACE_IMAGE_LOCATION
-						+ DecorpotConstants.spaceImageSizes.get(1) + livingAndDinings.get(kitItr).getImages().get(0));
+						+ DecorpotConstants.spaceImageSizes.get(1) + livingAndDinings.get(livItr).getImages().get(0));
 				pkgs.setSpaceIds(spaceIds);
 				masItr++;
 				kitItr++;
