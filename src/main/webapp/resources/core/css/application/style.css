@@ -478,10 +478,13 @@ hr {
 #apartment .views, #look .views{
     margin-top:20px;
 }
+#apartment .views li, #look .views li{
+    display: inline;
+}
 #apartment .views img, #look .views img{
     height:13vh;
     width:9vw;
-    padding-right:20px; 
+    margin-right:20px; 
 }
 .deliveryIcon, .warrantyIcon {
     text-align: center;
