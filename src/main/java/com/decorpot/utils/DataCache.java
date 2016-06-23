@@ -26,7 +26,11 @@ public class DataCache {
 	public static void put(String key, Object value ){
 		System.out.println("came in cache key -- " + key);
 		synchronized (cache) {
+			System.out.println("key came -> " + key);
+			System.out.println("value came -> + " + value.toString());
+			
 			cache.put(key, value);
+			System.out.println("cache value -> " + cache);
 		}
 	}
 	
