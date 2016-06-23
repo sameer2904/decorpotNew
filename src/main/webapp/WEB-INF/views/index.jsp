@@ -98,7 +98,7 @@
                                 <li><a ui-sref="about">About Us</a></li>
                                 <li><a ui-sref="apartments">Apartments</a></li>
                                 <li><a ui-sref="pastWorks">Past Works</a></li>
-                                <li><a ui-sref="contact">Contact Us</a></li>
+                                <li style="display:none;"><a ui-sref="contact">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular-touch.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js"></script>
+<!--         <script src="https://maps.googleapis.com/maps/api/js"></script> -->
         <script src="resources/core/js/ng-file-upload.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
         <script src="resources/core/js/loading.min.js"></script>
