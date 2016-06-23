@@ -222,11 +222,6 @@ public class SpaceService {
 		if (DataCache.getInstance().get(DecorpotConstants.KITCHEN + type) != null) {
 			kitchens = (List<com.decorpot.rest.model.Kitchen>) DataCache.getInstance()
 					.get(DecorpotConstants.KITCHEN + type);
-		} else if (DataCache.getInstance().get(DecorpotConstants.KITCHEN + DecorpotConstants.ALL) != null) {
-			kitchens = ((List<com.decorpot.rest.model.Kitchen>) DataCache.getInstance()
-					.get(DecorpotConstants.KITCHEN + DecorpotConstants.ALL)).stream().filter(k -> k.getKitchenType() == type)
-							.collect(Collectors.toList());
-			DataCache.getInstance().put(DecorpotConstants.KITCHEN + type, kitchens);
 		} else {
 			List<Kitchen> list = kitchenRepository.findByKitchenType(type);
 			if (!CollectionUtils.isNullOrEmpty(list)) {
@@ -293,11 +288,6 @@ public class SpaceService {
 		if (DataCache.getInstance().get(DecorpotConstants.MASTER_BEDROOM + type) != null) {
 			bedrooms = (List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
 					.get(DecorpotConstants.MASTER_BEDROOM + type);
-		} else if (DataCache.getInstance().get(DecorpotConstants.MASTER_BEDROOM + DecorpotConstants.ALL) != null) {
-			bedrooms = ((List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
-					.get(DecorpotConstants.MASTER_BEDROOM + DecorpotConstants.ALL)).stream().filter(b -> b.getWardrobeType() == type)
-							.collect(Collectors.toList());
-			DataCache.getInstance().put(DecorpotConstants.MASTER_BEDROOM + type, bedrooms);
 		} else {
 			List<MasterBedroom> list = masterBedroomRepository.findByWardrobeTypeIn(wardrobes);
 			if (!CollectionUtils.isNullOrEmpty(list)) {
@@ -367,11 +357,6 @@ public class SpaceService {
 		if (DataCache.getInstance().get(DecorpotConstants.GUEST_BEDROOM + type) != null) {
 			bedrooms = (List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
 					.get(DecorpotConstants.GUEST_BEDROOM + type);
-		} else if (DataCache.getInstance().get(DecorpotConstants.GUEST_BEDROOM + DecorpotConstants.ALL) != null) {
-			bedrooms = ((List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
-					.get(DecorpotConstants.GUEST_BEDROOM + DecorpotConstants.ALL)).stream().filter(b -> b.getWardrobeType() == type)
-							.collect(Collectors.toList());
-			DataCache.getInstance().put(DecorpotConstants.GUEST_BEDROOM + type, bedrooms);
 		} else {
 			List<GuestBedroom> list = guestBedroomRepository.findByWardrobeTypeIn(wardrobes);
 			if (!CollectionUtils.isNullOrEmpty(list)) {
@@ -439,11 +424,6 @@ public class SpaceService {
 		if (DataCache.getInstance().get(DecorpotConstants.KIDS_BEDROOM + type) != null) {
 			bedrooms = (List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
 					.get(DecorpotConstants.KIDS_BEDROOM + type);
-		} else if (DataCache.getInstance().get(DecorpotConstants.KIDS_BEDROOM + DecorpotConstants.ALL) != null) {
-			bedrooms = ((List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
-					.get(DecorpotConstants.KIDS_BEDROOM + DecorpotConstants.ALL)).stream().filter(b -> b.getWardrobeType() == type)
-							.collect(Collectors.toList());
-			DataCache.getInstance().put(DecorpotConstants.KIDS_BEDROOM + type, bedrooms);
 		} else {
 			List<KidsBedroom> list = kidsBedroomRepository.findByWardrobeTypeIn(wardrobes);
 			if (!CollectionUtils.isNullOrEmpty(list)) {

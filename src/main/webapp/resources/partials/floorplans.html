@@ -27,7 +27,7 @@
                 <div>
                 <div  class="flowGridItem col-md-4 col-sm-6 col-xs-12" ng-repeat="c in data.apartmentBaseConfigs | filter:query">
              <a  ui-sref="apartments.floorplans.packages({ floorplanId : '{{c.planId}}',  apartmentType: '{{c.apartmentType}}'})">
-                    <img src={{c.floorPlan}}  class="wow fadeInUp  animated"  data-actual-width = "{{pic.actualWidth}}"  data-actual-height="{{pic.actualHeight}}">
+                    <img src={{c.floorPlan}}  class="wow fadeInUp  animated floorPlanImg"  data-actual-width = "{{pic.actualWidth}}"  data-actual-height="{{pic.actualHeight}}">
                 </a>
                 <h4>{{c.planName}}</h4>
             </div></div>

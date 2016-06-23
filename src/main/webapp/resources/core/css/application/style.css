@@ -546,3 +546,13 @@ hr {
 .activeBorder{
 	border: #D6655B solid 2px;
 }
+
+.imgContainer {
+	    width: 100%;
+    height: 250px;
+}
+
+.floorPlanImg {
+	width: 100%;
+    height: 540px;
+}

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -112,62 +113,79 @@ public class ApartmentService {
 	}
 
 	public List<ApartmentConfigs> getAllApartments() {
-		List<com.decorpot.datasource.models.ApartmentConfig> apartmentConfigs = (List<ApartmentConfig>) apartmentConfigRepository
-				.findAll();
+		
 		List<ApartmentConfigs> configs = new ArrayList<>();
-		apartmentConfigs.forEach(a -> {
-			ApartmentConfigs aConfs = new ApartmentConfigs();
-			aConfs.setAddress(a.getAddress());
-			aConfs.setApartmentName(a.getApartmentName());
-			aConfs.setId(a.getId());
-			aConfs.setImage(
-					DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.APARTMENT_IMAGE_LOCATION + a.getImage());
-			configs.add(aConfs);
-		});
+		if(DataCache.getInstance().get("all_apartments") != null) {
+			configs = (List<ApartmentConfigs>) DataCache.getInstance().get("all_apartments");
+		}else{
+			List<com.decorpot.datasource.models.ApartmentConfig> apartmentConfigs = (List<ApartmentConfig>) apartmentConfigRepository
+					.findAll();
+			
+			configs = apartmentConfigs.stream().map(a -> apartmentModelConverter(a)).collect(Collectors.toList());
+			DataCache.getInstance().put("all_apartments", configs);
+		}
+		
 		return configs;
 	}
+	
+	public ApartmentConfigs apartmentModelConverter(ApartmentConfig a ) {
+		ApartmentConfigs aConfs = new ApartmentConfigs();
+		aConfs.setAddress(a.getAddress());
+		aConfs.setApartmentName(a.getApartmentName());
+		aConfs.setId(a.getId());
+		aConfs.setImage(
+				DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.APARTMENT_IMAGE_LOCATION + a.getImage());
+		return aConfs;
+	}
+	
+	
 
 	public ApartmentConfigs getAllFloorPlanByApartmentName(String apartmentName) {
 		com.decorpot.datasource.models.ApartmentConfig apartmentConfigs = apartmentConfigRepository
 				.findByApartmentName(apartmentName);
 
 		ApartmentConfigs configs = new ApartmentConfigs();
+		if(DataCache.getInstance().get(apartmentName) !=null ) {
+			configs = (ApartmentConfigs) DataCache.getInstance().get(apartmentName);
+		}else {
+			List<ApartmentBaseConfig> apartmentBaseConfigs = new ArrayList<>();
+			List<Config3BHK> config3bhks = config3bhkRepository.findByApartmentId(apartmentConfigs.getId());
+			List<com.decorpot.datasource.models.Config2BHK> config2bhks = config2BHKRepository
+					.findByApartmentId(apartmentConfigs.getId());
+			if (!CollectionUtils.isNullOrEmpty(config2bhks)) {
+				config2bhks.forEach(c -> {
+					ApartmentBaseConfig baseConfig = new ApartmentBaseConfig();
+					baseConfig.setPlanId(c.getId());
+					baseConfig.setApartmentName(apartmentName);
+					baseConfig.setApartmentType(c.getApartmentType());
+					baseConfig.setPlanName(c.getPlanName());
+					baseConfig.setFloorPlan(
+							DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.FLOOR_PLAN_LOCATION + c.getFloorPlan());
+					apartmentBaseConfigs.add(baseConfig);
+				});
+			}
 
-		List<ApartmentBaseConfig> apartmentBaseConfigs = new ArrayList<>();
-		List<Config3BHK> config3bhks = config3bhkRepository.findByApartmentId(apartmentConfigs.getId());
-		List<com.decorpot.datasource.models.Config2BHK> config2bhks = config2BHKRepository
-				.findByApartmentId(apartmentConfigs.getId());
-		if (!CollectionUtils.isNullOrEmpty(config2bhks)) {
-			config2bhks.forEach(c -> {
-				ApartmentBaseConfig baseConfig = new ApartmentBaseConfig();
-				baseConfig.setPlanId(c.getId());
-				baseConfig.setApartmentName(apartmentName);
-				baseConfig.setApartmentType(c.getApartmentType());
-				baseConfig.setPlanName(c.getPlanName());
-				baseConfig.setFloorPlan(
-						DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.FLOOR_PLAN_LOCATION + c.getFloorPlan());
-				apartmentBaseConfigs.add(baseConfig);
-			});
+			if (!CollectionUtils.isNullOrEmpty(config3bhks)) {
+				config3bhks.forEach(c -> {
+					ApartmentBaseConfig baseConfig = new ApartmentBaseConfig();
+					baseConfig.setPlanId(c.getId());
+					baseConfig.setApartmentName(apartmentName);
+					baseConfig.setApartmentType(c.getApartmentType());
+					baseConfig.setPlanName(c.getPlanName());
+					baseConfig.setFloorPlan(
+							DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.FLOOR_PLAN_LOCATION + c.getFloorPlan());
+					apartmentBaseConfigs.add(baseConfig);
+				});
+			}
+			configs.setAddress(apartmentConfigs.getAddress());
+			configs.setApartmentName(apartmentName);
+			configs.setImage(DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.APARTMENT_IMAGE_LOCATION
+					+ apartmentConfigs.getImage());
+			configs.setId(apartmentConfigs.getId());
+			configs.setApartmentBaseConfigs(apartmentBaseConfigs);
+			DataCache.getInstance().put(apartmentName, configs);
 		}
-
-		if (!CollectionUtils.isNullOrEmpty(config3bhks)) {
-			config3bhks.forEach(c -> {
-				ApartmentBaseConfig baseConfig = new ApartmentBaseConfig();
-				baseConfig.setPlanId(c.getId());
-				baseConfig.setApartmentName(apartmentName);
-				baseConfig.setApartmentType(c.getApartmentType());
-				baseConfig.setPlanName(c.getPlanName());
-				baseConfig.setFloorPlan(
-						DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.FLOOR_PLAN_LOCATION + c.getFloorPlan());
-				apartmentBaseConfigs.add(baseConfig);
-			});
-		}
-		configs.setAddress(apartmentConfigs.getAddress());
-		configs.setApartmentName(apartmentName);
-		configs.setImage(DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.APARTMENT_IMAGE_LOCATION
-				+ apartmentConfigs.getImage());
-		configs.setId(apartmentConfigs.getId());
-		configs.setApartmentBaseConfigs(apartmentBaseConfigs);
+		
 		return configs;
 	}
 
@@ -258,8 +276,8 @@ public class ApartmentService {
 				pkgs.setBasePrice(basePrice);
 				pkgs.setSpaceIds(spaceIds);
 				pkgs.setImage(DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.SPACE_IMAGE_LOCATION
-						+ DecorpotConstants.spaceImageSizes.get(0)
-						+ kitchens.get(i < kitchenSize ? i : (i - kitchenSize)).getImages().get(0));
+						+ DecorpotConstants.spaceImageSizes.get(1)
+						+ kitchens.get(kitItr).getImages().get(0));
 				masItr++;
 				kitItr++;
 				livItr++;

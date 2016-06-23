@@ -36,7 +36,7 @@ public class ApartmentController {
 	public List<Packages> getAllPackagesByFloorplanId(@PathVariable("apartmentType") String apartmentType,
 			@PathVariable("floodPlanId") int floodPlanId) throws JsonParseException, JsonMappingException, IOException {
 
-		if(apartmentType.equals("3BHK")) {
+		if(apartmentType.equals("3bhk")) {
 			return apartmentService.get3BHKApartmentByFloorplanId(floodPlanId);
 		}else{
 			return apartmentService.get2BHKApartmentByFloorplanId(floodPlanId);
