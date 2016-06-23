@@ -58,6 +58,14 @@ public class ImageProcessorService {
 	    }
 	}
 	
+	public void uploadEnquiryImages(File file) {
+	    if(file != null) {
+	        s3Uploader.s3PutImage(
+                    DecorpotConstants.ENQUIRY_IMAGE_LOCATION, file);
+	        file.delete();
+	    }
+	}
+	
 	public void uploadPastWorkImage(File file) throws Exception {
 
         if (file != null) {

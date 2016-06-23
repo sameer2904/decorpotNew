@@ -33,6 +33,13 @@ services.service('uploadService',['$http', function($http){
 				url : "pastWork/upload",
 				data : pastWork
 			});
+		},
+		uploadEnquiry: function(enquiry) {
+			return $http({
+				method : "post",
+				url : "enquiry",
+				data : enquiry
+			});
 		}
 	}
 }] );

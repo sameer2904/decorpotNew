@@ -13,6 +13,7 @@ public interface DecorpotConstants {
 	String FLOOR_PLAN_LOCATION = "floorplans/";
 	String APARTMENT_IMAGE_LOCATION = "apartmentImages/";
 	String PAST_WORK_IMAGE_LOCATION = "pastworks/";
+	String ENQUIRY_IMAGE_LOCATION = "enquiry/";
 	List<String> spaceImageSizes = Arrays.asList(new String[]{"885x503", "475x270"});
 	List<String>  pastWorkImageSizes = Arrays.asList(new String[]{"885x503", "475x270"});
 	

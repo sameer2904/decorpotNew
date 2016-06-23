@@ -209,15 +209,20 @@ $scope.steps(1);
 // contact controller
 decorpotCtrls.controller('contactController', ['$scope', 'uploadService',function ($scope, uploadService) {
         $scope.submitEnquiry = function() {
-            $scope.enquiryForm.floorPlan = $scope.file.name;
+            $scope.enquiryForm.image = $scope.file ? $scope.file.name : '';
             uploadService.uploadEnquiry($scope.enquiryForm)
             .success(function(data){
-                Upload.upload({
-                    url: '/enquiry/floorPlan',
-                    data: {
-                        file: $scope.file,
-                    }
-                });
+            	if( $scope.file) {
+            		Upload.upload({
+                        url: '/enquiryImage',
+                        data: {
+                            file: $scope.file,
+                        }
+                    });
+            	}
+            	
+            	$scope.success = "Thank you for you enquiry. Our team will connect to you shortly.";
+                
             })
         }
                                             }]);
