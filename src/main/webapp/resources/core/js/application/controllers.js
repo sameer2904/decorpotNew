@@ -208,22 +208,53 @@ $scope.steps(1);
 
 // contact controller
 decorpotCtrls.controller('contactController', ['$scope', 'uploadService',function ($scope, uploadService) {
+	$scope.enquiry = {};
         $scope.submitEnquiry = function() {
-            $scope.enquiryForm.image = $scope.file ? $scope.file.name : '';
-            uploadService.uploadEnquiry($scope.enquiryForm)
-            .success(function(data){
-            	if( $scope.file) {
-            		Upload.upload({
-                        url: '/enquiryImage',
-                        data: {
-                            file: $scope.file,
-                        }
-                    });
-            	}
-            	
-            	$scope.success = "Thank you for you enquiry. Our team will connect to you shortly.";
-                
-            })
+        	let valid = true;
+            
+            if(!$scope.enquiry.name) {
+            	$scope.nameError = 'your name is required';
+            	valid = false;
+            }
+            
+            if(!$scope.enquiry.email) {
+            	$scope.emailError = 'your email is required';
+            	valid = false;
+            }
+            
+            if(!/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test($scope.enquiry.email)){
+            	$scope.emailError = 'email format is not correct';
+            	valid = false;
+            }
+            
+            if(!$scope.enquiry.phone) {
+            	$scope.phoneError = 'your number is required';
+            	valid = false;
+            }
+            
+            if(!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test($scope.enquiry.phone)) {
+            	$scope.phoneError = 'your contact number is not valid';
+            	valid = false;
+            }
+            console.log($scope.enquiry);
+            if(valid) {
+            	$scope.enquiry.image = $scope.file ? $scope.file.name : '';
+            	uploadService.uploadEnquiry($scope.enquiry)
+                .success(function(data){
+                	if( $scope.file) {
+                		Upload.upload({
+                            url: '/enquiryImage',
+                            data: {
+                                file: $scope.file,
+                            }
+                        });
+                	}
+                	
+                	$scope.success = "Thank you for you enquiry. Our team will connect to you shortly.";
+                    
+                });
+            }
+            
         }
                                             }]);
 // project controller

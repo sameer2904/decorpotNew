@@ -1,94 +1,47 @@
 <link rel="stylesheet" href="resources/core/css/application/contact.css">
 <div id="contact">
-   <div class="positionRelative">
-    CONTACT US
+	<div class="positionRelative">CONTACT US</div>
+	<div class="container-fluid">
+		<div class="col-md-offset-1 col-md-5 col-sm-offset-1 col-sm-5">
+			<div>
+				<form name="userForm">
+					<legend>Enquiry Form</legend>
+					<div class="form-group col-lg-12">
+						<label for="name">Name</label> <input type="text"
+							class="form-control" id="name" ng-model="enquiry.name" ng-class="{'errorBorder' : !nameError }"> <span class="error"
+							ng-class="{'hide' : !nameError }">{{nameError}}</span>
+					</div>
+					<div class="form-group col-lg-12">
+						<label for="name">Email</label> <input type="email"
+							class="form-control" id="email" ng-model="enquiry.email" ng-class="{'errorBorder' : !emailError }">
+						<span class="error" ng-class="{'hide' : !emailError }">{{emailError}}</span>
+					</div>
+					<div class="form-group col-lg-12">
+						<label for="name">Phone</label> <input type="phone"
+							class="form-control" id="phone" ng-model="enquiry.phone" ng-class="{'errorBorder' : !phoneError }">
+						<span class="error" ng-class="{'hide' : !phoneError }">{{phoneError}}</span>
+					</div>
+					<div class="form-group col-lg-12">
+						<label for="name">Message</label>
+						<textarea class="form-control" id="message"
+							ng-model="enquiry.message"></textarea>
+						<span class="error" ng-class="{'hide' : !messageError }">{{messageError}}</span>
+					</div>
+					<div class="form-group col-lg-12">
+						<label for="name">Message</label> <input type="file" ngf-select
+							ng-model="file" name="file" accept="image/*" />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-danger"
+							ng-click="submitEnquiry()">Submit</button>
+					</div>
+					<pre>userForm.name.$error = {{ userForm.name.$error | json }}</pre>
+
+				</form>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div></div>
+		</div>
+	</div>
 </div>
-    <div class="container-fluid">
-        <div class="col-md-offset-1 col-md-5 col-sm-offset-1 col-sm-5">
-            <div>
-                <form class="form-horizontal" id="contactForm" action="#" method="post">
-                    <legend>Enquiry Form</legend>
-                    <div class="form-group">
-                        <div>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i
-									class="fa fa-user fa-fw"></i></span>
-                                <input name="Name" class="form-control" id="Name" type="text" placeholder="* Enter Name" data-bv-field="Name" ng-model="enquiryForm.name">
-                            </div>
-                            <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Name" data-bv-result="NOT_VALIDATED">Your name is required</small>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i
-									class="fa fa-envelope fa-fw"></i></span>
-                                <input name="Email" class="form-control" id="Email" type="email" placeholder="* Enter Email" data-bv-field="Email" ng-model="enquiryForm.email">
-                            </div>
-                            <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Email" data-bv-result="NOT_VALIDATED">Your email is required</small><small class="help-block" style="display: none;" data-bv-validator="emailAddress" data-bv-for="Email" data-bv-result="NOT_VALIDATED">Your email is not valid</small>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <!-- <label class="col-sm-2 control-label" for="Phone">Phone</label> -->
-                        <div>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i
-									class="fa fa-phone fa-fw"></i></span>
-                                <input name="Phone" class="form-control" id="Phone" type="text" placeholder="Enter Phone Number" ng-model="enquiryForm.phoneNumber">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-upload fa-fw"></i></span>
-                                <input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" />
-                                <span class="input-group-addon fileUpload"><i class="fa fa-folder-open fa-fw"></i>
-     <label>Browse</label>
-     <input id="uploadBtn" type="file" class="upload" ngf-select ng-model="file" name="file"
- 									ngf-pattern="'image/*'" ngf-accept="'image/*'"
- 									ngf-max-size="7000KB"  ngf-model-invalid="errorFile"/></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <i ng-show="myForm.file.$error.maxSize">File too
- 									large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i> <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="img-thumbnail">
-                        <br ng-show="myForm.file.$error.maxSize">
-                        <br ng-show="file">
-                        <br ng-show="file">
-                        <button ng-click="file = null" class="btn btn-warning" ng-show="file">Remove</button>
-                        <br ng-show="file">
-                        <br ng-show="file">
-                    </div>
-
-                    <!-- custom file upload http://codepen.io/wallaceerick/pen/fEdrz -->
-                    <div class="form-group">
-                        <!-- <label class="col-sm-2 control-label" for="Message">Message</label> -->
-                        <div>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i
-									class="fa fa-comment fa-fw"></i></span>
-                                <textarea name="Message" class="form-control" id="Message" rows="5" data-bv-field="Message" placeholder="Message.."></textarea>
-                            </div>
-                            <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="Message" data-bv-result="NOT_VALIDATED">Your message is required</small>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-3"></div>
-                        <div align="center">
-                            <button class="btn btn-primary btn-lg" type="submit" ng-click="submitEnquiry()">SUBMIT</button>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    <div class="col-md-5">
-        <div ></div>
-        </div>
-    </div>
-        </div>

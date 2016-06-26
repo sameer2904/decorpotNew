@@ -560,3 +560,21 @@ hr {
 .cursorPointer {
 	    cursor: pointer;
 }
+
+.hide {
+	display:none;
+}
+
+.error {
+	font-size: 11px;
+    color: red;
+}
+
+
+
+
+
+
+
+
+}
