@@ -87,7 +87,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-6 wow slideInLeft" data-wow-animation="0.1s" data-wow-delay="0.1s">
-                         <img class="logo-small" alt="" src="./resources/core/images/logo.png"><br/>
+                         <img class="logo-small" alt="" src="./resources/core/images/final-logo-full.png"><br/>
                         Decorpot offers comprehensive solutions for all your interior design needs. We have operations in Bangalore from last 7 years and have completed multiple projects in residential and commercial interiors which includes Bungalows, Duplexes, and flats.
                     </div>
                     <div class="col-md-offset-1 col-md-2 col-sm-6 wow slideInUp" data-wow-animation="0.1s" data-wow-delay="0.1s">
