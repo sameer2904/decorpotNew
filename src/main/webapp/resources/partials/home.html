@@ -19,7 +19,7 @@
         <div class="item">
             <img src="resources/core/images/carousel2.jpg" data-color="firebrick" alt="Second Image">
             <div class="carousel-caption">
-                <h3>INTERIOR DESIGNS FOR EVERY HOME</h3>
+                <h3>INTERIOR DESIGNERS FOR EVERY HOME</h3>
             </div>
         </div>
         <div class="item">
@@ -84,8 +84,8 @@
 
                 <!-- Wrapper for slides -->
                 <div class="owl-carousel1 wow slideUp" role="listbox">
-                    <div class="item" ng-repeat="p in pastWorkData1" ng-init="$last ? owlCarouselPastWork1($index) : ''">
-                        <img src="{{p.mainImage}}" alt="completed-projects" />
+                    <div class="item" ng-repeat="p in pastWorkData" ng-init="$last ? owlCarouselPastWork1($index) : ''">
+                        <img src="{{p.mainImage}}" alt="completed-projects" class="imgContainer"/>
                         <div class="panel-footer wow animated fadeInUp">{{p.apartmentName}}</div>
                     </div>
                 </div>

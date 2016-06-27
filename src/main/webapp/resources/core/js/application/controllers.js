@@ -140,6 +140,7 @@ decorpotCtrls.controller('homeController', [ '$scope','$rootScope','$state', 'pa
         var len = data.length;
         $scope.pastWorkData1 = data.slice(0, len/2);
         $scope.pastWorkData2 = data.slice(len/2, len - 1);
+        $scope.pastWorkData =  data;
         
     });
     $('.carousel, #mycarousel-proj').carousel({
