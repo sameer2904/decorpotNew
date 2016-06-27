@@ -368,6 +368,7 @@ hr {
 #floorPlan .well{
     background-color: rgba(11, 11, 11, 0.6);
     margin:15px;
+    color: white;
 }
 #floorPlan .well .text-warning{
     width: 100%;

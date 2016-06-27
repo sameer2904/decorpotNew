@@ -2,46 +2,50 @@
 <div id="contact">
 	<div class="positionRelative">CONTACT US</div>
 	<div class="container-fluid">
-		<div class="col-md-offset-1 col-md-5 col-sm-offset-1 col-sm-5">
-			<div>
-				<form name="userForm">
-					<legend>Enquiry Form</legend>
-					<div class="form-group col-lg-12">
-						<label for="name">Name</label> <input type="text"
-							class="form-control" id="name" ng-model="enquiry.name" ng-class="{'errorBorder' : !nameError }"> <span class="error"
-							ng-class="{'hide' : !nameError }">{{nameError}}</span>
-					</div>
-					<div class="form-group col-lg-12">
-						<label for="name">Email</label> <input type="email"
-							class="form-control" id="email" ng-model="enquiry.email" ng-class="{'errorBorder' : !emailError }">
-						<span class="error" ng-class="{'hide' : !emailError }">{{emailError}}</span>
-					</div>
-					<div class="form-group col-lg-12">
-						<label for="name">Phone</label> <input type="phone"
-							class="form-control" id="phone" ng-model="enquiry.phone" ng-class="{'errorBorder' : !phoneError }">
-						<span class="error" ng-class="{'hide' : !phoneError }">{{phoneError}}</span>
-					</div>
-					<div class="form-group col-lg-12">
-						<label for="name">Message</label>
-						<textarea class="form-control" id="message"
-							ng-model="enquiry.message"></textarea>
-						<span class="error" ng-class="{'hide' : !messageError }">{{messageError}}</span>
-					</div>
-					<div class="form-group col-lg-12">
-						<label for="name">Message</label> <input type="file" ngf-select
-							ng-model="file" name="file" accept="image/*" />
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-danger"
-							ng-click="submitEnquiry()">Submit</button>
-					</div>
-					<pre>userForm.name.$error = {{ userForm.name.$error | json }}</pre>
-
-				</form>
+		<div class="row">
+			<div class="col-sm-offset-1 col-sm-5">
+				<div>
+					<form name="userForm">
+						<legend>Enquiry Form</legend>
+						<div class="form-group col-lg-12">
+							<label for="name">Name</label> <input type="text"
+								class="form-control" id="name" ng-model="enquiry.name"
+								ng-class="{'errorBorder' : !nameError }"> <span
+								class="error" ng-class="{'hide' : !nameError }">{{nameError}}</span>
+						</div>
+						<div class="form-group col-lg-12">
+							<label for="name">Email</label> <input type="email"
+								class="form-control" id="email" ng-model="enquiry.email"
+								ng-class="{'errorBorder' : !emailError }"> <span
+								class="error" ng-class="{'hide' : !emailError }">{{emailError}}</span>
+						</div>
+						<div class="form-group col-lg-12">
+							<label for="name">Phone</label> <input type="phone"
+								class="form-control" id="phone" ng-model="enquiry.phone"
+								ng-class="{'errorBorder' : !phoneError }"> <span
+								class="error" ng-class="{'hide' : !phoneError }">{{phoneError}}</span>
+						</div>
+						<div class="form-group col-lg-12">
+							<label for="name">Message</label>
+							<textarea class="form-control" id="message"
+								ng-model="enquiry.message"></textarea>
+							<span class="error" ng-class="{'hide' : !messageError }">{{messageError}}</span>
+						</div>
+						<div class="form-group col-lg-12">
+							<label for="name">Message</label> <input type="file" ngf-select
+								ng-model="file" name="file" accept="image/*" />
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-danger"
+								ng-click="submitEnquiry()">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<div my-map="" ></div>
 			</div>
 		</div>
-		<div class="col-md-5">
-			<div></div>
-		</div>
+
 	</div>
 </div>

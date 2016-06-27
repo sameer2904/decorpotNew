@@ -4,7 +4,7 @@ public class EnquiryModel {
 	
 	private String name;
 	private String email;
-	private double phone;
+	private String phone;
 	private String image;
 	private String message;
 	
@@ -20,10 +20,10 @@ public class EnquiryModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public double getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(double phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getImage() {

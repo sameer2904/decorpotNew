@@ -23,7 +23,7 @@ public class EnquiryForm {
 	private String email;
 	
 	@Column(name = "PHONE")
-	private double phone;
+	private String phone;
 	
 	@Column(name = "FLOOR_PLAN")
 	private String floorPlan;
@@ -55,11 +55,11 @@ public class EnquiryForm {
 		this.email = email;
 	}
 
-	public double getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(double phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

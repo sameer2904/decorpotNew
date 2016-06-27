@@ -13,6 +13,9 @@ public class EnquiryService {
 	@Autowired
 	private EnquiryRepository enqRepo;
 	
+	@Autowired
+	private ApplicationMailer emailService ;
+	
 	
 	public void submitEnquiry(EnquiryModel eqModel) {
 		
@@ -25,6 +28,9 @@ public class EnquiryService {
 		enquiryForm.setPhone(eqModel.getPhone());
 		
 		enqRepo.save(enquiryForm);
+		
+		emailService.sendMail(eqModel.getEmail(), "Enquiry Recieved @Decorpot.com", eqModel.getMessage());
+		emailService.sendMail("sales@decorpot.com", "Enquiry Recieved @Decorpot.com", eqModel.getMessage() + " floorplan url -> " + "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/enquiry/"+eqModel.getImage());
 		
 	}
 

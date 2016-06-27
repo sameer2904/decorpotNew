@@ -23,6 +23,7 @@ public class ApplicationMailer
         message.setTo(to);
         message.setSubject(subject);
         message.setText(body);
+        message.setFrom("sales@decorpot.com");
         mailSender.send(message);
     }
  

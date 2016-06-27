@@ -119,10 +119,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public JavaMailSender getMailSender() {
 		
 		JavaMailSenderImpl mailSender =  new JavaMailSenderImpl();
-		mailSender.setHost("smtp.gmail.com");
+		mailSender.setHost("smtpout.secureserver.net");
 		mailSender.setPort(25);
-		mailSender.setUsername("sameersaurav2904@gmail.com");
-		mailSender.setPassword("*******");
+		mailSender.setUsername("sales@decorpot.com");
+		mailSender.setPassword("10users@2016");
 		Properties mailProperties = new Properties();
 		mailProperties.put("mail.smtp.auth", "smtp");
 		mailProperties.put("mail.smtp.auth", true);
@@ -135,7 +135,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
     public SimpleMailMessage simpleMailMessage() {
        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-       simpleMailMessage.setFrom("sameersaurav2904@gmail.com");
+       simpleMailMessage.setFrom("sales@decorpot.com");
        simpleMailMessage.setSubject("lets do it");
        simpleMailMessage.setTo("sameersaurav2904@gmail.com");
        return simpleMailMessage;

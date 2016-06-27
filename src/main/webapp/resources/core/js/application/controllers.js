@@ -207,7 +207,7 @@ $scope.steps(1);
 
 
 // contact controller
-decorpotCtrls.controller('contactController', ['$scope', 'uploadService',function ($scope, uploadService) {
+decorpotCtrls.controller('contactController', ['$scope', '$state', 'Upload', 'uploadService',function ($scope, $state, Upload, uploadService) {
 	$scope.enquiry = {};
         $scope.submitEnquiry = function() {
         	let valid = true;
@@ -232,7 +232,7 @@ decorpotCtrls.controller('contactController', ['$scope', 'uploadService',functio
             	valid = false;
             }
             
-            if(!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test($scope.enquiry.phone)) {
+            if(!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(parseInt($scope.enquiry.phone))) {
             	$scope.phoneError = 'your contact number is not valid';
             	valid = false;
             }
@@ -243,10 +243,13 @@ decorpotCtrls.controller('contactController', ['$scope', 'uploadService',functio
                 .success(function(data){
                 	if( $scope.file) {
                 		Upload.upload({
-                            url: '/enquiryImage',
+                            url: 'enquiryImage',
                             data: {
                                 file: $scope.file,
                             }
+                        }).then(function(data) {
+                        	alert('Thank you for contacting us. Our team will reach to you shortly');
+                        	$state.reload($state.current.name);
                         });
                 	}
                 	
@@ -433,12 +436,52 @@ decorpotCtrls.controller('apartmentsController', ['$scope','apartmentService', f
 
 }]);
 
-decorpotCtrls.controller('floorPlansController', ['$scope','apartmentService','$stateParams', '$filter', function($scope, apartmentService,$stateParams, $filter) {
+decorpotCtrls.controller('floorPlansController', ['$scope', '$state', 'apartmentService', 'uploadService', '$stateParams', '$filter', function($scope, $state, apartmentService, uploadService, $stateParams, $filter) {
     $scope.name = $filter('underscoreless')($stateParams.apartmentName);
 	apartmentService.getAllFloorPlans($scope.name)
 	.success(function(data) {
 		$scope.data = data;
 	});
+	$scope.enquiry = {};
+    $scope.submitEnquiry = function() {
+    	let valid = true;
+        
+        if(!$scope.enquiry.name) {
+        	$scope.nameError = 'your name is required';
+        	valid = false;
+        }
+        
+        if(!$scope.enquiry.email) {
+        	$scope.emailError = 'your email is required';
+        	valid = false;
+        }
+        
+        if(!/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test($scope.enquiry.email)){
+        	$scope.emailError = 'email format is not correct';
+        	valid = false;
+        }
+        
+        if(!$scope.enquiry.phone) {
+        	$scope.phoneError = 'your number is required';
+        	valid = false;
+        }
+        
+        if(!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(parseInt($scope.enquiry.phone))) {
+        	$scope.phoneError = 'your contact number is not valid';
+        	valid = false;
+        }
+        console.log($scope.enquiry);
+        if(valid) {
+        	uploadService.uploadEnquiry($scope.enquiry)
+            .success(function(data){
+                    	alert('Thank you for contacting us. Our team will reach to you shortly');
+                    	$state.reload($state.current.name);
+            	});
+            	
+            	$scope.success = "Thank you for you enquiry. Our team will connect to you shortly.";
+        }
+        
+    }
 }]);
 decorpotCtrls.controller('apartmentPackagesController', ['$scope','apartmentService','$stateParams', function($scope, apartmentService,$stateParams) {
     $scope.apartmentType = $stateParams.apartmentType;
