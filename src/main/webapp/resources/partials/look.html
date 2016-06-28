@@ -6,7 +6,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 apartmentImage"><img src="{{hdImage}}" alt=""></div>
             <ul class="col-md-12 col-sm-12 col-xs-12 views">
                 <li ng-repeat="t in thumbnails | filter:query" data-ng-click="toggleObject.item = $index"><img  data-ng-class="{'activeBorder' : toggleObject.item == $index }" ng-init="($first) ? getHdImage(t.thumbId) : ''" id="imageViewContainer"
-                        ng-src="{{t.thumb}}" class="cursorPointer"></li>
+                        ng-src="{{t.thumb}}" class="cursorPointer" ng-click="getHdImage(t.thumbId)"></li>
             </ul>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12">
