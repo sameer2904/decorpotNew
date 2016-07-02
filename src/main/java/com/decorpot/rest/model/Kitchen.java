@@ -5,7 +5,7 @@ public class Kitchen extends Space{
 	
 	
 	private String kitchenType;
-	private String basePriceDesc = "Base Price includes complete kitchen";	
+	private String basePriceDesc = "Base Price includes Kitchen Fixed Furnitures";	
 	public Kitchen() {
 		super();
 	}

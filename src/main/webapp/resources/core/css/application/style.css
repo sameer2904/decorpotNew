@@ -25,7 +25,10 @@ body {
 .mid{
     min-height: 500px;
 }
-
+/*Phone Number*/
+.phnnum {
+	font-family: 'Font' !important;
+}
 /*header*/
 
 .navbar {
