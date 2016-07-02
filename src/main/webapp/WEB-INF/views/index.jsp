@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="resources/core/css/normalise.css" />
         <link href="resources/core/css/application/style.css" rel="stylesheet" />
         <link href="resources/core/css/loading.min.css" rel="stylesheet" />
-        <script src="//load.sumome.com/" data-sumo-site-id="4c7665a517df08b6fffd74315ead211d41558a8a7c290d7ce389fa1dc264ad80" async="async"></script>
+        <!-- <script src="//load.sumome.com/" data-sumo-site-id="4c7665a517df08b6fffd74315ead211d41558a8a7c290d7ce389fa1dc264ad80" async="async"></script> -->
     </head>
 
     <body scroll>

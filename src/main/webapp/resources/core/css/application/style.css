@@ -27,7 +27,7 @@ body {
 }
 /*Phone Number*/
 .phnnum {
-	font-family: 'Font' !important;
+    font-family: 'Font' !important;
 }
 /*header*/
 
@@ -548,34 +548,34 @@ hr {
     }
 }
 .activeBorder{
-	border: #D6655B solid 2px;
+    border: #D6655B solid 2px;
 }
 
 .imgContainer {
-	width: 100%;
+    width: 100%;
     height: 250px;
 }
 
 .floorPlanImg {
-	width: 100%;
+    width: 100%;
     height: 540px;
 }
 
 .cursorPointer {
-	    cursor: pointer;
+        cursor: pointer;
 }
 
 .hide {
-	display:none;
+    display:none;
 }
 
 .error {
-	font-size: 11px;
+    font-size: 11px;
     color: red;
 }
 
 .ourProcessText {
-	font-size: 15px;
+    font-size: 15px;
     line-height: 1.4;
 }
 

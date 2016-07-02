@@ -96,7 +96,7 @@ main {
 
 section#section-steps {
     background-image: url('../../images/bg2.png');
-    background-size:100% 100%;
+    /*background-size:100% 100%;*/
     background-attachment: fixed;
     padding: 80px 0;
     /*opacity: 0.5;*/
@@ -110,6 +110,8 @@ section#section-steps {
     line-height: 0.5;
     text-align: center;
     margin: 30px 0 30px 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .separator span {
@@ -123,7 +125,8 @@ section#section-steps {
     position: absolute;
     border-bottom: 1px solid #000;
     top: 5px;
-    width: 300px;
+        width: 300px;
+    box-sizing: border-box;
 }
 
 .separator span::before {
