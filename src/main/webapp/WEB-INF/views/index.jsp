@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="resources/core/css/normalise.css" />
         <link href="resources/core/css/application/style.css" rel="stylesheet" />
         <link href="resources/core/css/loading.min.css" rel="stylesheet" />
-        <script src="//load.sumome.com/" data-sumo-site-id="4c7665a517df08b6fffd74315ead211d41558a8a7c290d7ce389fa1dc264ad80" async="async"></script>
+        <!-- <script src="//load.sumome.com/" data-sumo-site-id="4c7665a517df08b6fffd74315ead211d41558a8a7c290d7ce389fa1dc264ad80" async="async"></script> -->
     </head>
 
     <body scroll>
@@ -43,7 +43,7 @@
                     <div class="preHeader">
                         <ul class="nav nav-pills">
                             <li role="presentation"><span class="glyphicon glyphicon-envelope"></span> &nbsp; sales@decorpot.com</li>
-                            <li role="presentation"><span class="glyphicon glyphicon-earphone"></span> &nbsp; (+91) 9986076761 | (+91) 9986076762</li>
+                            <li role="presentation" class="phnnum"><span class="glyphicon glyphicon-earphone"></span> &nbsp; (+91) 9986076761 | (+91) 9986076762</li>
                         </ul>
                     </div>
                     <div class="navbar-header">
@@ -88,7 +88,7 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-6 wow slideInLeft" data-wow-animation="0.1s" data-wow-delay="0.1s">
                          <img class="logo-small" alt="" src="./resources/core/images/final-logo-full.png"><br/>
-                        Decorpot offers comprehensive solutions for all your interior design needs. We have operations in Bangalore from last 7 years and have completed multiple projects in residential and commercial interiors which includes Bungalows, Duplexes, and flats.
+                        Decorpot offers comprehensive solutions for all your interior design needs. We have completed multiple projects in residential segment which includes Bungalows, Duplexes and Flats.
                     </div>
                     <div class="col-md-offset-1 col-md-2 col-sm-6 wow slideInUp" data-wow-animation="0.1s" data-wow-delay="0.1s">
                         <div class="widget widget_recent_post">
@@ -108,9 +108,9 @@
                         <div class="widget widget-address">
                             <address>
                                     <span>Premises No. 445, 3rd Floor, JKN Towers, 5th Main, 16th A Cross, HSR Layout Sector 6 Bangalore</span>
-                                    <span><b>Phone:</b>  (+91) 9986076761 | (+91) 9986076762</span>
+                                    <span class="phnnum"><b>Phone:</b>  (+91) 9986076761 | (+91) 9986076762</span>
                                     <span><b>Email:</b> <a href="mailto:sales@decorpot.com">sales@decorpot.com</a></span>
-                                    <span><b>Web:</b> <a href="#">http://decorpot.com</a></span>
+                                    <span><b>Map:</b> <a href="https://goo.gl/maps/1MMDB9EoCaH2">https://goo.gl/maps/1MMDB9EoCaH2</a></span>
                                 </address>
                         </div>
                     </div>
