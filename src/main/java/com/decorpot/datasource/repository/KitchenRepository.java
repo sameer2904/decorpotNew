@@ -9,6 +9,7 @@ import com.decorpot.datasource.models.Kitchen;
 
 @Repository
 public interface KitchenRepository extends JpaRepository<Kitchen, Integer>{
-
-	public List<Kitchen> findByKitchenType(String kitchenType);
+	
+	public List<Kitchen> findAllByOrderByCreatedDateDesc();
+	public List<Kitchen> findByKitchenTypeOrderByCreatedDateDesc(String kitchenType);
 }

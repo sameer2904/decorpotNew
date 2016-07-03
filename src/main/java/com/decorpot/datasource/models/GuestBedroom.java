@@ -43,15 +43,15 @@ public class GuestBedroom {
 	private String themes;
 
 	@Column(name = "CREATED_DATE", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
-    private Date date = new java.sql.Date((new java.util.Date()).getTime());
+    private Date createdDate = new java.sql.Date((new java.util.Date()).getTime());
 	
 
-	public Date getDate() {
-		return date;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 	public String getWardrobeType() {

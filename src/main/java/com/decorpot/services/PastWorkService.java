@@ -58,7 +58,7 @@ public class PastWorkService {
     public List<PastWork> getAllPastWork() {
 
         String folderLocation = DecorpotConstants.BUCKET_LOCATION + DecorpotConstants.PAST_WORK_IMAGE_LOCATION;
-        List<com.decorpot.datasource.models.PastWork> works = pastWorkRepository.findByActiveTrue();
+        List<com.decorpot.datasource.models.PastWork> works = pastWorkRepository.findByActiveTrueOrderByDateDesc();
         List<PastWork> pastWorks = new ArrayList<>();
         if (!CollectionUtils.isEmpty(works)) {
             works.forEach(w -> {

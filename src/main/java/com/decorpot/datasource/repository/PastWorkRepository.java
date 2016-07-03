@@ -10,7 +10,7 @@ public interface PastWorkRepository extends JpaRepository<PastWork, Integer>{
     
     public PastWork findById(Integer id);
     
-    public List<PastWork> findByActiveTrue();
+    public List<PastWork> findByActiveTrueOrderByDateDesc();
     
     public PastWork findByApartmentName(String apartmentName);
 

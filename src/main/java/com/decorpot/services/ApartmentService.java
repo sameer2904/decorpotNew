@@ -2,6 +2,8 @@ package com.decorpot.services;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -391,6 +393,13 @@ public class ApartmentService {
 				packages.add(pkgs);
 
 			}
+			Collections.sort(packages, new Comparator<Packages>() {
+				@Override
+				public int compare(Packages o1, Packages o2) {
+					return o1.getBasePrice() > o2.getBasePrice() ? 1 : -1;
+				}
+			});
+			
 			DataCache.getInstance().put("2BHK" + id, packages);
 			return packages;
 		}

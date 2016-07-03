@@ -223,7 +223,7 @@ public class SpaceService {
 			kitchens = (List<com.decorpot.rest.model.Kitchen>) DataCache.getInstance()
 					.get(DecorpotConstants.KITCHEN + type);
 		} else {
-			List<Kitchen> list = kitchenRepository.findByKitchenType(type);
+			List<Kitchen> list = kitchenRepository.findByKitchenTypeOrderByCreatedDateDesc(type);
 			if (!CollectionUtils.isNullOrEmpty(list)) {
 				kitchens = list.stream().map(k -> kitchenRepoToRestModelConverter(k))
 						.collect(Collectors.toList());
@@ -269,7 +269,7 @@ public class SpaceService {
 					.get(DecorpotConstants.MASTER_BEDROOM + DecorpotConstants.ALL);
 		} else {
 
-			List<MasterBedroom> list = masterBedroomRepository.findAll();
+			List<MasterBedroom> list = masterBedroomRepository.findAllByOrderByCreatedDateDesc();
 			if (!CollectionUtils.isNullOrEmpty(list)) {
 				for (MasterBedroom m : list) {
 					bedrooms.add(masterbedroomRepoToModelConverter(m));
@@ -289,7 +289,7 @@ public class SpaceService {
 			bedrooms = (List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
 					.get(DecorpotConstants.MASTER_BEDROOM + type);
 		} else {
-			List<MasterBedroom> list = masterBedroomRepository.findByWardrobeTypeIn(wardrobes);
+			List<MasterBedroom> list = masterBedroomRepository.findByWardrobeTypeInOrderByCreatedDateDesc(wardrobes);
 			if (!CollectionUtils.isNullOrEmpty(list)) {
 				bedrooms = list.stream().map(b -> masterbedroomRepoToModelConverter(b))
 						.collect(Collectors.toList());
@@ -358,7 +358,7 @@ public class SpaceService {
 			bedrooms = (List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
 					.get(DecorpotConstants.GUEST_BEDROOM + type);
 		} else {
-			List<GuestBedroom> list = guestBedroomRepository.findByWardrobeTypeIn(wardrobes);
+			List<GuestBedroom> list = guestBedroomRepository.findByWardrobeTypeInOrderByCreatedDateDesc(wardrobes);
 			if (!CollectionUtils.isNullOrEmpty(list)) {
 				bedrooms = list.stream().map(b -> guestbedroomRepoToModelConverter(b))
 						.collect(Collectors.toList());
@@ -405,7 +405,7 @@ public class SpaceService {
 					.get(DecorpotConstants.KIDS_BEDROOM + DecorpotConstants.ALL);
 		} else {
 
-			List<KidsBedroom> list = kidsBedroomRepository.findAll();
+			List<KidsBedroom> list = kidsBedroomRepository.findAllByOrderByCreatedDateDesc();
 			if (!CollectionUtils.isNullOrEmpty(list)) {
 				for (KidsBedroom m : list) {
 					bedrooms.add(kidsbedroomRepoToModelConverter(m));
@@ -425,7 +425,7 @@ public class SpaceService {
 			bedrooms = (List<com.decorpot.rest.model.Bedroom>) DataCache.getInstance()
 					.get(DecorpotConstants.KIDS_BEDROOM + type);
 		} else {
-			List<KidsBedroom> list = kidsBedroomRepository.findByWardrobeTypeIn(wardrobes);
+			List<KidsBedroom> list = kidsBedroomRepository.findByWardrobeTypeInOrderByCreatedDateDesc(wardrobes);
 			if (!CollectionUtils.isNullOrEmpty(list)) {
 				bedrooms = list.stream().map(b -> kidsbedroomRepoToModelConverter(b))
 						.collect(Collectors.toList());
@@ -472,7 +472,7 @@ public class SpaceService {
 					.get(DecorpotConstants.LIVING_DINING + DecorpotConstants.ALL);
 		} else {
 
-			List<LivingAndDining> list = diningRepo.findAll();
+			List<LivingAndDining> list = diningRepo.findAllByOrderByCreatedDateDesc();
 			if (!CollectionUtils.isNullOrEmpty(list)) {
 				for (LivingAndDining m : list) {
 					dinings.add(livingAndDiningRepoToRestConverter(m));
