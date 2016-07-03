@@ -46,7 +46,7 @@ dependencies {
 // Embeded Jetty for testing
 jettyRun{
 	contextPath = "decorpot"
-	httpPort = 8888
+	httpPort = 8080
 }
 
 jettyRunWar{
