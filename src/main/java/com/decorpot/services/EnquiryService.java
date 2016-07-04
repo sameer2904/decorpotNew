@@ -9,29 +9,31 @@ import com.decorpot.rest.model.EnquiryModel;
 
 @Service
 public class EnquiryService {
-	
+
 	@Autowired
 	private EnquiryRepository enqRepo;
-	
+
 	@Autowired
-	private ApplicationMailer emailService ;
-	
-	
+	private ApplicationMailer emailService;
+
 	public void submitEnquiry(EnquiryModel eqModel) {
-		
+
 		EnquiryForm enquiryForm = new EnquiryForm();
-		
+
 		enquiryForm.setEmail(eqModel.getEmail());
 		enquiryForm.setFloorPlan(eqModel.getImage());
 		enquiryForm.setMessage(eqModel.getMessage());
 		enquiryForm.setName(eqModel.getName());
 		enquiryForm.setPhone(eqModel.getPhone());
-		
+
 		enqRepo.save(enquiryForm);
-		
+
 		emailService.sendMail(eqModel.getEmail(), "Enquiry Recieved @Decorpot.com", eqModel.getMessage());
-		emailService.sendMail("sales@decorpot.com", "Enquiry Recieved @Decorpot.com", eqModel.getMessage() + " floorplan url -> " + "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/enquiry/"+eqModel.getImage());
-		
+		emailService.sendMail("sales@decorpot.com", "Enquiry Recieved @Decorpot.com",
+				eqModel.getMessage() + "  name ->" + eqModel.getName() + "  phone no->" + eqModel.getPhone()
+						+ " email id ->" + eqModel.getEmail() + " floorplan url -> "
+						+ "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/enquiry/" + eqModel.getImage());
+
 	}
 
 }
