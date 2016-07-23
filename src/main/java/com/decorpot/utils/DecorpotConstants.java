@@ -9,6 +9,7 @@ public interface DecorpotConstants {
     String BUCKET_LOCATION = "https://s3-ap-southeast-1.amazonaws.com/decorpotreponew/";
 	String DECORPOT_TRANSACTION_MANAGER = "decorpotTransactionManager";
 	String BUCKET = "decorpotreponew";
+	String ORIGINAL_SPACE_IMAGE_LOCATION = "original_space";
 	String SPACE_IMAGE_LOCATION = "spaces/";
 	String FLOOR_PLAN_LOCATION = "floorplans/";
 	String APARTMENT_IMAGE_LOCATION = "apartmentImages/";
