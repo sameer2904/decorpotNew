@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-md-8 col-sm-6 col-xs-12">
             <div class="col-md-12 col-sm-12 col-xs-12 apartmentImage"><img src="{{hdImage}}" alt=""></div>
-            <ul class="col-md-12 col-sm-12 col-xs-12 views">
+            <ul class="views">
                 <li ng-repeat="t in thumbnails | filter:query" data-ng-click="toggleObject.item = $index"><img  data-ng-class="{'activeBorder' : toggleObject.item == $index }" ng-init="($first) ? getHdImage(t.thumbId) : ''" id="imageViewContainer"
-                        ng-src="{{t.thumb}}" class="cursorPointer" ng-click="getHdImage(t.thumbId)"></li>
+                        ng-src="{{t.thumb}}" class="cursorPointer img-thumbnail" ng-click="getHdImage(t.thumbId)"></li>
             </ul>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12">
         <h3>{{space.title}}</span></h3>
-        <h3>Base price - Rs {{space.basePrice}}</h3>
+        <h3>Base price - Rs. {{space.basePrice | formatPrice:2:',':'.':false}}</h3>
         <p>(*{{space.basePriceDesc}}.)</p>
             <div class="row">
                 <div class="col sm-12">
@@ -37,6 +37,7 @@
         </table>
     </uib-tab>
     </uib-tabset>
+    <h5><button class="btn-warning text-uppercase form-control">Meet our designers</button></h5>
             </div>
         </div>
         </div>

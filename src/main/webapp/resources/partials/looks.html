@@ -1,5 +1,5 @@
 <div id="looks" class="container-fluid" ui-view>
-<div class="positionRelative">{{space | underscoreless | capitalize:true}} <div class="col-md-4 col-sm-4 col-md-12 pull-right mt10"><input type="search" class="form-control" placeholder="Search.." ng-model="query"></div></div>
+<div class="positionRelative">{{space | underscoreless | capitalize:true}} <div class="col-md-4 col-sm-4 col-md-12 pull-right"><input type="search" class="form-control" placeholder="Search.." ng-model="query"></div></div>
 	<div class="container-fluid">
 		<div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="look in looks | filter:query">
@@ -9,7 +9,7 @@
 					</a>
             </div>
             <div>
-                <h4>{{look.title}}, <span>Starting from Rs{{look.basePrice}}</span></h4>
+                <h4>{{look.title}}, <span><br>Starting from Rs. {{look.basePrice | formatPrice:2:',':'.':false}}</span></h4>
             </div>
         </div>
     </div>
