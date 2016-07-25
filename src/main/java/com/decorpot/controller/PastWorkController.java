@@ -49,8 +49,10 @@ public class PastWorkController {
     @RequestMapping(value = "/upload/image", method = RequestMethod.POST)
     public void uploadImages(@RequestParam("file") MultipartFile file) throws Exception {
 
+    	System.out.println("got request in controller for past work upload");
         File imageFile = null;
         if (file != null) {
+        	System.out.println("uplaoding file in controller -> " + file.getName());
             imageFile = DecorpotUtils.multipartToFile(file);
             imageProcessorService.uploadPastWorkImage(imageFile);
         }

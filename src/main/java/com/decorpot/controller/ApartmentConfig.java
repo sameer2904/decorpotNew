@@ -43,7 +43,6 @@ public class ApartmentConfig {
    @RequestMapping(value= "/apartment/2bhk", method = RequestMethod.POST)
    public void config2BHKApartment(@RequestBody Config2BHK config2bhk) throws Exception {
        try{
-           System.out.println("controller floor plan " + config2bhk.getFloorPlan());
            apartmentService.config2BHKApartment(config2bhk);
        }catch(Exception e){
            throw e;

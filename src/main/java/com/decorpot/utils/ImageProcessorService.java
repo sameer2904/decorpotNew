@@ -69,8 +69,10 @@ public class ImageProcessorService {
 	}
 	
 	public void uploadPastWorkImage(File file) throws Exception {
+		System.out.println("uploading past work");
 
         if (file != null) {
+        	System.out.println("uploading past work with name -> " + file.getName());
             for (String size : DecorpotConstants.pastWorkImageSizes) {
                 String[] dimentions = size.split("x");
                 try {

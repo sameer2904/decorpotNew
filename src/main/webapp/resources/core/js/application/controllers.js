@@ -332,7 +332,7 @@ decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploa
         pastProjectData.mainImage = $scope.mainImage;
         pastProjectData.images = [];
         angular.forEach($scope.files, (file) => {
-            pastProjectData.images.push(file.name);
+            pastProjectData.images.push(file.name.replace(/\s+/g, '_'));
         } );
         
         uploadService.uploadPastWork(pastProjectData)
