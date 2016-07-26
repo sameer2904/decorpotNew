@@ -97,7 +97,7 @@ public class ImageProcessorService {
 		try {
 			BufferedImage originalImage = ImageIO.read(file);
 
-			File outputImage = new File(width + "x" + height + file.getName());
+			File outputImage = new File(width + "x" + height + file.getName().replaceAll(" ", "_"));
 			if (outputImage == null) {
 				throw new Exception(LOGGER_PREFIX
 						+ " image file cannot be created");
