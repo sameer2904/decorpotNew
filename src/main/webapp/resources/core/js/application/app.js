@@ -70,10 +70,16 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/:apartmentType/:floorplanId',
 				templateUrl : 'resources/partials/apartmentPackages.html',
 				controller : 'apartmentPackagesController'
-			}).state('apartments.floorplans.packages.package', {
+			})
+			.state('apartments.floorplans.packages.package', {
 				url : '/:basePrice/:spaceIds',
 				templateUrl : 'resources/partials/apartment.html',
 				controller : 'apartmentController'
+			})
+			.state('zdd', {
+				url : '/zdd',
+				templateUrl : 'resources/partials/dashboard.html',
+				controller : 'dashboardController'
 			});
 		} ]);
 decorpot.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
