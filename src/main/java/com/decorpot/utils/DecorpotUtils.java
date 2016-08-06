@@ -9,7 +9,7 @@ public class DecorpotUtils {
 	
 	public static File multipartToFile(MultipartFile multipart) throws IllegalStateException, IOException 
 	{
-	        File convFile = new File( multipart.getOriginalFilename());
+	        File convFile = new File( multipart.getOriginalFilename().replaceAll(" ", "_"));
 	        multipart.transferTo(convFile);
 	        return convFile;
 	}

@@ -79,7 +79,7 @@ decorpotCtrls.controller('uploadController', [
                 }
                 
                 angular.forEach($scope.files, (file) => {
-                    spaceData.images.push(file.name);
+                    spaceData.images.push(file.name.replace(/\s+/g, '_'));
                 } );
                 
                 
