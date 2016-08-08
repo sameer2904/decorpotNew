@@ -574,3 +574,6 @@ decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams','Lightbo
     Lightbox.openModal($scope.images, index);
   };
 }]);
+
+decorpotCtrls.controller('dashboardController',['$scope',function($scope){
+}]);
