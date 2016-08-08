@@ -30,7 +30,7 @@ services.service('uploadService',['$http', function($http){
 		uploadPastWork: function(pastWork) {
 			return $http({
 				method : "post",
-				url : "pastWork/upload",
+				url : "pastWork/backend/upload",
 				data : pastWork
 			});
 		},

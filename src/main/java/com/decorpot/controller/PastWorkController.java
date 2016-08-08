@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.decorpot.rest.model.PastWork;
+import com.decorpot.rest.model.PastWorkBackend;
 import com.decorpot.services.PastWorkService;
 import com.decorpot.utils.DecorpotUtils;
 import com.decorpot.utils.ImageProcessorService;
@@ -56,6 +57,13 @@ public class PastWorkController {
             imageFile = DecorpotUtils.multipartToFile(file);
             imageProcessorService.uploadPastWorkImage(imageFile);
         }
+    }
+    
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/backend/upload", method = RequestMethod.POST)
+    public void uploadBackendPastWork(@RequestBody PastWorkBackend pastWorkBackend) throws Exception {
+    	System.out.println("hihihi");
+        pastWorkService.backendPastworkUpload(pastWorkBackend);
     }
 
 }

@@ -11,21 +11,16 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        Photo:
-                        <input type="file" ngf-select ng-model="files" ngf-multiple="true" name="file" accept="image/*" required ngf-model-invalid="errorFile">
-                        <br> <i ng-show="myForm.file.$error.maxSize">File too
-							large {{errorFile.size / 1000|number:1}}KB: max 7000KB</i>
-                        <div class="selectMainImage">
-                            <div class="col-md-4" ng-repeat="file in files">
-                                <input type="radio" name="mainImage" ng-model="$parent.mainImage" value="{{file.name}}" />
-                                <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb" height="200" width="200">
-                            </div>
-                        </div>
-
-                        <button ng-click="files = null" ng-show="files">Remove</button>
+                        Main Image :
+                        <input type="text" name="mainImage" ng-model="mainImage" size="30" required /> <i ng-show="myForm.mainImage.$error.required">*required</i>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        Folder Path :
+                        <input type="text" name="folderPath" ng-model="folderPath" size="30" required /> <i ng-show="myForm.folderPath.$error.required">*required</i>
+                    </div>
+                </div>
                 <div class="row">
                     <button ng-disabled="!myForm.$valid" ng-click="uploadData()">Submit</button>
                 </div>

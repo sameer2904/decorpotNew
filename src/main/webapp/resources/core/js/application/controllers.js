@@ -330,26 +330,33 @@ decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploa
         var pastProjectData = {};
         pastProjectData.apartmentName = $scope.apartmentName;
         pastProjectData.mainImage = $scope.mainImage;
-        pastProjectData.images = [];
-        angular.forEach($scope.files, (file) => {
-            pastProjectData.images.push(file.name.replace(/\s+/g, '_'));
-        } );
-        
+        pastProjectData.folderPath = $scope.folderPath;
         uploadService.uploadPastWork(pastProjectData)
         .success(function(data) {
-            angular.forEach($scope.files, f => {
-                Upload.upload({
-                    url: 'pastWork/upload/image',
-                    data: {
-                        file: f,
-                    }
-                });
-            });
-            
-        })
-        .error((data) => {
-            alert("data not uploaded");
-        });
+        	alert("data  uploaded");
+        }).error((data) => {
+         alert("data not uploaded");
+         });
+//        pastProjectData.images = [];
+//        angular.forEach($scope.files, (file) => {
+//            pastProjectData.images.push(file.name.replace(/\s+/g, '_'));
+//        } );
+//        
+//        uploadService.uploadPastWork(pastProjectData)
+//        .success(function(data) {
+//            angular.forEach($scope.files, f => {
+//                Upload.upload({
+//                    url: 'pastWork/upload/image',
+//                    data: {
+//                        file: f,
+//                    }
+//                });
+//            });
+//            
+//        })
+//        .error((data) => {
+//            alert("data not uploaded");
+//        });
     }
 }]);
 
