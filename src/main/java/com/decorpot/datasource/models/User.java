@@ -1,14 +1,13 @@
 package com.decorpot.datasource.models;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,9 +28,41 @@ public class User implements Serializable {
 
 	@Column(name = "IS_ACTIVE", nullable = false)
 	private boolean isActive;
+	
+	@Column(name = "NAME", nullable = false)
+	private String name;
+	
+	@Column(name = "email", nullable = false)
+	private String email;
 
-	@OneToMany(mappedBy = "user")
-	private Set<UserRole> userRoles;
+
+	@OneToOne(mappedBy = "user")
+	private UserRole userRole;
+	
+
+	public UserRole getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public Integer getId() {
 		return id;
@@ -63,14 +94,6 @@ public class User implements Serializable {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
-	}
-
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
-	}
-
-	public void setUserRoles(Set<UserRole> userRoles) {
-		this.userRoles = userRoles;
 	}
 
 }
