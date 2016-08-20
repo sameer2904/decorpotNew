@@ -1,10 +1,14 @@
 package com.decorpot.spring.config;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -31,8 +35,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories(basePackages = "com.decorpot.datasource.repository", entityManagerFactoryRef = "decorpotEntityManager", transactionManagerRef = "decorpotTransactionManager")
-@ComponentScan(basePackages = { "com.decorpot.spring.config",
-		"com.decorpot.spring.controller", "com.decorpot.*" })
+@ComponentScan(basePackages = { "com.decorpot.spring.config", "com.decorpot.spring.controller", "com.decorpot.*" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
@@ -42,6 +45,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 	private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
 	private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
+	private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>(); 
 
 	@Resource
 	private Environment env;
@@ -51,13 +55,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-		dataSource.setDriverClassName(env
-				.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
+		dataSource.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
 		dataSource.setUrl(env.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));
-		dataSource.setUsername(env
-				.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
-		dataSource.setPassword(env
-				.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
+		dataSource.setUsername(env.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
+		dataSource.setPassword(env.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
 
 		return dataSource;
 	}
@@ -70,8 +71,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setGenerateDdl(false);
 		entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
-		entityManagerFactoryBean
-				.setPackagesToScan("com.decorpot.datasource.models");
+		entityManagerFactoryBean.setPackagesToScan("com.decorpot.datasource.models");
 
 		entityManagerFactoryBean.setJpaProperties(hibProperties());
 
@@ -80,10 +80,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 	private Properties hibProperties() {
 		Properties properties = new Properties();
-		properties.put(PROPERTY_NAME_HIBERNATE_DIALECT,
-				env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
-		properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL,
-				env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
+		properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
+		properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
 		return properties;
 	}
 
@@ -91,8 +89,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Primary
 	public JpaTransactionManager transactionManager() {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactory()
-				.getObject());
+		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return transactionManager;
 	}
 
@@ -108,17 +105,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		System.out.println("WebConfig:addResourceHandlers");
-		registry.addResourceHandler("/resources/**")
-				.addResourceLocations("/resources/")
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/")
 				.addResourceLocations("classpath:/META-INF/resources/");
-		registry.addResourceHandler("/views/**").addResourceLocations(
-				"/views/**");
+		registry.addResourceHandler("/views/**").addResourceLocations("/views/**");
 	}
 
 	@Bean
 	public JavaMailSender getMailSender() {
-		
-		JavaMailSenderImpl mailSender =  new JavaMailSenderImpl();
+
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtpout.secureserver.net");
 		mailSender.setPort(25);
 		mailSender.setUsername("sales@decorpot.com");
@@ -127,24 +122,50 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		mailProperties.put("mail.smtp.auth", "smtp");
 		mailProperties.put("mail.smtp.auth", true);
 		mailProperties.put("mail.smtp.starttls.enable", true);
-		mailProperties.put("mail.debug",true);
+		mailProperties.put("mail.debug", true);
 		mailSender.setJavaMailProperties(mailProperties);
 		return mailSender;
 	}
-	
+
 	@Bean
-    public SimpleMailMessage simpleMailMessage() {
-       SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-       simpleMailMessage.setFrom("sales@decorpot.com");
-       simpleMailMessage.setSubject("lets do it");
-       simpleMailMessage.setTo("sameersaurav2904@gmail.com");
-       return simpleMailMessage;
-    }
-	
+	public SimpleMailMessage simpleMailMessage() {
+		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+		simpleMailMessage.setFrom("sales@decorpot.com");
+		simpleMailMessage.setSubject("lets do it");
+		simpleMailMessage.setTo("sameersaurav2904@gmail.com");
+		return simpleMailMessage;
+	}
+
 	@Bean(name = "multipartResolver")
-	public CommonsMultipartResolver commonsMultipartResolver(){
+	public CommonsMultipartResolver commonsMultipartResolver() {
 		CommonsMultipartResolver factory = new CommonsMultipartResolver();
-        return factory;
-    }
+		return factory;
+	}
+
+	@Bean(name = "shiroDatabaseRealm")
+	public ShiroDatabaseRealm getShiroRealm() {
+		return new ShiroDatabaseRealm();
+	}
+
+	@Bean(name = "securityManager")
+	public DefaultWebSecurityManager getDefaultWebSecurityManager() {
+		DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
+		dwsm.setRealm(getShiroRealm());
+		return dwsm;
+	}
+
+	@Bean(name = "shiroFilter")
+	public ShiroFilterFactoryBean getShiroFilterFactoryBean() {
+		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+		shiroFilterFactoryBean.setSecurityManager(getDefaultWebSecurityManager());
+		shiroFilterFactoryBean.setLoginUrl("/login");
+		shiroFilterFactoryBean.setSuccessUrl("/");
+		shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+		filterChainDefinitionMap.put("/example/**", "authc");
+		filterChainDefinitionMap.put("/login", "authc");
+		filterChainDefinitionMap.put("/**", "authc");
+		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+		return shiroFilterFactoryBean;
+	}
 
 }
