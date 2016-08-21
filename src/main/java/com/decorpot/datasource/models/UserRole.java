@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +15,8 @@ public class UserRole {
 	@Column(name = "ID")
 	private Integer id;
 
-	@OneToOne(mappedBy = "USER_ID")
+	@OneToOne
+	@PrimaryKeyJoinColumn
 	private User user;
 
 	@Column(name = "ROLE_NAME")

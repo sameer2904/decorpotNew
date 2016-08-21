@@ -2,6 +2,7 @@ package com.decorpot.datasource.models;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +17,6 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-
 	@Column(name = "USERNAME", nullable = false)
 	private String username;
 
@@ -36,7 +33,7 @@ public class User implements Serializable {
 	private String email;
 
 
-	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "user", cascade=CascadeType.ALL)
 	private UserRole userRole;
 	
 
@@ -62,14 +59,6 @@ public class User implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getUsername() {

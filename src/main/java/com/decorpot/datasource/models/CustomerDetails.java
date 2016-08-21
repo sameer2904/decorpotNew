@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class CustomerDetails {
@@ -24,7 +25,8 @@ public class CustomerDetails {
 	@Column(name = "PHONE")
 	private String phone;
 	
-	@OneToOne(mappedBy = "USER_ID")
+	@OneToOne
+	@PrimaryKeyJoinColumn
 	private User user;
 
 	public Integer getId() {

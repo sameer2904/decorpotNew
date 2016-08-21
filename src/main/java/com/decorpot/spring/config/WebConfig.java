@@ -158,12 +158,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public ShiroFilterFactoryBean getShiroFilterFactoryBean() {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(getDefaultWebSecurityManager());
-		shiroFilterFactoryBean.setLoginUrl("/login");
-		shiroFilterFactoryBean.setSuccessUrl("/");
-		shiroFilterFactoryBean.setUnauthorizedUrl("/403");
-		filterChainDefinitionMap.put("/example/**", "authc");
 		filterChainDefinitionMap.put("/login", "authc");
-		filterChainDefinitionMap.put("/**", "authc");
+
+		filterChainDefinitionMap.put("/dashboard/**", "authc");
+		filterChainDefinitionMap.put("/**", "anon");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return shiroFilterFactoryBean;
 	}
