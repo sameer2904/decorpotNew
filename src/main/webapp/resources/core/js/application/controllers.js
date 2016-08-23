@@ -577,3 +577,43 @@ decorpotCtrls.controller('pastWorkController', ['$scope','$stateParams','Lightbo
 
 decorpotCtrls.controller('dashboardController',['$scope',function($scope){
 }]);
+
+decorpotCtrls.controller('createUserController', ['$state', '$scope', 'userService', function($state, $scope, userService) {
+	$scope.createUser = function() {
+		if($scope.password == $scope.password1) {
+			var user = {};
+			user.name = $scope.name;
+			user.password = $scope.password;
+			user.email = $scope.email;
+			user.role = $scope.role;
+			user.userName = $scope.email;
+			user.phone = $scope.phone;
+			userService.createUser(user)
+			.success(function(data) {
+				$state.go('/');
+				alert(data);
+			}).error(function(data) {
+				alert(data);
+			})
+		}
+	}
+}]);
+
+decorpotCtrls.controller('loginController', ['$state', '$scope', 'userService', function($state, $scope, userService) {
+	$scope.user = {};
+	$scope.login = function() {
+			userService.login($scope.user)
+			.success(function(data) {
+				alert(data);
+			}).error(function(data) {
+				alert(data);
+			});
+	}
+}])
+
+
+
+
+
+
+

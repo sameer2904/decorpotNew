@@ -1,0 +1,10 @@
+<div class="login-page" ui-view>
+  <div class="form">
+    <form class="login-form">
+      <input type="text" ng-model="user.userName" placeholder="username/email"/>
+      <input type="password" ng-model="user.password" placeholder="password"/>
+      <button ng-click="login()">login</button>
+      <p class="message">Not registered? <a ui-sref="login.create">Create an account</a></p>
+    </form>
+  </div>
+</div>

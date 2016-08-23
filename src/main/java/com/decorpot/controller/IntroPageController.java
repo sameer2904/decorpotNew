@@ -13,7 +13,7 @@ public class IntroPageController extends DefaultController  {
         System.out.println("decorpot-web/IntroPageController:navigateToDashboard");
         m.addAttribute("title", "Test Funda");
         System.out.println("decorpot-web/IntroPageController:navigateToDashboard Calling navigatewithModels");
-        return navigateWithModels(m, "introPage", "introPage", "introPage");
+        return navigateWithModels(m, "index", "introPage", "introPage", "introPage");
     }
 
 

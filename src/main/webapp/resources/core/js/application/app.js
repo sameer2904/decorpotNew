@@ -76,10 +76,14 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				templateUrl : 'resources/partials/apartment.html',
 				controller : 'apartmentController'
 			})
-			.state('zdd', {
-				url : '/zdd',
-				templateUrl : 'resources/partials/dashboard.html',
-				controller : 'dashboardController'
+			.state('login', {
+				url : '/login',
+				templateUrl : 'resources/partials/login.html',
+				controller : 'loginController'
+			}).state('login.create', {
+				url : '/create',
+				templateUrl : 'resources/partials/createUser.html',
+				controller : 'createUserController'
 			});
 		} ]);
 decorpot.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {

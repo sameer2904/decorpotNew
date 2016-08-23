@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.decorpot.datasource.models.User;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer>{
+public interface UserRepository extends CrudRepository<User, String>{
 	public List<User> findByUsername(String username); 
 
 }

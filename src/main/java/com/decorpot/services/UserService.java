@@ -17,13 +17,11 @@ public class UserService {
 	private UserRepository userRepo;
 
 	public User findByUsername(String username) {
-		List<User> users = userRepo.findByUsername(username);
-		if (CollectionUtils.isEmpty(users) && users.size() > 0) {
-			return users.get(0);
-		}
-		return null;
+		
+		User users = userRepo.findOne(username);
+		return users;
 	}
-	
+
 	public String createNewUser(com.decorpot.rest.model.User user) throws Exception {
 		User newUser = new User();
 		UserRole userRole = new UserRole();
@@ -32,17 +30,20 @@ public class UserService {
 		newUser.setEmail(user.getEmail());
 		newUser.setName(user.getName());
 		userRole.setUser(newUser);
+		newUser.setPhone(user.getPhone());
 		userRole.setRoleName(user.getRole());
 		newUser.setUserRole(userRole);
-		if(findByUsername(user.getUserName()) != null) {
+		newUser.setActive(true);
+		if (findByUsername(user.getUserName()) != null) {
 			throw new Exception("user already exsists");
 		}
-		try{
+		try {
 			userRepo.save(newUser);
-		}catch(Exception e) {
+		} catch (Exception e) {
+			// System.out.println("error object " + newUser.toString());
 			throw e;
 		}
-		
+
 		return "success";
 	}
 

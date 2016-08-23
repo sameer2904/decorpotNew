@@ -107,3 +107,25 @@ services.service('spaceService',['$http', function($http){
 		}
 	}
 }] );
+
+services.service('userService', ['$http', function($http) {
+	return {
+		createUser: function(user) {
+			return $http({
+				url: 'user/create',
+				method: 'post',
+				data: user
+			})
+		},
+		login: function(user) {
+			return $http({
+				url: 'user/login',
+				method: 'post',
+				data: user
+			})
+		}
+	}
+}])
+
+
+

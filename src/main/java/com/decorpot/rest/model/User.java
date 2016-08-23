@@ -8,6 +8,7 @@ public class User {
 	private String password;
 	private String name;
 	private String role;
+	private String phone;
 	
 	
 	public String getUserName() {
@@ -40,6 +41,16 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", email=" + email + ", password=" + password + ", name=" + name
+				+ ", role=" + role + ", phone=" + phone + "]";
+	}
 	
 }

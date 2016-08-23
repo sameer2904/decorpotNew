@@ -1,0 +1,24 @@
+<div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" ng-model="name" placeholder="name"/>
+      <input type="password" ng-model="password" placeholder="password"/>
+      <input type="password" ng-model="password1" placeholder="re-type password"/>
+      <input type="text" ng-model="email"placeholder="email address"/>
+      <input type="text" ng-model="phone" placeholder="phone"/>
+      <div class="col-md-12">
+                    <label for="Role Select Type">&nbsp;</label>
+                    <select name="singleSelect" class="btn btn-default dropdown-toggle form-control" ng-model="$parent.role">
+                        <option value="">select role &nbsp; <span class="caret"></span></option>
+                        <!-- not selected / blank option -->
+                        <option value="admin"><span>&nbsp;admin</span></option>
+                        <option value="designer"><span>&nbsp;designer</span></option>
+                        <option value="designer"><span>&nbsp;customer</span></option>
+                        <!-- interpolation -->
+                    </select>
+                </div>
+      <button ng-click="createUser()">create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+  </div>
+</div>
