@@ -1,6 +1,9 @@
 package com.decorpot.services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,16 +18,45 @@ public class TaskService {
 	@Autowired
 	private TaskRepository taskRepo;
 	
-	
-	public Task getTaskById(int taskId) {
-		return null;
-	}
-	
 	public List<Task> createTasksForState(String state) {
 		return null;
 	}
 	
 	public Task updateTask(Task task) {
 		return null;
+	}
+	
+	//TODO(shomil):additional logics for making more sense should be added.
+	public List<Task> getAllTasks() {
+		List<com.decorpot.datasource.models.Task> tasks =  (List<com.decorpot.datasource.models.Task>) taskRepo.findAll();
+		
+		return tasks.stream().map(t -> {
+				Task tsk = convertDbTaskToRest(t);
+				if(t.getSubTasks() != null) {
+					tsk.setSubTasks(t.getSubTasks().stream().map(st -> {
+						return convertDbTaskToRest(st);
+					}).collect(Collectors.toSet()));
+				}				
+				return tsk;
+		}).collect(Collectors.toList());
+	}
+	
+	//TODO(sameer): convert this to generics models seems to have same structure.
+	private Task convertDbTaskToRest(com.decorpot.datasource.models.Task task) {
+		Task t = new Task();
+		t.setCustomerId(task.getCustomerId());
+		t.setEndDate(task.getEndDate());
+		t.setEstimatedDate(task.getEstimatedDate());
+		t.setHoursLogged(task.getHoursLogged());
+		t.setParentId(task.getParentId().getId());
+		t.setStartDate(task.getStartDate());
+		t.setStateTag(task.getStateTag());
+		t.setTaskName(task.getTaskName());
+		
+		return t;
+	}
+	
+	public Task getTaskById(int taskId) {
+		return convertDbTaskToRest(taskRepo.findOne(taskId));
 	}
 }

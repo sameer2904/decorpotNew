@@ -58,7 +58,7 @@ public class Task {
 	@OneToMany(mappedBy="parentId")
 	private Set<Task> subTasks = new HashSet<>();
 	
-	@OneToMany(mappedBy="task")
+	@OneToMany(mappedBy="task", cascade=CascadeType.ALL)
 	private Set<TaskUpdates> updates = new HashSet<>();
 
 	public Integer getId() {

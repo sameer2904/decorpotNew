@@ -2,7 +2,6 @@ package com.decorpot.datasource.models;
 
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,8 +29,8 @@ public class TaskUpdates {
 	@Column(name = "CREATED_BY")
 	private String createdBy;
 	
-	@ManyToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="TASK_ID")
+	@ManyToOne
+	@JoinColumn(name="TASK_ID", referencedColumnName = "ID")
 	private Task task;
 
 	public Integer getId() {
