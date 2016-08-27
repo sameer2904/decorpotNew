@@ -84,6 +84,10 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/create',
 				templateUrl : 'resources/partials/createUser.html',
 				controller : 'createUserController'
+			}).state('tasks', {
+				url : '/tasks',
+				templateUrl : 'resources/partials/tasks.html',
+				controller : 'tasksController'
 			});
 		} ]);
 decorpot.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {

@@ -37,5 +37,9 @@ public interface DecorpotConstants {
 	
 	String ALL = "all";
 	
+	enum taskStatus{
+		red, orange, green, yellow
+	}
+	
 	
 }

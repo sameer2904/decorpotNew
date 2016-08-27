@@ -16,6 +16,10 @@ public class Task {
 	private String customerId;
 	private Integer parentId;
 	private Set<Task> subTasks;
+	
+	//this is computed status showing if any deadline was missed or task end date is coming close. Enum created.
+	private String taskStatus;
+	
 	public String getTaskName() {
 		return taskName;
 	}
@@ -75,6 +79,12 @@ public class Task {
 	}
 	public void setSubTasks(Set<Task> subTasks) {
 		this.subTasks = subTasks;
+	}
+	public String getTaskStatus() {
+		return taskStatus;
+	}
+	public void setTaskStatus(String taskStatus) {
+		this.taskStatus = taskStatus;
 	}
 	
 	
