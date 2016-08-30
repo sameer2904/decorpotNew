@@ -1,10 +1,7 @@
 package com.decorpot.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import com.decorpot.datasource.models.User;
 import com.decorpot.datasource.models.UserRole;
@@ -38,7 +35,7 @@ public class UserService {
 			throw new Exception("user already exsists");
 		}
 		try {
-			userRepo.save(newUser);
+			newUser = userRepo.save(newUser);
 		} catch (Exception e) {
 			// System.out.println("error object " + newUser.toString());
 			throw e;

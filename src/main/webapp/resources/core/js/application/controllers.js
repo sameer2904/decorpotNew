@@ -609,6 +609,30 @@ decorpotCtrls.controller('loginController', ['$state', '$scope', 'userService', 
 				alert(data);
 			});
 	}
+}]);
+
+decorpotCtrls.controller('taskController', ['$state', '$scope', 'taskService', 'customerService',
+                                            function($state, $scope, taskService, customerService) {
+	$scope.apartmentTypes = ['2bhk', '3bhk'];
+
+	$scope.addLead = function() {
+		$scope.openModal = true;
+		$scope.submit = function() {
+			customerService.createCustomer($scope.customer)
+			.then(function(result) {
+				$scope.openModal = false;
+				alert("customer created");
+			}).error(function(err) {
+				$scope.custError = err.msg;
+			})
+		}
+	}
+	
+	taskService.getAllTasks()
+	.then(function(tasks) {
+		$scope.tasks = tasks;
+	})
+	
 }])
 
 

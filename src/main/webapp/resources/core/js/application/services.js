@@ -112,16 +112,39 @@ services.service('userService', ['$http', function($http) {
 	return {
 		createUser: function(user) {
 			return $http({
-				url: 'user/create',
+				url: 'users',
 				method: 'post',
 				data: user
 			})
 		},
 		login: function(user) {
 			return $http({
-				url: 'user/login',
+				url: 'users/login',
 				method: 'post',
 				data: user
+			})
+		}
+	}
+}]);
+
+services.service('taskService', ['$http', function($http) {
+	return {
+		getAllTask: function() {
+			return $http({
+				url: 'tasks',
+				method: 'get'
+			})
+		}
+	}
+}])
+
+services.service('customerService', ['$http', function($http) {
+	return {
+		createCustomer: function(customer) {
+			return $http({
+				url: 'customers',
+				method: 'post',
+				data: customer
 			})
 		}
 	}

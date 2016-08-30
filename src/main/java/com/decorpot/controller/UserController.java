@@ -12,14 +12,14 @@ import com.decorpot.rest.model.User;
 import com.decorpot.services.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 	
 	@ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value= "/create", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
 	public String createUser(@RequestBody User user) throws Exception {
 		System.out.println(user.toString());
 		return userService.createNewUser(user);

@@ -27,5 +27,10 @@ public class TaskController {
 	public Task getTaskById(@PathVariable("id") Integer id) {
 		return taskService.getTaskById(id);
 	}
+	
+	@RequestMapping(value = "/state/{state}", method = RequestMethod.GET)
+	public List<Task> getTaskByState(@PathVariable("state") String state) {
+		return taskService.getTaskByState(state);
+	}
 
 }

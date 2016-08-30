@@ -1,7 +1,89 @@
-<div class="row features-buttons">
-	<div class="col-md-12">
-		<button class="add_lead btn btn-default">add lead</button>
+<div class="container tasks">
+
+	<div class="row features-buttons">
+		<div class="col-md-12">
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+				data-target="#myModal">add lead</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table
+				class="table table-stripped table-bordered table-hover tavle-inverse table-responsive">
+				<tr>
+					<th>TASK ID</th>
+					<th>TASK NAME</th>
+					<th>STATE</th>
+					<th>CUSTOMER</th>
+				</tr>
+				<tr ng-repeat="t in tasks">
+					<td>{{t.id}}</td>
+					<td>{{t.taskName}}</td>
+					<td>{{t.stateTag}}</td>
+					<td>{{t.customerId}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">add lead</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group col-md-6">
+							<label> <span>Customer Name</span>
+							</label><input type="text" placeholder="" id="custName"
+								ng-model="customer.custName" class="form-control">
+						</div>
+						<div class="form-group col-md-6">
+							<label> <span>phone</span>
+							</label><input type="text" placeholder="" id="phone"
+								ng-model="customer.phone" class="form-control">
+						</div>
+						<div class="form-group col-md-6">
+							<label> <span>Email Id</span>
+							</label><input type="text" placeholder="" id="userName"
+								ng-model="customer.userName" class="form-control">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="Apartment select type">&nbsp;</label> <select
+								name="singleSelect"
+								class="btn btn-default dropdown-toggle form-control"
+								ng-model="$parent.customer.bhk">
+								<option value="">SELECT APARTMENT TYPE &nbsp; <span
+										class="caret"></span></option>
+								<!-- not selected / blank option -->
+								<option value="2bhk" ng-repeat="a in apartmentTypes"><span>&nbsp;2bhk</span></option>
+								<option value="3bhk" ng-repeat="a in apartmentTypes"><span>&nbsp;3bhk</span></option>
+								<!-- interpolation -->
+							</select>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="Apartment select type">&nbsp;</label> <select
+								name="singleSelect"
+								class="btn btn-default dropdown-toggle form-control"
+								ng-model="$parent.customer.bhk">
+								<option value="">SELECT BUDGET TYPE &nbsp; <span
+										class="caret"></span></option>
+								<!-- not selected / blank option -->
+								<option value="2bhk" ng-repeat="a in apartmentTypes"><span>&nbsp;&lt 5000000</span></option>
+								<option value="3bhk" ng-repeat="a in apartmentTypes"><span>&nbsp;3bhk</span></option>
+								<!-- interpolation -->
+							</select>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
 	</div>
 </div>
-<div class="row"></div>
-<div class="row"></div>
