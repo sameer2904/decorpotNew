@@ -11,6 +11,8 @@ public class CustomerDetails {
 	private String phone;
 
 	private String userName;
+	
+	private String budgetType;
 
 	public Integer getId() {
 		return id;
@@ -50,5 +52,13 @@ public class CustomerDetails {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getBudgetType() {
+		return budgetType;
+	}
+
+	public void setBudgetType(String budgetType) {
+		this.budgetType = budgetType;
 	}
 }

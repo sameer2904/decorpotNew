@@ -337,26 +337,26 @@ decorpotCtrls.controller('uploadPastWorkController', ['$scope', 'Upload', 'uploa
         }).error((data) => {
          alert("data not uploaded");
          });
-//        pastProjectData.images = [];
-//        angular.forEach($scope.files, (file) => {
-//            pastProjectData.images.push(file.name.replace(/\s+/g, '_'));
-//        } );
+// pastProjectData.images = [];
+// angular.forEach($scope.files, (file) => {
+// pastProjectData.images.push(file.name.replace(/\s+/g, '_'));
+// } );
 //        
-//        uploadService.uploadPastWork(pastProjectData)
-//        .success(function(data) {
-//            angular.forEach($scope.files, f => {
-//                Upload.upload({
-//                    url: 'pastWork/upload/image',
-//                    data: {
-//                        file: f,
-//                    }
-//                });
-//            });
+// uploadService.uploadPastWork(pastProjectData)
+// .success(function(data) {
+// angular.forEach($scope.files, f => {
+// Upload.upload({
+// url: 'pastWork/upload/image',
+// data: {
+// file: f,
+// }
+// });
+// });
 //            
-//        })
-//        .error((data) => {
-//            alert("data not uploaded");
-//        });
+// })
+// .error((data) => {
+// alert("data not uploaded");
+// });
     }
 }]);
 
@@ -611,26 +611,34 @@ decorpotCtrls.controller('loginController', ['$state', '$scope', 'userService', 
 	}
 }]);
 
-decorpotCtrls.controller('taskController', ['$state', '$scope', 'taskService', 'customerService',
+decorpotCtrls.controller('tasksController', ['$state', '$scope', 'taskService', 'customerService',
                                             function($state, $scope, taskService, customerService) {
 	$scope.apartmentTypes = ['2bhk', '3bhk'];
 
-	$scope.addLead = function() {
-		$scope.openModal = true;
-		$scope.submit = function() {
+	
+		$scope.createCustomer = function() {
 			customerService.createCustomer($scope.customer)
-			.then(function(result) {
-				$scope.openModal = false;
-				alert("customer created");
+			.success(function(result) {
+				$state.go('customers.details', {id: result});
 			}).error(function(err) {
 				$scope.custError = err.msg;
 			})
 		}
-	}
 	
-	taskService.getAllTasks()
+	taskService.getAllTask()
 	.then(function(tasks) {
-		$scope.tasks = tasks;
+		$scope.tasks = tasks.data;
+	})
+	
+}])
+
+decorpotCtrls.controller('customerController', ['$state', '$stateParams', '$scope', 'taskService', 'customerService',
+                                            function($state, $stateParams, $scope, taskService, customerService) {
+	customerService.getCustomerById($stateParams.id)
+	.success(function(customer) {
+		$scope.customer = customer;
+	}).error(function(err) {
+		console.log(err);
 	})
 	
 }])

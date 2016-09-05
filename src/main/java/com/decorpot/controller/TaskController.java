@@ -3,9 +3,12 @@ package com.decorpot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.decorpot.rest.model.Task;
@@ -31,6 +34,23 @@ public class TaskController {
 	@RequestMapping(value = "/state/{state}", method = RequestMethod.GET)
 	public List<Task> getTaskByState(@PathVariable("state") String state) {
 		return taskService.getTaskByState(state);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public Task createTask(@RequestBody Task task) {
+		return null;
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/reassign/{taskId}/{userid}", method = RequestMethod.PUT)
+	public void reassignTask(@PathVariable("taskId") int taskId, @PathVariable("userid") String userid) {
+		taskService.reassignTask(taskId, userid);
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/log_hours/{taskId}/{hours}", method = RequestMethod.PUT)
+	public void addWorkingHours(@PathVariable("taskId") int taskId, @PathVariable("userid") int hours) {
+		 taskService.addWorkingHours(taskId, hours);		
 	}
 
 }

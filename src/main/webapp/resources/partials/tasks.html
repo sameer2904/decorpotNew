@@ -1,4 +1,4 @@
-<div class="container tasks">
+<div class="container top-margin">
 
 	<div class="row features-buttons">
 		<div class="col-md-12">
@@ -34,7 +34,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">add lead</h4>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body row">
 					<form>
 						<div class="form-group col-md-6">
 							<label> <span>Customer Name</span>
@@ -55,12 +55,13 @@
 							<label for="Apartment select type">&nbsp;</label> <select
 								name="singleSelect"
 								class="btn btn-default dropdown-toggle form-control"
-								ng-model="$parent.customer.bhk">
+								ng-model="customer.bhk">
 								<option value="">SELECT APARTMENT TYPE &nbsp; <span
 										class="caret"></span></option>
 								<!-- not selected / blank option -->
-								<option value="2bhk" ng-repeat="a in apartmentTypes"><span>&nbsp;2bhk</span></option>
-								<option value="3bhk" ng-repeat="a in apartmentTypes"><span>&nbsp;3bhk</span></option>
+								<option value="2bhk"><span>&nbsp;2bhk</span></option>
+								<option value="3bhk"><span>&nbsp;3bhk</span></option>
+								<option value="4bhk"><span>&nbsp;3bhk</span></option>
 								<!-- interpolation -->
 							</select>
 						</div>
@@ -68,19 +69,20 @@
 							<label for="Apartment select type">&nbsp;</label> <select
 								name="singleSelect"
 								class="btn btn-default dropdown-toggle form-control"
-								ng-model="$parent.customer.bhk">
+								ng-model="customer.budgetType">
 								<option value="">SELECT BUDGET TYPE &nbsp; <span
 										class="caret"></span></option>
 								<!-- not selected / blank option -->
-								<option value="2bhk" ng-repeat="a in apartmentTypes"><span>&nbsp;&lt 5000000</span></option>
-								<option value="3bhk" ng-repeat="a in apartmentTypes"><span>&nbsp;3bhk</span></option>
+								<option value="low" ><span>&nbsp;&lt 5,00,000</span></option>
+								<option value="mid"><span>&nbsp;&lt 10,00,000 &gt5,00,000</span></option>
+								<option value="high"><span>&nbsp;&gt 10,00,000</span></option>
 								<!-- interpolation -->
 							</select>
 						</div>
 					</form>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<div class="modal-footer row">
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="createCustomer()">Create</button>
 				</div>
 			</div>
 

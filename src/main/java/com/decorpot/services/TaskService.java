@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.decorpot.datasource.models.User;
 import com.decorpot.datasource.repository.TaskRepository;
 import com.decorpot.rest.model.Task;
 
@@ -14,6 +15,9 @@ public class TaskService {
 
 	@Autowired
 	private TaskRepository taskRepo;
+	
+	@Autowired
+	private UserService userService;
 
 	public List<Task> createTasksForState(String state) {
 		return null;
@@ -72,5 +76,27 @@ public class TaskService {
 
 	public Task getTaskById(int taskId) {
 		return convertDbTaskToRest(taskRepo.findOne(taskId));
+	}
+	
+	//its primarily for creating sub task, later can be converted to creating parent task as well
+	public Task createTask(Task task) {
+		
+		return task;
+		
+	}
+	
+	public void reassignTask(int taskId, String userId) {
+		User user  = userService.findByUsername(userId);
+		com.decorpot.datasource.models.Task tsk = taskRepo.findOne(taskId);
+		if(user != null) {
+			tsk.setAssignedTo(userId);
+			taskRepo.save(tsk);
+		}		
+	}
+	
+	public void addWorkingHours(int taskId, int hours) {
+		com.decorpot.datasource.models.Task tsk = taskRepo.findOne(taskId);
+		tsk.setHoursLogged((tsk.getHoursLogged() != null ? tsk.getHoursLogged() : 0) + hours);
+		taskRepo.save(tsk);
 	}
 }

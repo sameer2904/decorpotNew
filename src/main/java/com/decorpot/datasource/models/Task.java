@@ -60,6 +60,17 @@ public class Task {
 	
 	@OneToMany(mappedBy="task", cascade=CascadeType.ALL)
 	private Set<TaskUpdates> updates = new HashSet<>();
+	
+	@Column(name = "ASSIGNED_TO")
+	private String assignedTo;
+
+	public String getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
+	}
 
 	public Integer getId() {
 		return id;

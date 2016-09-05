@@ -88,6 +88,14 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/tasks',
 				templateUrl : 'resources/partials/tasks.html',
 				controller : 'tasksController'
+			}).state('customers', {
+				url : '/customers',
+				templateUrl: 'resources/partials/customer.html',
+				abstract: true
+			}).state('customers.details', {
+				url : '/:id',
+				templateUrl: 'resources/partials/customerDetails.html',
+				controller: 'customerController'
 			});
 		} ]);
 decorpot.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {

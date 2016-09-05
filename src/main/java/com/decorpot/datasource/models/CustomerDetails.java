@@ -7,9 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
+@Table(name= "CUSTOMERS")
 public class CustomerDetails {
 
 	@Id
@@ -26,6 +27,17 @@ public class CustomerDetails {
 	@Column(name = "PHONE")
 	private String phone;
 	
+	@Column(name = "BUDGET_TYPE")
+	private String budgetType;
+	
+	public String getBudgetType() {
+		return budgetType;
+	}
+
+	public void setBudgetType(String budgetType) {
+		this.budgetType = budgetType;
+	}
+
 	@OneToOne
 	@JoinColumn(name="USERNAME", referencedColumnName = "USERNAME")
 	private User user;

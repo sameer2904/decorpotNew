@@ -146,6 +146,13 @@ services.service('customerService', ['$http', function($http) {
 				method: 'post',
 				data: customer
 			})
+		},
+		
+		getCustomerById: function(id) {
+			return $http({
+				url: 'customers/' + id,
+				method: 'get'
+			})
 		}
 	}
 }])
