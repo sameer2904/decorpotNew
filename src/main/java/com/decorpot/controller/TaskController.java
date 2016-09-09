@@ -38,7 +38,7 @@ public class TaskController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public Task createTask(@RequestBody Task task) {
-		return null;
+		return taskService.createTask(task);
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
@@ -51,6 +51,11 @@ public class TaskController {
 	@RequestMapping(value = "/log_hours/{taskId}/{hours}", method = RequestMethod.PUT)
 	public void addWorkingHours(@PathVariable("taskId") int taskId, @PathVariable("userid") int hours) {
 		 taskService.addWorkingHours(taskId, hours);		
+	}
+	
+	@RequestMapping(value = "/state/{state}/{customerId}", method = RequestMethod.POST)
+	public List<Task> createTaskByState(@PathVariable("state") String state, @PathVariable("state") String customerId) {
+		return taskService.createTasksForState(state, customerId);
 	}
 
 }

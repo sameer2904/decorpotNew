@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class Task {
 
+	private Integer taskId;
 	private String taskName;
 	private Date startDate;
 	private Date endDate;
@@ -92,6 +93,12 @@ public class Task {
 	}
 	public void setAssignedTo(String assignedTo) {
 		this.assignedTo = assignedTo;
+	}
+	public Integer getTaskId() {
+		return taskId;
+	}
+	public void setTaskId(Integer taskId) {
+		this.taskId = taskId;
 	}
 	
 	

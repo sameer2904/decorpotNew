@@ -63,6 +63,17 @@ public class Task {
 	
 	@Column(name = "ASSIGNED_TO")
 	private String assignedTo;
+	
+	@Column(name = "STATUS")
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getAssignedTo() {
 		return assignedTo;

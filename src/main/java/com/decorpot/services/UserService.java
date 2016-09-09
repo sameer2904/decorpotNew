@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.decorpot.datasource.models.User;
 import com.decorpot.datasource.models.UserRole;
 import com.decorpot.datasource.repository.UserRepository;
+import com.decorpot.utils.decorpotTx;
 
 @Service
 public class UserService {
@@ -19,6 +20,7 @@ public class UserService {
 		return users;
 	}
 
+	@decorpotTx
 	public String createNewUser(com.decorpot.rest.model.User user) throws Exception {
 		User newUser = new User();
 		UserRole userRole = new UserRole();
@@ -47,6 +49,7 @@ public class UserService {
 	/**
 	 * authorization
 	 */
+	@decorpotTx
 	public boolean auth(String username, String password) {
 		User user = findByUsername(username);
 		if (user != null && password.equals(user.getPassword())) {

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.decorpot.datasource.models.CustomerDetails;
 import com.decorpot.datasource.repository.CustomerRepository;
 import com.decorpot.rest.model.User;
+import com.decorpot.utils.decorpotTx;
 
 @Service
 public class CustomerService {
@@ -16,6 +17,10 @@ public class CustomerService {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private TaskService taskService;
+	
+	@decorpotTx
 	public int createCustomer(com.decorpot.rest.model.CustomerDetails customerDetails) throws Exception {
 		
 		if(userService.findByUsername(customerDetails.getUserName()) == null) {
@@ -35,6 +40,7 @@ public class CustomerService {
 				userService.createNewUser(user);
 				details.setUser(userService.findByUsername(customerDetails.getUserName()));
 				details = custRepo.save(details);
+				taskService.createTasksForState("sales", details.getUser().getUsername());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				throw e;
@@ -48,6 +54,7 @@ public class CustomerService {
 		
 	}
 	
+	@decorpotTx
 	public com.decorpot.rest.model.CustomerDetails getCustomerDetails(Integer id) {
 		CustomerDetails customerDetails = custRepo.findOne(id);
 		com.decorpot.rest.model.CustomerDetails details = new com.decorpot.rest.model.CustomerDetails();
@@ -55,6 +62,7 @@ public class CustomerService {
 		details.setCustName(customerDetails.getCustName());
 		details.setPhone(customerDetails.getPhone());
 		details.setUserName(customerDetails.getUser().getUsername());
+		details.setBudgetType(customerDetails.getBudgetType());
 		
 		return details;
 	}	
