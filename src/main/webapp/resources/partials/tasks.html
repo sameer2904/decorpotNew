@@ -11,16 +11,17 @@
 			<table
 				class="table table-stripped table-bordered table-hover tavle-inverse table-responsive">
 				<tr>
-					<th>TASK ID</th>
-					<th>TASK NAME</th>
+					<th>CUSTOMER NAME</th>
 					<th>STATE</th>
-					<th>CUSTOMER</th>
+					<th>TASKS</th>
 				</tr>
-				<tr ng-repeat="t in tasks">
-					<td>{{t.id}}</td>
-					<td>{{t.taskName}}</td>
-					<td>{{t.stateTag}}</td>
-					<td>{{t.customerId}}</td>
+				<tr ng-repeat="c in customers" ng-click="customerDetails(c.customerId)">
+					<td>{{c.customerName}}</td>
+					<td>{{c.state}}</td>
+					<td><div ng-repeat="t in c.taskSummary" ng-class="t.status">
+						<span>{{t.taskName}}</span>
+						<span>{{t.estimatedDate}}</span>
+					</div></td>
 				</tr>
 			</table>
 		</div>

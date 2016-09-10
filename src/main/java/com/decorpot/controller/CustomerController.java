@@ -1,5 +1,7 @@
 package com.decorpot.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.decorpot.rest.model.CustomerDetails;
+import com.decorpot.rest.model.CustomerSummary;
 import com.decorpot.services.CustomerService;
 
 @RestController
@@ -30,5 +33,8 @@ public class CustomerController {
 		return custServ.getCustomerDetails(id);
 	}
 	
-
+	@RequestMapping(value = "/tasks/details", method = RequestMethod.GET)
+	public List<CustomerSummary> getAllCustomersTaskSummary() {
+		return custServ.getAllCustomerDetails();
+	}
 }

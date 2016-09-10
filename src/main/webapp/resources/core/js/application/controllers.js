@@ -619,17 +619,27 @@ decorpotCtrls.controller('tasksController', ['$state', '$scope', 'taskService', 
 		$scope.createCustomer = function() {
 			customerService.createCustomer($scope.customer)
 			.success(function(result) {
-				$state.go('customers.details', {id: result});
+				customerService.getAllCustomersTaskSummary()
+				.success(function(customers) {
+						$scope.customers = customers;
+					}).error(function(err) {
+						$scope.custError = err.msg;
+					});
 			}).error(function(err) {
 				$scope.custError = err.msg;
 			})
 		}
-	
-	taskService.getAllTask()
-	.then(function(tasks) {
-		$scope.tasks = tasks.data;
-	})
-	
+		
+		$scope.customerDetails = function(id) {
+			$state.go('customers.details', {id: id});
+		}
+		
+		customerService.getAllCustomersTaskSummary()
+		.success(function(customers) {
+				$scope.customers = customers;
+			}).error(function(err) {
+				$scope.custError = err.msg;
+			});
 }])
 
 decorpotCtrls.controller('customerController', ['$state', '$stateParams', '$scope', 'taskService', 'customerService',
@@ -637,6 +647,13 @@ decorpotCtrls.controller('customerController', ['$state', '$stateParams', '$scop
 	customerService.getCustomerById($stateParams.id)
 	.success(function(customer) {
 		$scope.customer = customer;
+	}).error(function(err) {
+		console.log(err);
+	})
+	
+	taskService.getTaskByCustomer($stateParams.id)
+	.success(function(tasks) {
+		$scope.tasks = tasks;
 	}).error(function(err) {
 		console.log(err);
 	})

@@ -30,6 +30,17 @@ public class CustomerDetails {
 	@Column(name = "BUDGET_TYPE")
 	private String budgetType;
 	
+	@Column(name = "STATE")
+	private String state;
+	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	public String getBudgetType() {
 		return budgetType;
 	}

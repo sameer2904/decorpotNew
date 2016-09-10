@@ -2,6 +2,7 @@ package com.decorpot.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.decorpot.datasource.models.User;
 import com.decorpot.datasource.repository.TaskRepository;
+import com.decorpot.rest.model.CustomerDetails;
 import com.decorpot.rest.model.Task;
 import com.decorpot.utils.DecorpotConstants;
 import com.decorpot.utils.decorpotTx;
@@ -21,16 +23,19 @@ public class TaskService {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CustomerService customerService;
 
 	@decorpotTx
-	public List<Task> createTasksForState(String state, String customerId) {
+	public List<Task> createTasksForState(String state, int customerId) {
 		
 		List<Task> tasks = new ArrayList<>();
 		if(state == "sales") {
 			com.decorpot.datasource.models.Task clientMeeting  = new com.decorpot.datasource.models.Task();
 			clientMeeting.setAssignedTo("sales@decorpot.com");
 			clientMeeting.setCustomerId(customerId);
-			clientMeeting.setEstimatedDate(new java.sql.Date((new java.util.Date()).getTime()));
+			clientMeeting.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 5 ))).getTime()));
 			clientMeeting.setForCustomer(true);
 			clientMeeting.setHoursLogged(0);
 			clientMeeting.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
@@ -46,7 +51,7 @@ public class TaskService {
 			com.decorpot.datasource.models.Task initailQuote  = new com.decorpot.datasource.models.Task();
 			initailQuote.setAssignedTo("sales@decorpot.com");
 			initailQuote.setCustomerId(customerId);
-			initailQuote.setEstimatedDate(new java.sql.Date((new java.util.Date()).getTime()));
+			initailQuote.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 6 ))).getTime()));
 			initailQuote.setForCustomer(true);
 			initailQuote.setHoursLogged(0);
 			initailQuote.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
@@ -61,7 +66,7 @@ public class TaskService {
 			com.decorpot.datasource.models.Task siteVisit  = new com.decorpot.datasource.models.Task();
 			siteVisit.setAssignedTo("sales@decorpot.com");
 			siteVisit.setCustomerId(customerId);
-			siteVisit.setEstimatedDate(new java.sql.Date((new java.util.Date()).getTime()));
+			siteVisit.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 13 ))).getTime()));
 			siteVisit.setForCustomer(true);
 			siteVisit.setHoursLogged(0);
 			siteVisit.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
@@ -73,16 +78,31 @@ public class TaskService {
 			
 			tasks.add(convertDbTaskToRest(siteVisit));
 			
+			com.decorpot.datasource.models.Task finalDiscussion  = new com.decorpot.datasource.models.Task();
+			finalDiscussion.setAssignedTo("sales@decorpot.com");
+			finalDiscussion.setCustomerId(customerId);
+			finalDiscussion.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 18 ))).getTime()));
+			finalDiscussion.setForCustomer(true);
+			finalDiscussion.setHoursLogged(0);
+			finalDiscussion.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
+			finalDiscussion.setStateTag("sales");
+			finalDiscussion.setStatus(DecorpotConstants.taskStatus.orange.toString());
+			finalDiscussion.setTaskName("final discussiont");
+			
+			finalDiscussion = taskRepo.save(finalDiscussion);
+			
+			tasks.add(convertDbTaskToRest(finalDiscussion));
+			
 			com.decorpot.datasource.models.Task signingAdvance  = new com.decorpot.datasource.models.Task();
 			signingAdvance.setAssignedTo("sales@decorpot.com");
 			signingAdvance.setCustomerId(customerId);
-			signingAdvance.setEstimatedDate(new java.sql.Date((new java.util.Date()).getTime()));
+			signingAdvance.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 22 ))).getTime()));
 			signingAdvance.setForCustomer(true);
 			signingAdvance.setHoursLogged(0);
 			signingAdvance.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
 			signingAdvance.setStateTag("sales");
 			signingAdvance.setStatus(DecorpotConstants.taskStatus.orange.toString());
-			signingAdvance.setTaskName("site visit");
+			signingAdvance.setTaskName("signing advance");
 			
 			signingAdvance = taskRepo.save(signingAdvance);
 			
@@ -169,6 +189,29 @@ public class TaskService {
 		tsk.setHoursLogged((tsk.getHoursLogged() != null ? tsk.getHoursLogged() : 0) + hours);
 		taskRepo.save(tsk);
 	}
+	
+	@decorpotTx
+	public List<Task> getTaskByCustomerId(Integer customerId) {
+		
+		CustomerDetails custdetails = customerService.getCustomerDetails(customerId);
+		List<com.decorpot.datasource.models.Task> tasks = taskRepo.findTaskByCustomerIdAndStateTag(customerId, custdetails.getState());
+		
+		if(tasks != null) {
+			return tasks.stream().map(t -> {
+				Task tsk = convertDbTaskToRest(t);
+				if (t.getSubTasks() != null) {
+					tsk.setSubTasks(t.getSubTasks().stream().map(st -> {
+						return convertDbTaskToRest(st);
+					}).collect(Collectors.toSet()));
+				}
+				return tsk;
+			}).collect(Collectors.toList());
+		}
+		
+		return null;
+		
+	}
+	
 
 	// TODO(sameer): convert this to generics models seems to have same
 	// structure.

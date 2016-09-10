@@ -14,7 +14,7 @@ public class Task {
 	private int hoursLogged;
 	private String stateTag;
 	private boolean forCustomer;
-	private String customerId;
+	private Integer customerId;
 	private Integer parentId;
 	private String assignedTo;
 	private Set<Task> subTasks;
@@ -64,10 +64,10 @@ public class Task {
 	public void setForCustomer(boolean forCustomer) {
 		this.forCustomer = forCustomer;
 	}
-	public String getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 	public Integer getParentId() {

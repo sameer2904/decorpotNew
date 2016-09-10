@@ -49,7 +49,7 @@ public class Task {
 	private boolean forCustomer;
 	
 	@Column(name = "CUSTOMER_ID")
-	private String customerId;
+	private Integer customerId;
 	
 	@ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="PARENT_ID")
@@ -147,11 +147,11 @@ public class Task {
 		this.forCustomer = forCustomer;
 	}
 
-	public String getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 

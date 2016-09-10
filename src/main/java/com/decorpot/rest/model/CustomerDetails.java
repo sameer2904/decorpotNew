@@ -13,6 +13,8 @@ public class CustomerDetails {
 	private String userName;
 	
 	private String budgetType;
+	
+	private String state;
 
 	public Integer getId() {
 		return id;
@@ -60,5 +62,13 @@ public class CustomerDetails {
 
 	public void setBudgetType(String budgetType) {
 		this.budgetType = budgetType;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 }

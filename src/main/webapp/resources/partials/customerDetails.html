@@ -31,7 +31,8 @@
 								ng-model="customer.budgetType" class="form-control">
 						</div>
 						<div class="row">
-							<button type="button" class="btn btn-default col-md-3" data-dismiss="modal" ng-click="editCustomer()">Save</button>
+							<button type="button" class="btn btn-default col-md-3"
+								data-dismiss="modal" ng-click="editCustomer()">Save</button>
 						</div>
 					</form>
 				</div>
@@ -41,6 +42,20 @@
 
 	<div class="row">
 		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Tasks</div>
+				<div class="panel-body">
+					<ul>
+						<li ng-repeat="t in tasks">
+							<div><span>Task Name</span><span>{{t.taskName}}</span></div>
+							<div><span>Created Date</span><span>{{t.startDate}}</span></div>
+							<div><span>Estimated Date</span><span>{{t.estimatedDate}}</span></div>
+							<div><span>Logged Hours</span><span>{{t.hoursLogged}}</span></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
 		</div>
 		<div class="col-md-8"></div>
 	</div>

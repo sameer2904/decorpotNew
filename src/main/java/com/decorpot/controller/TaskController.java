@@ -54,8 +54,13 @@ public class TaskController {
 	}
 	
 	@RequestMapping(value = "/state/{state}/{customerId}", method = RequestMethod.POST)
-	public List<Task> createTaskByState(@PathVariable("state") String state, @PathVariable("state") String customerId) {
+	public List<Task> createTaskByState(@PathVariable("state") String state, @PathVariable("state") Integer customerId) {
 		return taskService.createTasksForState(state, customerId);
+	}
+	
+	@RequestMapping(value = "/customers/{customerId}", method = RequestMethod.GET)
+	public List<Task> getTaskByCustomerId(@PathVariable("customerId") Integer customerId) {
+		return taskService.getTaskByCustomerId(customerId);
 	}
 
 }

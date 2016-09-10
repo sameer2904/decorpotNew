@@ -134,6 +134,12 @@ services.service('taskService', ['$http', function($http) {
 				url: 'tasks',
 				method: 'get'
 			})
+		},
+		getTaskByCustomer: function(id) {
+			return $http({
+				url: 'tasks/customers/' + id,
+				method: 'get'
+			})
 		}
 	}
 }])
@@ -151,6 +157,13 @@ services.service('customerService', ['$http', function($http) {
 		getCustomerById: function(id) {
 			return $http({
 				url: 'customers/' + id,
+				method: 'get'
+			})
+		},
+		
+		getAllCustomersTaskSummary: function() {
+			return $http({
+				url: 'customers/tasks/details',
 				method: 'get'
 			})
 		}
