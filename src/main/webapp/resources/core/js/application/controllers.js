@@ -590,8 +590,7 @@ decorpotCtrls.controller('createUserController', ['$state', '$scope', 'userServi
 			user.phone = $scope.phone;
 			userService.createUser(user)
 			.success(function(data) {
-				$state.go('/');
-				alert(data);
+				console.log(data);
 			}).error(function(data) {
 				alert(data);
 			})
@@ -604,7 +603,7 @@ decorpotCtrls.controller('loginController', ['$state', '$scope', 'userService', 
 	$scope.login = function() {
 			userService.login($scope.user)
 			.success(function(data) {
-				alert(data);
+				console.log(data)
 			}).error(function(data) {
 				alert(data);
 			});
@@ -614,7 +613,6 @@ decorpotCtrls.controller('loginController', ['$state', '$scope', 'userService', 
 decorpotCtrls.controller('tasksController', ['$state', '$scope', 'taskService', 'customerService',
                                             function($state, $scope, taskService, customerService) {
 	$scope.apartmentTypes = ['2bhk', '3bhk'];
-
 	
 		$scope.createCustomer = function() {
 			customerService.createCustomer($scope.customer)
@@ -642,8 +640,8 @@ decorpotCtrls.controller('tasksController', ['$state', '$scope', 'taskService', 
 			});
 }])
 
-decorpotCtrls.controller('customerController', ['$state', '$stateParams', '$scope', 'taskService', 'customerService',
-                                            function($state, $stateParams, $scope, taskService, customerService) {
+decorpotCtrls.controller('customerController', ['$state', '$stateParams', '$scope', 'taskService', 'customerService', 'userService',
+                                            function($state, $stateParams, $scope, taskService, customerService, userService) {
 	customerService.getCustomerById($stateParams.id)
 	.success(function(customer) {
 		$scope.customer = customer;
@@ -657,6 +655,43 @@ decorpotCtrls.controller('customerController', ['$state', '$stateParams', '$scop
 	}).error(function(err) {
 		console.log(err);
 	})
+
+	userService.getInternalUsers()
+		.success(function(users) {
+			$scope.users = users.map(function(u) {
+				return {
+					id: u.userName,
+					name: u.name
+				}
+			})
+		}).error(function(err) {
+			console.log(err);
+		});
+	
+	$scope.taskDetails = function(task) {
+		$scope.selectedTask = task;
+	}
+	
+	$scope.reassignTask = function() {
+		taskService.reassignTask($scope.selectedTask)
+		.success(function(tasks) {
+			$scope.selectedTask = tasks;
+		}).error(function(err) {
+			console.log(err);
+		});
+	}
+	
+	$scope.status = ['open', 'closed', 'rejected', 'wip'];
+	
+	$scope.changeStatus = function() {
+		taskService.changeStatus($scope.selectedTask.taskId, $scope.selectedTask.taskStatus )
+		.success(function(task) {
+			$scope.taskDetails(task);
+			$scope.apply();
+		}).error(function(err) {
+			console.log(err);
+		});
+	}
 	
 }])
 

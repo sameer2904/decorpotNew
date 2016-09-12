@@ -1,6 +1,5 @@
 package com.decorpot.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -8,8 +7,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.decorpot.datasource.models.TaskTemplate;
 import com.decorpot.datasource.models.User;
 import com.decorpot.datasource.repository.TaskRepository;
+import com.decorpot.datasource.repository.TaskTemplateRepo;
 import com.decorpot.rest.model.CustomerDetails;
 import com.decorpot.rest.model.Task;
 import com.decorpot.utils.DecorpotConstants;
@@ -20,95 +21,74 @@ public class TaskService {
 
 	@Autowired
 	private TaskRepository taskRepo;
+	
+	@Autowired
+	private TaskTemplateRepo taskTemplateRepo;
 
 	@Autowired
 	private UserService userService;
 	
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private ApplicationMailer emailer;
 
 	@decorpotTx
 	public List<Task> createTasksForState(String state, int customerId) {
 		
-		List<Task> tasks = new ArrayList<>();
-		if(state == "sales") {
-			com.decorpot.datasource.models.Task clientMeeting  = new com.decorpot.datasource.models.Task();
-			clientMeeting.setAssignedTo("sales@decorpot.com");
-			clientMeeting.setCustomerId(customerId);
-			clientMeeting.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 5 ))).getTime()));
-			clientMeeting.setForCustomer(true);
-			clientMeeting.setHoursLogged(0);
-			clientMeeting.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
-			clientMeeting.setStateTag("sales");
-			clientMeeting.setStatus(DecorpotConstants.taskStatus.orange.toString());
-			clientMeeting.setTaskName("Client Meeting/Discussion");
+		List<TaskTemplate> templates = taskTemplateRepo.findByState(state);
+		
+		return templates.stream().map(t -> {
+			com.decorpot.datasource.models.Task task  = new com.decorpot.datasource.models.Task();
+			java.sql.Date estimatedDate = new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + 
+					TimeUnit.DAYS.toMillis( t.getEstDays() ))).getTime());
+			String body = "Task - " + t.getTaskName() + 
+					" has been created for you. Kindly go to the link to check. http://decorpot.com/#/customers/" + customerId;
+			task.setAssignedTo(t.getDefaultAssignee());
+			task.setCustomerId(customerId);
+			task.setForCustomer(true);
+			task.setHoursLogged(0);
+			task.setStateTag(state);
+			task.setStatus(DecorpotConstants.status.open.toString());
+			task.setTaskName(t.getTaskName());
+			task.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
+			task.setEstimatedDate(estimatedDate);
 			
-			clientMeeting = taskRepo.save(clientMeeting);
 			
-			tasks.add(convertDbTaskToRest(clientMeeting));
+			task = taskRepo.save(task);
+			emailer.sendViaGMail(t.getDefaultAssignee(), "task - " + t.getTaskName() +  " has been created for you. estimated date - " 
+			+ estimatedDate.toString(), body);
 			
-			
-			com.decorpot.datasource.models.Task initailQuote  = new com.decorpot.datasource.models.Task();
-			initailQuote.setAssignedTo("sales@decorpot.com");
-			initailQuote.setCustomerId(customerId);
-			initailQuote.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 6 ))).getTime()));
-			initailQuote.setForCustomer(true);
-			initailQuote.setHoursLogged(0);
-			initailQuote.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
-			initailQuote.setStateTag("sales");
-			initailQuote.setStatus(DecorpotConstants.taskStatus.orange.toString());
-			initailQuote.setTaskName("initial quote");
-			
-			initailQuote = taskRepo.save(initailQuote);
-			
-			tasks.add(convertDbTaskToRest(initailQuote));
-			
-			com.decorpot.datasource.models.Task siteVisit  = new com.decorpot.datasource.models.Task();
-			siteVisit.setAssignedTo("sales@decorpot.com");
-			siteVisit.setCustomerId(customerId);
-			siteVisit.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 13 ))).getTime()));
-			siteVisit.setForCustomer(true);
-			siteVisit.setHoursLogged(0);
-			siteVisit.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
-			siteVisit.setStateTag("sales");
-			siteVisit.setStatus(DecorpotConstants.taskStatus.orange.toString());
-			siteVisit.setTaskName("site visit");
-			
-			siteVisit = taskRepo.save(siteVisit);
-			
-			tasks.add(convertDbTaskToRest(siteVisit));
-			
-			com.decorpot.datasource.models.Task finalDiscussion  = new com.decorpot.datasource.models.Task();
-			finalDiscussion.setAssignedTo("sales@decorpot.com");
-			finalDiscussion.setCustomerId(customerId);
-			finalDiscussion.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 18 ))).getTime()));
-			finalDiscussion.setForCustomer(true);
-			finalDiscussion.setHoursLogged(0);
-			finalDiscussion.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
-			finalDiscussion.setStateTag("sales");
-			finalDiscussion.setStatus(DecorpotConstants.taskStatus.orange.toString());
-			finalDiscussion.setTaskName("final discussiont");
-			
-			finalDiscussion = taskRepo.save(finalDiscussion);
-			
-			tasks.add(convertDbTaskToRest(finalDiscussion));
-			
-			com.decorpot.datasource.models.Task signingAdvance  = new com.decorpot.datasource.models.Task();
-			signingAdvance.setAssignedTo("sales@decorpot.com");
-			signingAdvance.setCustomerId(customerId);
-			signingAdvance.setEstimatedDate(new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis( 22 ))).getTime()));
-			signingAdvance.setForCustomer(true);
-			signingAdvance.setHoursLogged(0);
-			signingAdvance.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
-			signingAdvance.setStateTag("sales");
-			signingAdvance.setStatus(DecorpotConstants.taskStatus.orange.toString());
-			signingAdvance.setTaskName("signing advance");
-			
-			signingAdvance = taskRepo.save(signingAdvance);
-			
-			tasks.add(convertDbTaskToRest(signingAdvance));
+			return convertDbTaskToRest(task);
+		}).collect(Collectors.toList());
+		
+	}
+	
+	@decorpotTx
+	public Task changeTaskStatus(int taskId, String status) {
+		com.decorpot.datasource.models.Task task  = taskRepo.findOne(taskId);
+		String body = "Task - " + task.getTaskName() + 
+				" status got changed from " + task.getStatus() + " to " + status  
+				+ ". Kindly go to the link to check. http://decorpot.com/#/customers/" + task.getCustomerId();
+		
+		task.setStatus(status);
+		if(status.equals(DecorpotConstants.status.wip.toString())) {
+			task.setStatus(status);
+			task = taskRepo.save(task);
 		}
-		return tasks;
+		
+		if(status.equals(DecorpotConstants.status.closed.toString())) {
+			task.setStatus(status);
+			task.setEndDate(new java.sql.Date((new java.util.Date()).getTime()));
+			task = taskRepo.save(task);
+		}
+		
+		
+		emailer.sendViaGMail(task.getAssignedTo(), "task - " + task.getTaskName() +  " status got changed" 
+				, body);
+		
+		return convertDbTaskToRest(task);
 	}
 
 	@decorpotTx
@@ -174,13 +154,24 @@ public class TaskService {
 	}
 
 	@decorpotTx
-	public void reassignTask(int taskId, String userId) {
+	public Task reassignTask(int taskId, String userId) throws Exception {
 		User user = userService.findByUsername(userId);
-		com.decorpot.datasource.models.Task tsk = taskRepo.findOne(taskId);
-		if (user != null) {
-			tsk.setAssignedTo(userId);
-			taskRepo.save(tsk);
+		com.decorpot.datasource.models.Task task = taskRepo.findOne(taskId);
+		if (user == null) {
+			throw new Exception("wrong userid");
 		}
+		
+		task.setAssignedTo(userId);
+		
+		String body = "Task - " + task.getTaskName() + 
+				" now has been assigned to you" 
+				+ ". Kindly go to the link to check. http://decorpot.com/#/customers/" + task.getCustomerId();
+		emailer.sendViaGMail(task.getAssignedTo(), "task - " + task.getTaskName() +  " has been assigned to you" 
+				, body);
+		
+		return convertDbTaskToRest(taskRepo.save(task));
+		
+		
 	}
 
 	@decorpotTx

@@ -110,13 +110,31 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/views/**").addResourceLocations("/views/**");
 	}
 
-	@Bean
+	
+	@Bean (name = "getMailSender")
 	public JavaMailSender getMailSender() {
 
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtpout.secureserver.net");
 		mailSender.setPort(25);
 		mailSender.setUsername("sales@decorpot.com");
+		mailSender.setPassword("10users@2016");
+		Properties mailProperties = new Properties();
+		mailProperties.put("mail.smtp.auth", "smtp");
+		mailProperties.put("mail.smtp.auth", true);
+		mailProperties.put("mail.smtp.starttls.enable", true);
+		mailProperties.put("mail.debug", true);
+		mailSender.setJavaMailProperties(mailProperties);
+		return mailSender;
+	}
+	
+	@Bean (name = "getGMailSender")
+	public JavaMailSender getGMailSender() {
+
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(25);
+		mailSender.setUsername("decorpot2015@gmail.com");
 		mailSender.setPassword("10users@2016");
 		Properties mailProperties = new Properties();
 		mailProperties.put("mail.smtp.auth", "smtp");

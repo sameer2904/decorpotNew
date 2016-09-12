@@ -42,9 +42,9 @@ public class TaskController {
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "/reassign/{taskId}/{userid}", method = RequestMethod.PUT)
-	public void reassignTask(@PathVariable("taskId") int taskId, @PathVariable("userid") String userid) {
-		taskService.reassignTask(taskId, userid);
+	@RequestMapping(value = "/reassign/{taskId}", method = RequestMethod.PUT)
+	public Task reassignTask(@RequestBody Task task) throws Exception {
+		return taskService.reassignTask(task.getTaskId(), task.getAssignedTo());
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
@@ -61,6 +61,12 @@ public class TaskController {
 	@RequestMapping(value = "/customers/{customerId}", method = RequestMethod.GET)
 	public List<Task> getTaskByCustomerId(@PathVariable("customerId") Integer customerId) {
 		return taskService.getTaskByCustomerId(customerId);
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/status/{taskId}/{status}", method = RequestMethod.PUT)
+	public Task changeTaskStatus(@PathVariable("taskId") int taskId, @PathVariable("status") String status) {
+		 return taskService.changeTaskStatus(taskId, status);		
 	}
 
 }

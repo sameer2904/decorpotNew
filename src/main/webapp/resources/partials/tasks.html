@@ -7,7 +7,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12 customers-summary">
 			<table
 				class="table table-stripped table-bordered table-hover tavle-inverse table-responsive">
 				<tr>
@@ -18,7 +18,7 @@
 				<tr ng-repeat="c in customers" ng-click="customerDetails(c.customerId)">
 					<td>{{c.customerName}}</td>
 					<td>{{c.state}}</td>
-					<td><div ng-repeat="t in c.taskSummary" ng-class="t.status">
+					<td><div ng-repeat="t in c.taskSummary" ng-class="{'red': t.status == 'red'}">
 						<span>{{t.taskName}}</span>
 						<span>{{t.estimatedDate}}</span>
 					</div></td>

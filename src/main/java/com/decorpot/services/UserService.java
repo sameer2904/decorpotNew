@@ -1,5 +1,8 @@
 package com.decorpot.services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +19,7 @@ public class UserService {
 
 	public User findByUsername(String username) {
 		
-		User users = userRepo.findOne(username);
+		User users = userRepo.findByUsername(username);
 		return users;
 	}
 
@@ -56,6 +59,21 @@ public class UserService {
 			return true;
 		}
 		return false;
+	}
+	
+	@decorpotTx
+	public List<com.decorpot.rest.model.User> getAllInternalUsers() {
+		return userRepo.findInternalUsers().stream().map(u -> convertDBUserToRest(u)).collect(Collectors.toList());
+	}
+	
+	private com.decorpot.rest.model.User convertDBUserToRest(User user) {
+		com.decorpot.rest.model.User user2 = new com.decorpot.rest.model.User();
+		user2.setEmail(user.getEmail());
+		user2.setName(user.getName());
+		user2.setPhone(user.getPhone());
+		user2.setRole(user.getUserRole().getRoleName());
+		user2.setUserName(user.getUsername());
+		return user2;
 	}
 
 }

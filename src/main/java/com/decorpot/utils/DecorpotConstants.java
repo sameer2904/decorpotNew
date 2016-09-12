@@ -41,5 +41,13 @@ public interface DecorpotConstants {
 		red, orange, green, yellow
 	}
 	
+	enum roles {
+		customer, admin, designer, sales, execution
+	}
+	
+	enum status {
+		open, closed, rejected, wip
+	}
+	
 	
 }

@@ -1,5 +1,7 @@
 package com.decorpot.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +32,13 @@ public class UserController {
     @RequestMapping(value= "/login", method = RequestMethod.POST)
 	public boolean login(@RequestBody User user) throws Exception {
 		return userService.auth(user.getUserName(), user.getPassword());
+	}
+	
+
+	@ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value= "/internal", method = RequestMethod.GET)
+	public List<User> getAllInternalUsers() throws Exception {
+		return userService.getAllInternalUsers();
 	}
 	
 }

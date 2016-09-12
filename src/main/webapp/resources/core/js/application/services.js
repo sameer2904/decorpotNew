@@ -123,6 +123,12 @@ services.service('userService', ['$http', function($http) {
 				method: 'post',
 				data: user
 			})
+		},
+		getInternalUsers: function() {
+			return $http({
+				url: 'users/internal',
+				method: 'get'
+			})
 		}
 	}
 }]);
@@ -139,6 +145,20 @@ services.service('taskService', ['$http', function($http) {
 			return $http({
 				url: 'tasks/customers/' + id,
 				method: 'get'
+			})
+		},
+		reassignTask: function(task) {
+			return $http({
+				url: 'tasks/reassign/' + task.taskId,
+				method: 'put',
+				data: task
+			})
+		},
+		
+		changeStatus: function(taskId, status) {
+			return $http({
+				url: 'tasks/status/' + taskId + '/' + status,
+				method: 'put'
 			})
 		}
 	}
