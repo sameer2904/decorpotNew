@@ -30,7 +30,20 @@
 							</label><input type="text" placeholder="" id="budgetType"
 								ng-model="customer.budgetType" class="form-control">
 						</div>
-						<div class="row">
+						<div class="form-group col-md-3">
+							<label> <span>Execution Type</span>
+							</label><input type="text" placeholder="" id="executionType"
+								ng-model="customer.executionType" class="form-control">
+						</div>
+						<div class="col-md-3 form-group">
+						<label for="Change State">&nbsp;<span>Change State</span></label>
+							<select name="singleSelect"
+									class="btn btn-default dropdown-toggle form-control"
+									ng-model="customer.state">
+									<option value="{{s}}" ng-repeat="s in states"><span>&nbsp;{{s}}</span></option>
+									</select>
+						</div>
+						<div class="form-group col-md-3 pull-right">
 							<button type="button" class="btn btn-default col-md-3"
 								data-dismiss="modal" ng-click="editCustomer()">Save</button>
 						</div>

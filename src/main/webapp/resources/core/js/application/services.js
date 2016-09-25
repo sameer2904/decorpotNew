@@ -109,6 +109,8 @@ services.service('spaceService',['$http', function($http){
 }] );
 
 services.service('userService', ['$http', function($http) {
+	 this.isLoggedIn = localStorage.getItem('isLoggedIn') || false;
+	
 	return {
 		createUser: function(user) {
 			return $http({
@@ -129,6 +131,13 @@ services.service('userService', ['$http', function($http) {
 				url: 'users/internal',
 				method: 'get'
 			})
+		},
+		isUserLoggedIn: function() {
+			return this.isLoggedIn;
+		},
+		setLoggedIn: function() {
+			this.isLoggedIn = true;
+			localStorage.setItem('isLoggedIn', isLoggedIn);
 		}
 	}
 }]);
@@ -185,6 +194,14 @@ services.service('customerService', ['$http', function($http) {
 			return $http({
 				url: 'customers/tasks/details',
 				method: 'get'
+			})
+		},
+		
+		updateCustomer: function(customer) {
+			return $http({
+				url: 'customers',
+				method: 'put',
+				data: customer
 			})
 		}
 	}

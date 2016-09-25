@@ -97,7 +97,12 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				templateUrl: 'resources/partials/customerDetails.html',
 				controller: 'customerController'
 			});
-		} ]);
+		} ]).run(['$state', '$rootScope', '$location', 'userService', function($state, $rootScope, $location, userService) {
+			
+			if(!userService.isUserLoggedIn()) {
+				$state.go('login');
+			}
+		}]);
 decorpot.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
   }])

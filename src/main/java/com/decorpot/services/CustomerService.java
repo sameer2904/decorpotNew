@@ -1,6 +1,5 @@
 package com.decorpot.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,10 +9,10 @@ import org.springframework.stereotype.Service;
 import com.decorpot.datasource.models.CustomerDetails;
 import com.decorpot.datasource.repository.CustomerRepository;
 import com.decorpot.rest.model.CustomerSummary;
+import com.decorpot.rest.model.TaskSummary;
 import com.decorpot.rest.model.User;
 import com.decorpot.utils.DecorpotConstants;
 import com.decorpot.utils.decorpotTx;
-import com.decorpot.rest.model.TaskSummary;
 
 @Service
 public class CustomerService {
@@ -37,6 +36,7 @@ public class CustomerService {
 			details.setPhone(customerDetails.getPhone());
 			details.setBudgetType(customerDetails.getBudgetType());
 			details.setState("sales");
+			details.setAdditionalParam(customerDetails.getExecutionType());
 			User user = new User();
 			user.setEmail(customerDetails.getUserName());
 			user.setName(customerDetails.getCustName());
@@ -63,8 +63,47 @@ public class CustomerService {
 	}
 	
 	@decorpotTx
+	public com.decorpot.rest.model.CustomerDetails updateCustomer(com.decorpot.rest.model.CustomerDetails customerDetails) throws Exception {
+		
+		boolean createTask = false;
+		
+		if(userService.findByUsername(customerDetails.getUserName()) != null) {
+			CustomerDetails details = custRepo.findOne(customerDetails.getId());
+			if(!details.getState().equals(customerDetails.getState())) {
+				createTask = true;
+			}
+			details.setCustName(customerDetails.getCustName());
+			details.setBhk(customerDetails.getBhk());
+			details.setPhone(customerDetails.getPhone());
+			details.setBudgetType(customerDetails.getBudgetType());
+			details.setState(customerDetails.getState());
+			details.setAdditionalParam(customerDetails.getExecutionType());
+			
+			try {
+				details.setUser(userService.findByUsername(customerDetails.getUserName()));
+				details = custRepo.save(details);
+				customerDetails = convertDBToREST(details);
+				if(createTask) {
+					taskService.createTasksForState(customerDetails.getState(), customerDetails.getId());
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				throw e;
+			}
+			
+		}
+		
+		return customerDetails;
+		
+	}
+	
+	@decorpotTx
 	public com.decorpot.rest.model.CustomerDetails getCustomerDetails(Integer id) {
 		CustomerDetails customerDetails = custRepo.findOne(id);
+		return convertDBToREST(customerDetails);
+	}
+	
+	private com.decorpot.rest.model.CustomerDetails convertDBToREST(CustomerDetails customerDetails) {
 		com.decorpot.rest.model.CustomerDetails details = new com.decorpot.rest.model.CustomerDetails();
 		details.setBhk(customerDetails.getBhk());
 		details.setCustName(customerDetails.getCustName());
@@ -73,6 +112,7 @@ public class CustomerService {
 		details.setBudgetType(customerDetails.getBudgetType());
 		details.setId(customerDetails.getId());
 		details.setState(customerDetails.getState());
+		details.setExecutionType(customerDetails.getAdditionalParam());
 		
 		return details;
 	}

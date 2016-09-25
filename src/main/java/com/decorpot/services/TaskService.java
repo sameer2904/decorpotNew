@@ -1,5 +1,6 @@
 package com.decorpot.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -36,8 +37,20 @@ public class TaskService {
 
 	@decorpotTx
 	public List<Task> createTasksForState(String state, int customerId) {
+		List<TaskTemplate> templates = new ArrayList<>();
+		CustomerDetails customerDetails = customerService.getCustomerDetails(customerId);
+		if("sales".equals(customerDetails.getState())) {
+			templates = taskTemplateRepo.findByState(state);
+		}
 		
-		List<TaskTemplate> templates = taskTemplateRepo.findByState(state);
+		if("designing".equals(customerDetails.getState())) {
+			templates = taskTemplateRepo.findByStateAndBudgetType(customerDetails.getState(), customerDetails.getBudgetType());
+		}
+		
+		if("executions".equals(customerDetails.getState())) {
+			templates = taskTemplateRepo.findByStateAndExecutionType(customerDetails.getState(), customerDetails.getExecutionType());
+		}
+		
 		
 		return templates.stream().map(t -> {
 			com.decorpot.datasource.models.Task task  = new com.decorpot.datasource.models.Task();

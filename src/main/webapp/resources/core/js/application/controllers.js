@@ -603,7 +603,7 @@ decorpotCtrls.controller('loginController', ['$state', '$scope', 'userService', 
 	$scope.login = function() {
 			userService.login($scope.user)
 			.success(function(data) {
-				console.log(data)
+				userService.setLoggedIn();
 			}).error(function(data) {
 				alert(data);
 			});
@@ -687,10 +687,27 @@ decorpotCtrls.controller('customerController', ['$state', '$stateParams', '$scop
 		taskService.changeStatus($scope.selectedTask.taskId, $scope.selectedTask.taskStatus )
 		.success(function(task) {
 			$scope.taskDetails(task);
-			$scope.apply();
 		}).error(function(err) {
 			console.log(err);
 		});
+	}
+	
+	$scope.states = ['sales', 'designing', 'execution', 'lost'];
+	
+	$scope.editCustomer = function() {
+		customerService.updateCustomer($scope.customer)
+		.success(function(customer) {
+			$scope.customer = customer;
+			taskService.getTaskByCustomer($stateParams.id)
+			.success(function(tasks) {
+				$scope.tasks = tasks;
+				$scope.selectedTask = null;
+			}).error(function(err) {
+				console.log(err);
+			})
+		}).error(function(err) {
+			console.log(err);
+		})
 	}
 	
 }])

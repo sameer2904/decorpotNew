@@ -15,6 +15,8 @@ public class CustomerDetails {
 	private String budgetType;
 	
 	private String state;
+	
+	private String executionType;
 
 	public Integer getId() {
 		return id;
@@ -70,5 +72,13 @@ public class CustomerDetails {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getExecutionType() {
+		return executionType;
+	}
+
+	public void setExecutionType(String executionType) {
+		this.executionType = executionType;
 	}
 }

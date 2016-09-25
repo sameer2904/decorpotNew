@@ -30,6 +30,28 @@ public class TaskTemplate {
 	
 	@Column(name = "DEFAULT_ASSIGNEE")
 	private String defaultAssignee;
+	
+	@Column(name = "BUDGET_TYPE")
+	private String budgetType;
+	
+	@Column(name = "EXECUTION_TYPE")
+	private String executionType;
+
+	public String getBudgetType() {
+		return budgetType;
+	}
+
+	public void setBudgetType(String budgetType) {
+		this.budgetType = budgetType;
+	}
+
+	public String getExecutionType() {
+		return executionType;
+	}
+
+	public void setExecutionType(String executionType) {
+		this.executionType = executionType;
+	}
 
 	public String getDefaultAssignee() {
 		return defaultAssignee;

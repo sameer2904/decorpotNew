@@ -33,6 +33,17 @@ public class CustomerDetails {
 	@Column(name = "STATE")
 	private String state;
 	
+	@Column(name = "ADDITIONAL_PARAM")
+	private String additionalParam;
+	
+	public String getAdditionalParam() {
+		return additionalParam;
+	}
+
+	public void setAdditionalParam(String additionalParam) {
+		this.additionalParam = additionalParam;
+	}
+
 	public String getState() {
 		return state;
 	}
@@ -92,7 +103,6 @@ public class CustomerDetails {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
 	
 	
 }

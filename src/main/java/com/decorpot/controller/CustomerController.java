@@ -37,4 +37,10 @@ public class CustomerController {
 	public List<CustomerSummary> getAllCustomersTaskSummary() {
 		return custServ.getAllCustomerDetails();
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public CustomerDetails updateCustomer(@RequestBody CustomerDetails customerDetails) throws Exception {
+		return custServ.updateCustomer(customerDetails);
+	}
+	
 }
