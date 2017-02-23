@@ -28,9 +28,8 @@ public class UserController {
 	}
 	
 	
-	@ResponseStatus(HttpStatus.OK)
     @RequestMapping(value= "/login", method = RequestMethod.POST)
-	public boolean login(@RequestBody User user) throws Exception {
+	public User login(@RequestBody User user) throws Exception {
 		return userService.auth(user.getUserName(), user.getPassword());
 	}
 	

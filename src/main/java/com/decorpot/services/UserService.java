@@ -18,8 +18,9 @@ public class UserService {
 	private UserRepository userRepo;
 
 	public User findByUsername(String username) {
-		
+		System.out.println("username " + username);
 		User users = userRepo.findByUsername(username);
+		System.out.println("users " + users.getEmail());
 		return users;
 	}
 
@@ -53,12 +54,19 @@ public class UserService {
 	 * authorization
 	 */
 	@decorpotTx
-	public boolean auth(String username, String password) {
+	public com.decorpot.rest.model.User auth(String username, String password) {
 		User user = findByUsername(username);
+		com.decorpot.rest.model.User usr= new com.decorpot.rest.model.User();
 		if (user != null && password.equals(user.getPassword())) {
-			return true;
+			usr.setEmail(user.getEmail());
+			usr.setName(user.getName());
+			usr.setPhone(user.getPhone());
+			usr.setUserName(user.getUsername());
+			usr.setRole(user.getUserRole().getRoleName());
+			usr.setRole(user.getUserRole().getRoleName());
+			return usr;
 		}
-		return false;
+		return null;
 	}
 	
 	@decorpotTx

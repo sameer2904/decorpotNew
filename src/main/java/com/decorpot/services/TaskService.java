@@ -1,7 +1,10 @@
 package com.decorpot.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -22,42 +25,48 @@ public class TaskService {
 
 	@Autowired
 	private TaskRepository taskRepo;
-	
+
 	@Autowired
 	private TaskTemplateRepo taskTemplateRepo;
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private ApplicationMailer emailer;
 
 	@decorpotTx
 	public List<Task> createTasksForState(String state, int customerId) {
+		
+		String [] strs = null;
+		
 		List<TaskTemplate> templates = new ArrayList<>();
 		CustomerDetails customerDetails = customerService.getCustomerDetails(customerId);
-		if("sales".equals(customerDetails.getState())) {
+		if ("sales".equals(customerDetails.getState())) {
 			templates = taskTemplateRepo.findByState(state);
 		}
-		
-		if("designing".equals(customerDetails.getState())) {
-			templates = taskTemplateRepo.findByStateAndBudgetType(customerDetails.getState(), customerDetails.getBudgetType());
+
+		if ("designing".equals(customerDetails.getState())) {
+			templates = taskTemplateRepo.findByStateAndBudgetType(customerDetails.getState(),
+					customerDetails.getBudgetType());
 		}
-		
-		if("executions".equals(customerDetails.getState())) {
-			templates = taskTemplateRepo.findByStateAndExecutionType(customerDetails.getState(), customerDetails.getExecutionType());
+
+		if ("executions".equals(customerDetails.getState())) {
+			templates = taskTemplateRepo.findByStateAndExecutionType(customerDetails.getState(),
+					customerDetails.getExecutionType());
 		}
-		
-		
+
 		return templates.stream().map(t -> {
-			com.decorpot.datasource.models.Task task  = new com.decorpot.datasource.models.Task();
-			java.sql.Date estimatedDate = new java.sql.Date((new java.util.Date((new java.util.Date()).getTime() + 
-					TimeUnit.DAYS.toMillis( t.getEstDays() ))).getTime());
-			String body = "Task - " + t.getTaskName() + 
-					" has been created for you. Kindly go to the link to check. http://decorpot.com/#/customers/" + customerId;
+			com.decorpot.datasource.models.Task task = new com.decorpot.datasource.models.Task();
+			java.sql.Date estimatedDate = new java.sql.Date(
+					(new java.util.Date((new java.util.Date()).getTime() + TimeUnit.DAYS.toMillis(t.getEstDays())))
+							.getTime());
+			String body = "Task - " + t.getTaskName()
+					+ " has been created for you. Kindly go to the link to check. http://decorpot.com/#/customers/"
+					+ customerId;
 			task.setAssignedTo(t.getDefaultAssignee());
 			task.setCustomerId(customerId);
 			task.setForCustomer(true);
@@ -67,40 +76,36 @@ public class TaskService {
 			task.setTaskName(t.getTaskName());
 			task.setStartDate(new java.sql.Date((new java.util.Date()).getTime()));
 			task.setEstimatedDate(estimatedDate);
-			
-			
+
 			task = taskRepo.save(task);
-			emailer.sendViaGMail(t.getDefaultAssignee(), "task - " + t.getTaskName() +  " has been created for you. estimated date - " 
-			+ estimatedDate.toString(), body);
-			
+			emailer.sendViaGMail(t.getDefaultAssignee(), "task - " + t.getTaskName()
+					+ " has been created for you. estimated date - " + estimatedDate.toString(), body);
+
 			return convertDbTaskToRest(task);
 		}).collect(Collectors.toList());
-		
+
 	}
-	
+
 	@decorpotTx
 	public Task changeTaskStatus(int taskId, String status) {
-		com.decorpot.datasource.models.Task task  = taskRepo.findOne(taskId);
-		String body = "Task - " + task.getTaskName() + 
-				" status got changed from " + task.getStatus() + " to " + status  
+		com.decorpot.datasource.models.Task task = taskRepo.findOne(taskId);
+		String body = "Task - " + task.getTaskName() + " status got changed from " + task.getStatus() + " to " + status
 				+ ". Kindly go to the link to check. http://decorpot.com/#/customers/" + task.getCustomerId();
-		
+
 		task.setStatus(status);
-		if(status.equals(DecorpotConstants.status.wip.toString())) {
+		if (status.equals(DecorpotConstants.status.wip.toString())) {
 			task.setStatus(status);
 			task = taskRepo.save(task);
 		}
-		
-		if(status.equals(DecorpotConstants.status.closed.toString())) {
+
+		if (status.equals(DecorpotConstants.status.closed.toString())) {
 			task.setStatus(status);
 			task.setEndDate(new java.sql.Date((new java.util.Date()).getTime()));
 			task = taskRepo.save(task);
 		}
-		
-		
-		emailer.sendViaGMail(task.getAssignedTo(), "task - " + task.getTaskName() +  " status got changed" 
-				, body);
-		
+
+		emailer.sendViaGMail(task.getAssignedTo(), "task - " + task.getTaskName() + " status got changed", body);
+
 		return convertDbTaskToRest(task);
 	}
 
@@ -173,18 +178,15 @@ public class TaskService {
 		if (user == null) {
 			throw new Exception("wrong userid");
 		}
-		
+
 		task.setAssignedTo(userId);
-		
-		String body = "Task - " + task.getTaskName() + 
-				" now has been assigned to you" 
+
+		String body = "Task - " + task.getTaskName() + " now has been assigned to you"
 				+ ". Kindly go to the link to check. http://decorpot.com/#/customers/" + task.getCustomerId();
-		emailer.sendViaGMail(task.getAssignedTo(), "task - " + task.getTaskName() +  " has been assigned to you" 
-				, body);
-		
+		emailer.sendViaGMail(task.getAssignedTo(), "task - " + task.getTaskName() + " has been assigned to you", body);
+
 		return convertDbTaskToRest(taskRepo.save(task));
-		
-		
+
 	}
 
 	@decorpotTx
@@ -193,14 +195,15 @@ public class TaskService {
 		tsk.setHoursLogged((tsk.getHoursLogged() != null ? tsk.getHoursLogged() : 0) + hours);
 		taskRepo.save(tsk);
 	}
-	
+
 	@decorpotTx
 	public List<Task> getTaskByCustomerId(Integer customerId) {
-		
+
 		CustomerDetails custdetails = customerService.getCustomerDetails(customerId);
-		List<com.decorpot.datasource.models.Task> tasks = taskRepo.findTaskByCustomerIdAndStateTag(customerId, custdetails.getState());
-		
-		if(tasks != null) {
+		List<com.decorpot.datasource.models.Task> tasks = taskRepo.findTaskByCustomerIdAndStateTag(customerId,
+				custdetails.getState());
+
+		if (tasks != null) {
 			return tasks.stream().map(t -> {
 				Task tsk = convertDbTaskToRest(t);
 				if (t.getSubTasks() != null) {
@@ -211,11 +214,58 @@ public class TaskService {
 				return tsk;
 			}).collect(Collectors.toList());
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
+	@decorpotTx
+	public List<Task> getTaskByUser(String userId, String status, String start, String end) {
+		User user = userService.findByUsername(userId);
+		System.out.println("user details " + user.getEmail());
+		List<com.decorpot.datasource.models.Task> tasks = new ArrayList<>();
+		List<Task> tsks = new ArrayList<>();
+		if (!"admin".equals(user.getUserRole().getRoleName())) {
+			tasks = taskRepo.findTaskByAssignedToOrderByStartDateDesc(userId);
+		} else {
+			tasks = taskRepo.findAllByOrderByStartDateDesc();
+		}
+
+		if (tasks != null) {
+			tsks = tasks.stream().map(t -> {
+				Task tsk = convertDbTaskToRest(t);
+				if (t.getSubTasks() != null) {
+					tsk.setSubTasks(t.getSubTasks().stream().map(st -> {
+						return convertDbTaskToRest(st);
+					}).collect(Collectors.toSet()));
+				}
+				return tsk;
+			}).collect(Collectors.toList());
+			
+			System.out.println("first " + tsks.size());
+			
+			if(null != status) {
+				tsks = tsks.stream().filter(t -> status.equals(t.getTaskStatus())).collect(Collectors.toList());
+			}
+			
+			System.out.println("second " + tsks.size());
+			
+			if(null != start) {
+				tsks = tsks.stream().filter(t -> (new java.util.Date(start)).equals(t.getStartDate())).collect(Collectors.toList());
+			}
+			
+			System.out.println("third " + tsks.size());
+			
+			if(null != end) {
+				tsks = tsks.stream().filter(t -> (new java.util.Date(end)).equals(t.getEndDate())).collect(Collectors.toList());
+			}
+			
+			System.out.println("forth " + tsks.size());
+		}
+
+		return tsks;
+
+	}
 
 	// TODO(sameer): convert this to generics models seems to have same
 	// structure.

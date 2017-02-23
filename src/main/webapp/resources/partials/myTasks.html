@@ -1,0 +1,112 @@
+<div class="container top-margin">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="form-group col-md-12">
+			<label> <span>Status</span>
+			</label>
+				<select name="singleSelect"
+					class="btn btn-default dropdown-toggle form-control"
+					ng-model="query.status" ng-change="onFilterChange()">
+					<option value="{{s}}" ng-repeat="s in status"><span>&nbsp;{{s}}</span></option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group col-md-3">
+			<label> <span>Created Date From</span>
+			</label><input type="date" placeholder="" id="startDate"
+				ng-model="query.start" class="form-control" ng-change="onFilterChange()">
+		</div>
+		<div class="form-group col-md-3">
+			<label> <span>Created Date To</span>
+			</label><input type="date" placeholder="" id="startDate"
+				ng-model="query.end" class="form-control" ng-change="onFilterChange()">
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Tasks</div>
+				<div class="panel-body">
+					<div class="col-md-12">
+						<ul class="task-list-ul">
+							<li ng-repeat="t in tasks" ng-click="taskDetails(t)">
+								<div>
+									<span class="task-details-title">Task Name</span><span>{{t.taskName}}</span>
+								</div>
+								<div>
+									<span class="task-details-title">Created Date</span><span>{{t.startDate}}</span>
+								</div>
+								<div>
+									<span class="task-details-title">Estimated Date</span><span>{{t.estimatedDate}}</span>
+								</div>
+								<div>
+									<span class="task-details-title">Logged Hours</span><span>{{t.hoursLogged}}</span>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-8" ng-if="selectedTask">
+			<div class="panel panel-default">
+				<div class="row">
+					<div class="table-title-header col-md-12">
+						<span>{{selectedTask.taskName}}</span>
+						<div class="col-md-3 pull-right">
+							<div class="form-group col-md-12">
+								<select name="singleSelect"
+									class="btn btn-default dropdown-toggle form-control"
+									ng-model="selectedTask.taskStatus" ng-change="changeStatus()">
+									<option value="{{s}}" ng-repeat="s in status"><span>&nbsp;{{s}}</span></option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<form>
+								<div class="form-group col-md-6">
+									<label for="Assigned To">&nbsp;<span>Assigned To</span></label>
+									<select name="singleSelect"
+										class="btn btn-default dropdown-toggle form-control"
+										ng-model="selectedTask.assignedTo" ng-change="reassignTask()">
+										<option value="{{u.id}}" ng-repeat="u in users"><span>&nbsp{{u.name}}</span></option>
+									</select>
+								</div>
+								<div class="form-group col-md-6">
+									<label> <span>Estimated Date</span>
+									</label><input type="text" placeholder="" id="estimatedDate"
+										ng-model="selectedTask.estimatedDate" class="form-control">
+								</div>
+								<div class="form-group col-md-6">
+									<label> <span>Start Date</span>
+									</label><input type="text" placeholder="" id="startDate"
+										ng-model="selectedTask.startDate" class="form-control">
+								</div>
+								<div class="form-group col-md-6">
+									<label> <span>End Date</span>
+									</label><input type="text" placeholder="" id="endDate"
+										ng-model="selectedTask.endDate" class="form-control">
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div>more option will be here</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row"></div>

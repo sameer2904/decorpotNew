@@ -133,16 +133,27 @@ services.service('userService', ['$http', function($http) {
 			})
 		},
 		isUserLoggedIn: function() {
+			if(!this.isLoggedIn && localStorage.getItem('isLoggedIn')) {
+				this.isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
+			}
 			return this.isLoggedIn;
 		},
-		setLoggedIn: function() {
+		setLoggedIn: function(user) {
 			this.isLoggedIn = true;
-			localStorage.setItem('isLoggedIn', isLoggedIn);
+			this.user = user;
+			localStorage.setItem('isLoggedIn', JSON.stringify(this.isLoggedIn));
+			localStorage.setItem('user', JSON.stringify(this.user));
+		},
+		getLoggedInUser: function() {
+			if(!this.user && localStorage.getItem('user')) {
+				this.user = JSON.parse(localStorage.getItem('user'));
+			}
+			return this.user;
 		}
 	}
 }]);
 
-services.service('taskService', ['$http', function($http) {
+services.service('taskService', ['$http', '$httpParamSerializer', function($http, $httpParamSerializer) {
 	return {
 		getAllTask: function() {
 			return $http({
@@ -168,6 +179,14 @@ services.service('taskService', ['$http', function($http) {
 			return $http({
 				url: 'tasks/status/' + taskId + '/' + status,
 				method: 'put'
+			})
+		},
+		
+		getTaskByUser: function(query) {
+			console.log('let check', $httpParamSerializer(query));
+			return $http({
+				url: 'tasks/user'  + (query ? ('?' + $httpParamSerializer(query)) : ''),
+				method: 'get'
 			})
 		}
 	}

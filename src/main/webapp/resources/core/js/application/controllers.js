@@ -590,7 +590,7 @@ decorpotCtrls.controller('createUserController', ['$state', '$scope', 'userServi
 			user.phone = $scope.phone;
 			userService.createUser(user)
 			.success(function(data) {
-				console.log(data);
+				$state.go('login')
 			}).error(function(data) {
 				alert(data);
 			})
@@ -603,7 +603,12 @@ decorpotCtrls.controller('loginController', ['$state', '$scope', 'userService', 
 	$scope.login = function() {
 			userService.login($scope.user)
 			.success(function(data) {
-				userService.setLoggedIn();
+				if(!data) {
+					$scope.message = "userid/passwrod is incorrect";
+				} else {
+					userService.setLoggedIn(data);
+					$state.go('auth.myTasks');
+				}	
 			}).error(function(data) {
 				alert(data);
 			});
@@ -650,6 +655,83 @@ decorpotCtrls.controller('customerController', ['$state', '$stateParams', '$scop
 	})
 	
 	taskService.getTaskByCustomer($stateParams.id)
+	.success(function(tasks) {
+		$scope.tasks = tasks;
+	}).error(function(err) {
+		console.log(err);
+	})
+
+	userService.getInternalUsers()
+		.success(function(users) {
+			$scope.users = users.map(function(u) {
+				return {
+					id: u.userName,
+					name: u.name
+				}
+			})
+		}).error(function(err) {
+			console.log(err);
+		});
+	
+	$scope.taskDetails = function(task) {
+		$scope.selectedTask = task;
+	}
+	
+	$scope.reassignTask = function() {
+		taskService.reassignTask($scope.selectedTask)
+		.success(function(tasks) {
+			$scope.selectedTask = tasks;
+		}).error(function(err) {
+			console.log(err);
+		});
+	}
+	
+	$scope.status = ['open', 'closed', 'rejected', 'wip'];
+	
+	$scope.changeStatus = function() {
+		taskService.changeStatus($scope.selectedTask.taskId, $scope.selectedTask.taskStatus )
+		.success(function(task) {
+			$scope.taskDetails(task);
+		}).error(function(err) {
+			console.log(err);
+		});
+	}
+	
+	$scope.states = ['sales', 'designing', 'execution', 'lost'];
+	
+	$scope.editCustomer = function() {
+		customerService.updateCustomer($scope.customer)
+		.success(function(customer) {
+			$scope.customer = customer;
+			taskService.getTaskByCustomer($stateParams.id)
+			.success(function(tasks) {
+				$scope.tasks = tasks;
+				$scope.selectedTask = null;
+			}).error(function(err) {
+				console.log(err);
+			})
+		}).error(function(err) {
+			console.log(err);
+		})
+	}
+	
+}])
+
+decorpotCtrls.controller('mytasksController', ['$state', '$stateParams', '$scope', 'taskService', 'customerService', 'userService',
+                                            function($state, $stateParams, $scope, taskService, customerService, userService) {
+	
+	$scope.query = {};
+	$scope.query.userId = userService.getLoggedInUser().email;
+	
+	$scope.onFilterChange = function() {
+		taskService.getTaskByUser($scope.query)
+		.success(function(tasks) {
+			$scope.tasks = tasks;
+		}).error(function(err) {
+			console.log(err);
+		})
+	}
+	taskService.getTaskByUser($scope.query)
 	.success(function(tasks) {
 		$scope.tasks = tasks;
 	}).error(function(err) {

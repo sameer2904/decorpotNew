@@ -4,9 +4,18 @@
 
 var decorpot = angular.module('decorpot', [ 'ui.router', 'ngFileUpload','angular-loading-bar', 'bootstrapLightbox', 'ngAnimate','angularGrid']);
 
-decorpot.run(['$rootScope', '$state',function($rootScope, $state) {
+decorpot.run(['$rootScope', '$state', '$location', 'userService', function($rootScope, $state, $location, userService) {
 	$rootScope.state = $state.this;
+	var isLoggedIn = userService.isUserLoggedIn();
+   
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in
+        if ($location.path().indexOf('auth') !== -1 && !isLoggedIn) {
+            $location.path('/login');
+        }
+    });
 }]);
+
 decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 		function($stateProvider, $urlRouterProvider, $httpProvider) {
 			$urlRouterProvider.otherwise('/');
@@ -42,19 +51,6 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/contact',
 				templateUrl : 'resources/partials/contact.html',
 				controller : 'contactController'
-			}).state('uploadApartment', {
-				url : '/uploadApartment',
-				templateUrl : 'resources/partials/uploadApartment.html',
-				controller : 'uploadApartmentController'
-			}).state('uploadFloorPlan', {
-				url : '/uploadFloorPlan',
-				templateUrl : 'resources/partials/uploadFloorplan.html',
-				controller : 'uploadFloorPlanController'
-			})
-			.state('uploadPastWork', {
-				url : '/uploadPastWork',
-				templateUrl : 'resources/partials/uploadPastWork.html',
-				controller : 'uploadPastWorkController'
 			})
 			.state('apartments', {
 				url : '/apartments',
@@ -80,29 +76,44 @@ decorpot.config([ '$stateProvider', '$urlRouterProvider', '$httpProvider',
 				url : '/login',
 				templateUrl : 'resources/partials/login.html',
 				controller : 'loginController'
-			}).state('login.create', {
+			}).state('auth', {
+	            url: '/auth',
+	            templateUrl: 'resources/partials/auth.html',
+	            abstract: true
+	        }).state('auth.create', {
 				url : '/create',
 				templateUrl : 'resources/partials/createUser.html',
 				controller : 'createUserController'
-			}).state('tasks', {
+			}).state('auth.tasks', {
 				url : '/tasks',
 				templateUrl : 'resources/partials/tasks.html',
 				controller : 'tasksController'
-			}).state('customers', {
+			}).state('auth.customers', {
 				url : '/customers',
 				templateUrl: 'resources/partials/customer.html',
 				abstract: true
-			}).state('customers.details', {
+			}).state('auth.customers.details', {
 				url : '/:id',
 				templateUrl: 'resources/partials/customerDetails.html',
 				controller: 'customerController'
+			}).state('auth.uploadApartment', {
+				url : '/uploadApartment',
+				templateUrl : 'resources/partials/uploadApartment.html',
+				controller : 'uploadApartmentController'
+			}).state('auth.uploadFloorPlan', {
+				url : '/uploadFloorPlan',
+				templateUrl : 'resources/partials/uploadFloorplan.html',
+				controller : 'uploadFloorPlanController'
+			}).state('auth.uploadPastWork', {
+				url : '/uploadPastWork',
+				templateUrl : 'resources/partials/uploadPastWork.html',
+				controller : 'uploadPastWorkController'
+			}).state('auth.myTasks', {
+				url : '/myTasks',
+				templateUrl : 'resources/partials/myTasks.html',
+				controller : 'mytasksController'
 			});
-		} ]).run(['$state', '$rootScope', '$location', 'userService', function($state, $rootScope, $location, userService) {
-			
-			if(!userService.isUserLoggedIn()) {
-				$state.go('login');
-			}
-		}]);
+		} ]);
 decorpot.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
   }])
