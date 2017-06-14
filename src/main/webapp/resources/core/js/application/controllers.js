@@ -634,7 +634,7 @@ decorpotCtrls.controller('tasksController', ['$state', '$scope', 'taskService', 
 		}
 		
 		$scope.customerDetails = function(id) {
-			$state.go('customers.details', {id: id});
+			$state.go('auth.customers.details', {id: id});
 		}
 		
 		customerService.getAllCustomersTaskSummary()
